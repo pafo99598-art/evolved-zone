@@ -4781,7 +4781,11 @@ const NetSys=(()=>{const O=GAME_CFG.online,ABC='ABCDEFGHJKLMNPQRSTUVWXYZ23456789
     if(NS.rise>0){const now=performance.now();if(!NS.riseEnd)NS.riseEnd=now+O.riseTime*1000;const left=Math.max(0,(NS.riseEnd-now)/1000);NS.rise=left;const g=heightAt(player.x,player.z);player.y=g-1.75*(left/O.riseTime);player.vy=0;player.grounded=false;player.moving=0;player.angle=yaw;if(NS.rise<=0){NS.riseEnd=0;player.y=g;player.grounded=true;try{$('uzRise').style.display='none'}catch(e){}tell('Sei di nuovo in piedi. Trova un\'arma!')}try{clientTick(dt)}catch(e){}return}
     const B=bots,A=animals;NS.B=B;NS.A=A;bots=[];animals=[];NS.inStep=true;try{st(dt)}finally{bots=B;animals=A;NS.inStep=false}
     try{clientTick(dt);specTick();pendTick()}catch(e){err('client tick',e)}}}
-  {const rd=render;render=function(dt){if(playing())try{renderTick()}catch(e){err('render',e)}rd(dt)}}
+  {const rd=render;render=function(dt){NS.lastFrame=performance.now();if(playing())try{renderTick()}catch(e){err('render',e)}rd(dt)}}
+  // chi ospita con l'app in secondo piano (schermo spento, altra app, scheda nascosta): il browser ferma il disegno,
+  // ma la partita degli altri deve continuare: un timer in un worker (non rallentato dal browser) fa avanzare la simulazione
+  try{const src='setInterval(()=>postMessage(0),50)';const wk=new Worker(URL.createObjectURL(new Blob([src],{type:'text/javascript'})));let last=performance.now();
+   wk.onmessage=()=>{const now=performance.now(),dt=Math.min(.1,(now-last)/1000);last=now;if(NS.role!=='host'||!NS.started||phase!=='playing')return;if(now-(NS.lastFrame||0)<250)return;S.bgTicks=(S.bgTicks||0)+1;try{step(dt)}catch(e){err('bg',e)}}}catch(e){err('worker',e)}
   // durante la simulazione del giocatore collegato: i bersagli (bot, giocatori, animali) sono le copie
   const swap=fn=>function(){if(!(NS.inStep&&NS.role==='client'))return fn.apply(this,arguments);const b=bots,a=animals;bots=NS.B;animals=NS.A;try{return fn.apply(this,arguments)}finally{bots=b;animals=a}};
   rayTarget=swap(rayTarget);hitArea=swap(hitArea);gather=swap(gather);

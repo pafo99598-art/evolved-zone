@@ -1,5 +1,5 @@
 // service worker di Ultima Zona: il gioco resta disponibile offline; gli aggiornamenti si scaricano in background
-const VER='0.14.0-8d624ba3d6';const CACHE='ultima-zona-prova-'+VER;
+const VER='0.14.0-b41dcd354d';const CACHE='ultima-zona-prova-'+VER;
 const CORE=['./','./index.html','./manifest.webmanifest','./favicon.png','./icons/icon-192.png','./icons/icon-512.png','./icons/maskable-192.png','./icons/maskable-512.png','./icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('ultima-zona-prova-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
