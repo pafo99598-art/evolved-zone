@@ -2550,7 +2550,7 @@ globalThis.Invariants=Invariants;
 // ================= EDIFICI STRUTTURALI MODULARI + INTERNI + NAVIGAZIONE INTERNA =================
 // Gli edifici vicini al giocatore diventano "modulari": pareti a pannelli, finestre, porte, angoli, pavimenti, scale, tetto.
 // Lo stato dei danni resta in memoria anche quando l'edificio torna alla mesh semplice per distanza.
-const BUILD_CFG={radius:70,keep:115,keepDamaged:240,max:16,maxArea:1e9,maxH:40,maxVerts:48,maxSlope:3,seg:2.6,tile:1.5,wallT:.3,doorW:1.15,doorH:2.2,sill:.9,winTop:2.25};
+const BUILD_CFG={radius:70,keep:115,keepDamaged:240,max:16,maxArea:1e9,maxH:40,maxVerts:48,maxSlope:1.6,seg:2.6,tile:1.5,wallT:.3,doorW:1.15,doorH:2.2,sill:.9,winTop:2.25};
 const BCOMP={// componente → categoria, moltiplicatori, nome
  wall:{n:'Muro',cat:'MEDIUM',hp:1,thr:1,cover:1,imp:.5},struct:{n:'Muro portante',cat:'HEAVY',hp:2.2,thr:1.8,cover:1,imp:1},weak:{n:'Parete debole',cat:'LIGHT',hp:.42,thr:.35,cover:1,imp:.2},
  door:{n:'Porta',cat:'LIGHT',hp:.35,thr:.3,cover:0,imp:0,mat:'WOOD'},window:{n:'Finestra',cat:'LIGHT',hp:.08,thr:0,cover:0,imp:0,mat:'GLASS'},frame:{n:'Telaio',cat:'MEDIUM',hp:.6,thr:1,cover:0,imp:.3},
@@ -4561,7 +4561,9 @@ const NetSys=(()=>{const O=GAME_CFG.online,ABC='ABCDEFGHJKLMNPQRSTUVWXYZ23456789
   NS.known=new Map(items.map(i=>[i.id,i]));NS.nextItemId=9000000;
   for(const c of NS.conns.values())sendInit(c,false);
   lobbyBcast();tell(NS.mode==='ffa'?'Partita privata: tutti contro tutti!':'Partita di squadra iniziata: restate uniti!')}
- function makeProxy(c,tmpl,spot){let base=null;if(!spot&&NS.mode==='squad'){const i=bots.findIndex(b=>b.team===0&&b.hp>0);if(i>=0){base=bots[i];bots.splice(i,1)}}
+ function makeProxy(c,tmpl,spot){let base=null;if(!spot){let i=NS.mode==='squad'?bots.findIndex(b=>b.team===0&&b.hp>0):-1;
+  // ogni amico prende il posto di un bot: i partecipanti restano quelli approvati (200)
+  if(i<0&&bots.length+humans().length>=GAME_CFG.match.participants){for(let j=bots.length-1;j>=0;j--)if(bots[j].team!==0&&bots[j].hp>0){i=j;break}}if(i>=0){base=bots[i];bots.splice(i,1)}}
   const p=JSON.parse(JSON.stringify(tmpl||NS.tmpl||{}));
   Object.assign(p,{id:humanId(c.idx),human:true,__remote:c.idx,__name:c.name,team:c.teamG,hp:100,downed:false,bike:-1,weapons:[],weaponSlot:0,climb:null,hook:null});
   if(spot)Object.assign(p,spot,{inBus:false,parachute:false,skydiving:false,grounded:true});
