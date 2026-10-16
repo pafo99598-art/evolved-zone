@@ -1,0 +1,44 @@
+{
+ "name": "ultima-zona",
+ "productName": "Ultima Zona",
+ "version": "0.16.0",
+ "description": "Ultima Zona - battle royale nel Valdarno",
+ "main": "main.js",
+ "author": "Michele",
+ "license": "UNLICENSED",
+ "build": {
+  "appId": "it.ultimazona.gioco",
+  "productName": "Ultima Zona",
+  "files": [
+   "main.js",
+   "preload.js",
+   "game/**",
+   "icon.png",
+   "icon.ico"
+  ],
+  "directories": {
+   "output": "dist"
+  },
+  "win": {
+   "target": [
+    "nsis"
+   ],
+   "icon": "icon.ico"
+  },
+  "nsis": {
+   "oneClick": false,
+   "perMachine": false,
+   "allowToChangeInstallationDirectory": true,
+   "createDesktopShortcut": true,
+   "shortcutName": "Ultima Zona",
+   "artifactName": "UltimaZona-Setup.exe"
+  },
+  "portable": {
+   "artifactName": "UltimaZona-Portable-${version}.exe"
+  }
+ },
+ "devDependencies": {
+  "electron": "44.8.0",
+  "electron-builder": "26.15.3"
+ }
+}

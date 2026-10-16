@@ -1,0 +1,41 @@
+# Costruisce l'app per Windows (installazione .exe) e la pubblica tra le "Release" del progetto.
+# Parte da sola quando cambia app-src/ o la versione del gioco per l'app (app/version.json).
+name: App Windows
+on:
+  push:
+    branches: [main]
+    paths: ['app-src/**', 'app/version.json', '.github/workflows/app-windows.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Gioco dentro l'app
+        shell: bash
+        run: |
+          mkdir -p app-src/game
+          cp app/index.html app-src/game/index.html
+          node -e "const v=require('./app/version.json').version;require('fs').writeFileSync('app-src/game/version.json',JSON.stringify({version:v}));const p=require('./app-src/package.json');p.version=v;require('fs').writeFileSync('app-src/package.json',JSON.stringify(p,null,1))"
+      - name: Costruzione
+        working-directory: app-src
+        run: |
+          npm install
+          npx electron-builder --win nsis --x64 --publish never
+      - name: Versione
+        id: v
+        shell: bash
+        run: echo "version=$(node -p "require('./app/version.json').version")" >> $GITHUB_OUTPUT
+      - name: Pubblicazione
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app-v${{ steps.v.outputs.version }}
+          name: Ultima Zona ${{ steps.v.outputs.version }} per Windows
+          make_latest: true
+          body: "Scarica **UltimaZona-Setup.exe**, aprilo e segui l'installazione. L'app si aggiorna da sola."
+          files: app-src/dist/UltimaZona-Setup.exe
