@@ -35,7 +35,15 @@
   },
   "portable": {
    "artifactName": "UltimaZona-Portable-${version}.exe"
-  }
+  },
+  "protocols": [
+   {
+    "name": "Ultima Zona",
+    "schemes": [
+     "ultimazona"
+    ]
+   }
+  ]
  },
  "devDependencies": {
   "electron": "44.8.0",

@@ -1,0 +1,10 @@
+{
+ "version": "0.16.0",
+ "notes": "Mappa vera 1:1 del Valdarno, partita di 25 minuti, grafica realistica, muri toscani",
+ "files": [
+  {
+   "path": "index.html",
+   "sha256": "5c611ea22f8370a8b020f734f566a36d03902ab85a79a6dd51e250764dae7fc4"
+  }
+ ]
+}

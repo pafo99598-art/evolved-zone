@@ -45,11 +45,18 @@ function serve() {
     return new Response(fs.readFileSync(f), { headers: { 'content-type': type } });
   });
 }
+// link d'invito: ultimazona://lobby/CODICE (dalla pagina del gioco: "Apri nell'app") → si apre l'app direttamente nella lobby
+function lobbyHash(argv) { const u = (argv || []).find(a => /^ultimazona:\/\//i.test(a)); if (!u) return ''; const m = /lobby[\/=]([A-Za-z0-9]{4,12})/.exec(u); return m ? '#lobby=' + m[1].toUpperCase() : ''; }
+let startHash = lobbyHash(process.argv);
+const gotLock = app.requestSingleInstanceLock(); if (!gotLock) app.quit();
+app.on('second-instance', (e, argv) => { const h = lobbyHash(argv); if (win && !win.isDestroyed()) { if (win.isMinimized()) win.restore(); win.focus(); if (h) win.loadURL('uz://gioco/index.html' + h); } });
+try { app.setAsDefaultProtocolClient('ultimazona'); } catch (e) {}
 function createWindow() {
   win = new BrowserWindow({ width: 1600, height: 900, backgroundColor: '#0b0d18', title: 'Ultima Zona', icon: path.join(__dirname, 'icon.png'), autoHideMenuBar: true,
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, backgroundThrottling: false } });
   win.setMenuBarVisibility(false);
-  win.loadURL('uz://gioco/index.html');
+  if (startHash) log('apro la lobby ' + startHash.slice(7) + ' dal link');
+  win.loadURL('uz://gioco/index.html' + startHash); startHash = '';
   win.webContents.on('before-input-event', (e, i) => { if (i.type === 'keyDown' && i.key === 'F11') { win.setFullScreen(!win.isFullScreen()); e.preventDefault(); } });
   win.webContents.setWindowOpenHandler(({ url }) => { if (/^https:\/\//.test(url)) shell.openExternal(url); return { action: 'deny' }; });
   clearTimeout(bootTimer);
@@ -92,5 +99,5 @@ async function checkUpdate() {
   } catch (e) { log('aggiornamento non riuscito: ' + e.message); }
   checking = false;
 }
-app.whenReady().then(() => { pickVersion(); serve(); createWindow(); setInterval(checkUpdate, 30 * 60 * 1000); });
+app.whenReady().then(() => { if (!gotLock) return; pickVersion(); serve(); createWindow(); setInterval(checkUpdate, 30 * 60 * 1000); });
 app.on('window-all-closed', () => app.quit());

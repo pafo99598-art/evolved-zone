@@ -1,0 +1,25 @@
+plugins { id 'com.android.application' }
+def ks = new Properties(); def ksf = rootProject.file('keystore.properties'); if (ksf.exists()) ks.load(new FileInputStream(ksf))
+def gameVer = new groovy.json.JsonSlurper().parse(file('src/main/assets/game/version.json')).version
+android {
+  namespace 'it.ultimazona.gioco'
+  compileSdk 35
+  defaultConfig {
+    applicationId 'it.ultimazona.gioco'
+    minSdk 26
+    targetSdk 35
+    versionCode gameVer.split('\\.').with { it[0].toInteger() * 10000 + it[1].toInteger() * 100 + it[2].toInteger() }
+    versionName gameVer
+    // per le prove si può puntare a un altro sito di aggiornamento: -PuzUpdateUrl=http://10.0.2.2:8130/
+    def upd = project.findProperty('uzUpdateUrl') ?: 'https://pafo99598-art.github.io/ultima-zona/app/'
+    buildConfigField 'String', 'UPDATE_URL', '"' + upd + '"'
+    buildConfigField 'long', 'BOOT_MS', (project.findProperty('uzBootMs') ?: '120000') + 'L'
+    manifestPlaceholders = [cleartext: project.hasProperty('uzUpdateUrl') ? 'true' : 'false']
+  }
+  buildFeatures { buildConfig true }
+  signingConfigs { release { if (ks['storeFile']) { storeFile file(ks['storeFile']); storePassword ks['storePassword']; keyAlias ks['keyAlias']; keyPassword ks['keyPassword'] } } }
+  buildTypes { release { minifyEnabled false; signingConfig ks['storeFile'] ? signingConfigs.release : signingConfigs.debug } }
+  compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+  androidResources { noCompress 'html', 'json' }
+  lint { checkReleaseBuilds false; abortOnError false }
+}
