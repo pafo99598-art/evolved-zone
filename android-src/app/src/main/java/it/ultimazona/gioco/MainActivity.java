@@ -80,6 +80,9 @@ public class MainActivity extends Activity {
         setContentView(root);
         immersive();
         startHash = hashFromIntent(getIntent());
+        // il gioco usa funzioni dei browser recenti: con un "WebView di Android" troppo vecchio si chiede di aggiornarlo
+        int wv = webViewMajor();
+        if (wv > 0 && wv < MIN_WEBVIEW) { askWebViewUpdate(wv); return; }
         pickVersion();
         createWeb();
         ui.postDelayed(periodic, CHECK_EVERY);
@@ -105,6 +108,35 @@ public class MainActivity extends Activity {
         } else {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         }
+    }
+
+    static final int MIN_WEBVIEW = 93;
+    String webViewPkg = "com.google.android.webview";
+    int webViewMajor() {
+        try {
+            android.content.pm.PackageInfo p = WebView.getCurrentWebViewPackage();
+            if (p == null) return 0;
+            webViewPkg = p.packageName;
+            return parseInt(String.valueOf(p.versionName).split("\\.")[0]);
+        } catch (Exception e) { return 0; }
+    }
+    void askWebViewUpdate(int ver) {
+        android.widget.LinearLayout box = new android.widget.LinearLayout(this);
+        box.setOrientation(android.widget.LinearLayout.VERTICAL);
+        box.setGravity(android.view.Gravity.CENTER);
+        box.setPadding(60, 40, 60, 40);
+        android.widget.TextView t = new android.widget.TextView(this);
+        t.setTextColor(Color.WHITE); t.setTextSize(18); t.setGravity(android.view.Gravity.CENTER);
+        t.setText("Per giocare a Ultima Zona serve aggiornare \"Android System WebView\" (sul telefono c'è la versione " + ver + ", serve almeno la " + MIN_WEBVIEW + ").\n\nAggiornalo dal Play Store e poi riapri il gioco.");
+        android.widget.Button b = new android.widget.Button(this);
+        b.setText("Aggiorna dal Play Store");
+        b.setOnClickListener(v -> {
+            try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + webViewPkg))); }
+            catch (Exception e) { try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + webViewPkg))); } catch (Exception e2) { } }
+        });
+        box.addView(t); box.addView(b);
+        root.addView(box, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        android.util.Log.i("UltimaZona", "WebView troppo vecchio: " + ver);
     }
 
     // ---------------------------------------------------------------- versioni
