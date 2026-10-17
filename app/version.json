@@ -1,10 +1,10 @@
 {
- "version": "0.16.1",
- "notes": "Terreni e strade con texture vere",
+ "version": "0.16.2",
+ "notes": "Edifici con texture vere: intonaci, pietra, mattoni, tetti in coppi",
  "files": [
   {
    "path": "index.html",
-   "sha256": "10f5dbcca2f3c7f849a5238c70489d0e24e3ecc7cadf831a501dc2adcecdb767"
+   "sha256": "799025bd8a90154a53f31957efc4aa693f54496d0f2c651c98a5b72d1d0c1928"
   },
   {
    "path": "tex/asfalto_1k.jpg",
@@ -17,6 +17,54 @@
   {
    "path": "tex/asfalto_h.jpg",
    "sha256": "82cdea2ed18a5956c3ecd396d6b94edae031f9a5385c0d3640863f9582e44700"
+  },
+  {
+   "path": "tex/b_cemento_1k.jpg",
+   "sha256": "1ed93cb1f9cb55751a0b0343465e48dc08d8fdcb1215a1aeb06a21d750f69c04"
+  },
+  {
+   "path": "tex/b_cemento_2k.jpg",
+   "sha256": "3d5b535f2c20425dff8e6d85810493ed4cf6433d88910b490d700dde6ca686ae"
+  },
+  {
+   "path": "tex/b_intonaco_1k.jpg",
+   "sha256": "02da963be5d610c3902cca21ddf20f41be3f44a2d777241e3eccd7b3b2fe2f08"
+  },
+  {
+   "path": "tex/b_intonaco_2k.jpg",
+   "sha256": "7123a08fabd86c3eb2c48bb5af37bf687e77b55baa74bacb4923c3d864d268e7"
+  },
+  {
+   "path": "tex/b_lamiera_1k.jpg",
+   "sha256": "8f68f29b7ef54ca69ee5097d4897905ac65d878b4124a212721f68f37632b4c1"
+  },
+  {
+   "path": "tex/b_lamiera_2k.jpg",
+   "sha256": "c9965c4a7a039ff3c4b2dd05552ad5076fec406badb258b9113631c1668b3d1e"
+  },
+  {
+   "path": "tex/b_legno_1k.jpg",
+   "sha256": "513b0f642807592743740598aa0020e91196fc0eec4d9cadaa897df4e8be76a2"
+  },
+  {
+   "path": "tex/b_legno_2k.jpg",
+   "sha256": "6a2a5645ce90c2ba12177bb49b8b78c76c37b03e4cc4423c7a461e073458d43d"
+  },
+  {
+   "path": "tex/b_mattone_1k.jpg",
+   "sha256": "31eb8ed82097806b96645fa03932fe607528ab194244b62fb20afe3027bd124c"
+  },
+  {
+   "path": "tex/b_mattone_2k.jpg",
+   "sha256": "ee07b2f2556429df44aadbd32fb6689cb1d9479236af17b8684fbc4b435c4f89"
+  },
+  {
+   "path": "tex/b_tetto_1k.jpg",
+   "sha256": "794fa5a3f332e8b8c1f271215742d7a8ed21db9d6dedc241c4fb72ffee7642e8"
+  },
+  {
+   "path": "tex/b_tetto_2k.jpg",
+   "sha256": "778133a584cd1b9cb89d402f428e4a02e5a31de9a198a367cf484ec72b7f5588"
   },
   {
    "path": "tex/bosco_1k.jpg",
