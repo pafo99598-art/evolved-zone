@@ -1,10 +1,154 @@
 {
- "version": "0.16.0",
- "notes": "Mappa vera 1:1 del Valdarno, partita di 25 minuti, grafica realistica, muri toscani",
+ "version": "0.16.1",
+ "notes": "Terreni e strade con texture vere",
  "files": [
   {
    "path": "index.html",
-   "sha256": "5c611ea22f8370a8b020f734f566a36d03902ab85a79a6dd51e250764dae7fc4"
+   "sha256": "10f5dbcca2f3c7f849a5238c70489d0e24e3ecc7cadf831a501dc2adcecdb767"
+  },
+  {
+   "path": "tex/asfalto_1k.jpg",
+   "sha256": "8cdbd87a1b57644c77048493a50ec107a86759a8c46752a08d0cde56006ebc04"
+  },
+  {
+   "path": "tex/asfalto_2k.jpg",
+   "sha256": "3a58536b2e0cbdbf0c1b7e73cc0212b645ed9d3dd71fe95f9615a44a637284e2"
+  },
+  {
+   "path": "tex/asfalto_h.jpg",
+   "sha256": "82cdea2ed18a5956c3ecd396d6b94edae031f9a5385c0d3640863f9582e44700"
+  },
+  {
+   "path": "tex/bosco_1k.jpg",
+   "sha256": "fb6920768058b6934bf48e36071ffd630e88a7234db5c08b5e66e99673091bbd"
+  },
+  {
+   "path": "tex/bosco_2k.jpg",
+   "sha256": "45d2d8f9726fb689769d3e3067e63ac3285250f72e01530cf18e2d88f7f004c3"
+  },
+  {
+   "path": "tex/bosco_h.jpg",
+   "sha256": "627cfb597a6ebcf7c0581c42105b5b01eecc60a9cc154b57c370c53d4b7addc1"
+  },
+  {
+   "path": "tex/bruciato_1k.jpg",
+   "sha256": "a797e0bb6134cb081f89468be8087e0b593a06d71009321a3345561988b23b63"
+  },
+  {
+   "path": "tex/bruciato_2k.jpg",
+   "sha256": "e4b4e1bd4f81d8a784d4f8404e924635e85c3f7fce7f43b176a03b98e9e78d17"
+  },
+  {
+   "path": "tex/bruciato_h.jpg",
+   "sha256": "c2b159e8062a5b67c81c88ddc4d6f8f6bc45f367371fd52b1f60f00f9177a3d3"
+  },
+  {
+   "path": "tex/cemento_1k.jpg",
+   "sha256": "257944ce4a1df9fa7de015864a908d08b46e7597e12ba55681aaa8a52f260ba2"
+  },
+  {
+   "path": "tex/cemento_2k.jpg",
+   "sha256": "fae93ee7b3cdac46081e28948db644acb704b2e78f2ef8dcb2513d790d87b3cd"
+  },
+  {
+   "path": "tex/cemento_h.jpg",
+   "sha256": "145693a578a1db6c74b0536189e7d0f5ea3b2ef31e153e96f4b2a08d1e18431c"
+  },
+  {
+   "path": "tex/erba_1k.jpg",
+   "sha256": "34ef2e695575324ac51338fc386bc41ae45010b06a6707cc0036dfb228adbbd7"
+  },
+  {
+   "path": "tex/erba_2k.jpg",
+   "sha256": "a6bdf65d8084810aa94e5230024ccfe7e456d72754c639b79298320d488b670f"
+  },
+  {
+   "path": "tex/erba_h.jpg",
+   "sha256": "1fcc517ecc01746db89b21b5e93bb792d1594169ca61c70ae2436ac9122b443d"
+  },
+  {
+   "path": "tex/fango_1k.jpg",
+   "sha256": "a2524f0ecba56cec997812d0f1a8cc1d833097d397f333d944214bc03cda9406"
+  },
+  {
+   "path": "tex/fango_2k.jpg",
+   "sha256": "2601a466bdba34601c6ffa0d1383b6e26ab1fe4bce2c69984fe6eb780e1381d1"
+  },
+  {
+   "path": "tex/fango_h.jpg",
+   "sha256": "535d8ce6c16ef9120a145cfd9bf344c5820a4c529080fbbf2196e960f79e7701"
+  },
+  {
+   "path": "tex/fondale_1k.jpg",
+   "sha256": "2ddcb96a5b63f421f0c86ebcdd27a1c5f06c81155a1d484d294e11056e7920ab"
+  },
+  {
+   "path": "tex/fondale_2k.jpg",
+   "sha256": "27b8fcdf0306ae15dce1e97d7c4918eedf5fddb02375670648d8b57ed7afeab4"
+  },
+  {
+   "path": "tex/fondale_h.jpg",
+   "sha256": "4b834f8897a24fcb8de697a3310b876e251330e9b3cefc4b42664ceb87d3276f"
+  },
+  {
+   "path": "tex/ghiaia_1k.jpg",
+   "sha256": "9f63a9545ade080a075df5873ef94c7395bbb1b7871ccc60ba1171f88f4bf27f"
+  },
+  {
+   "path": "tex/ghiaia_2k.jpg",
+   "sha256": "11bff01410b5e30b6b8a69505a2fb95ad2439c5f458bea8d262991e30b93bccd"
+  },
+  {
+   "path": "tex/ghiaia_h.jpg",
+   "sha256": "763d6f0d10230a6091e00d1d49766cca4605b123cd0ad99de1738bac6619ea94"
+  },
+  {
+   "path": "tex/muro_1k.jpg",
+   "sha256": "fedc60ffe272a0fd96b82dc1038014ee1cb2a699d324461fd6a16cb9535a49b1"
+  },
+  {
+   "path": "tex/muro_2k.jpg",
+   "sha256": "f09ebc974dd96511857ece184fecd510b0534ae1ee05d16b7cc1a9ba0bf7f447"
+  },
+  {
+   "path": "tex/muro_h.jpg",
+   "sha256": "13383838fe6a769edbebc9cd765f0de079f27de548d7ed503b4685b5cac7102c"
+  },
+  {
+   "path": "tex/rocce_1k.jpg",
+   "sha256": "8fbd532356d87ac21bf350010f52cb93e72e927e39438a238c884d77d5c63aba"
+  },
+  {
+   "path": "tex/rocce_2k.jpg",
+   "sha256": "9a0d0a0c8344ace1e1866bb01df6293f02c90796e181e2bfcca847683455727a"
+  },
+  {
+   "path": "tex/rocce_h.jpg",
+   "sha256": "b1dfe5b60467fdbd1cfbbb8b07cc56e29fac8c52b0e141674f503cdb6e953e3b"
+  },
+  {
+   "path": "tex/sabbia_1k.jpg",
+   "sha256": "855588e9ec2d65ec30f1ce1f7da8169da92b34067b5df23adc4e69ee46c1f4f2"
+  },
+  {
+   "path": "tex/sabbia_2k.jpg",
+   "sha256": "8991d1d625bbce1b08213fb545bee94a97b7b42e9837e88cedee7a216edca96b"
+  },
+  {
+   "path": "tex/sabbia_h.jpg",
+   "sha256": "05350963c15a2b3a0f174e6eaecf523c7b0996049f4c6a23f546ad6bf0c43e63"
+  },
+  {
+   "path": "tex/terra_1k.jpg",
+   "sha256": "5292f777677dd2340c4b57d84dd524b845d25318220fb8f947223c1870ce3ebb"
+  },
+  {
+   "path": "tex/terra_2k.jpg",
+   "sha256": "92439ddd626fde304012279ee9b6311beeec37fdce40fc160ade65d7064a6e5f"
+  },
+  {
+   "path": "tex/terra_h.jpg",
+   "sha256": "ae7ed72d906cddbd5217b38feff6a5da5f8c4dc50e73053988ade3594fbd5a6c"
   }
  ]
 }

@@ -4,7 +4,7 @@ name: App Windows e Android
 on:
   push:
     branches: [main]
-    paths: ['app-src/**', 'app/version.json', 'app/UltimaZona.apk', '.github/workflows/app-windows.yml']
+    paths: ['app-src/**', 'app/version.json', 'app/UltimaZona.apk', 'app/tex/**', '.github/workflows/app-windows.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -21,6 +21,7 @@ jobs:
         run: |
           mkdir -p app-src/game
           cp app/index.html app-src/game/index.html
+          rm -rf app-src/game/tex && cp -r app/tex app-src/game/tex
           node -e "const v=require('./app/version.json').version;require('fs').writeFileSync('app-src/game/version.json',JSON.stringify({version:v}));const p=require('./app-src/package.json');p.version=v;require('fs').writeFileSync('app-src/package.json',JSON.stringify(p,null,1))"
       - name: Costruzione
         working-directory: app-src

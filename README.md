@@ -1,13 +1,10 @@
 # Ultima Zona
 
-Battle royale 3D sulla mappa reale del Valdarno (Burchio, Incisa, Figline).
+Battle royale 3D sulla mappa reale del Valdarno in scala 1:1 (Burchio, Incisa, Figline, Reggello).
 
-Gioca: https://pafo99598-art.github.io/ultima-zona/
+Si gioca con l'app per PC (Windows) e Android, che si aggiorna da sola:
+https://github.com/pafo99598-art/ultima-zona/releases/latest
 
-Versione di prova (novità da provare prima della conferma): https://pafo99598-art.github.io/ultima-zona/prova/
+Pagina del gioco e link d'invito alle lobby: https://pafo99598-art.github.io/ultima-zona/
 
-App per PC (Windows) e Android con aggiornamenti automatici: https://github.com/pafo99598-art/ultima-zona/releases/latest
-
-Si installa come app su PC e Android (Chrome/Edge: icona "Installa"; Android: menu > Installa app). Offline si gioca contro i bot; online con gli amici (lobby di squadra o partita privata con codice di 6 caratteri).
-
-Versione: 0.13.0
+Texture del terreno: Poly Haven (CC0). Dati mappa © OpenStreetMap contributors (ODbL), © ESA WorldCover 2021.
