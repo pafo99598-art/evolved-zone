@@ -1,14 +1,14 @@
 {
- "name": "ultima-zona",
- "productName": "Ultima Zona",
+ "name": "evolved-zone",
+ "productName": "Evolved Zone",
  "version": "0.16.0",
- "description": "Ultima Zona - battle royale nel Valdarno",
+ "description": "Evolved Zone - battle royale nel Valdarno",
  "main": "main.js",
  "author": "Michele",
  "license": "UNLICENSED",
  "build": {
-  "appId": "it.ultimazona.gioco",
-  "productName": "Ultima Zona",
+  "appId": "it.evolvedzone.gioco",
+  "productName": "Evolved Zone",
   "files": [
    "main.js",
    "preload.js",
@@ -30,17 +30,17 @@
    "perMachine": false,
    "allowToChangeInstallationDirectory": true,
    "createDesktopShortcut": true,
-   "shortcutName": "Ultima Zona",
-   "artifactName": "UltimaZona-Setup.exe"
+   "shortcutName": "Evolved Zone",
+   "artifactName": "EvolvedZone-Setup.exe"
   },
   "portable": {
-   "artifactName": "UltimaZona-Portable-${version}.exe"
+   "artifactName": "EvolvedZone-Portable-${version}.exe"
   },
   "protocols": [
    {
-    "name": "Ultima Zona",
+    "name": "Evolved Zone",
     "schemes": [
-     "ultimazona"
+     "evolvedzone"
     ]
    }
   ]

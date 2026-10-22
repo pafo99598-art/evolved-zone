@@ -1,10 +1,10 @@
 {
- "version": "0.16.3",
- "notes": "Avvio pi\u00f9 veloce",
+ "version": "0.16.4",
+ "notes": "Il gioco ora si chiama EVOLVED ZONE",
  "files": [
   {
    "path": "index.html",
-   "sha256": "5f85ae29c58c2ca6cc42c8a72fe0051c92715553931edea12009e8ff01ac6d1b"
+   "sha256": "ba635035dbd165a1051462b2940f1a699a38332bab8435a4f7f9a0b2333c3fcd"
   },
   {
    "path": "tex/asfalto_1k.jpg",

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ultima Zona · Scarica l'app</title>
+<title>Evolved Zone · Scarica l'app</title>
 <link rel="icon" href="favicon.png">
 <style>
 :root{--bg:#0b0d18;--card:#151a2b;--line:#2a3150;--txt:#f4f1db;--mut:#b9bfd6;--acc:#ffe44d;--acc2:#f5b800}
@@ -22,33 +22,33 @@ ol{padding-left:20px;margin:8px 0;color:var(--mut);font-size:14px}
 </head>
 <body>
 <main>
-<h1>Ultima Zona</h1>
+<h1>Evolved Zone</h1>
 <p class="sub">Battle royale nel vero Valdarno, in scala 1:1. Si gioca con l'app per PC e Android: si aggiorna da sola e i tuoi salvataggi restano.</p>
 
 <div class="card" id="invito">
 <h2>Invito alla lobby <b id="cod"></b></h2>
 <p>Se hai già l'app, aprila con il pulsante qui sotto ed entri direttamente nella lobby. Se non ce l'hai, scaricala qui sotto e poi riapri questo link.</p>
 <a class="btn" id="apri" href="#">Apri nell'app per PC</a>
-<p>Su Android il link d'invito apre l'app da solo (scegli "Ultima Zona" se il telefono te lo chiede).</p>
+<p>Su Android il link d'invito apre l'app da solo (scegli "Evolved Zone" se il telefono te lo chiede).</p>
 </div>
 
 <div class="grid" style="margin-top:14px">
 <div class="card">
 <h2>PC Windows</h2>
 <p>Windows 10 o 11, 64 bit.</p>
-<a class="btn" href="https://github.com/pafo99598-art/ultima-zona/releases/latest/download/UltimaZona-Setup.exe">Scarica per Windows</a>
+<a class="btn" href="https://github.com/pafo99598-art/evolved-zone/releases/latest/download/EvolvedZone-Setup.exe">Scarica per Windows</a>
 <ol>
-<li>Apri <b>UltimaZona-Setup.exe</b>.</li>
+<li>Apri <b>EvolvedZone-Setup.exe</b>.</li>
 <li>Se compare "Windows ha protetto il PC": <b>Ulteriori informazioni → Esegui comunque</b> (l'app è nuova e non ancora firmata).</li>
-<li>Trovi Ultima Zona sul desktop. F11 per lo schermo intero.</li>
+<li>Trovi Evolved Zone sul desktop. F11 per lo schermo intero.</li>
 </ol>
 </div>
 <div class="card">
 <h2>Android</h2>
 <p>Android 8 o più recente.</p>
-<a class="btn" href="app/UltimaZona.apk">Scarica per Android</a>
+<a class="btn" href="app/EvolvedZone.apk">Scarica per Android</a>
 <ol>
-<li>Apri il file <b>UltimaZona.apk</b> scaricato.</li>
+<li>Apri il file <b>EvolvedZone.apk</b> scaricato.</li>
 <li>Se il telefono lo chiede, consenti l'installazione da questa fonte (Impostazioni → Installa app sconosciute).</li>
 <li>Gioca in orizzontale. Il tasto Indietro mette in pausa, premuto due volte esce.</li>
 </ol>
@@ -63,7 +63,7 @@ if("serviceWorker" in navigator)navigator.serviceWorker.getRegistrations().then(
 
 (function(){var m=/lobby=([A-Za-z0-9]{4,12})/.exec(location.hash||'');if(!m)return;var c=m[1].toUpperCase();
 document.getElementById('invito').style.display='block';document.getElementById('cod').textContent=c;
-document.getElementById('apri').href='ultimazona://lobby/'+c;})();
+document.getElementById('apri').href='evolvedzone://lobby/'+c;})();
 </script>
 </body>
 </html>

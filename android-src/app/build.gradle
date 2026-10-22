@@ -5,13 +5,13 @@ android {
   namespace 'it.ultimazona.gioco'
   compileSdk 35
   defaultConfig {
-    applicationId 'it.ultimazona.gioco'
+    applicationId 'it.evolvedzone.gioco'
     minSdk 26
     targetSdk 35
     versionCode gameVer.split('\\.').with { it[0].toInteger() * 10000 + it[1].toInteger() * 100 + it[2].toInteger() }
     versionName gameVer
     // per le prove si può puntare a un altro sito di aggiornamento: -PuzUpdateUrl=http://10.0.2.2:8130/
-    def upd = project.findProperty('uzUpdateUrl') ?: 'https://pafo99598-art.github.io/ultima-zona/app/'
+    def upd = project.findProperty('uzUpdateUrl') ?: 'https://pafo99598-art.github.io/evolved-zone/app/'
     buildConfigField 'String', 'UPDATE_URL', '"' + upd + '"'
     buildConfigField 'long', 'BOOT_MS', (project.findProperty('uzBootMs') ?: '120000') + 'L'
     manifestPlaceholders = [cleartext: project.hasProperty('uzUpdateUrl') ? 'true' : 'false']

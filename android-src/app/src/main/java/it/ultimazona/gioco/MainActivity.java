@@ -1,4 +1,4 @@
-// Ultima Zona · app per Android
+// Evolved Zone · app per Android
 // - il gioco gira dentro l'app (niente browser), a schermo intero, in orizzontale
 // - aggiornamenti automatici come l'app per PC: scarica la nuova versione dal sito del gioco, controlla l'impronta
 //   SHA-256 di ogni file e la usa al riavvio; se una versione non parte entro 2 minuti o si chiude da sola,
@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
         box.setPadding(60, 40, 60, 40);
         android.widget.TextView t = new android.widget.TextView(this);
         t.setTextColor(Color.WHITE); t.setTextSize(18); t.setGravity(android.view.Gravity.CENTER);
-        t.setText("Per giocare a Ultima Zona serve aggiornare \"Android System WebView\" (sul telefono c'è la versione " + ver + ", serve almeno la " + MIN_WEBVIEW + ").\n\nAggiornalo dal Play Store e poi riapri il gioco.");
+        t.setText("Per giocare a Evolved Zone serve aggiornare \"Android System WebView\" (sul telefono c'è la versione " + ver + ", serve almeno la " + MIN_WEBVIEW + ").\n\nAggiornalo dal Play Store e poi riapri il gioco.");
         android.widget.Button b = new android.widget.Button(this);
         b.setText("Aggiorna dal Play Store");
         b.setOnClickListener(v -> {
@@ -136,7 +136,7 @@ public class MainActivity extends Activity {
         });
         box.addView(t); box.addView(b);
         root.addView(box, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        android.util.Log.i("UltimaZona", "WebView troppo vecchio: " + ver);
+        android.util.Log.i("EvolvedZone", "WebView troppo vecchio: " + ver);
     }
 
     // ---------------------------------------------------------------- versioni
@@ -148,7 +148,7 @@ public class MainActivity extends Activity {
         try { File t = new File(stateFile.getPath() + ".tmp"); try (FileOutputStream o = new FileOutputStream(t)) { o.write(state.toString(1).getBytes(StandardCharsets.UTF_8)); } t.renameTo(stateFile); } catch (Exception e) { }
     }
     synchronized void log(String t) {
-        android.util.Log.i("UltimaZona", t);
+        android.util.Log.i("EvolvedZone", t);
         try { JSONArray l = state.optJSONArray("log"); if (l == null) l = new JSONArray(); JSONArray n = new JSONArray(); for (int i = Math.max(0, l.length() - 40); i < l.length(); i++) n.put(l.get(i)); n.put(new java.util.Date().toString() + " " + t); state.put("log", n); } catch (Exception e) { }
         saveState();
     }
@@ -203,7 +203,7 @@ public class MainActivity extends Activity {
         web.addJavascriptInterface(new Bridge(), "uzAppNative");
         web.setWebChromeClient(new WebChromeClient() {
             @Override public boolean onConsoleMessage(android.webkit.ConsoleMessage m) {
-                if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("UltimaZona", "gioco: " + m.message() + " @" + m.lineNumber());
+                if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("EvolvedZone", "gioco: " + m.message() + " @" + m.lineNumber());
                 return true;
             }
         });

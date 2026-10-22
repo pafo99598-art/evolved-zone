@@ -4,7 +4,7 @@ name: App Windows e Android
 on:
   push:
     branches: [main]
-    paths: ['app-src/**', 'app/version.json', 'app/UltimaZona.apk', 'app/tex/**', '.github/workflows/app-windows.yml']
+    paths: ['app-src/**', 'app/version.json', 'app/EvolvedZone.apk', 'app/tex/**', '.github/workflows/app-windows.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -36,14 +36,14 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: app-v${{ steps.v.outputs.version }}
-          name: Ultima Zona ${{ steps.v.outputs.version }} per PC e Android
+          name: Evolved Zone ${{ steps.v.outputs.version }} per PC e Android
           make_latest: true
           body: |
-            **PC Windows** → scarica **UltimaZona-Setup.exe** e aprilo. Se compare "Windows ha protetto il PC": *Ulteriori informazioni → Esegui comunque* (l'app è nuova e non ancora firmata). Trovi Ultima Zona sul desktop; F11 per lo schermo intero.
+            **PC Windows** → scarica **EvolvedZone-Setup.exe** e aprilo. Se compare "Windows ha protetto il PC": *Ulteriori informazioni → Esegui comunque* (l'app è nuova e non ancora firmata). Trovi Evolved Zone sul desktop; F11 per lo schermo intero.
 
-            **Android** → scarica **UltimaZona.apk** dal telefono e aprilo. Se il telefono lo chiede, consenti l'installazione da questa fonte. Il tasto Indietro mette in pausa, due volte esce.
+            **Android** → scarica **EvolvedZone.apk** dal telefono e aprilo. Se il telefono lo chiede, consenti l'installazione da questa fonte. Il tasto Indietro mette in pausa, due volte esce.
 
             Le app si aggiornano da sole: ogni nuova versione viene controllata, si usa al riavvio e, se qualcosa non parte, l'app torna da sola all'ultima versione che funzionava. I salvataggi restano.
           files: |
-            app-src/dist/UltimaZona-Setup.exe
-            app/UltimaZona.apk
+            app-src/dist/EvolvedZone-Setup.exe
+            app/EvolvedZone.apk
