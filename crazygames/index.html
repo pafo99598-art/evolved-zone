@@ -74,13 +74,13 @@ body:not(.playing) #aimBtn,body:not(.playing) #grabBtn{display:none!important}@m
 <div class="hud"><div class="card vitals"><div class="eyebrow">VALDARNO / EVOLVED ZONE 3D</div><div class="row"><b id="hpText">SALUTE 100</b><span id="alive">13 vivi</span></div><div class="bar"><i id="hpBar"></i></div><div class="row"><span id="foodText">Energia 100</span><span id="time">00:00</span></div><div class="bar"><i id="foodBar" style="background:#c3a978"></i></div></div><div class="card stats"><div id="ammo">120 colpi</div><div id="wood">0 legno</div><div id="zoneText">Zona · 450 m</div></div><div class="menuButtons"><button id="full" aria-label="Schermo intero">⛶</button><button id="pause" aria-label="Pausa">Ⅱ</button></div></div>
 <div id="feed" aria-live="polite"></div><div id="survival"></div><div id="teamHUD"></div><div id="notice" role="status">Preparazione del mondo 3D…</div><div id="compass">N ↖ · mappa reale</div><div id="mapShade"></div><div id="mapTitle">VALDARNO · 6 × 6 km · N ↖</div><canvas id="minimap" width="500" height="500"></canvas><button id="mapButton">MAPPA · M</button><div id="reticle"></div><div id="lookHint">TRASCINA QUI · VISUALE</div>
 <div class="motion"><button id="crouch"><b>⌄</b>Accov.</button><button id="jump"><b>↑</b>Salta</button><button id="climb"><b>↟</b>Arrampica</button><button id="slide"><b>⇢</b>Scivola</button></div><div id="stick" aria-label="Joystick del personaggio"><div id="knob"></div></div><button id="sprint">CORRI</button><div class="actions"><div class="utility"><button id="gather"><b>✦</b>Raccogli</button><button id="heal"><b>+</b>Cura · 1</button><button id="build"><b>▤</b>Kit / crea</button><button id="eat"><b>●</b>Cibo · 1</button></div><button id="fire">SPARA<br><small>trascina: mira</small></button></div><div id="foot">© OpenStreetMap contributors · ODbL<br>Rilievo Mapzen / EU-DEM / USGS · edifici semplificati</div>
-<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.23</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
+<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.24</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
 <div class="lb-mid"><div class="lb-side"><button class="lb-box lb-btn" id="lbBag"><i>🎒</i>Inventario</button><button class="lb-box lb-btn" id="lbSet"><i>⚙</i>Impostazioni</button></div><div class="lb-hero"><div class="em">🧗</div><h1>EVOLVED ZONE</h1></div><div class="lb-side"><button class="lb-box lb-btn" id="lbGrp"><i>👥</i>Gruppo</button></div></div>
 <div class="lb-bot"><div class="lb-modes" id="lbModes"><button data-n="1">Singolo</button><button data-n="2">Duo</button><button data-n="3">Trio</button><button data-n="4">Squadra</button></div><button id="lbPlay">GIOCA</button></div>
 <div id="lbGroup"><div class="box"><h3>Gruppo online</h3><div id="lbNetSlot"></div><button id="lbGrpClose" style="width:100%;margin-top:10px">Chiudi</button></div></div></div>
 <div id="result"><div class="rays"></div><div id="confetti"></div><div class="rbox"><div class="trophy">🏆</div><h2 id="rsTitle">VITTORIA!</h2><div id="rsSub">Ultimo superstite del Valdarno</div><div class="rs"><div><span id="rsKills">0</span><small>UCCISIONI</small></div><div><span id="rsTime">0:00</span><small>TEMPO</small></div></div><button id="rsBack">TORNA ALLA LOBBY</button></div></div>
-<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.23.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
-<div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.23.0 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
+<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.24.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
+<div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.24.0 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
 <div id="weaponHud"><b id="weaponName">A MANI VUOTE</b><span id="weaponAmmo">Cerca una cassa di armi</span><div><button id="reload">Ricarica</button><button id="swap">Cambia arma</button><button id="rest">Riposa</button></div></div>
 <div id="flightStatus" hidden></div><button id="deploy" hidden>LANCIATI · E</button>
 <div id="hitMark" aria-hidden="true">×</div><div id="hurtFlash" aria-hidden="true"></div><div id="damageNumbers" aria-hidden="true"></div>
@@ -640,7 +640,7 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
   const hint=$('lookHint');if(hint)hint.textContent=TOUCH?'TOCCA · SPARA   TRASCINA · VISUALE':'CLIC SINISTRO · SPARA';
   const help=document.getElementById('help');
   if(help){const p=document.createElement('p');p.innerHTML='<b>Novità 0.5:</b> sparo con clic sinistro (PC, il mouse viene catturato: Esc per uscire) o con un tocco sullo schermo (telefono: tocco breve = colpo, tocco fermo = raffica, trascina = visuale). Telecamera rialzata sulla spalla: il mirino al centro non è più coperto dal personaggio. Il <b>rampino</b> si fabbrica nel kit (2 rottami + 1 tessuto) e si usa con G o con il pulsante a schermo: aggancia terreno ed edifici fino a 55 m e ti tira verso il punto.';help.prepend(p)}
-  for(const e of document.querySelectorAll('.eyebrow'))if(e.textContent.includes('VERSIONE 0.4'))e.textContent='VERSIONE 0.23.0 / SURVIVAL 200';
+  for(const e of document.querySelectorAll('.eyebrow'))if(e.textContent.includes('VERSIONE 0.4'))e.textContent='VERSIONE 0.24.0 / SURVIVAL 200';
 }
 
 /* ---------- 2. Sparo con clic / tocco, mouse catturato ---------- */
@@ -1452,7 +1452,7 @@ $('crPick').onclick=()=>{const m=mats();if(m.stick<2||m.metal<3){tell('Materiali
 
 // ===== v0.9.0: COMBAT FOUNDATION + MELEE A MANI VUOTE + DISTRUZIONE AMBIENTALE =====
 // Un solo sistema autorevole per ciascuna parte: Combat (stati, attacchi, danni), Destr (oggetti distruttibili), MeleeAI (bot).
-const GAME_VERSION='0.23.0';
+const GAME_VERSION='0.24.0';
 const v5=globalThis.__V5||{shake:0,fail:{}};
 const EventBus=(()=>{const L=new Map();return{on(t,f){if(!L.has(t))L.set(t,[]);L.get(t).push(f)},emit(t,d){const a=L.get(t);if(a)for(const f of a){try{f(d)}catch(e){console.warn('evento '+t,e)}}}}})();
 const CombatState={IDLE:'IDLE',AIMING:'AIMING',ATTACKING:'ATTACKING',RECOVERY:'RECOVERY',HIT:'HIT',STAGGER:'STAGGER',DODGE:'DODGE',DEAD:'DEAD'};
@@ -2740,7 +2740,7 @@ globalThis.Isl54=Isl54;
 // Rotazione casuale ogni ora (uguale per tutti nella stessa ora, così gli amici trovano la stessa isola);
 // nelle partite tra amici si sceglie dalla lobby. Isole affollate (Leccio): massimo 30 giocatori, le altre 50.
 // Questo modulo va caricato PRIMA della mappa (map41b.js): cambia rilievi, confine, edifici e strade prima che il mondo venga costruito.
-const IslandSys=(()=>{const IDS=['figline','incisa','burchio','leccio','reggello','nuova'];// 'nuova' = Simple Island (B2), in rotazione dal 24/10 su richiesta di Michele
+const IslandSys=(()=>{const IDS=['figline','incisa','burchio','leccio','nuova'];// Reggello tolta (Michele 24/10); Laguna arriverà più avanti// 'nuova' = Simple Island (B2), in rotazione dal 24/10 su richiesta di Michele
  const S={id:null,how:'',sea:0,R:0,R0:0,keptB:0,dropB:0,keptS:0,dropS:0,err:'',ms:0,tilesCut:0,late:false};
  // ---- quale isola: ?isola=… (scelta tra amici) > rotazione oraria ----
  function hourly(t){const h=Math.floor((t||Date.now())/3600000),blk=Math.floor(h/IDS.length);let s=(blk*2654435761)>>>0;const o=IDS.slice();
@@ -2799,7 +2799,7 @@ const IslandSys=(()=>{const IDS=['figline','incisa','burchio','leccio','reggello
  let SEAM=null;
  function seaMesh(){if(SEAM||!scene)return;const c=D.centro,size=9000,g=new THREE.BufferGeometry(),pos=[],col=[];
   // vicino alla costa: triangoli piccoli con il colore che passa da turchese (basso) a blu (profondo); lontano: pochi triangoli grandi
-  const near=Math.max(1500,S.R0*2.4),st=24,n=Math.ceil(near/st);const C1=new THREE.Color('#5cc8c4'),C2=new THREE.Color('#1f7fa0'),C3=new THREE.Color('#17618a'),tmp=new THREE.Color();
+  const near=Math.max(1500,S.R0*2.4),st=24,n=Math.ceil(near/st);const C1=new THREE.Color('#5cc8c4'),C2=new THREE.Color('#1f7fa0'),C3=new THREE.Color('#2a7fa6'),tmp=new THREE.Color();
   const vtx=(x,z)=>{const s=sdAt(x,z),d=Math.max(0,-s),t=Math.min(1,d/90);(d>90?tmp.copy(C2).lerp(C3,Math.min(1,(d-90)/35)):tmp.copy(C1).lerp(C2,t));const k=.95+hs(x*.3,z*.7)*.1;return[x,SEA+(hs(x,z)-.5)*.12,z,tmp.r*k,tmp.g*k,tmp.b*k]};
   const x0=c[0]-near/2,z0=c[1]-near/2;
   for(let j=0;j<n;j++)for(let i=0;i<n;i++){const xa=x0+i*st,za=z0+j*st,xb=xa+st,zb=za+st;
@@ -2809,7 +2809,7 @@ const IslandSys=(()=>{const IDS=['figline','incisa','burchio','leccio','reggello
   const R1=near/2,R2=size;for(let k=0;k<4;k++){const q=[[-1,-1],[1,-1],[1,1],[-1,1]],a=q[k],b=q[(k+1)%4];const A=[c[0]+a[0]*R1,c[1]+a[1]*R1],B=[c[0]+b[0]*R1,c[1]+b[1]*R1],A2=[c[0]+a[0]*R2,c[1]+a[1]*R2],B2=[c[0]+b[0]*R2,c[1]+b[1]*R2];
    for(const tri of[[A,A2,B],[B,A2,B2]])for(const p of tri){pos.push(p[0],SEA,p[1]);col.push(C3.r,C3.g,C3.b)}}
   g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('color',new THREE.Float32BufferAttribute(col,3));g.computeVertexNormals();
-  const m=new THREE.MeshLambertMaterial({vertexColors:true,flatShading:true});m.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <opaque_fragment>','outgoingLight=mix(outgoingLight,diffuseColor.rgb,.45);\n#include <opaque_fragment>')};
+  const m=new THREE.MeshLambertMaterial({vertexColors:true,flatShading:true});m.__burn='mare';m.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <opaque_fragment>','outgoingLight=mix(outgoingLight,diffuseColor.rgb,.45);\n#include <opaque_fragment>')};
   SEAM=new THREE.Mesh(g,m);SEAM.name='uzSea';SEAM.userData.noShadow=true;SEAM.receiveShadow=false;SEAM.frustumCulled=false;scene.add(SEAM)}
  // ---- dopo che tutti i moduli sono pronti ----
  function late(){if(S.late)return;S.late=true;
@@ -4358,7 +4358,7 @@ GAME_CFG.worldMat={
  bld:{concreteHp:600,holeAt:.10,maxReal:16,realRange:70},
  wood:{huts:10,wallHp:150,pieces:8},fort:{wood:40,time:4,size:4,max:3,key:'KeyK'},
  water:{riverDepth:5,lakeDepth:15,air:45,drown:10,dive:2},
- burn:{delay:15,fire:'tanti',collapse:'piano piano',trees:'cenere nel tempo'}};
+ burn:{delay:20,fire:'tanti',collapse:'piano piano',trees:'cenere nel tempo'}};
 // ---- numeri casuali uguali per tutti i giocatori della stessa partita (seme scelto da chi ospita) ----
 const MatRand=(()=>{let seed=1;function mul(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
  const hash=(a,b,c)=>{let h=(a*374761393+b*668265263+(c|0)*2147483647+seed*1274126177)|0;h=Math.imul(h^h>>>13,1274126177);return((h^h>>>16)>>>0)/4294967296};
@@ -7323,7 +7323,7 @@ SafeRun.run('legna a cataste',()=>{const S={};
 //      3) all'orizzonte isole, montagne e colline low poly, solo di scena (lontane, non raggiungibili, nessuna collisione).
 // Leggero: 2 oggetti in più da disegnare, nessun valore di gioco cambia.
 const Horizon54=(()=>{const S={bowl:false,ring:0,seaPatched:false,err:''};
- const U={uHaze:{value:new THREE.Color('#9cc7c4')},uSea:{value:new THREE.Color('#2f87a6')},uHor:{value:new THREE.Color('#f3cfa2')},uFade:{value:.5},uNear:{value:200},uFar:{value:600}};
+ const U={uTime:{value:0},uNight:{value:0},uHaze:{value:new THREE.Color('#9cc7c4')},uSea:{value:new THREE.Color('#2f87a6')},uHor:{value:new THREE.Color('#f3cfa2')},uFade:{value:.5},uNear:{value:200},uFar:{value:600}};
  let BOWL=null,RING=null;
  // ---- conca sotto l'orizzonte: il "mare lontano" che segue la camera (come il cielo) ----
  function bowl(){const g=new THREE.SphereGeometry(1,48,12,0,Math.PI*2,Math.PI/2,Math.PI/2);
@@ -7336,49 +7336,89 @@ const Horizon54=(()=>{const S={bowl:false,ring:0,seaPatched:false,err:''};
   BOWL=new THREE.Mesh(g,m);BOWL.renderOrder=-999;BOWL.frustumCulled=false;BOWL.name='uzSeaBowl';BOWL.userData.noShadow=true;scene.add(BOWL);S.bowl=true}
  // ---- isole, montagne e colline lontane (anello che segue la camera, a 0,8 × la distanza visibile) ----
  const hs=(a,b)=>{const n=Math.sin(a*12.9898+b*78.233)*43758.5453;return n-Math.floor(n)};
- function ring(){const P=[],C=[];const sun=new THREE.Vector3(-.5,.62,-.35).normalize();const A=new THREE.Vector3(),B=new THREE.Vector3(),Cc=new THREE.Vector3(),N=new THREE.Vector3(),e1=new THREE.Vector3(),e2=new THREE.Vector3();
-  const GR=new THREE.Color('#7f8f4a'),GR2=new THREE.Color('#9aa25a'),RK=new THREE.Color('#9b8672'),RK2=new THREE.Color('#7d6d60'),SN=new THREE.Color('#e9e3d6'),SA=new THREE.Color('#e3cf98'),tmp=new THREE.Color();
-  // un massiccio: cono irregolare a faccette con 1-3 cime; base appena sotto il mare
-  function massif(a,d,w,h,kind,seed){const peaks=1+Math.floor(hs(seed,1)*3);for(let p=0;p<peaks;p++){const pa=a+(hs(seed,p+2)-.5)*w*.9/d,pd=d+(hs(seed,p+7)-.5)*w*.4,ph=h*(p?.45+hs(seed,p+11)*.45:1),pw=w*(p?.55:1);
-    const cx=Math.cos(pa)*pd,cz=Math.sin(pa)*pd,n=7+Math.floor(hs(seed,p+3)*3),rings=3;
-    const pts=[];for(let r=0;r<=rings;r++){const t=r/rings,row=[];for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+hs(seed+r,i)*.4,rr=pw*(1-t)*(.75+hs(seed*3+r,i)*.5)*(r===rings?0:1);row.push([cx+Math.cos(ang)*rr,-.004+ph*Math.pow(t,kind==='isola'?.6:1.15)*(r===rings?1:.95+hs(i,r+seed)*.1),cz+Math.sin(ang)*rr*.8])}pts.push(row)}
-    const col=(y)=>{const f=y/Math.max(h,1e-6);if(kind==='isola')return f<.12?SA:(f<.7?(hs(y*999,seed)<.5?GR:GR2):RK);if(f<.35)return hs(y*777,seed)<.5?GR:GR2;if(f>.86&&h>.1)return SN;return hs(y*555,seed)<.5?RK:RK2};
-    const tri=(a0,b0,c0)=>{A.fromArray(a0);B.fromArray(b0);Cc.fromArray(c0);e1.subVectors(B,A);e2.subVectors(Cc,A);N.crossVectors(e1,e2).normalize();if(N.y<0)N.negate();const l=.62+.5*Math.max(0,N.dot(sun));tmp.copy(col((A.y+B.y+Cc.y)/3)).multiplyScalar(l);
-     P.push(...a0,...b0,...c0);for(let k=0;k<3;k++)C.push(tmp.r,tmp.g,tmp.b)};
-    for(let r=0;r<rings;r++)for(let i=0;i<n;i++){const i2=(i+1)%n,a0=pts[r][i],b0=pts[r][i2],c0=pts[r+1][i2],d0=pts[r+1][i];tri(a0,c0,b0);if(r<rings-1)tri(a0,d0,c0)}}S.ring++}
-  // disposizione: catene di montagne e isole tutt'intorno (con varchi di mare aperto), qualche isolotto più vicino
-  let seed=11;for(let a=0;a<Math.PI*2;){const kind=hs(a,seed)<.35?'isola':'monte';const w=kind==='isola'?.05+hs(seed,4)*.08:.08+hs(seed,5)*.16,h=kind==='isola'?.012+hs(seed,6)*.02:.035+hs(seed,7)*.085;
-   if(hs(seed,9)>.18)massif(a,1+hs(seed,8)*.12,w,h,kind,seed);a+=w*(.9+hs(seed,10)*1.4);seed++}
-  for(let i=0;i<9;i++){const a=hs(i,77)*Math.PI*2;massif(a,.72+hs(i,78)*.1,.025+hs(i,79)*.03,.006+hs(i,80)*.012,'isola',100+i)}
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
+ // ---- isole, montagne, colline, vulcano, fari, borghi e vele lontani: cambiano a ogni partita (un solo oggetto da disegnare) ----
+ // attributo k: x = tipo (0 normale, 1 finestre accese di notte, 2 lampada del faro, 3 vela che si muove, 4 fumo, 5 bocca del vulcano), y = fase
+ function ring(seedIn){const P=[],C=[],K=[];const sun=new THREE.Vector3(-.5,.62,-.35).normalize();const A=new THREE.Vector3(),B=new THREE.Vector3(),Cc=new THREE.Vector3(),N=new THREE.Vector3(),e1=new THREE.Vector3(),e2=new THREE.Vector3();
+  let sd=(seedIn|0)||1;const R=()=>{sd=(sd*1664525+1013904223)>>>0;return sd/4294967296};
+  const col=h=>new THREE.Color(h);const GR=col('#7f8f4a'),GR2=col('#9aa25a'),GR3=col('#6f8a3c'),RK=col('#9b8672'),RK2=col('#7d6d60'),SN=col('#efeae0'),SA=col('#e3cf98'),VO=col('#5e4f48'),VO2=col('#4a3f3b'),WH=col('#f2ede2'),RD=col('#c4483a'),RF=col('#c8653d'),WIN=col('#3a3530'),SM=col('#b9b2a8'),SAIL=col('#f6f2e8'),HULL=col('#6b4a34');
+  const tmp=new THREE.Color();
+  const tri=(a0,b0,c0,cl,kind=0,ph=0,flat=false)=>{A.fromArray(a0);B.fromArray(b0);Cc.fromArray(c0);e1.subVectors(B,A);e2.subVectors(Cc,A);N.crossVectors(e1,e2).normalize();if(N.y<0)N.negate();const l=flat?1:.62+.5*Math.max(0,N.dot(sun));tmp.copy(cl).multiplyScalar(l);
+   P.push(...a0,...b0,...c0);for(let k=0;k<3;k++){C.push(tmp.r,tmp.g,tmp.b);K.push(kind,ph)}};
+  const box=(cx,cy,cz,w,h,d,cl,kind=0,ph=0,top)=>{const x0=cx-w/2,x1=cx+w/2,z0=cz-d/2,z1=cz+d/2,y0=cy,y1=cy+h;const q=(a,b,c,dd,cc,kk)=>{tri(a,b,c,cc,kk,ph);tri(a,c,dd,cc,kk,ph)};
+   q([x0,y1,z0],[x0,y1,z1],[x1,y1,z1],[x1,y1,z0],top||cl,0);q([x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1],cl,kind);q([x1,y0,z0],[x0,y0,z0],[x0,y1,z0],[x1,y1,z0],cl,kind);q([x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0],cl,kind);q([x1,y0,z1],[x1,y0,z0],[x1,y1,z0],[x1,y1,z1],cl,kind)};
+  // un massiccio a faccette (montagna, collina, isola o vulcano)
+  function massif(a,d,w,h,kind){const peaks=kind==='vulcano'?1:1+Math.floor(R()*3);let top=null;for(let p=0;p<peaks;p++){const pa=a+(R()-.5)*w*.9/d,pd=d+(R()-.5)*w*.4,ph=h*(p?.4+R()*.45:1),pw=w*(p?.55:1);
+    const cx=Math.cos(pa)*pd,cz=Math.sin(pa)*pd,n=7+Math.floor(R()*4),rings=kind==='collina'?2:3;const pts=[];
+    for(let r=0;r<=rings;r++){const t=r/rings,row=[];for(let i=0;i<n;i++){const ang=i/n*Math.PI*2+R()*.4;let rr=pw*(1-t)*(.75+R()*.5);if(kind==='vulcano'&&r===rings)rr=pw*.16;else if(r===rings)rr=0;
+      const prof=kind==='isola'?Math.pow(t,.6):kind==='collina'?Math.sin(t*Math.PI/2):Math.pow(t,1.15);row.push([cx+Math.cos(ang)*rr,-.004+ph*prof*(r===rings?1:.95+R()*.1),cz+Math.sin(ang)*rr*.8])}pts.push(row)}
+    const cl=(y)=>{const f=y/Math.max(h,1e-6);if(kind==='vulcano')return f>.75?VO2:VO;if(kind==='isola')return f<.12?SA:(f<.7?(R()<.5?GR:GR2):RK);if(kind==='collina')return f<.6?(R()<.5?GR:GR3):GR2;if(f<.35)return R()<.5?GR:GR2;if(f>.84&&h>.09)return SN;return R()<.5?RK:RK2};
+    for(let r=0;r<rings;r++)for(let i=0;i<n;i++){const i2=(i+1)%n,a0=pts[r][i],b0=pts[r][i2],c0=pts[r+1][i2],d0=pts[r+1][i];tri(a0,c0,b0,cl((a0[1]+c0[1])/2));if(r<rings-1||kind==='vulcano')tri(a0,d0,c0,cl((a0[1]+d0[1])/2))}
+    if(kind==='vulcano'){const c=[cx,ph*.97,cz];for(let i=0;i<n;i++){const i2=(i+1)%n;tri(pts[rings][i],pts[rings][i2],c,col('#d25a2a'),5,0,true)}}
+    if(!top||ph>top[1])top=[cx,ph,cz,pw]}S.ring++;return top}
+  // fumo del vulcano: sbuffi a faccette che salgono e ondeggiano
+  function smoke(x,y,z,s){for(let i=0;i<6;i++){const yy=y+s*(.3+i*.55),r=s*(.25+i*.12),ox=x+(R()-.5)*s*.3,oz=z+(R()-.5)*s*.3;const n=6;const top=[ox,yy+r,oz],bot=[ox,yy-r*.6,oz];for(let k=0;k<n;k++){const a0=k/n*6.283,a1=(k+1)/n*6.283;const p0=[ox+Math.cos(a0)*r,yy,oz+Math.sin(a0)*r],p1=[ox+Math.cos(a1)*r,yy,oz+Math.sin(a1)*r];tri(p0,top,p1,SM,4,i/6);tri(p1,bot,p0,SM,4,i/6)}}}
+  // faro bianco e rosso con la lampada
+  function faro(x,y,z,s){const h=s*1.2,w=s*.18;for(let i=0;i<4;i++)box(x,y+i*h/4,z,w*(1-i*.08),h/4,w*(1-i*.08),i%2?RD:WH);box(x,y+h,z,w*.75,h*.16,w*.75,col('#fff1b0'),2,R());box(x,y+h*1.16,z,w*.9,h*.05,w*.9,RD)}
+  // borgo lontano: casette con tetto rosso, finestre accese di notte
+  function borgo(x,y,z,s){const n=4+Math.floor(R()*6);for(let i=0;i<n;i++){const ox=x+(R()-.5)*s*2,oz=z+(R()-.5)*s*1.2,w=s*(.18+R()*.15),h=s*(.16+R()*.2);box(ox,y,oz,w,h,w*.8,col(R()<.5?'#e6d2aa':'#d9c39a'),1,R(),RF)}
+   if(R()<.5)box(x,y,z,s*.14,s*.75,s*.14,col('#d9c39a'),1,R(),RF)}
+  // barca a vela che si sposta piano
+  function vela(a,d,s){const ph=R();const x=Math.cos(a)*d,z=Math.sin(a)*d;const L=s*1.2;tri([x-L/2,0,z],[x+L/2,0,z],[x+L*.35,-s*.18,z],HULL,3,ph,true);tri([x-L/2,0,z],[x+L*.35,-s*.18,z],[x-L*.35,-s*.18,z],HULL,3,ph,true);
+   tri([x-L*.3,s*.05,z],[x+L*.2,s*.05,z],[x-L*.05,s*1.3,z],SAIL,3,ph,true);tri([x+L*.2,s*.05,z],[x-L*.3,s*.05,z],[x-L*.05,s*1.3,z],SAIL,3,ph,true)}
+  // composizione casuale: catene di montagne e colline con varchi di mare, isole davanti, un vulcano (a volte), fari, borghi e vele
+  const tops=[];let a=R()*6.28;const a0=a;while(a<a0+Math.PI*2-.15){const r=R();const kind=r<.3?'isola':r<.55?'collina':'monte';
+   const w=kind==='isola'?.05+R()*.08:kind==='collina'?.08+R()*.12:.08+R()*.18,h=kind==='isola'?.012+R()*.022:kind==='collina'?.018+R()*.025:.035+R()*.095;
+   if(R()>.15){const t=massif(a,1+R()*.14,w,h,kind);if(t)tops.push([kind,t])}a+=w*(.7+R()*1.3)}
+  // seconda fila più lontana e più alta (profondità)
+  for(let i=0;i<10;i++){const aa=R()*6.28;massif(aa,1.22+R()*.1,.12+R()*.2,.05+R()*.08,'monte')}
+  for(let i=0;i<10;i++){const aa=R()*6.28,t=massif(aa,.7+R()*.18,.025+R()*.04,.006+R()*.014,'isola');if(t)tops.push(['isolotto',t])}
+  if(R()<.6){const aa=R()*6.28,t=massif(aa,1.05,.16,.11+R()*.04,'vulcano');if(t)smoke(t[0],t[1],t[2],t[3]*.35)}
+  let nf=0,nb=0;for(const[k,t]of tops){if((k==='isola'||k==='isolotto')&&nf<4&&R()<.5){faro(t[0]+t[3]*.3,t[1]*.4,t[2],t[3]*.25);nf++}}
+  for(const[k,t]of tops){if((k==='collina'||k==='isola')&&nb<6){borgo(t[0],t[1]*.6,t[2],t[3]*.35);nb++}}
+  for(let i=0;i<8+Math.floor(R()*5);i++)vela(R()*6.28,.55+R()*.35,.006+R()*.004);
+  S.fari=nf;S.borghi=nb;
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('kk',new THREE.Float32BufferAttribute(K,2));return g}
+ function ringMesh(){const g=ring(Math.random()*4e9);
   const m=new THREE.ShaderMaterial({uniforms:U,vertexColors:true,depthWrite:false,depthTest:false,fog:false,
-   vertexShader:'varying vec3 vC;varying float vH;void main(){vC=color;vH=position.y;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position.z=gl_Position.w*.9997;}',
-   fragmentShader:`uniform vec3 uHaze,uHor;uniform float uFade;varying vec3 vC;varying float vH;void main(){vec3 c=mix(vC,mix(uHaze,uHor,.3+clamp(vH*3.,0.,.3)),uFade);gl_FragColor=vec4(c,1.);
+   vertexShader:`attribute vec2 kk;uniform float uTime;varying vec3 vC;varying float vH;varying vec2 vK;void main(){vC=color;vK=kk;vec3 p=position;
+ if(kk.x>2.5&&kk.x<3.5){float a=uTime*.004*(.5+kk.y)+kk.y*6.283;float c=cos(a),s=sin(a);p.xz=mat2(c,-s,s,c)*p.xz;}
+ if(kk.x>3.5&&kk.x<4.5){p.x+=sin(uTime*.25+kk.y*6.)*.004*(1.+kk.y*3.);p.y+=mod(uTime*.002+kk.y*.01,.01);}
+ vH=p.y;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);gl_Position.z=gl_Position.w*.9997;}`,
+   fragmentShader:`uniform vec3 uHaze,uHor;uniform float uFade,uNight,uTime;varying vec3 vC;varying float vH;varying vec2 vK;void main(){vec3 c=mix(vC,mix(uHaze,uHor,.3+clamp(vH*3.,0.,.3)),uFade);
+ c*=1.-uNight*.55;
+ if(vK.x>.5&&vK.x<1.5)c=mix(c,vec3(1.,.78,.4),uNight*step(.55,fract(vK.y*7.))*.9);
+ if(vK.x>1.5&&vK.x<2.5){float b=step(.5,fract(uTime*.35+vK.y));c=mix(c,vec3(1.,.95,.6),max(.25,uNight)*b);}
+ if(vK.x>4.5)c=mix(c,vec3(1.,.4,.12),.35+uNight*.6);
+ gl_FragColor=vec4(c,1.);
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
 }`});
   RING=new THREE.Mesh(g,m);RING.renderOrder=-998;RING.frustumCulled=false;RING.name='uzHorizonRing';RING.userData.noShadow=true;scene.add(RING)}
+ // a ogni partita un orizzonte diverso
+ function reroll(){if(!RING)return;const old=RING.geometry;RING.geometry=ring(Math.random()*4e9);old.dispose();S.rerolls=(S.rerolls||0)+1}
  // ---- il mare vicino non sfuma più nella nebbia pesca ma nel colore del mare lontano ----
- function patchSea(){const sea=scene.getObjectByName('uzSea');if(!sea||!sea.material||sea.material.__h54)return;const m=sea.material;m.__h54=1;m.fog=false;m.side=THREE.DoubleSide;// l'anello di mare aperto aveva le facce girate verso il basso: dall'alto non si vedeva (il "blocco nel niente")
+ function patchSea(){const sea=scene.getObjectByName('uzSea');if(!sea||!sea.material||sea.material.__h54)return;const m=sea.material;m.__h54=1;m.__burn=m.__burn||'mare';// il The Burn non scurisce il mare: un solo colore fino all'orizzonte
+  m.fog=false;m.side=THREE.DoubleSide;// l'anello di mare aperto aveva le facce girate verso il basso: dall'alto non si vedeva (il "blocco nel niente")
   const ob=m.onBeforeCompile;
   m.onBeforeCompile=(sh,r)=>{if(ob)ob(sh,r);sh.uniforms.uHaze=U.uHaze;sh.uniforms.uNear=U.uNear;sh.uniforms.uFar=U.uFar;
    sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying float vDist54;').replace('#include <project_vertex>','#include <project_vertex>\nvDist54=-mvPosition.z;');
    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nuniform vec3 uHaze;uniform float uNear,uFar;varying float vDist54;').replace('#include <opaque_fragment>','outgoingLight=mix(outgoingLight,uHaze,smoothstep(uNear,uFar,vDist54));\n#include <opaque_fragment>')};
   m.customProgramCacheKey=()=>'uzsea54';m.needsUpdate=true;S.seaPatched=true}
  // mare aperto: un grande disco sotto il mare vicino (stesso materiale e stessa sfumatura), così non c'è mai uno "scalino" di colore
- let DISC=null;function disc(){const sea=scene.getObjectByName('uzSea');if(DISC||!sea||!globalThis.IslandSys)return;const g=new THREE.RingGeometry(300,30000,64,4).rotateX(-Math.PI/2);const n=g.attributes.position.count,c=new Float32Array(n*3),C3=new THREE.Color('#17618a');for(let i=0;i<n;i++)c.set([C3.r,C3.g,C3.b],i*3);g.setAttribute('color',new THREE.BufferAttribute(c,3));
+ let DISC=null;function disc(){const sea=scene.getObjectByName('uzSea');if(DISC||!sea||!globalThis.IslandSys)return;const g=new THREE.RingGeometry(300,30000,64,4).rotateX(-Math.PI/2);const n=g.attributes.position.count,c=new Float32Array(n*3),C3=new THREE.Color('#2a7fa6');for(let i=0;i<n;i++)c.set([C3.r,C3.g,C3.b],i*3);g.setAttribute('color',new THREE.BufferAttribute(c,3));
   DISC=new THREE.Mesh(g,sea.material);const ce=IslandSys.data().centro;DISC.position.set(ce[0],IslandSys.sea()-.45,ce[1]);DISC.frustumCulled=false;DISC.name='uzSeaDisc';DISC.userData.noShadow=true;DISC.receiveShadow=false;scene.add(DISC);S.disc=true}
  // ---- ogni fotogramma: segue la camera, colori dal meteo/notte, distanza dalla nebbia ----
- const SEA_D=new THREE.Color('#1f7fa0'),T=new THREE.Color();
- function tick(){if(!scene||!camera)return;if(!BOWL)bowl();if(!RING)ring();patchSea();disc();
+ const SEA_D=new THREE.Color('#2a7fa6'),T=new THREE.Color();
+ function tick(){if(!scene||!camera)return;if(!BOWL)bowl();if(!RING)ringMesh();patchSea();disc();
   const f=scene.fog,fc=f?f.color:new THREE.Color('#f3cfa2'),far=camera.far;
-  U.uHor.value.copy(fc);T.copy(SEA_D).lerp(fc,.25);U.uSea.value.copy(T);U.uHaze.value.copy(SEA_D).lerp(fc,.46);
-  const nt=typeof night==='number'?Math.max(0,Math.min(1,(night-.1)/.55)):0;if(nt>0){U.uSea.value.multiplyScalar(1-nt*.7);U.uHaze.value.multiplyScalar(1-nt*.6)}
+  U.uHor.value.copy(fc);T.copy(SEA_D).lerp(fc,.25);U.uSea.value.copy(T);U.uHaze.value.copy(SEA_D).lerp(fc,.38);
+  const nt=typeof night==='number'?Math.max(0,Math.min(1,(night-.1)/.55)):0;U.uNight.value=nt;U.uTime.value=performance.now()/1000;if(nt>0){U.uSea.value.multiplyScalar(1-nt*.7);U.uHaze.value.multiplyScalar(1-nt*.6)}
   const fn=f?f.near:far*.3,ff=f?Math.min(f.far,far*.9):far*.9;U.uNear.value=fn;U.uFar.value=Math.max(fn+50,ff);
   const sea=globalThis.IslandSys?IslandSys.sea():0;BOWL.position.copy(camera.position);BOWL.scale.setScalar(far*.9);
   const R=far*.8;  const cy=camera.position.y,base=cy-R*Math.max(0,cy-sea)/(far*.95)-R*.003;// la base delle montagne coincide con il bordo del mare visibile (anche dall'aereo)
   RING.position.set(camera.position.x,base,camera.position.z);RING.scale.set(R,R,R);U.uFade.value=.3}
- function install(){const rd=render;render=function(dt){try{tick()}catch(e){S.err=e.message}rd(dt)}}
+ function install(){try{const su=setup;setup=function(...a){const r=su(...a);try{reroll()}catch(e){}return r}}catch(e){}
+  const rd=render;render=function(dt){try{tick()}catch(e){S.err=e.message}rd(dt)}}
  return{install,tick,stats:()=>({...S}),U}})();
 globalThis.Horizon54=Horizon54;
 SafeRun.run('mare infinito',()=>Horizon54.install());
