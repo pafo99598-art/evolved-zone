@@ -74,13 +74,13 @@ body:not(.playing) #aimBtn,body:not(.playing) #grabBtn{display:none!important}@m
 <div class="hud"><div class="card vitals"><div class="eyebrow">VALDARNO / EVOLVED ZONE 3D</div><div class="row"><b id="hpText">SALUTE 100</b><span id="alive">13 vivi</span></div><div class="bar"><i id="hpBar"></i></div><div class="row"><span id="foodText">Energia 100</span><span id="time">00:00</span></div><div class="bar"><i id="foodBar" style="background:#c3a978"></i></div></div><div class="card stats"><div id="ammo">120 colpi</div><div id="wood">0 legno</div><div id="zoneText">Zona · 450 m</div></div><div class="menuButtons"><button id="full" aria-label="Schermo intero">⛶</button><button id="pause" aria-label="Pausa">Ⅱ</button></div></div>
 <div id="feed" aria-live="polite"></div><div id="survival"></div><div id="teamHUD"></div><div id="notice" role="status">Preparazione del mondo 3D…</div><div id="compass">N ↖ · mappa reale</div><div id="mapShade"></div><div id="mapTitle">VALDARNO · 6 × 6 km · N ↖</div><canvas id="minimap" width="500" height="500"></canvas><button id="mapButton">MAPPA · M</button><div id="reticle"></div><div id="lookHint">TRASCINA QUI · VISUALE</div>
 <div class="motion"><button id="crouch"><b>⌄</b>Accov.</button><button id="jump"><b>↑</b>Salta</button><button id="climb"><b>↟</b>Arrampica</button><button id="slide"><b>⇢</b>Scivola</button></div><div id="stick" aria-label="Joystick del personaggio"><div id="knob"></div></div><button id="sprint">CORRI</button><div class="actions"><div class="utility"><button id="gather"><b>✦</b>Raccogli</button><button id="heal"><b>+</b>Cura · 1</button><button id="build"><b>▤</b>Kit / crea</button><button id="eat"><b>●</b>Cibo · 1</button></div><button id="fire">SPARA<br><small>trascina: mira</small></button></div><div id="foot">© OpenStreetMap contributors · ODbL<br>Rilievo Mapzen / EU-DEM / USGS · edifici semplificati</div>
-<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.17</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
+<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.18</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
 <div class="lb-mid"><div class="lb-side"><button class="lb-box lb-btn" id="lbBag"><i>🎒</i>Inventario</button><button class="lb-box lb-btn" id="lbSet"><i>⚙</i>Impostazioni</button></div><div class="lb-hero"><div class="em">🧗</div><h1>EVOLVED ZONE</h1></div><div class="lb-side"><button class="lb-box lb-btn" id="lbGrp"><i>👥</i>Gruppo</button></div></div>
 <div class="lb-bot"><div class="lb-modes" id="lbModes"><button data-n="1">Singolo</button><button data-n="2">Duo</button><button data-n="3">Trio</button><button data-n="4">Squadra</button></div><button id="lbPlay">GIOCA</button></div>
 <div id="lbGroup"><div class="box"><h3>Gruppo online</h3><div id="lbNetSlot"></div><button id="lbGrpClose" style="width:100%;margin-top:10px">Chiudi</button></div></div></div>
 <div id="result"><div class="rays"></div><div id="confetti"></div><div class="rbox"><div class="trophy">🏆</div><h2 id="rsTitle">VITTORIA!</h2><div id="rsSub">Ultimo superstite del Valdarno</div><div class="rs"><div><span id="rsKills">0</span><small>UCCISIONI</small></div><div><span id="rsTime">0:00</span><small>TEMPO</small></div></div><button id="rsBack">TORNA ALLA LOBBY</button></div></div>
-<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.17.1</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
-<div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.17.1 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
+<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.18.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
+<div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.18.0 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
 <div id="weaponHud"><b id="weaponName">A MANI VUOTE</b><span id="weaponAmmo">Cerca una cassa di armi</span><div><button id="reload">Ricarica</button><button id="swap">Cambia arma</button><button id="rest">Riposa</button></div></div>
 <div id="flightStatus" hidden></div><button id="deploy" hidden>LANCIATI · E</button>
 <div id="hitMark" aria-hidden="true">×</div><div id="hurtFlash" aria-hidden="true"></div><div id="damageNumbers" aria-hidden="true"></div>
@@ -640,7 +640,7 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
   const hint=$('lookHint');if(hint)hint.textContent=TOUCH?'TOCCA · SPARA   TRASCINA · VISUALE':'CLIC SINISTRO · SPARA';
   const help=document.getElementById('help');
   if(help){const p=document.createElement('p');p.innerHTML='<b>Novità 0.5:</b> sparo con clic sinistro (PC, il mouse viene catturato: Esc per uscire) o con un tocco sullo schermo (telefono: tocco breve = colpo, tocco fermo = raffica, trascina = visuale). Telecamera rialzata sulla spalla: il mirino al centro non è più coperto dal personaggio. Il <b>rampino</b> si fabbrica nel kit (2 rottami + 1 tessuto) e si usa con G o con il pulsante a schermo: aggancia terreno ed edifici fino a 55 m e ti tira verso il punto.';help.prepend(p)}
-  for(const e of document.querySelectorAll('.eyebrow'))if(e.textContent.includes('VERSIONE 0.4'))e.textContent='VERSIONE 0.17.1 / SURVIVAL 200';
+  for(const e of document.querySelectorAll('.eyebrow'))if(e.textContent.includes('VERSIONE 0.4'))e.textContent='VERSIONE 0.18.0 / SURVIVAL 200';
 }
 
 /* ---------- 2. Sparo con clic / tocco, mouse catturato ---------- */
@@ -1452,7 +1452,7 @@ $('crPick').onclick=()=>{const m=mats();if(m.stick<2||m.metal<3){tell('Materiali
 
 // ===== v0.9.0: COMBAT FOUNDATION + MELEE A MANI VUOTE + DISTRUZIONE AMBIENTALE =====
 // Un solo sistema autorevole per ciascuna parte: Combat (stati, attacchi, danni), Destr (oggetti distruttibili), MeleeAI (bot).
-const GAME_VERSION='0.17.1';
+const GAME_VERSION='0.18.0';
 const v5=globalThis.__V5||{shake:0,fail:{}};
 const EventBus=(()=>{const L=new Map();return{on(t,f){if(!L.has(t))L.set(t,[]);L.get(t).push(f)},emit(t,d){const a=L.get(t);if(a)for(const f of a){try{f(d)}catch(e){console.warn('evento '+t,e)}}}}})();
 const CombatState={IDLE:'IDLE',AIMING:'AIMING',ATTACKING:'ATTACKING',RECOVERY:'RECOVERY',HIT:'HIT',STAGGER:'STAGGER',DODGE:'DODGE',DEAD:'DEAD'};
@@ -6167,6 +6167,576 @@ body.fxHpLow #hpText .n{color:#ff6b5e}
  return{install,stats:()=>({...S,show,live:live.length}),setShow:v=>{show=!!v},_:{onImpact}}})();
 globalThis.ColpoSys=ColpoSys;
 SafeRun.run('riscontro colpo',()=>ColpoSys.install());
+
+// ===== 0.18.0 · Personaggi e zaini nuovi (stile low poly dell'immagine di riferimento) =====
+// Richiesta di Michele (24/10): almeno 70 personaggi tutti diversi nello stile low poly scelto (come l'immagine uomo/donna
+// con giacca oliva, cargo, guanti e zaino); per la maggior parte semplici, almeno 20 stravaganti e incredibili; volto
+// semplice; SEMPRE uno zaino sulle spalle (l'inventario sta nello zaino). Zaini separati dai personaggi e scelti
+// dall'utente; chi non sceglie ha lo zaino base. Nessun giocatore o bot resta mai senza zaino.
+// Le 18 skin della vecchia scheda (Visual Phase 07) sono riadattate qui in low poly (voci 1-20).
+// Tecnica: ogni pezzo del corpo è UNA mesh con colori per vertice e un solo materiale per tutti i personaggi
+// (stesso numero di pezzi del modello di prima: niente costo in più per 50 giocatori). Le parti che brillano
+// usano un attributo "aGlow" letto dallo stesso materiale. I nomi dei pezzi (torso, head, leftArm...) restano
+// quelli di prima, così animazioni, gambe sul pendio, armi in mano, spada e corpi a terra funzionano come prima.
+const SkinSys=(()=>{const S={built:0,dressed:0,geo:0,err:'',thumbs:0,bots:0};
+ // ---------------------------------------------------------------- kit geometrico
+ const _c=new THREE.Color(),_m=new THREE.Matrix4(),_q=new THREE.Quaternion(),_e=new THREE.Euler(),_s=new THREE.Vector3(),_p=new THREE.Vector3();
+ let seed=7,LOWQ=false;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+ const C=h=>{_c.set(h);return[_c.r,_c.g,_c.b]};
+ function B(){return{p:[],c:[],g:[]}}
+ function tri(b,a,d,e,cc,gl,jit){const j=1+(rnd()-.5)*(jit??.09);for(const v of[a,d,e]){b.p.push(v[0],v[1],v[2]);b.c.push(cc[0]*j,cc[1]*j,cc[2]*j);b.g.push(gl||0)}}
+ // esaedro da 8 angoli: base [x0,x1,z0,z1] a y0, cima [x0,x1,z0,z1] a y1
+ // con gli spigoli verticali smussati (8 lati) per l'aspetto sfaccettato dell'immagine di riferimento
+ function hexa(b,lo,hi,y0,y1,col,o){const cc=C(col),gl=o&&o.g,jit=o&&o.j;const[a0,a1,c0,c1]=lo,[A0,A1,C0,C1]=hi;
+  const k=LOWQ?0:(o&&o.ch!=null?o.ch:.24),m0=Math.min(a1-a0,c1-c0),m1=Math.min(A1-A0,C1-C0);
+  if(k>0&&m0>.04&&m1>.04){const ring=(x0,x1,z0,z1,y,c)=>[[x0+c,y,z0],[x1-c,y,z0],[x1,y,z0+c],[x1,y,z1-c],[x1-c,y,z1],[x0+c,y,z1],[x0,y,z1-c],[x0,y,z0+c]];
+   const R0=ring(a0,a1,c0,c1,y0,m0*k),R1=ring(A0,A1,C0,C1,y1,m1*k);
+   for(let i=0;i<8;i++){const n=(i+1)%8;tri(b,R0[i],R1[i],R1[n],cc,gl,jit);tri(b,R0[i],R1[n],R0[n],cc,gl,jit)}
+   const T=[(A0+A1)/2,y1,(C0+C1)/2],Bc=[(a0+a1)/2,y0,(c0+c1)/2];for(let i=0;i<8;i+=2){const n=(i+2)%8;tri(b,T,R1[(i+1)%8],R1[i],cc,gl,jit);tri(b,T,R1[n],R1[(i+1)%8],cc,gl,jit);tri(b,Bc,R0[i],R0[(i+1)%8],cc,gl,jit);tri(b,Bc,R0[(i+1)%8],R0[n],cc,gl,jit)}return}
+  const b0=[a0,y0,c0],b1=[a1,y0,c0],b2=[a1,y0,c1],b3=[a0,y0,c1],t0=[A0,y1,C0],t1=[A1,y1,C0],t2=[A1,y1,C1],t3=[A0,y1,C1];
+  tri(b,t0,t3,t2,cc,gl,jit);tri(b,t0,t2,t1,cc,gl,jit);tri(b,b0,b1,b2,cc,gl,jit);tri(b,b0,b2,b3,cc,gl,jit);tri(b,b0,t0,t1,cc,gl,jit);tri(b,b0,t1,b1,cc,gl,jit);
+  tri(b,b3,b2,t2,cc,gl,jit);tri(b,b3,t2,t3,cc,gl,jit);tri(b,b0,b3,t3,cc,gl,jit);tri(b,b0,t3,t0,cc,gl,jit);tri(b,b1,t1,t2,cc,gl,jit);tri(b,b1,t2,b2,cc,gl,jit)}
+ function box(b,x,y,z,w,h,d,col,o){hexa(b,[x-w/2,x+w/2,z-d/2,z+d/2],[x-w/2,x+w/2,z-d/2,z+d/2],y-h/2,y+h/2,col,o)}
+ function prim(b,g,pos,rot,scl,col,o){const gg=g.index?g.toNonIndexed():g;_e.set(...(rot||[0,0,0]));_q.setFromEuler(_e);_m.compose(_p.set(...pos),_q,_s.set(...(scl||[1,1,1])));gg.applyMatrix4(_m);
+  const a=gg.attributes.position.array,cc=C(col),gl=o&&o.g,jit=o&&o.j;for(let i=0;i<a.length;i+=9)tri(b,[a[i],a[i+1],a[i+2]],[a[i+3],a[i+4],a[i+5]],[a[i+6],a[i+7],a[i+8]],cc,gl,jit);gg.dispose();if(gg!==g)g.dispose()}
+ // ellissoide (anche a spicchio: t0/tl verticale, p0/pl orizzontale; davanti = -z)
+ function ell(b,x,y,z,rx,ry,rz,col,o={}){prim(b,new THREE.SphereGeometry(1,LOWQ?Math.min(5,o.ws||7):(o.ws||7),LOWQ?Math.min(4,o.hs||5):(o.hs||5),o.p0??0,o.pl??Math.PI*2,o.t0??0,o.tl??Math.PI),[x,y,z],o.rot,[rx,ry,rz],col,o)}
+ const OPEN=a=>({p0:Math.PI*1.5+a,pl:Math.PI*2-2*a});// spicchio aperto davanti (larghezza 2a)
+ function cyl(b,x,y,z,rt,rb,h,seg,col,o={}){prim(b,new THREE.CylinderGeometry(rt,rb,h,LOWQ?Math.min(5,seg||6):(seg||6),1,!!o.open),[x,y,z],o.rot,o.s,col,o)}
+ function ico(b,x,y,z,r,col,o={}){prim(b,new THREE.IcosahedronGeometry(1,o.d||0),[x,y,z],o.rot,o.s?o.s.map(v=>v*r):[r,r,r],col,o)}
+ function oct(b,x,y,z,r,col,o={}){prim(b,new THREE.OctahedronGeometry(1,0),[x,y,z],o.rot,o.s?o.s.map(v=>v*r):[r,r,r],col,o)}
+ function tor(b,x,y,z,R,r,col,o={}){prim(b,new THREE.TorusGeometry(R,r,LOWQ?3:(o.rs||4),LOWQ?Math.min(7,o.ts||10):(o.ts||10),o.arc||Math.PI*2),[x,y,z],o.rot,o.s,col,o)}
+ function dode(b,x,y,z,r,col,o={}){prim(b,new THREE.DodecahedronGeometry(1,0),[x,y,z],o.rot,o.s?o.s.map(v=>v*r):[r,r,r],col,o)}
+ function fin(b){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(b.p,3));g.setAttribute('color',new THREE.Float32BufferAttribute(b.c,3));g.setAttribute('aGlow',new THREE.Float32BufferAttribute(b.g,1));g.computeVertexNormals();g.computeBoundingSphere();S.geo++;return g}
+ const dk=(h,k=.72)=>{_c.set(h);_c.multiplyScalar(k);return'#'+_c.getHexString()};
+ // ---------------------------------------------------------------- materiale unico (colori per vertice + parti luminose)
+ function mkMat(tint){const m=new THREE.MeshLambertMaterial({vertexColors:true,flatShading:true,side:THREE.DoubleSide,color:tint||'#ffffff'});
+  m.onBeforeCompile=sh=>{sh.vertexShader='attribute float aGlow;\nvarying float vGlow;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvGlow=aGlow;');
+   sh.fragmentShader='varying float vGlow;\n'+sh.fragmentShader.replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance+=diffuseColor.rgb*vGlow;')};
+  m.customProgramCacheKey=()=>'uzskin51';return m}
+ const MAT=mkMat(),MATZ=mkMat('#9fd88a');
+ // ---------------------------------------------------------------- catalogo personaggi
+ // r rarità 0 comune 1 non comune 2 raro 3 epico 4 mitico 5 leggendario 6 ultra (provvisorio: le rarità vere arrivano col Blocco 2)
+ // b corpo m uomo / f donna / g robusto · k pelle · h capelli [stile,colore] · w copricapo [tipo,col,col2] · f volto [tipo,col]
+ // t parte sopra · j giacca · s maglia · p pantaloni · o scarpe · g guanti · x extra · e colore delle luci
+ const T1='#f2cda8',T2='#e3b38c',T3='#c98f66',T4='#9a6442',T5='#6b4129';
+ const HB='#5a3420',HD='#2a1d16',HK='#17130f',HY='#d8b25a',HR='#a8482a',HG='#a9a59c',HA='#7a3a22';
+ const SK=[];let NID=0;const sk=(id,n,r,b,k,h,w,f,t,j,s,p,o,g,x,e)=>SK.push({id,n,r,b,k,h,w,f,t,j,s,p,o,g,x:x||[],e,c:r>=3?'strava':'semplice',i:NID++});
+ // --- semplici (le prime 20 sono le 18 della vecchia scheda riadattate) ---
+ sk('base','Base',0,'m',T2,['short',HB],null,null,'jacket','#6f7d43','#2e2b28','#7a6448','#4b3a2a','#2b2622',['roll','fgl','kp:#3a3530','belt','cargo']);
+ sk('base_f','Base · lei',0,'f',T2,['pony',HA],null,null,'jacket','#6f7d43','#b9a88c','#7a6448','#4b3a2a','#2b2622',['roll','fgl','kp:#3a3530','belt','cargo','pouch']);
+ sk('outdoor','Outdoor',0,'m',T2,['short',HB],['bucket','#8a8f5a'],['glasses','#1d1d1d'],'jacket','#4f6b3a','#d9d2bf','#8a7552','#5a4330',null,['belt','cargo']);
+ sk('urbano','Urbano',0,'m',T3,['short',HK],['cap','#3b4d63'],null,'jacket','#2c2f33','#7d8186','#2a2a2e','#e8e8e8','#1f1f22',['snk','belt']);
+ sk('survival','Survival',1,'m',T2,['short',HD],['hood','#5b5240'],['gas','#3a3a36'],'hoodie','#5b5240','#3a352c','#4c4636','#3a2e22','#2b2622',['pouch','belt','cargo']);
+ sk('tatt_l','Tattico leggero',1,'m',T3,['buzz',HK],['helmet','#3b3f3a'],['goggles','#2a2c2a'],'vest','#4a4f45','#2f3330','#3a3e38','#2a2a26','#22231f',['kp:#2a2c28','cargo','belt']);
+ sk('tatt_p','Tattico pesante',2,'g',T3,['buzz',HK],['helmetV','#30343a','#5ab0ff'],null,'armor','#30343a','#22252a','#2a2d31','#1f2124','#1a1c1f',['kp:#1f2226','cargo'],'#5ab0ff');
+ sk('sportivo','Sportivo',0,'m',T4,['short',HK],null,null,'track','#1c2a4a','#f0f0f0','#1c2a4a','#f2f2f2',null,['snk','stripe:#f0f0f0']);
+ sk('hiphop1','Hip hop 01',1,'m',T4,['buzz',HK],['capB','#d8d0b8'],null,'hoodie','#e9e6de','#c8c4b8','#2b56b0','#f4f4f4',null,['snk','stripe:#f0f0f0','chain:#e2b83c']);
+ sk('hiphop2','Hip hop 02',1,'m',T3,['short',HK],['cap','#b02a2a'],null,'hoodie','#1d1d1f','#b02a2a','#1d1d1f','#f4f4f4',null,['snk','chain:#e2b83c','print:#b02a2a']);
+ sk('tecno','Tecno',1,'m',T2,['short',HD],['beanie','#202429'],['glasses','#1b3b48'],'jacket','#202429','#3a3f45','#25282d','#2a3038','#16181b',['snk','trim:#3fd0ff'],'#3fd0ff');
+ sk('rurale','Rurale',0,'m',T2,['short',HB],['straw','#c9a35a'],null,'shirt','#9a2f2f','#9a2f2f','#3d5a80','#6a4a2e',null,['plaid','roll','belt']);
+ sk('worker1','Operaio',0,'m',T3,['short',HD],['hard','#e8c020'],null,'vest','#f06a1a','#5a5a5a','#3d5a80','#5a4330','#c2a060',['refl','belt']);
+ sk('worker2','Mandriano',0,'m',T4,['short',HD],['cowboy','#7a5a3a'],null,'shirt','#8a3a2a','#8a3a2a','#344e72','#5a3a22',null,['plaid','belt']);
+ sk('civile','Civile',0,'m',T2,['side',HD],null,null,'jacket','#2b2b2e','#d7d2c8','#3f5f8a','#e9e9e9',null,['snk']);
+ sk('giovane','Giovane',0,'m',T1,['short',HB],['cap','#1d1d1f'],null,'tee','#f0f0ee','#f0f0ee','#222224','#f4f4f4',null,['snk','shorts','print:#3a3a3a']);
+ sk('anziano','Anziano',0,'m',T2,['side',HG],null,['beard',HG],'shirt','#7a3030','#7a3030','#4a6080','#4a3a2a',null,['plaid','belt']);
+ sk('fem1','Femmina 01',1,'f',T2,['pony',HA],['cap','#3a6ab0'],null,'crop','#1d1d1f','#1d1d1f','#3b3e32','#f2f2f2','#222',['snk','kp:#2a2a2a','cargo','belt']);
+ sk('fem2','Femmina 02',1,'f',T3,['pony',HD],['cap','#5d5f55'],null,'tank','#5a5f52','#5a5f52','#202022','#2a2a2a','#202020',['cargo','belt','pouch']);
+ sk('fem3','Femmina 03',1,'f',T1,['pony',HR],null,['mask','#1a1a1a'],'tank','#f0f0ee','#f0f0ee','#4a4f3a','#2a2a2a','#202020',['kp:#2a2a2a','cargo','belt']);
+ // --- semplici nuove ---
+ sk('cacciatore','Cacciatore',0,'m',T2,['short',HB],['cap','#556b2f'],null,'jacket','#5d6b3a','#3a3a2a','#4b4a33','#4a3a26','#2b2622',['camo','belt','cargo']);
+ sk('cacciatrice','Cacciatrice',0,'f',T2,['pony',HB],['beanie','#e07020'],null,'jacket','#6b5a3a','#d8ccb0','#556040','#4a3a26',null,['camo','roll','belt']);
+ sk('pescatore','Pescatore',0,'m',T3,['short',HG],['bucket','#4a6a7a'],null,'vest','#7a8a5a','#d0c8b0','#5a6a5a','#2a4a3a',null,['pouch','beard2']);
+ sk('contadina','Contadina',0,'f',T3,['long',HD],['scarf','#c04040'],null,'overalls','#5a6a8a','#e8dcc0','#5a6a8a','#4a3a2a',null,['roll']);
+ sk('meccanico','Meccanico',0,'m',T2,['buzz',HB],['capB','#2f4f7f'],null,'overalls','#2f4f7f','#9aa0a6','#2f4f7f','#2a2a2a','#1a1a1a',['grease']);
+ sk('pompiere','Pompiere',1,'m',T3,['short',HD],['hard','#e8c020'],null,'coatS','#c8a04a','#2a2a2a','#c8a04a','#2a2a2a','#2a2a2a',['refl']);
+ sk('medico','Medico da campo',1,'f',T2,['bun',HB],null,['mask','#dfe8e8'],'jacket','#e8e8e2','#7aa0a8','#7aa0a8','#e8e8e8','#c8dcd8',['snk','cross:#3aa860']);
+ sk('ciclista','Ciclista',0,'m',T2,['short',HB],['bike','#30a0d0'],['glasses','#222'],'tee','#30a0d0','#30a0d0','#1d1d1f','#f0f0f0','#1d1d1f',['snk','shorts']);
+ sk('escursionista','Escursionista',0,'f',T2,['pony',HY],['cap','#d07030'],null,'jacket','#2f7a6a','#d8d2c4','#6b6a5a','#5a4330',null,['belt','cargo']);
+ sk('scout','Scout',0,'m',T1,['short',HY],['beanie','#3a6a3a'],null,'shirt','#c8b07a','#c8b07a','#7a6a4a','#5a4330',null,['shorts','scarf2:#d05a2a','kp:#5a4a30']);
+ sk('ranger','Ranger',0,'m',T3,['short',HD],['cowboy','#6a5a3a'],null,'jacket','#4a5a3a','#c8b896','#5a5040','#4a3a26',null,['belt','badge:#d8b84a']);
+ sk('biker','Motociclista',1,'m',T3,['buzz',HK],['bandH','#1d1d1f'],['glasses','#111'],'jacket','#2a201a','#3a3a3a','#23252b','#1d1d1d','#1a1a1a',['belt','chain:#9aa0a8']);
+ sk('biker_f','Motociclista · lei',1,'f',T2,['long',HK],null,['glasses','#111'],'jacket','#3a1f1a','#1d1d1d','#1d1d1f','#1a1a1a','#1a1a1a',['belt']);
+ sk('paraca','Paracadutista',1,'m',T2,['buzz',HB],['aviator','#5a6040'],null,'jacket','#6a7048','#4a4a3a','#5a6040','#3a2e22','#2b2622',['kp:#3a3a2e','cargo','pouch']);
+ sk('cecchino','Cecchino',2,'m',T3,['short',HD],['hood','#5a6a3a'],['bandana','#4a5a30'],'ghillie','#5a6a3a','#3a4428','#4a5a30','#3a2e22','#2b2622',['tufts:#6f7d43','cargo']);
+ sk('sabotatrice','Sabotatrice',1,'f',T2,['pony',HK],['beanie','#1d1d1f'],['bandana','#1d1d1f'],'jacket','#1d1d1f','#2a2a2a','#1d1d1f','#1a1a1a','#121212',['belt','pouch','cargo']);
+ sk('deserto','Esploratrice del deserto',1,'f',T4,['short',HD],['wrap','#d8c090'],['goggles','#7a5a30'],'jacket','#c8b080','#e0d0a8','#b8a070','#7a5a3a','#8a6a4a',['belt','scarf2:#c8a070']);
+ sk('montanaro','Montanaro',0,'g',T2,['short',HB],['beanie','#a83030'],['beard',HB],'puffer','#8a2a2a','#3a3a3a','#4a4a3a','#4a3a26','#3a2e22',['belt']);
+ sk('boscaiolo','Taglialegna',0,'m',T2,['short',HB],['beanie','#3a4a6a'],['beard',HB],'shirt','#2a5a3a','#2a5a3a','#3d5a80','#5a3a22',null,['plaid','roll','belt']);
+ sk('skater','Skater',0,'m',T1,['side',HY],['beanie','#d0a020'],null,'hoodie','#4a8a6a','#2a2a2a','#5a6a7a','#e8e8e8',null,['snk','shorts']);
+ sk('skater_f','Skater · lei',0,'f',T4,['bun',HK],null,null,'hoodie','#d06aa0','#2a2a2a','#7a9ac0','#f0f0f0',null,['snk']);
+ sk('corriera','Corriera',0,'f',T2,['pony',HB],['cap','#e8c020'],null,'jacket','#e8c020','#2a2a2a','#2a2a2e','#2a2a2a',null,['refl','snk']);
+ sk('atleta','Atleta',0,'f',T5,['afro',HK],null,null,'tank','#e04848','#e04848','#1d1d1f','#f0f0f0',null,['snk','shorts']);
+ sk('lottatore','Lottatore',1,'g',T4,['buzz',HK],null,null,'tank','#2a2a2a','#2a2a2a','#5a5a60','#2a2a2a',null,['snk','stripe:#e04848']);
+ sk('studente','Studente',0,'m',T2,['side',HB],null,['glasses','#2a2a2a'],'hoodie','#3a5a9a','#2a2a2a','#3d5a80','#f0f0f0',null,['snk']);
+ sk('studentessa','Studentessa',0,'f',T1,['long',HY],null,null,'jacket','#5a7aa8','#f0f0ee','#1d1d1f','#f0f0f0',null,['snk']);
+ sk('barista','Barista',0,'m',T3,['side',HK],null,['mous',HK],'vest','#3a2a2a','#f0ece4','#1d1d1f','#1a1a1a',null,['roll']);
+ sk('agricoltore','Agricoltore',0,'m',T3,['short',HB],['straw','#d0b06a'],null,'overalls','#4a6a3a','#d8c8a8','#4a6a3a','#5a3a22','#8a6a4a',['roll']);
+ sk('vedetta','Vedetta',0,'f',T3,['pony',HD],['bucket','#6a7048'],null,'jacket','#6a7048','#d0c8b0','#8a7a5a','#4a3a26',null,['binoc:#2a2a2a','belt']);
+ sk('sopravvissuta','Sopravvissuta',1,'f',T2,['short',HA],null,['bandana','#8a6a4a'],'hoodie','#6a5a4a','#3a3028','#5a5040','#3a2e22','#3a3028',['patch','kp:#4a3a2a','belt']);
+ sk('anziana','Anziana',0,'f',T2,['bun',HG],null,['glasses','#5a4a3a'],'coatS','#8a6a8a','#e0d8d0','#5a5a5a','#3a2a2a',null,[]);
+ sk('dj','DJ',1,'m',T4,['buzz',HK],['capB','#1d1d1f'],null,'hoodie','#2a2a2e','#e04080','#2a2a2e','#f0f0f0',null,['snk','phones:#e04080','print:#e04080']);
+ sk('elettricista','Elettricista',0,'m',T2,['short',HD],['hard','#f0f0f0'],null,'vest','#2a6ad0','#9aa0a6','#5a5f66','#2a2a2a','#e0b030',['refl','pouch']);
+ sk('marinaio','Marinaio',0,'m',T2,['short',HB],['beanie','#1c2a4a'],null,'tee','#f0f0f0','#f0f0f0','#1c2a4a','#2a2a2a',null,['stripes:#1c2a4a','beard2']);
+ sk('ricercatrice','Ricercatrice',0,'f',T3,['bun',HD],null,['glasses','#2a2a2a'],'coat','#eceae4','#7a9ab0','#5a5f66','#2a2a2a',null,['badge:#3aa0d0']);
+ sk('forestale','Guardia forestale',0,'f',T2,['pony',HB],['cowboy','#7a6a4a'],null,'shirt','#b8a878','#b8a878','#4a5a3a','#4a3a26',null,['badge:#d8b84a','belt','roll']);
+ // --- stravaganti e incredibili (r>=3) ---
+ sk('astronauta','Astronauta galattico',5,'m',T2,['buzz',HB],['astro','#f2f2f0','#3fa0ff'],null,'suit','#f2f2f0','#d8d8d8','#f2f2f0','#cfcfcf','#cfcfcf',['kp:#cfcfcf','panel:#3fa0ff','flag'],'#3fa0ff');
+ sk('etrusco','Cavaliere etrusco',4,'m',T3,['short',HD],['crest','#b8863a','#b02a2a'],null,'armor','#b8863a','#7a2a2a','#7a2a2a','#6a4a2a','#6a4a2a',['skirt:#b8863a','cape:#8a1f1f']);
+ sk('neon','Corridore neon',4,'f',T2,['pony',HK],['helmetV','#141418','#ff3fd0'],null,'suit','#141418','#141418','#141418','#141418','#141418',['glow:#ff3fd0','snk'],'#ff3fd0');
+ sk('lava','Golem di lava',5,'g','#3a2a26',null,null,['eyesG','#ff7a1a'],'suit','#2e2420','#2e2420','#2e2420','#2e2420','#2e2420',['cracks','rocks'],'#ff7a1a');
+ sk('ghiaccio','Spirito di ghiaccio',5,'m','#bfe6f2',null,['ice','#d8f4ff','#7fd8ff'],['eyesG','#3fb8ff'],'suit','#a8dcef','#d8f4ff','#a8dcef','#d8f4ff','#d8f4ff',['shards'],'#7fd8ff');
+ sk('alieno','Alieno verde',4,'m','#7ed07a',null,['antennae','#7ed07a','#d0ff60'],['alien','#0a0a0a'],'suit','#3a3a6a','#7ed07a','#3a3a6a','#2a2a4a','#7ed07a',['panel:#d0ff60'],'#d0ff60');
+ sk('robot','Robot arrugginito',4,'g','#8a7a6a',null,['robot','#8a7a6a','#ff4b3e'],null,'suit','#8a6a4a','#5a5a5a','#7a6a5a','#4a4038','#6a5a4a',['rivets','panel:#ff4b3e'],'#ff4b3e');
+ sk('samurai','Samurai del Chianti',5,'m',T2,['bun',HK],['kabuto','#2a2a2e','#e2b83c'],['oni','#b02a2a'],'armor','#a82a2a','#1d1d1f','#1d1d1f','#1d1d1f','#1d1d1f',['skirt:#a82a2a','plates']);
+ sk('pirata','Pirata delle isole',3,'m',T3,['long',HK],['tricorn','#1d1d1f','#e2b83c'],['patch2','#111'],'coat','#7a1f1f','#f0ece0','#2a2a3a','#1a1a1a',null,['belt','beard2','sash:#c8a040']);
+ sk('spaventa','Spaventapasseri',3,'m','#c8a870',null,['straw','#c9a35a'],['sack','#c8a870'],'overalls','#5a6a8a','#a8482a','#5a6a8a','#3a2a1a','#c9a35a',['plaid','straws']);
+ sk('re','Re della Zona',6,'m',T2,['short',HB],['crown','#e2b83c','#ff3f6a'],['beard',HB],'coat','#6a1f8a','#f0ece0','#2a1a3a','#1a1a1a','#e2b83c',['cape:#b01f2f','chain:#e2b83c','fur'],'#ff3f6a');
+ sk('fantasma','Fantasma elettrico',5,'m','#c8b8ff',null,null,['ghost','#2a1a4a'],'robe','#b8a8f0','#b8a8f0','#b8a8f0','#b8a8f0','#c8b8ff',['glow:#9f7bff'],'#9f7bff');
+ sk('zucca','Testa di zucca',4,'m','#e07a1a',null,['pumpkin','#e07a1a','#ffb040'],null,'coat','#3a2a4a','#2a2a2a','#2a2a2a','#1a1a1a','#2a2a2a',['scarf2:#e07a1a'],'#ffb040');
+ sk('sciamano','Sciamano primitivo',4,'m',T4,['long',HK],['horns','#e8e0d0','#7a5a3a'],['bone','#e8e0d0'],'fur','#7a5a3a','#5a4030','#5a4030','#4a3020','#5a4030',['tooth:#e8e0d0','paint:#c03030']);
+ sk('ninja','Cyber ninja',5,'f',T2,['pony',HK],['hoodN','#141418'],['visor','#ff2a3a'],'suit','#141418','#1f1f24','#141418','#141418','#141418',['glow:#ff2a3a','sash:#ff2a3a'],'#ff2a3a');
+ sk('aviatore','Pilota retrò',3,'m',T2,['short',HB],['aviator','#5a3a22'],['goggles2','#c8a040'],'jacket','#6a4428','#d8cfb8','#5a5040','#3a2a1a','#4a3020',['fur','scarf2:#f0ece0','belt']);
+ sk('clown','Pagliaccio matto',3,'m','#f4e8e0',['afro','#ff4040'],null,['clown','#ff2020'],'tee','#3a8ae0','#f0e020','#e04040','#e04040','#f0f0f0',['dots:#f0e020','bow:#e040a0','shoeB']);
+ sk('druido','Druido della quercia',4,'m','#b08a5a',['long','#4a6a2a'],['antlers','#7a5a3a','#7fd04a'],['beard','#5a7a3a'],'robe','#4a6a2a','#5a4a2a','#4a3a22','#3a2a1a','#5a4a2a',['leaves:#7fd04a'],'#7fd04a');
+ sk('minatore','Minatore di cristalli',3,'g',T3,['short',HD],['lamp','#e8c020','#fff2a0'],['beard',HD],'overalls','#5a4a3a','#3a3a3a','#5a4a3a','#3a2a1a','#3a3a3a',['crystals:#b05aff','grease'],'#b05aff');
+ sk('eroe','Supereroe toscano',5,'m',T2,['side',HK],null,['hero','#1d4d9a'],'suit','#1d4d9a','#e2b83c','#1d4d9a','#b01f2f','#b01f2f',['cape:#b01f2f','emblem:#e2b83c','belt'],'#e2b83c');
+ sk('mummia','Mummia',3,'m','#d8ccb0',null,['wrapF','#d8ccb0'],null,'suit','#d8ccb0','#c8bca0','#d8ccb0','#b8ac90','#d8ccb0',['bandage'],'#7fffd0');
+ sk('diavolo','Diavolo del Burn',6,'m','#c8282a',['mohawk',HK],['horns2','#1d1d1f'],null,'suit','#1d1d1f','#c8282a','#1d1d1f','#1d1d1f','#1d1d1f',['glow:#ff3fd0','tail','cracks2'],'#ff3fd0');
+ sk('angelo','Angelo guardiano',6,'f','#f2e6da',['long','#f0e0a0'],['halo','#fff2a0'],null,'robe','#f4f2ee','#f4f2ee','#f4f2ee','#e2b83c','#f4f2ee',['sash:#e2b83c'],'#fff2a0');
+ sk('capriolo','Capriolo galattico',6,'f','#3a2a6a',null,['antlers2','#2a1a5a','#b07bff'],['star','#ffffff'],'suit','#2a1a5a','#5a3a9a','#2a1a5a','#1a103a','#5a3a9a',['stars','glow:#b07bff'],'#b07bff');
+ sk('ape','Ape regina',4,'f',T2,['bun',HK],['antennae','#1d1d1f','#f0c020'],['glasses','#1d1d1f'],'suit','#f0c020','#1d1d1f','#1d1d1f','#1d1d1f','#1d1d1f',['bee','wingsS'],'#f0c020');
+ sk('cavaliere','Cavaliere di ferro',4,'g','#c0c6cc',null,['knight','#c0c6cc','#3a5ab0'],null,'armor','#c0c6cc','#3a5ab0','#9aa2aa','#7a828a','#9aa2aa',['tabard:#3a5ab0','plates'],'#9fc8ff');
+ sk('hacker','Hacker olografico',4,'m',T1,['side','#3fd0ff'],null,['visor','#3fd0ff'],'hoodie','#101418','#3fd0ff','#101418','#101418','#101418',['glow:#3fd0ff','code'],'#3fd0ff');
+ sk('dinosauro','Costume da dinosauro',3,'m','#5ab04a',null,['dino','#5ab04a','#f0e040'],null,'suit','#5ab04a','#d8e890','#5ab04a','#3a7a2a','#5ab04a',['spikes:#f0a020','tail2','belly:#d8e890']);
+ sk('lunare','Esploratrice lunare',5,'f',T3,['short',HD],['astro','#cfd6de','#ff9a3a'],null,'suit','#cfd6de','#9aa4ae','#cfd6de','#7a848e','#7a848e',['panel:#ff9a3a','kp:#7a848e'],'#ff9a3a');
+ const SKM=new Map(SK.map(s=>[s.id,s]));
+ // ---------------------------------------------------------------- catalogo zaini
+ const PK=[];let PID=0;const pk=(id,n,r,t,c,e)=>PK.push({id,n,r,t,c,e,c2:r>=3?'strava':'semplice',i:PID++});
+ pk('base','Zaino base',0,'base',['#6f7d43','#3a3530','#8a7a52']);
+ pk('escurs','Escursionista',0,'hike',['#2f6a8a','#2a2a2a','#c8b080']);
+ pk('scuola','Scuola',0,'round',['#c84a3a','#2a2a2a','#f0e0c0']);
+ pk('cuoio','Cuoio vintage',1,'leather',['#7a4a26','#4a2c16','#c8a060']);
+ pk('tattico','Tattico',1,'molle',['#4a4f45','#2a2c28','#6a705a']);
+ pk('militare','Militare grande',1,'big',['#5d6b3a','#3a3a2a','#7a6a4a']);
+ pk('sport','Sportivo',0,'sport',['#2a2a2e','#e04848','#f0f0f0']);
+ pk('sacco','Sacco da marinaio',0,'duffel',['#d8d0b8','#2a3a5a','#8a7a5a']);
+ pk('tela','Sacco di tela',0,'sack',['#b8a07a','#7a5a3a','#5a4a2a']);
+ pk('alpino','Alpino',1,'frame',['#b02a2a','#5a5a5a','#2a2a2a']);
+ pk('mini','Mini zaino',0,'mini',['#e8c020','#2a2a2a','#f0f0f0']);
+ pk('mimetico','Mimetico',1,'camo',['#5d6b3a','#3a3a2a','#8a7a52']);
+ pk('pesca','Da pesca',1,'fish',['#4a6a5a','#2a2a2a','#c8a060']);
+ pk('medico','Kit medico',1,'med',['#eeeeea','#3aa860','#9aa0a6']);
+ pk('radio','Radio da campo',2,'radio',['#4a5040','#1d1d1d','#8a9a7a']);
+ pk('legna','Porta legna',1,'wood',['#7a5a3a','#5a3a22','#9a7a4a']);
+ pk('pelliccia','Pelliccia primitiva',3,'fur',['#8a6a4a','#e8e0d0','#5a4030']);
+ pk('vimini','Cesto di vimini',2,'basket',['#c8a060','#8a6a3a','#e05a3a']);
+ pk('tartaruga','Guscio di tartaruga',3,'shell',['#5a7a3a','#c8b070','#3a5a2a']);
+ pk('jetpack','Jetpack',4,'jet',['#c0c6cc','#3a3f45','#ff8a2a'],'#ff8a2a');
+ pk('tesoro','Cassa del tesoro',3,'chest',['#7a4a26','#e2b83c','#ff3f6a']);
+ pk('razzo','Razzo',4,'rocket',['#f0f0f0','#d03a3a','#ffb040'],'#ffb040');
+ pk('cristallo','Cristallo alieno',5,'crystal',['#b05aff','#3a2a5a','#e0b0ff'],'#b05aff');
+ pk('capsula','Capsula galattica',5,'pod',['#cfd6de','#3fa0ff','#ffffff'],'#3fa0ff');
+ pk('pianeta','Pianeta con anelli',5,'planet',['#e08a3a','#f0d8a0','#8a5a3a']);
+ pk('ologramma','Cubo olografico',4,'holo',['#101418','#3fd0ff','#3fd0ff'],'#3fd0ff');
+ pk('alveare','Alveare',3,'hive',['#e0a830','#8a5a1a','#1d1d1f']);
+ pk('zucca','Zucca',3,'pumpkin',['#e07a1a','#4a7a2a','#ffb040'],'#ffb040');
+ pk('barile','Barile',2,'barrel',['#8a5a3a','#3a3a3a','#5a3a22']);
+ pk('frigo','Frigo portatile',2,'cooler',['#3a7ad0','#f0f0f0','#d0d0d0']);
+ pk('pacchi','Pila di pacchi',2,'boxes',['#c8a070','#a07a4a','#e0e0d8']);
+ pk('ali','Ali meccaniche',5,'wings',['#9aa2aa','#e2b83c','#5a5f66']);
+ pk('nuvola','Nuvoletta',4,'cloud',['#f4f6f8','#d8e0e8','#a8c8f0']);
+ pk('lanterna','Lanterna',3,'lantern',['#3a3a3a','#ffd060','#8a6a3a'],'#ffd060');
+ pk('orsetto','Orsetto',3,'bear',['#a0703a','#e8d0a8','#1d1d1d']);
+ pk('astratto','Forme fluttuanti',5,'float',['#ff3fd0','#3fd0ff','#d0ff60'],'#ff3fd0');
+ pk('reattore','Reattore neon',6,'reactor',['#1a1a22','#ff3fd0','#3fd0ff'],'#ff3fd0');
+ pk('anfora','Anfora etrusca',3,'amphora',['#b8683a','#1d1d1f','#e8c890']);
+ pk('ghianda','Ghianda gigante',3,'acorn',['#a0703a','#6a4a2a','#4a7a2a']);
+ pk('portale','Portale',6,'portal',['#2a1a4a','#b07bff','#3fd0ff'],'#b07bff');
+ pk('lavico','Roccia lavica',5,'lavarock',['#2e2420','#ff7a1a','#4a3a30'],'#ff7a1a');
+ pk('uovo','Uovo di drago',5,'egg',['#3a8a6a','#d0ff60','#1a4a3a'],'#d0ff60');
+ const PKM=new Map(PK.map(p=>[p.id,p]));
+ // ---------------------------------------------------------------- misure del corpo
+ const BD={m:{W:.46,Wb:.38,D:.25,ax:.29,aw:.145},f:{W:.40,Wb:.33,D:.23,ax:.258,aw:.125},g:{W:.54,Wb:.48,D:.30,ax:.34,aw:.175}};
+ const HAS=(s,k)=>s.x.some(v=>v===k||v.startsWith(k+':'));const XC=(s,k)=>{const v=s.x.find(v=>v.startsWith(k+':'));return v?v.slice(k.length+1):null};
+ // ---------------------------------------------------------------- busto (coordinate del corpo: piedi a 0, davanti = -z)
+ function layer(b,M,pad,y0,y1,col,mode,o){const w=y=>M.Wb+(M.W-M.Wb)*(y-.8)/.62,D=M.D/2+pad,gap=.03;
+  const r=y=>{const h=w(y)/2+pad;if(mode==='full')return[-h,h,-D,D];if(mode==='back')return[-h,h,0,D];if(mode==='front')return[-h,h,-D,0];if(mode==='frontL')return[-h,-gap,-D,0];if(mode==='frontR')return[gap,h,-D,0];if(mode==='belly')return[-h*.8,h*.8,-D,-D+.03]};
+  hexa(b,r(y0),r(y1),y0,y1,col,o)}
+ function yoke(b,M,pad,col){const D=M.D/2+pad,W=M.W/2+pad;hexa(b,[-W,W,-D,D],[-W*.42,W*.42,-D*.72,D*.72],1.40,1.48,col)}
+ function torsoGeo(s){const b=B(),M=BD[s.b];seed=1000+s.i*13;const t=s.t,j=s.j,sh=s.s,pa=s.p,k=s.k;const W2=M.W/2,D2=M.D/2;
+  // collo, bacino, busto interno
+  cyl(b,0,1.47,-.01,.052,.06,.12,6,k);
+  const hipW=Math.max(M.Wb,.42)/2;hexa(b,[-hipW,hipW,-D2*.92,D2*.92],[-M.Wb/2,M.Wb/2,-D2,D2],.70,.86,pa);
+  const coreCol=(t==='crop'||t==='tank')?k:sh;layer(b,M,0,.80,1.40,coreCol,'full');
+  if(t==='jacket'||t==='coat'||t==='coatS'){const lo=t==='coat'?.42:t==='coatS'?.6:.76;layer(b,M,.02,lo,1.40,j,'back');layer(b,M,.02,lo,1.40,j,'frontL');layer(b,M,.02,lo,1.40,j,'frontR');yoke(b,M,.02,j);
+   hexa(b,[-.11,.11,-.05,D2+.04],[-.12,.12,-.03,D2+.05],1.42,1.52,dk(j,.85));// colletto
+   hexa(b,[-.1,-.03,-D2-.03,-D2-.01],[-.12,-.035,-D2-.035,-D2-.015],1.18,1.40,dk(j,.82));hexa(b,[.03,.1,-D2-.03,-D2-.01],[.035,.12,-D2-.035,-D2-.015],1.18,1.40,dk(j,.82));// risvolti
+   if(t!=='coatS'){box(b,-W2*.62,1.24,-D2-.035,.09,.07,.02,dk(j,.8));box(b,W2*.62,1.24,-D2-.035,.09,.07,.02,dk(j,.8))}}
+  else if(t==='hoodie'||t==='track'){layer(b,M,.02,.76,1.40,j,'full');yoke(b,M,.02,j);
+   if(t==='hoodie'){ell(b,0,1.45,D2+.02,.15,.08,.09,dk(j,.88));hexa(b,[-.13,.13,-D2-.04,-D2-.01],[-.11,.11,-D2-.035,-D2-.01],.84,1.0,dk(j,.86));box(b,-.05,1.3,-D2-.03,.015,.14,.01,'#f0f0f0');box(b,.05,1.3,-D2-.03,.015,.14,.01,'#f0f0f0')}
+   else{box(b,0,1.08,-D2-.025,.02,.6,.01,dk(j,.6));hexa(b,[-.1,.1,-.05,D2+.04],[-.1,.1,-.03,D2+.04],1.42,1.5,j)}}
+  else if(t==='tee'||t==='crop'){if(t==='crop')layer(b,M,.012,1.06,1.40,sh,'full');yoke(b,M,t==='crop'?.012:0,sh)}
+  else if(t==='shirt'){yoke(b,M,0,sh);hexa(b,[-.1,.1,-.04,D2+.02],[-.11,.11,-.02,D2+.03],1.42,1.5,dk(sh,.9));box(b,0,1.1,-D2-.008,.025,.58,.01,dk(sh,.75))}
+  else if(t==='tank'){yoke(b,M,0,k);box(b,-.1,1.43,0,.05,.06,M.D+.01,sh);box(b,.1,1.43,0,.05,.06,M.D+.01,sh)}
+  else if(t==='vest'){yoke(b,M,0,sh);layer(b,M,.035,.84,1.36,j,'full');box(b,-.12,1.43,0,.07,.1,M.D+.05,j);box(b,.12,1.43,0,.07,.1,M.D+.05,j);
+   for(const x of[-.1,0,.1])box(b,x,1.0,-D2-.055,.085,.1,.04,dk(j,.82))}
+  else if(t==='armor'){yoke(b,M,.03,dk(j,.9));layer(b,M,.045,.96,1.40,j,'front');layer(b,M,.04,.96,1.40,j,'back');layer(b,M,.025,.78,.96,dk(j,.8),'full');
+   for(const y of[.83,.9])layer(b,M,.035,y,y+.05,dk(j,.9),'front')}
+  else if(t==='overalls'){yoke(b,M,0,sh);layer(b,M,.012,.78,.98,pa,'full');hexa(b,[-.13,.13,-D2-.02,-D2+.02],[-.12,.12,-D2-.02,-D2+.02],.95,1.28,pa);
+   box(b,-.11,1.37,-D2-.015,.045,.2,.02,pa);box(b,.11,1.37,-D2-.015,.045,.2,.02,pa);box(b,-.11,1.2,D2+.015,.045,.5,.02,pa);box(b,.11,1.2,D2+.015,.045,.5,.02,pa);box(b,0,1.16,-D2-.03,.1,.08,.01,dk(pa,.8))}
+  else if(t==='puffer'){yoke(b,M,.03,j);for(let i=0;i<4;i++){const y=.78+i*.155;layer(b,M,i%2?.03:.045,y,y+.155,i%2?dk(j,.9):j,'full')}hexa(b,[-.12,.12,-.06,D2+.05],[-.12,.12,-.04,D2+.05],1.42,1.52,dk(j,.85))}
+  else if(t==='suit'){layer(b,M,.015,.76,1.40,j,'full');yoke(b,M,.015,j)}
+  else if(t==='robe'){hexa(b,[-M.Wb/2-.1,M.Wb/2+.1,-D2-.08,D2+.08],[-M.Wb/2-.02,M.Wb/2+.02,-D2-.02,D2+.02],.18,.8,j);layer(b,M,.02,.78,1.40,j,'full');yoke(b,M,.02,j);hexa(b,[-.12,.12,-.05,D2+.06],[-.13,.13,-.03,D2+.07],1.42,1.54,dk(j,.86))}
+  else if(t==='fur'){layer(b,M,.035,.76,1.40,j,'full');yoke(b,M,.04,dk(j,1.1));for(let i=0;i<14;i++){const a=i/14*Math.PI*2;cyl(b,Math.cos(a)*(W2+.03),.74,Math.sin(a)*(D2+.03),.0,.035,.1,4,dk(j,.85),{rot:[Math.PI,0,0]})}}
+  else if(t==='ghillie'){layer(b,M,.025,.72,1.40,j,'full');yoke(b,M,.03,j)}
+  // cintura
+  if(HAS(s,'belt')){layer(b,M,.025,.79,.84,'#2a2620','full');box(b,0,.815,-D2-.04,.06,.045,.015,'#c8b070')}
+  if(HAS(s,'pouch')){box(b,-W2+.02,.8,-D2-.03,.08,.09,.07,dk(pa,.8));box(b,W2-.02,.8,-D2+.02,.07,.09,.08,dk(pa,.8))}
+  // extra del busto
+  for(const v of s.x){const[k2,c]=v.split(':');const D3=D2+.025;
+   if(k2==='plaid'){const cc=dk(s.t==='shirt'?sh:j,.55);for(const y of[.9,1.05,1.2,1.33])layer(b,M,s.t==='shirt'?.004:.024,y,y+.025,cc,'front');for(const x of[-.12,.12])box(b,x,1.1,-D3+.018,.025,.56,.008,cc)}
+   else if(k2==='stripes'){for(const y of[.86,.98,1.1,1.22,1.34])layer(b,M,.005,y,y+.045,c,'full')}
+   else if(k2==='refl'){const cc='#e8e8e0';layer(b,M,.04,.98,1.03,cc,'full',{g:.25});layer(b,M,.04,1.2,1.25,cc,'full',{g:.25})}
+   else if(k2==='camo'){seed=77+s.i;for(let i=0;i<9;i++)ell(b,(rnd()-.5)*M.W*.9,.85+rnd()*.5,(rnd()<.5?-1:1)*(D2+.03),.05+rnd()*.03,.04,.01,i%2?'#3a4228':'#7a6a40',{ws:5,hs:3})}
+   else if(k2==='chain'){tor(b,0,1.3,-D2-.035,.1,.012,c,{rot:[.25,0,0],s:[1,1.4,1],arc:Math.PI,rot2:0,rs:3,ts:8});ell(b,0,1.17,-D3-.012,.03,.035,.015,c,{ws:5,hs:3})}
+   else if(k2==='print'){box(b,0,1.15,-D2-.008,.16,.14,.01,c)}
+   else if(k2==='trim'||k2==='glow'){const gc=c||s.e;for(const x of[-W2*.55,W2*.55])box(b,x,1.08,-D3,.018,.58,.012,gc,{g:1.4});layer(b,M,.03,.95,.97,gc,'full',{g:1.2})}
+   else if(k2==='badge'){hexa(b,[-W2*.62,-W2*.4,-D3-.01,-D3],[-W2*.6,-W2*.42,-D3-.01,-D3],1.22,1.28,c,{g:.3})}
+   else if(k2==='cross'){box(b,W2*.5,1.24,-D3-.01,.08,.025,.01,c);box(b,W2*.5,1.24,-D3-.01,.025,.08,.01,c)}
+   else if(k2==='scarf2'){tor(b,0,1.43,0,M.W*.3,.045,c,{rot:[Math.PI/2,0,0],s:[1,M.D/M.W*1.5,1],rs:4,ts:8});box(b,.08,1.3,-D2-.05,.06,.18,.02,c)}
+   else if(k2==='cape'){hexa(b,[-W2-.05,W2+.05,D2+.3,D2+.32],[-W2*.7,W2*.7,D2+.03,D2+.05],.45,1.44,c);}
+   else if(k2==='emblem'){oct(b,0,1.2,-D3-.01,.07,c,{s:[1,1,.15],g:.8})}
+   else if(k2==='panel'){box(b,0,1.18,-D3-.008,.14,.12,.015,'#2a2e34');for(const x of[-.04,0,.04])box(b,x,1.18,-D3-.018,.025,.025,.01,c,{g:1.5})}
+   else if(k2==='flag'){box(b,-W2*.62,1.3,-D3+.01,.07,.045,.01,'#3fa0ff',{g:.3})}
+   else if(k2==='skirt'){for(let i=0;i<8;i++){const a=i/8*Math.PI*2;hexa(b,[Math.cos(a)*.24-.06,Math.cos(a)*.24+.06,Math.sin(a)*.17-.03,Math.sin(a)*.17+.03],[Math.cos(a)*.2-.05,Math.cos(a)*.2+.05,Math.sin(a)*.14-.03,Math.sin(a)*.14+.03],.55,.82,i%2?c:dk(c,.8))}}
+   else if(k2==='tabard'){hexa(b,[-.13,.13,-D2-.06,-D2-.05],[-.15,.15,-D2-.05,-D2-.04],.5,1.36,c)}
+   else if(k2==='sash'){for(let i=0;i<7;i++)box(b,-W2*.7+i*W2*.23,1.36-i*.085,-D3-.006,.08,.08,.012,c)}
+   else if(k2==='fur'){for(let i=0;i<9;i++){const a=i/8*Math.PI;ell(b,Math.cos(a)*(W2+.02),1.42,-Math.sin(a)*.05+.02,.06,.05,.12,'#e8e0d0',{ws:5,hs:3})}}
+   else if(k2==='tooth'){for(let i=0;i<5;i++)cyl(b,-.08+i*.04,1.3,-D3-.005,0,.015,.05,4,c,{rot:[Math.PI,0,0]})}
+   else if(k2==='paint'){box(b,-W2*.5,1.12,-D3,.03,.3,.008,c);box(b,W2*.5,1.12,-D3,.03,.3,.008,c)}
+   else if(k2==='dots'){seed=50;for(let i=0;i<8;i++)ell(b,(rnd()-.5)*M.W*.85,.88+rnd()*.48,-D3+.005,.03,.03,.01,c,{ws:5,hs:3})}
+   else if(k2==='bow'){oct(b,-.05,1.4,-D2-.05,.05,c,{s:[1,.7,.4]});oct(b,.05,1.4,-D2-.05,.05,c,{s:[1,.7,.4]})}
+   else if(k2==='leaves'){seed=31;for(let i=0;i<16;i++){const a=rnd()*Math.PI*2;oct(b,Math.cos(a)*(W2+.03),.4+rnd()*1.0,Math.sin(a)*(D2+.05),.05,i%2?c:dk(c,.7),{s:[1,.4,.8],rot:[rnd(),rnd(),0]})}}
+   else if(k2==='crystals'){for(const[x,y]of[[-W2-.02,1.38],[W2+.02,1.38]])oct(b,x,y+.08,0,.06,c,{s:[.7,1.6,.7],g:1.2})}
+   else if(k2==='cracks'||k2==='cracks2'){seed=91+s.i;const gc=s.e;for(let i=0;i<10;i++){const y=.82+rnd()*.55,x=(rnd()-.5)*M.W*.8;box(b,x,y,(rnd()<.5?-1:1)*(D2+.02),.012,.08+rnd()*.12,.012,gc,{g:1.6,rot:0})}}
+   else if(k2==='rocks'){seed=5;for(let i=0;i<10;i++){const a=rnd()*Math.PI*2;dode(b,Math.cos(a)*(W2+.02),.85+rnd()*.55,Math.sin(a)*(D2+.02),.06+rnd()*.04,'#3a2e28')}}
+   else if(k2==='shards'){seed=13;for(let i=0;i<8;i++){const a=rnd()*Math.PI*2;oct(b,Math.cos(a)*(W2+.03),.9+rnd()*.5,Math.sin(a)*(D2+.03),.07,'#d8f4ff',{s:[.5,1.5,.5],g:.5,rot:[rnd()*.6,0,rnd()*.6]})}}
+   else if(k2==='rivets'){for(const x of[-.15,-.05,.05,.15])for(const y of[.9,1.3])ico(b,x,y,-D3,.014,'#c8b8a0')}
+   else if(k2==='plates'){for(const y of[1.0,1.12,1.24])layer(b,M,.055,y,y+.06,dk(j,.85),'front')}
+   else if(k2==='bandage'){seed=3;for(let i=0;i<9;i++){const y=.8+i*.07;layer(b,M,.02+((i%2)*.008),y,y+.04,dk(j,.9+rnd()*.1),'full',{rot:0})}}
+   else if(k2==='stars'){seed=21;for(let i=0;i<12;i++)oct(b,(rnd()-.5)*M.W*.9,.85+rnd()*.5,(rnd()<.5?-1:1)*(D2+.025),.018,'#ffffff',{g:1.6})}
+   else if(k2==='bee'){for(const y of[.9,1.06,1.22])layer(b,M,.022,y,y+.07,'#1d1d1f','full')}
+   else if(k2==='code'){seed=8;for(let i=0;i<10;i++)box(b,(rnd()-.5)*M.W*.8,.9+rnd()*.45,-D3,.04+rnd()*.05,.01,.01,s.e,{g:1.4})}
+   else if(k2==='tufts'){seed=17;for(let i=0;i<22;i++){const a=rnd()*Math.PI*2;cyl(b,Math.cos(a)*(W2+.03),.75+rnd()*.7,Math.sin(a)*(D2+.03),0,.04,.14,3,i%3?c:'#4a5a30',{rot:[(rnd()-.5)*.8,0,(rnd()-.5)*.8]})}}
+   else if(k2==='belly'){hexa(b,[-.13,.13,-D3-.01,-D3+.01],[-.15,.15,-D3-.01,-D3+.01],.8,1.3,c)}
+   else if(k2==='spikes'){for(let i=0;i<5;i++)cyl(b,0,1.44-i*.13,D2+.06,0,.06,.12,4,c,{rot:[-Math.PI/2+.2,0,0]})}
+   else if(k2==='tail'){cyl(b,0,.72,D2+.18,.02,.03,.4,5,c||'#c8282a',{rot:[1.0,0,0]});cyl(b,0,.6,D2+.4,0,.06,.12,3,'#c8282a',{rot:[2.2,0,0]})}
+   else if(k2==='tail2'){cyl(b,0,.6,D2+.3,.03,.13,.6,6,s.j,{rot:[1.2,0,0]})}
+   else if(k2==='straws'){for(let i=0;i<8;i++)cyl(b,-W2+i*M.W/7,.78,-D2-.02,0,.02,.12,3,'#d8b860',{rot:[Math.PI,0,0]})}
+   else if(k2==='grease'){box(b,.06,1.0,-D3-.004,.08,.05,.008,'#2a2a2a');box(b,-.1,1.25,-D3-.004,.05,.03,.008,'#2a2a2a')}
+   else if(k2==='binoc'){cyl(b,-.035,1.15,-D3-.04,.025,.025,.08,6,c,{rot:[Math.PI/2,0,0]});cyl(b,.035,1.15,-D3-.04,.025,.025,.08,6,c,{rot:[Math.PI/2,0,0]})}
+   else if(k2==='wingsS'){}
+  }
+  return fin(b)}
+ // ---------------------------------------------------------------- braccia (coordinate del braccio: centro a 0, spalla a +0.29)
+ function sleeveOf(s){const t=s.t;if(t==='tank'||t==='fur')return'none';if(t==='tee'||t==='crop')return'short';if(t==='vest')return HAS(s,'roll')?'roll':'long';if(t==='jacket'||t==='shirt'||t==='coatS')return HAS(s,'roll')?'roll':'long';return'long'}
+ function armGeo(s,side){const b=B(),M=BD[s.b];seed=2000+s.i*7+(side>0?1:0);const w=M.aw,d=w+.01,k=s.k,sl=sleeveOf(s);
+  const sc=(s.t==='tee'||s.t==='crop'||s.t==='shirt'||s.t==='tank'||s.t==='vest')?s.s:s.j;
+  const seg=(y0,y1,w0,w1,col,pad=0,o)=>hexa(b,[-w0/2-pad,w0/2+pad,-d/2-pad,d/2+pad],[-w1/2-pad,w1/2+pad,-d/2-pad,d/2+pad],y0,y1,col,o);
+  ell(b,0,.25,0,w*.62,.08,d*.6,sl==='none'?k:sc,{ws:6,hs:4});// spalla
+  if(sl==='none'){seg(-.26,.27,w*.85,w,k)}
+  else if(sl==='short'){seg(.08,.29,w,w*1.06,sc,.012);seg(-.26,.08,w*.85,w*.95,k)}
+  else if(sl==='roll'){seg(-.02,.29,w*.95,w*1.05,sc,.01);seg(-.07,-.01,w,w,dk(sc,.85),.022);seg(-.26,-.05,w*.82,w*.9,k)}
+  else{seg(-.24,.29,w*.9,w*1.05,sc,.01);seg(-.27,-.22,w*.95,w*.95,dk(sc,.85),.016)}
+  // mano
+  const gc=s.g||k;box(b,0,-.31,-.005,w*.78,.1,d*.8,gc);
+  if(HAS(s,'fgl'))box(b,0,-.375,-.01,w*.72,.035,d*.75,k);else box(b,0,-.37,-.01,w*.72,.035,d*.75,gc);
+  if(s.t==='armor'){ell(b,side*.015,.27,0,w*.9,.09,d*.85,dk(s.j,.92),{ws:6,hs:3,tl:1.7});seg(-.2,-.05,w,w,dk(s.j,.85),.02)}
+  if(s.t==='puffer'){seg(.0,.12,w,w,dk(s.j,.9),.025)}
+  for(const v of s.x){const[k2,c]=v.split(':');
+   if(k2==='stripe'){box(b,side*(w/2+.014),0,0,.012,.52,.03,c)}
+   else if(k2==='glow'||k2==='trim'){box(b,side*(w/2+.016),.0,0,.012,.48,.02,c||s.e,{g:1.4})}
+   else if(k2==='refl'){seg(.0,.04,w,w,'#e8e8e0',.018,{g:.25})}
+   else if(k2==='bandage'){for(let i=0;i<6;i++)seg(-.26+i*.09,-.22+i*.09,w,w,dk(s.j,.92),.012)}
+   else if(k2==='leaves'){oct(b,side*(w/2+.02),.15,0,.05,c,{s:[1,.4,.8]})}
+   else if(k2==='fur'&&s.t!=='coat'){}
+   else if(k2==='cracks'||k2==='cracks2'){box(b,side*(w/2+.012),-.05,0,.01,.2,.01,s.e,{g:1.6})}
+   else if(k2==='rocks'){dode(b,side*(w/2+.01),.18,0,.06,'#3a2e28')}
+   else if(k2==='shards'){oct(b,side*(w/2+.02),.2,0,.05,'#d8f4ff',{s:[.5,1.4,.5],g:.5})}
+   else if(k2==='stars'){oct(b,side*(w/2+.01),.0,-.02,.015,'#ffffff',{g:1.6})}
+   else if(k2==='tufts'){for(let i=0;i<3;i++)cyl(b,side*(w/2+.02),.2-i*.15,0,0,.035,.12,3,c,{rot:[0,0,side*.6]})}
+   else if(k2==='dots'){ell(b,side*(w/2+.005),.15,0,.012,.025,.025,c,{ws:4,hs:3})}
+  }
+  return fin(b)}
+ // ---------------------------------------------------------------- gambe (coscia, stinco, scarpa)
+ function thighGeo(s,side){const b=B();seed=3000+s.i*5+(side>0?1:0);const pa=s.p,sh=HAS(s,'shorts');const W=s.b==='g'?1.15:1;
+  if(sh){hexa(b,[-.085*W,.085*W,-.095,.095],[-.095*W,.095*W,-.1,.1],0,.185,pa);hexa(b,[-.07,.07,-.08,.08],[-.08,.08,-.09,.09],-.185,0,s.k)}
+  else hexa(b,[-.088*W,.088*W,-.095,.095],[-.106*W,.106*W,-.112,.112],-.185,.185,pa);
+  if(!sh&&HAS(s,'cargo')){box(b,side*.108*W,-.03,0,.036,.13,.12,dk(pa,.82),{ch:.15});box(b,side*.11*W,.03,0,.04,.028,.125,dk(pa,.7),{ch:.15})}
+  if(HAS(s,'skirt')||HAS(s,'tabard')){}
+  for(const v of s.x){const[k2,c]=v.split(':');if(k2==='glow')box(b,side*.09,0,0,.012,.34,.02,c||s.e,{g:1.4});if(k2==='stripe')box(b,side*.098,0,0,.012,.35,.03,c);if(k2==='camo'){ell(b,side*.06,.05,-.09,.04,.05,.01,'#3a4228',{ws:5,hs:3})}if(k2==='plaid'&&false){}
+   if(k2==='cracks'||k2==='cracks2')box(b,side*.05,0,-.095,.01,.18,.01,s.e,{g:1.6});if(k2==='bandage')for(let i=0;i<4;i++)hexa(b,[-.1,.1,-.105,.105],[-.1,.1,-.105,.105],-.17+i*.09,-.14+i*.09,dk(s.j,.92));
+   if(k2==='refl')hexa(b,[-.1,.1,-.105,.105],[-.1,.1,-.105,.105],-.05,-.01,'#e8e8e0',{g:.25})}
+  return fin(b)}
+ function shinGeo(s,side){const b=B();seed=4000+s.i*5+(side>0?1:0);const sh=HAS(s,'shorts');const col=sh?s.k:s.p;
+  hexa(b,[-.076,.076,-.082,.082],[-.088,.088,-.097,.097],-.17,.17,col);
+  const kp=XC(s,'kp');if(kp){hexa(b,[-.07,.07,-.125,-.08],[-.065,.065,-.12,-.08],.05,.17,kp);ell(b,0,.12,-.118,.05,.04,.02,dk(kp,.8),{ws:5,hs:3})}
+  for(const v of s.x){const[k2,c]=v.split(':');if(k2==='glow')box(b,side*.08,0,0,.012,.3,.02,c||s.e,{g:1.4});if(k2==='stripe')box(b,side*.08,0,0,.012,.32,.03,c);if(k2==='bandage')for(let i=0;i<3;i++)hexa(b,[-.085,.085,-.09,.09],[-.085,.085,-.09,.09],-.15+i*.11,-.12+i*.11,dk(s.j,.92));if(k2==='refl')hexa(b,[-.085,.085,-.09,.09],[-.085,.085,-.09,.09],-.06,-.02,'#e8e8e0',{g:.25});if(k2==='cracks'||k2==='cracks2')box(b,-side*.04,0,-.08,.01,.18,.01,s.e,{g:1.6})}
+  return fin(b)}
+ function bootGeo(s){const b=B();seed=5000+s.i;const o=s.o,snk=HAS(s,'snk');
+  if(HAS(s,'shoeB')){ell(b,0,-.03,-.06,.11,.07,.22,o,{ws:7,hs:4});return fin(b)}
+  if(snk){hexa(b,[-.085,.085,-.17,.15],[-.08,.08,-.15,.14],-.095,-.065,'#f2f2f0');hexa(b,[-.08,.08,-.15,.14],[-.07,.07,-.08,.12],-.065,.02,o);box(b,0,-.02,-.11,.07,.025,.06,dk(o,.85))}
+  else{hexa(b,[-.1,.1,-.19,.15],[-.1,.1,-.19,.15],-.095,-.065,'#1e1a16');hexa(b,[-.095,.095,-.18,.14],[-.088,.088,-.13,.13],-.065,.01,o);hexa(b,[-.09,.09,-.07,.12],[-.088,.088,-.06,.11],.01,.1,o);box(b,0,.012,-.11,.07,.02,.07,dk(o,.75))}
+  return fin(b)}
+ // ---------------------------------------------------------------- testa (coordinate del corpo)
+ const HYc=1.63,HZ=-.015;
+ function headGeo(s){const b=B();seed=6000+s.i*3;const k=s.k,w=s.w,f=s.f,h=s.h,y=HYc,z=HZ;let human=true;
+  if(w&&(w[0]==='robot')){human=false;hexa(b,[-.12,.12,z-.12,z+.12],[-.11,.11,z-.11,z+.11],y-.15,y+.13,w[1]);box(b,0,y,z-.125,.18,.05,.02,'#1d1d1d');box(b,0,y,z-.135,.07,.035,.01,w[2],{g:1.8});cyl(b,0,y+.17,z,.01,.01,.08,4,'#5a5a5a');ico(b,0,y+.22,z,.02,w[2],{g:1.5});box(b,-.13,y,z,.03,.08,.08,'#5a5040');box(b,.13,y,z,.03,.08,.08,'#5a5040')}
+  else if(w&&w[0]==='pumpkin'){human=false;for(let i=0;i<8;i++){const a=i/8*Math.PI*2;ell(b,Math.cos(a)*.07,y+.01,z+Math.sin(a)*.07,.1,.15,.1,i%2?w[1]:dk(w[1],.88),{ws:6,hs:5})}cyl(b,0,y+.17,z,.015,.025,.07,5,'#4a6a2a');
+   for(const x of[-.06,.06])cyl(b,x,y+.03,z-.17,0,.03,.01,3,w[2],{rot:[-Math.PI/2,0,0],g:1.8});hexa(b,[-.08,.08,z-.18,z-.17],[-.06,.06,z-.18,z-.17],y-.08,y-.04,w[2],{g:1.8})}
+  else if(w&&w[0]==='dino'){human=false;ell(b,0,y+.04,z+.01,.17,.17,.18,w[1],{ws:7,hs:5});hexa(b,[-.12,.12,z-.32,z-.1],[-.1,.1,z-.28,z-.1],y-.08,y+.04,w[1]);for(let i=0;i<5;i++)cyl(b,-.08+i*.04,y-.06,z-.3+.01,0,.015,.03,3,'#f8f8f0',{rot:[Math.PI,0,0]});
+   ell(b,-.08,y+.12,z-.12,.035,.035,.02,'#ffffff');ell(b,.08,y+.12,z-.12,.035,.035,.02,'#ffffff');ico(b,-.08,y+.12,z-.135,.015,'#111');ico(b,.08,y+.12,z-.135,.015,'#111');ell(b,0,y-.02,z+.02,.095,.11,.1,k)}
+  if(human){
+   if(s.f&&s.f[0]==='alien'){ell(b,0,y+.02,z,.13,.17,.14,k,{ws:7,hs:6});hexa(b,[-.05,.05,z-.13,z-.06],[-.07,.07,z-.14,z-.06],y-.16,y-.08,k)}
+   else{ell(b,0,y,z,.125,.15,.135,k,{ws:7,hs:6});hexa(b,[-.055,.055,z-.12,z-.03],[-.085,.085,z-.135,z-.02],y-.155,y-.08,k);// mento
+    hexa(b,[-.018,.018,z-.15,z-.13],[-.012,.012,z-.135,z-.13],y-.04,y+.015,dk(k,.92));// naso
+    box(b,-.125,y-.005,z+.005,.025,.05,.04,dk(k,.95));box(b,.125,y-.005,z+.005,.025,.05,.04,dk(k,.95))}
+   // capelli
+   if(h){const[st,hc]=h;const top=(t0,tl,sc=1.06,dy=.02,dz=.008)=>ell(b,0,y+dy,z+dz,.125*sc,.15*sc,.135*sc,hc,{ws:7,hs:6,t0,tl});
+    if(st==='short'||st==='pony'||st==='bun'||st==='long'||st==='side'){top(0,1.28);ell(b,0,y-.01,z+.035,.13,.125,.12,hc,{ws:7,hs:5,...OPEN(1.3),t0:.3,tl:1.45})}
+    if(st==='buzz')top(0,1.25,1.025,.015);
+    if(st==='side')hexa(b,[-.1,.04,z-.15,z-.11],[-.12,.08,z-.15,z-.1],y+.05,y+.11,hc);
+    if(st==='pony'){cyl(b,0,y-.03,z+.17,.035,.015,.22,5,hc,{rot:[-.5,0,0]});tor(b,0,y+.06,z+.13,.03,.01,'#2a2a2a',{rot:[.2,0,0],rs:3,ts:6})}
+    if(st==='bun')ico(b,0,y+.11,z+.1,.06,hc,{d:0});
+    if(st==='long'){hexa(b,[-.13,.13,z+.0,z+.12],[-.14,.14,z+.02,z+.15],y-.24,y+.02,hc)}
+    if(st==='mohawk'){hexa(b,[-.02,.02,z-.1,z+.14],[-.015,.015,z-.06,z+.1],y+.12,y+.22,hc)}
+    if(st==='afro'){ell(b,0,y+.06,z+.02,.19,.17,.19,hc,{ws:8,hs:6,t0:0,tl:1.9})}}
+   // volto
+   if(f){const[ft,fc]=f;const fz=z-.142;
+    if(ft==='glasses'){for(const x of[-.05,.05])box(b,x,y+.02,fz-.004,.08,.045,.02,fc,{ch:.3});box(b,0,y+.03,fz-.004,.03,.012,.012,fc);for(const x of[-.124,.124])box(b,x,y+.025,z-.07,.01,.012,.13,fc)}
+    if(ft==='eyesG'){for(const x of[-.045,.045])box(b,x,y+.025,fz-.004,.045,.022,.012,fc,{g:2})}
+    if(ft==='goggles'||ft==='goggles2'){const gy=ft==='goggles2'?y+.1:y+.025;tor(b,0,gy,z,.14,.012,'#2a2a2a',{rot:[Math.PI/2,0,0],s:[1,1.05,1],rs:3,ts:10});for(const x of[-.05,.05])cyl(b,x,gy,fz-.01,.04,.04,.03,6,fc,{rot:[Math.PI/2,0,0]});for(const x of[-.05,.05])cyl(b,x,gy,fz-.027,.03,.03,.01,6,'#9ad0e0',{rot:[Math.PI/2,0,0],g:.3})}
+    if(ft==='gas'){hexa(b,[-.075,.075,fz-.02,fz+.04],[-.09,.09,fz-.01,fz+.05],y-.11,y-.0,fc);cyl(b,0,y-.075,fz-.06,.035,.04,.05,6,dk(fc,.7),{rot:[Math.PI/2,0,0]});for(const x of[-.045,.045])cyl(b,x,y+.025,fz-.012,.03,.03,.02,6,'#1a1a1a',{rot:[Math.PI/2,0,0]})}
+    if(ft==='mask'){hexa(b,[-.09,.09,fz,fz+.05],[-.1,.1,fz+.01,fz+.06],y-.12,y-.02,fc)}
+    if(ft==='bandana'){hexa(b,[-.03,.03,fz-.01,fz+.03],[-.12,.12,fz,fz+.07],y-.16,y-.02,fc)}
+    if(ft==='beard'){hexa(b,[-.06,.06,fz-.0,fz+.06],[-.12,.12,fz+.03,fz+.1],y-.19,y-.06,fc);box(b,0,y-.055,fz-.006,.09,.02,.02,fc)}
+    if(ft==='mous'){box(b,0,y-.05,fz-.006,.08,.018,.02,fc)}
+    if(ft==='visor'){hexa(b,[-.12,.12,fz+.02,fz+.06],[-.12,.12,fz-.005,fz+.06],y-.0,y+.06,fc,{g:1.6})}
+    if(ft==='patch2'){box(b,-.045,y+.025,fz-.008,.05,.045,.012,fc);tor(b,0,y+.04,z,.135,.006,fc,{rot:[Math.PI/2,0,-.25],rs:3,ts:10})}
+    if(ft==='sack'){ell(b,0,y,z,.135,.16,.145,fc,{ws:7,hs:6});for(const x of[-.045,.045])box(b,x,y+.03,z-.143,.03,.03,.01,'#2a1a10');box(b,0,y-.06,z-.14,.09,.012,.01,'#2a1a10');tor(b,0,y-.11,z,.12,.012,'#7a5a3a',{rot:[Math.PI/2,0,0],rs:3,ts:9})}
+    if(ft==='bone'){hexa(b,[-.08,.08,fz-.02,fz+.02],[-.11,.11,fz-.02,fz+.03],y-.08,y+.08,fc);for(const x of[-.045,.045])box(b,x,y+.025,fz-.022,.04,.035,.01,'#1a1410')}
+    if(ft==='oni'){hexa(b,[-.08,.08,fz-.02,fz+.03],[-.1,.1,fz-.02,fz+.04],y-.13,y-.02,fc);for(let i=0;i<4;i++)box(b,-.045+i*.03,y-.09,fz-.024,.015,.025,.01,'#f0f0e8')}
+    if(ft==='ghost'){for(const x of[-.045,.045])ell(b,x,y+.02,fz,.028,.04,.012,fc);ell(b,0,y-.06,fz,.025,.035,.012,fc)}
+    if(ft==='clown'){ico(b,0,y-.01,fz-.03,.035,fc);hexa(b,[-.05,.05,fz-.005,fz+.01],[-.06,.06,fz-.005,fz+.01],y-.09,y-.07,'#e02020')}
+    if(ft==='hero'){hexa(b,[-.12,.12,fz-.005,fz+.04],[-.12,.12,fz-.005,fz+.04],y+.0,y+.06,fc);for(const x of[-.045,.045])box(b,x,y+.03,fz-.012,.035,.02,.01,'#f0f0f0')}
+    if(ft==='star'){oct(b,-.045,y+.03,fz,.02,'#ffffff',{g:1.8});oct(b,.045,y+.03,fz,.02,'#ffffff',{g:1.8})}
+    if(ft==='alien'){for(const x of[-.05,.05])ell(b,x,y+.03,z-.125,.045,.03,.02,fc,{rot:[0,0,x>0?-.4:.4]})}}
+  }
+  // copricapo
+  if(w){const[wt,c1,c2]=w;
+   const dome=(r,tl,dy,o={})=>ell(b,0,y+dy,z+(o.dz||.005),r*.95,r,r,c1,{ws:o.ws||8,hs:5,t0:0,tl,...(o.open?OPEN(o.open):{})});
+   if(wt==='cap'||wt==='capB'){dome(.142,1.3,.035);const bz=wt==='cap'?-.16:.15;hexa(b,[-.1,.1,z+bz-.06,z+bz+.06],[-.1,.1,z+bz-.06,z+bz+.06],y+.04,y+.055,dk(c1,.85),{rot:0});box(b,0,y+.17,z,.03,.015,.03,dk(c1,.8))}
+   else if(wt==='beanie'){dome(.15,1.25,.05,{ws:8});tor(b,0,y+.06,z+.005,.135,.025,dk(c1,.85),{rot:[Math.PI/2,0,0],s:[.95,1.02,1],rs:4,ts:9})}
+   else if(wt==='bucket'){dome(.14,1.35,.04);cyl(b,0,y+.06,z,.15,.22,.05,9,dk(c1,.9))}
+   else if(wt==='straw'||wt==='cowboy'){cyl(b,0,y+.15,z,.11,.13,.13,7,c1);cyl(b,0,y+.085,z,.31,.29,.02,10,wt==='cowboy'?dk(c1,.92):c1);if(wt==='cowboy'){cyl(b,-.2,y+.1,z,.08,.08,.02,6,dk(c1,.92),{rot:[0,0,.5]});cyl(b,.2,y+.1,z,.08,.08,.02,6,dk(c1,.92),{rot:[0,0,-.5]})}tor(b,0,y+.1,z,.125,.01,wt==='straw'?'#7a3a22':'#2a1a10',{rot:[Math.PI/2,0,0],rs:3,ts:8})}
+   else if(wt==='hood'||wt==='hoodN'){ell(b,0,y+.02,z+.03,.175,.19,.18,c1,{ws:8,hs:6,...OPEN(.75),t0:0,tl:2.2})}
+   else if(wt==='helmet'||wt==='helmetV'){dome(.172,1.55,.02,{open:.55});tor(b,0,y+.015,z,.165,.012,dk(c1,.8),{rot:[Math.PI/2,0,0],rs:3,ts:10});if(wt==='helmetV')hexa(b,[-.13,.13,z-.16,z-.12],[-.12,.12,z-.165,z-.12],y-.02,y+.07,c2,{g:1.5})}
+   else if(wt==='hard'||wt==='lamp'){dome(.16,1.35,.04);cyl(b,0,y+.055,z,.2,.2,.015,10,c1);hexa(b,[-.012,.012,z-.13,z+.13],[-.012,.012,z-.1,z+.1],y+.15,y+.2,dk(c1,.85));if(wt==='lamp'){cyl(b,0,y+.12,z-.16,.04,.04,.05,6,'#3a3a3a',{rot:[Math.PI/2,0,0]});cyl(b,0,y+.12,z-.19,.032,.032,.01,6,c2,{rot:[Math.PI/2,0,0],g:2})}}
+   else if(wt==='bike'){dome(.155,1.3,.05);for(const x of[-.05,0,.05])box(b,x,y+.18,z+.02,.02,.02,.2,'#1d1d1d')}
+   else if(wt==='scarf'||wt==='bandH'||wt==='wrap'||wt==='wrapF'){dome(.145,wt==='wrap'?1.7:1.35,.025,{open:wt==='wrap'?.7:0});ico(b,0,y+.0,z+.16,.04,dk(c1,.85));if(wt==='wrap')hexa(b,[-.1,.1,z-.15,z-.12],[-.12,.12,z-.16,z-.12],y-.14,y-.03,c1);
+    if(wt==='wrapF'){for(let i=0;i<6;i++)tor(b,0,y-.12+i*.05,z,.14,.012,dk(c1,.85+i%2*.1),{rot:[Math.PI/2,0,(i-3)*.12],rs:3,ts:10});for(const x of[-.04,.04])box(b,x,y+.02,z-.145,.03,.012,.01,s.e,{g:2})}}
+   else if(wt==='aviator'){dome(.15,1.6,.02,{open:.7});for(const x of[-.13,.13])box(b,x,y-.07,z,.03,.1,.08,c1);tor(b,0,y+.1,z,.14,.012,'#2a2a2a',{rot:[Math.PI/2+.25,0,0],rs:3,ts:10})}
+   else if(wt==='astro'){ell(b,0,y+.02,z,.215,.225,.215,c1,{ws:9,hs:6,...OPEN(.95)});ell(b,0,y+.02,z-.04,.19,.17,.19,c2,{ws:9,hs:5,p0:Math.PI*1.5-.95,pl:1.9,t0:.6,tl:1.6,g:.45});tor(b,0,y-.17,z,.18,.03,dk(c1,.85),{rot:[Math.PI/2,0,0],rs:4,ts:10})}
+   else if(wt==='crest'){dome(.17,1.6,.02,{open:.45});for(const x of[-.15,.15])box(b,x,y-.07,z-.04,.03,.12,.09,c1);hexa(b,[-.02,.02,z-.16,z+.18],[-.015,.015,z-.1,z+.24],y+.16,y+.32,c2)}
+   else if(wt==='kabuto'){dome(.17,1.55,.03,{open:.5});cyl(b,0,y-.02,z+.02,.17,.22,.07,8,c1);for(const sx of[-1,1])hexa(b,[sx*.02,sx*.03,z-.18,z-.17],[sx*.14,sx*.16,z-.21,z-.2],y+.12,y+.26,c2)}
+   else if(wt==='tricorn'){cyl(b,0,y+.13,z,.11,.13,.1,7,c1);prim(b,new THREE.CylinderGeometry(.27,.27,.05,3,1),[0,y+.1,z+.02],[0,Math.PI,0],[1,1,1],c1);tor(b,0,y+.125,z+.02,.27,.01,c2,{rot:[Math.PI/2,0,Math.PI/6],ts:3,rs:3})}
+   else if(wt==='crown'){cyl(b,0,y+.17,z,.115,.11,.07,8,c1);for(let i=0;i<6;i++){const a=i/6*Math.PI*2;cyl(b,Math.cos(a)*.11,y+.24,z+Math.sin(a)*.11,0,.025,.07,4,c1);oct(b,Math.cos(a)*.115,y+.17,z+Math.sin(a)*.115,.018,c2,{g:1.2})}}
+   else if(wt==='horns'||wt==='horns2'){for(const sx of[-1,1]){cyl(b,sx*.13,y+.12,z,.0,.045,.18,5,c1,{rot:[0,0,-sx*.8]});if(wt==='horns')cyl(b,sx*.22,y+.2,z,0,.02,.1,4,c2,{rot:[0,0,-sx*.3]})}}
+   else if(wt==='antlers'||wt==='antlers2'){const gl=wt==='antlers2'?1.4:0;for(const sx of[-1,1]){cyl(b,sx*.09,y+.22,z,.015,.02,.18,4,c1,{rot:[0,0,-sx*.5]});cyl(b,sx*.16,y+.33,z-.02,.01,.015,.14,4,c1,{rot:[.3,0,-sx*.2]});cyl(b,sx*.2,y+.28,z+.03,.008,.012,.1,4,c1,{rot:[-.4,0,-sx*1]});ico(b,sx*.17,y+.4,z-.04,.02,c2,{g:gl||.6});if(wt==='antlers')oct(b,sx*.1,y+.17,z-.01,.03,c2,{s:[1,.3,.8]})}}
+   else if(wt==='antennae'){for(const sx of[-1,1]){cyl(b,sx*.06,y+.22,z,.008,.008,.17,4,c1,{rot:[0,0,-sx*.35]});ico(b,sx*.095,y+.31,z,.03,c2,{g:1.4})}}
+   else if(wt==='halo'){tor(b,0,y+.27,z,.13,.015,c1,{rot:[Math.PI/2,0,0],rs:4,ts:14,g:1.8})}
+   else if(wt==='ice'){for(let i=0;i<7;i++){const a=i/7*Math.PI*2;oct(b,Math.cos(a)*.09,y+.15+(i%2)*.05,z+Math.sin(a)*.09,.05,i%2?c1:c2,{s:[.4,1.6,.4],g:.7,rot:[Math.sin(a)*.4,0,-Math.cos(a)*.4]})}}
+   else if(wt==='knight'){dome(.17,2.0,.0,{});box(b,0,y+.0,z-.17,.2,.02,.02,'#1d1d1d');cyl(b,0,y+.25,z+.02,.0,.03,.14,4,c2);for(let i=0;i<4;i++)box(b,-.06+i*.04,y-.06,z-.168,.012,.06,.01,'#1d1d1d')}
+   else if(wt==='dino'){}
+  }
+  if(HAS(s,'phones')){const c=XC(s,'phones');tor(b,0,y+.04,z+.01,.15,.014,'#1d1d1d',{rot:[0,Math.PI/2,0],arc:Math.PI,rs:3,ts:8});for(const x of[-.145,.145])cyl(b,x,y,z,.05,.05,.04,7,c,{rot:[0,0,Math.PI/2]})}
+  if(HAS(s,'patch')){box(b,-.045,y+.03,z-.146,.045,.04,.01,'#1a1a1a')}
+  if(HAS(s,'beard2')){hexa(b,[-.07,.07,z-.14,z-.08],[-.11,.11,z-.13,z-.05],y-.18,y-.07,s.h?s.h[1]:HB)}
+  if(HAS(s,'paint')){box(b,-.05,y+.03,z-.143,.012,.06,.01,XC(s,'paint'));box(b,.05,y+.03,z-.143,.012,.06,.01,XC(s,'paint'))}
+  return fin(b)}
+ // ---------------------------------------------------------------- zaini (coordinate dello zaino: centro come il vecchio, davanti = schiena a z -0.06)
+ function straps(b,c,M){const zf=-(M.D/2+.03)-.2;// davanti al petto (z dello zaino: il petto è a z ~ -0.35)
+  for(const sx of[-1,1]){const x=sx*.11;hexa(b,[x-.03,x+.03,zf-.005,-.05],[x-.03,x+.03,zf-.005,-.05],.31,.35,c);hexa(b,[x-.025,x+.025,zf-.012,zf+.005],[x-.028,x+.028,zf-.012,zf+.005],-.16,.33,c);box(b,x,-.05,zf-.012,.04,.03,.012,'#9a9a90')}
+  box(b,0,.1,zf-.015,.22,.025,.012,c)}
+ function packGeo(p,body){const b=B(),M=BD[body||'m'];seed=7000+p.i*11;const[c1,c2,c3]=p.c,e=p.e||c3,t=p.t;let sc=c2;
+  const Z=.0;// centro zaino
+  switch(t){
+   case'base':{hexa(b,[-.16,.16,-.06,.12],[-.15,.15,-.06,.11],-.2,.2,c1);hexa(b,[-.155,.155,-.06,.13],[-.15,.15,-.05,.12],.18,.25,dk(c1,.88));hexa(b,[-.15,.15,.1,.135],[-.14,.14,.09,.125],.02,.24,dk(c1,.92));
+    hexa(b,[-.12,.12,.12,.18],[-.11,.11,.12,.17],-.17,.02,c1);for(const x of[-.07,.07]){box(b,x,.08,.14,.025,.2,.01,c2);box(b,x,-.01,.142,.035,.025,.012,c3)}for(const x of[-.18,.18])hexa(b,[x-.03,x+.03,-.02,.08],[x-.025,x+.025,-.01,.07],-.18,.0,dk(c1,.9));break}
+   case'hike':{hexa(b,[-.15,.15,-.06,.12],[-.14,.14,-.06,.11],-.22,.26,c1);cyl(b,0,.3,.02,.07,.07,.32,7,c3,{rot:[0,0,Math.PI/2]});for(const x of[-.18,.18])cyl(b,x,-.08,.02,.035,.035,.18,6,'#d0d8d8');box(b,0,0,.125,.2,.24,.03,dk(c1,.85));break}
+   case'round':{ell(b,0,0,.03,.16,.22,.1,c1,{ws:8,hs:6});ell(b,0,-.07,.11,.11,.1,.05,c3,{ws:7,hs:4});tor(b,0,.03,.03,.14,.01,c2,{rot:[0,0,0],s:[1,1.45,1],arc:Math.PI,ts:8,rs:3});break}
+   case'leather':{hexa(b,[-.15,.15,-.06,.12],[-.14,.14,-.06,.11],-.2,.2,c1);hexa(b,[-.15,.15,-.06,.135],[-.15,.15,.0,.14],.12,.24,dk(c1,.85));for(const x of[-.07,.07]){box(b,x,.06,.14,.03,.24,.008,c2);box(b,x,-.02,.143,.04,.03,.01,c3)}for(const x of[-.18,.18])hexa(b,[x-.035,x+.035,-.03,.09],[x-.03,x+.03,-.02,.08],-.19,-.02,dk(c1,.9));break}
+   case'molle':{hexa(b,[-.16,.16,-.06,.13],[-.15,.15,-.06,.12],-.21,.22,c1);for(const y of[-.12,-.04,.04,.12])box(b,0,y,.135,.28,.022,.01,c2);hexa(b,[-.1,.1,.13,.19],[-.09,.09,.13,.18],-.18,-.02,c3);break}
+   case'big':{hexa(b,[-.19,.19,-.06,.16],[-.17,.17,-.06,.15],-.24,.28,c1);cyl(b,0,-.29,.05,.07,.07,.42,8,c3,{rot:[0,0,Math.PI/2]});hexa(b,[-.14,.14,.15,.2],[-.13,.13,.15,.19],-.12,.12,dk(c1,.88));box(b,0,.3,.04,.3,.04,.18,dk(c1,.85));break}
+   case'sport':{hexa(b,[-.14,.14,-.06,.1],[-.13,.13,-.06,.09],-.2,.22,c1);for(const x of[-.08,.08])box(b,x,0,.105,.025,.38,.01,c2);box(b,0,.15,.1,.2,.03,.01,c3);break}
+   case'duffel':{cyl(b,0,0,.04,.12,.12,.48,8,c1);for(const y of[-.14,.14])tor(b,0,y,.04,.12,.012,c2,{rot:[Math.PI/2,0,0],rs:3,ts:8});cyl(b,0,.25,.04,.04,.12,.04,8,c3);break}
+   case'sack':{ell(b,0,-.03,.04,.16,.22,.13,c1,{ws:7,hs:6});cyl(b,0,.21,.04,.04,.08,.08,6,c1);tor(b,0,.18,.04,.05,.012,c2,{rot:[Math.PI/2,0,0],rs:3,ts:7});sc=c2;break}
+   case'frame':{hexa(b,[-.14,.14,.0,.14],[-.13,.13,.0,.13],-.16,.26,c1);for(const x of[-.17,.17])box(b,x,.0,.0,.02,.6,.02,c2);box(b,0,-.3,.0,.36,.02,.03,c2);box(b,0,.3,.0,.36,.02,.03,c2);cyl(b,0,.31,.07,.06,.06,.3,7,c3,{rot:[0,0,Math.PI/2]});break}
+   case'mini':{hexa(b,[-.11,.11,-.06,.06],[-.1,.1,-.06,.05],-.12,.14,c1);hexa(b,[-.08,.08,.05,.09],[-.07,.07,.05,.08],-.1,.03,c3);break}
+   case'camo':{hexa(b,[-.16,.16,-.06,.12],[-.15,.15,-.06,.11],-.2,.22,c1);seed=9;for(let i=0;i<8;i++)ell(b,(rnd()-.5)*.26,(rnd()-.5)*.36,.12,.04+rnd()*.03,.035,.01,i%2?c2:c3,{ws:5,hs:3});break}
+   case'fish':{hexa(b,[-.15,.15,-.06,.11],[-.14,.14,-.06,.1],-.2,.2,c1);cyl(b,.13,.35,.08,.006,.012,.95,4,c3,{rot:[0,0,-.18]});tor(b,.12,.0,.11,.03,.01,'#9aa0a6',{rot:[0,Math.PI/2,0],rs:3,ts:6});break}
+   case'med':{hexa(b,[-.15,.15,-.06,.12],[-.14,.14,-.06,.11],-.2,.2,c1);box(b,0,.02,.125,.1,.03,.01,c2);box(b,0,.02,.125,.03,.1,.01,c2);box(b,0,.22,.03,.3,.03,.18,c3);break}
+   case'radio':{hexa(b,[-.15,.15,-.06,.12],[-.15,.15,-.06,.12],-.2,.2,c1);box(b,0,.05,.125,.22,.12,.02,c2);for(let i=0;i<3;i++)cyl(b,-.06+i*.06,.05,.14,.015,.015,.02,6,c3,{rot:[Math.PI/2,0,0]});cyl(b,.12,.45,.02,.006,.01,.5,4,'#2a2a2a');ico(b,.12,.7,.02,.015,'#ff4b3e',{g:1.5});break}
+   case'wood':{for(const x of[-.15,.15])box(b,x,0,.0,.025,.56,.025,c2);for(const y of[-.22,.0,.22])box(b,0,y,.0,.32,.02,.025,c2);for(let i=0;i<5;i++)cyl(b,0,-.18+i*.08,.08,.04,.04,.42,6,i%2?c1:c3,{rot:[0,0,Math.PI/2]});sc=c2;break}
+   case'fur':{ell(b,0,-.02,.05,.17,.23,.14,c1,{ws:7,hs:6});seed=4;for(let i=0;i<10;i++){const a=rnd()*Math.PI*2;cyl(b,Math.cos(a)*.15,(rnd()-.5)*.36,.05+Math.sin(a)*.12,0,.03,.08,3,dk(c1,.8),{rot:[rnd(),0,rnd()]})}cyl(b,.0,.12,.17,.015,.015,.3,4,c2,{rot:[0,0,1.2]});for(const x of[-.14,.14])ico(b,x+(x>0?.02:-.02),.12+(x>0?.18:-.18)*.2,.17,.03,c2);sc=c3;break}
+   case'basket':{cyl(b,0,-.02,.05,.17,.14,.42,9,c1,{open:true});for(let i=0;i<5;i++)tor(b,0,-.2+i*.09,.05,.155+i*.006,.012,c2,{rot:[Math.PI/2,0,0],rs:3,ts:9});for(let i=0;i<3;i++)ico(b,-.06+i*.06,.2,.05,.06,i===1?'#7ab04a':c3);sc=c2;break}
+   case'shell':{ell(b,0,0,.05,.22,.26,.12,c1,{ws:8,hs:6,t0:0,tl:Math.PI});for(let i=0;i<6;i++){const a=i/6*Math.PI*2;hexa(b,[Math.cos(a)*.11-.05,Math.cos(a)*.11+.05,.15,.16],[Math.cos(a)*.11-.04,Math.cos(a)*.11+.04,.15,.165],Math.sin(a)*.14-.04,Math.sin(a)*.14+.04,c2)}hexa(b,[-.06,.06,.15,.17],[-.05,.05,.15,.175],-.05,.05,c2);tor(b,0,0,.05,.22,.02,c3,{s:[1,1.18,1],rs:3,ts:14});break}
+   case'jet':{for(const x of[-.08,.08]){cyl(b,x,.02,.06,.07,.07,.4,8,c1);ell(b,x,.22,.06,.07,.06,.07,c1,{ws:8,hs:4,tl:Math.PI/2});cyl(b,x,-.22,.06,.05,.07,.06,8,c2);cyl(b,x,-.27,.06,.035,.05,.05,8,c3,{g:2});cyl(b,x,-.34,.06,.0,.04,.12,6,e,{rot:[Math.PI,0,0],g:2.2})}box(b,0,.05,.02,.1,.3,.08,c2);break}
+   case'chest':{hexa(b,[-.17,.17,-.06,.14],[-.17,.17,-.06,.14],-.2,.1,c1);cyl(b,0,.1,.04,.1,.1,.34,8,c1,{rot:[0,0,Math.PI/2],s:[1,1,1]});for(const x of[-.12,.12])box(b,x,-.02,.04,.035,.42,.21,c2);box(b,0,.03,.145,.06,.07,.02,c2);oct(b,0,.12,.15,.035,c3,{g:1.2});ico(b,-.06,.2,.06,.04,c2);ico(b,.05,.19,.02,.035,c2);break}
+   case'rocket':{cyl(b,0,.04,.05,.08,.1,.42,8,c1);cyl(b,0,.35,.05,0,.08,.2,8,c2);for(let i=0;i<3;i++){const a=i/3*Math.PI*2;hexa(b,[Math.cos(a)*.09-.01,Math.cos(a)*.09+.01,.05+Math.sin(a)*.09-.05,.05+Math.sin(a)*.09+.05],[Math.cos(a)*.15-.01,Math.cos(a)*.15+.01,.05+Math.sin(a)*.15-.02,.05+Math.sin(a)*.15+.02],-.2,-.06,c2)}cyl(b,0,-.21,.05,.05,.07,.05,8,'#5a5a5a');cyl(b,0,-.31,.05,.0,.06,.16,6,e,{rot:[Math.PI,0,0],g:2.2});ico(b,0,.12,-.0,.035,'#3fa0ff',{g:.6});break}
+   case'crystal':{seed=12;for(let i=0;i<7;i++)oct(b,(rnd()-.5)*.24,(rnd()-.5)*.2,.05+rnd()*.08,.06+rnd()*.05,i%2?c1:c3,{s:[.6,1.8,.6],rot:[(rnd()-.5)*.8,rnd(),(rnd()-.5)*.8],g:1.1});dode(b,0,-.12,.05,.12,c2);sc='#2a2a3a';break}
+   case'pod':{ell(b,0,0,.06,.16,.2,.13,c1,{ws:8,hs:6});ell(b,0,.02,.12,.11,.14,.08,c2,{ws:8,hs:5,g:1.2});tor(b,0,0,.06,.17,.018,dk(c1,.8),{rs:3,ts:12,s:[1,1.2,1]});break}
+   case'planet':{ico(b,0,.02,.07,.17,c1,{d:1});for(let i=0;i<3;i++)tor(b,0,.02,.07,.27-i*.025,.012,i%2?c2:c3,{rot:[1.2,.3,.2],rs:3,ts:16});ico(b,-.16,.2,.15,.03,'#d8d8d8');sc='#3a3a3a';break}
+   case'holo':{box(b,0,0,.05,.12,.12,.12,c1);const E=.26;for(const[a,bb]of[[[-1,-1,-1],[1,-1,-1]],[[-1,1,-1],[1,1,-1]],[[-1,-1,1],[1,-1,1]],[[-1,1,1],[1,1,1]],[[-1,-1,-1],[-1,1,-1]],[[1,-1,-1],[1,1,-1]],[[-1,-1,1],[-1,1,1]],[[1,-1,1],[1,1,1]],[[-1,-1,-1],[-1,-1,1]],[[1,-1,-1],[1,-1,1]],[[-1,1,-1],[-1,1,1]],[[1,1,-1],[1,1,1]]]){const cx=(a[0]+bb[0])/2*E/2,cy=(a[1]+bb[1])/2*E/2,cz=(a[2]+bb[2])/2*E/2;const w=Math.abs(a[0]-bb[0])*E/2||.014,h=Math.abs(a[1]-bb[1])*E/2||.014,d=Math.abs(a[2]-bb[2])*E/2||.014;box(b,cx,cy,.06+cz,w,h,d,c2,{g:1.6})}sc='#1d1d1d';break}
+   case'hive':{for(let i=0;i<4;i++)cyl(b,0,-.18+i*.12,.06,.12+Math.sin(i/3*Math.PI)*.05,.13+Math.sin((i+1)/3*Math.PI)*.05,.12,8,i%2?c1:dk(c1,.88));ell(b,0,.06,.215,.03,.035,.01,c3);for(const[x,y]of[[-.1,.22],[.1,.0],[-.06,-.15]]){ell(b,x,y,.17,.02,.015,.02,'#f0c020');box(b,x,y,.18,.012,.022,.03,'#1d1d1f')}sc=c2;break}
+   case'pumpkin':{for(let i=0;i<8;i++){const a=i/8*Math.PI*2;ell(b,Math.cos(a)*.07,0,.06+Math.sin(a)*.06,.11,.15,.1,i%2?c1:dk(c1,.88),{ws:6,hs:5})}cyl(b,0,.17,.06,.015,.025,.08,5,c2);for(const x of[-.05,.05])cyl(b,x,.04,.19,0,.03,.01,3,c3,{rot:[Math.PI/2,0,0],g:1.8});hexa(b,[-.07,.07,.18,.19],[-.05,.05,.18,.19],-.07,-.03,c3,{g:1.8});sc='#3a3a2a';break}
+   case'barrel':{cyl(b,0,0,.06,.15,.15,.46,9,c1);for(const y of[-.16,0,.16])tor(b,0,y,.06,.152,.012,c2,{rot:[Math.PI/2,0,0],rs:3,ts:9});break}
+   case'cooler':{hexa(b,[-.17,.17,-.06,.14],[-.17,.17,-.06,.14],-.2,.14,c1);hexa(b,[-.18,.18,-.07,.15],[-.17,.17,-.06,.14],.14,.2,c2);box(b,0,.24,.04,.2,.03,.03,c3);break}
+   case'boxes':{box(b,0,-.1,.05,.32,.2,.22,c1);box(b,.02,.1,.04,.26,.16,.2,dk(c1,.9));box(b,-.01,.24,.05,.2,.12,.16,c1);for(const y of[-.1,.1,.24])box(b,0,y,.16,.24,.025,.01,c3);sc='#8a7a5a';break}
+   case'wings':{hexa(b,[-.1,.1,-.06,.06],[-.09,.09,-.06,.05],-.16,.18,c3);ico(b,0,.05,.07,.06,c2,{g:.8});for(const sx of[-1,1])for(let i=0;i<4;i++){const x0=sx*.08,x1=sx*(.46-i*.07),lo=[Math.min(x0,x1),Math.max(x0,x1),.07,.095];hexa(b,lo,lo,.06-i*.09,.2-i*.07,i%2?c1:dk(c1,.85))}sc='#3a3a3a';break}
+   case'cloud':{seed=6;for(let i=0;i<8;i++)ico(b,(rnd()-.5)*.28,(rnd()-.5)*.26,.06+rnd()*.06,.08+rnd()*.05,i%3?c1:c2,{d:1});seed=8;for(let i=0;i<3;i++)cyl(b,-.08+i*.08,-.25,.08,.006,.006,.06,3,c3,{g:.8});sc='#a8b8c8';break}
+   case'lantern':{box(b,0,-.2,.05,.24,.04,.18,c1);box(b,0,.12,.05,.24,.04,.18,c1);box(b,0,-.04,.05,.16,.28,.12,c2,{g:1.8});for(const[x,z]of[[-.09,-.03],[.09,-.03],[-.09,.13],[.09,.13]])box(b,x,-.03,z,.02,.32,.02,c1);cyl(b,0,.2,.05,.04,.1,.07,4,c1);tor(b,0,.27,.05,.04,.008,c3,{rs:3,ts:6});break}
+   case'bear':{ell(b,0,-.05,.06,.15,.18,.12,c1,{ws:7,hs:6});ico(b,0,.18,.07,.12,c1,{d:1});for(const x of[-.09,.09])ico(b,x,.28,.07,.04,c1);ell(b,0,.15,.18,.05,.04,.03,c2);ico(b,0,.17,.21,.015,c3);for(const x of[-.04,.04])ico(b,x,.22,.18,.012,c3);for(const x of[-.15,.15])ell(b,x,-.02,.08,.05,.09,.05,c1);ell(b,0,-.08,.17,.08,.09,.02,c2);sc=dk(c1,.7);break}
+   case'float':{hexa(b,[-.08,.08,-.06,.06],[-.07,.07,-.06,.05],-.15,.15,'#1a1a22');seed=3;for(let i=0;i<6;i++){const f=[oct,ico,dode][i%3];f(b,(rnd()-.5)*.36,(rnd()-.5)*.4,.12+rnd()*.1,.05+rnd()*.03,p.c[i%3],{g:1.2,rot:[rnd()*3,rnd()*3,0]})}sc='#1a1a22';break}
+   case'reactor':{cyl(b,0,0,.04,.13,.13,.12,10,c1,{rot:[Math.PI/2,0,0]});tor(b,0,0,.1,.13,.025,c2,{rs:4,ts:14,g:1.8});tor(b,0,0,.1,.07,.015,c3,{rs:3,ts:10,g:1.8});ico(b,0,0,.11,.04,'#ffffff',{g:2});for(const y of[-.2,.2])box(b,0,y,.03,.22,.04,.12,c1);break}
+   case'amphora':{ell(b,0,-.05,.06,.15,.2,.13,c1,{ws:8,hs:6});cyl(b,0,.18,.06,.05,.07,.12,8,c1);cyl(b,0,.25,.06,.08,.06,.03,8,c1);for(const x of[-.09,.09])tor(b,x,.15,.06,.045,.012,c1,{rot:[0,Math.PI/2,0],arc:Math.PI,rs:3,ts:6});for(const y of[-.12,-.02,.06])tor(b,0,y,.06,.15*Math.cos(y*2),.008,c2,{rot:[Math.PI/2,0,0],rs:3,ts:10});box(b,0,-.05,.19,.08,.05,.008,c3);sc='#5a3a22';break}
+   case'acorn':{ell(b,0,-.06,.06,.15,.19,.13,c1,{ws:8,hs:6});ell(b,0,.1,.06,.17,.09,.15,c2,{ws:8,hs:4,tl:Math.PI/2});cyl(b,0,.2,.06,.015,.02,.06,5,c2);oct(b,.06,.24,.06,.05,c3,{s:[1,.3,.6]});break}
+   case'portal':{tor(b,0,0,.08,.2,.035,c1,{rs:5,ts:16});tor(b,0,0,.09,.16,.02,c2,{rs:3,ts:14,g:1.8});prim(b,new THREE.CircleGeometry(.15,12),[0,0,.09],[0,0,0],[1,1,1],c3,{g:1.2});for(let i=0;i<5;i++){const a=i/5*Math.PI*2;oct(b,Math.cos(a)*.24,Math.sin(a)*.24,.08,.02,c2,{g:1.6})}break}
+   case'lavarock':{seed=14;dode(b,0,0,.06,.19,c1,{s:[1,1.2,.8]});for(let i=0;i<5;i++)dode(b,(rnd()-.5)*.24,(rnd()-.5)*.3,.12,.06+rnd()*.03,c3);for(let i=0;i<8;i++)box(b,(rnd()-.5)*.26,(rnd()-.5)*.3,.2,.012,.08+rnd()*.06,.01,c2,{g:1.8,rot:0});sc='#2a2a2a';break}
+   case'egg':{ell(b,0,0,.06,.14,.2,.13,c1,{ws:8,hs:7});seed=11;for(let i=0;i<9;i++)ell(b,(rnd()-.5)*.2,(rnd()-.5)*.3,.18,.025,.025,.008,c2,{ws:5,hs:3,g:1.4});hexa(b,[-.14,.14,-.06,.14],[-.16,.16,-.06,.16],-.24,-.14,c3);sc=c3;break}
+   default:hexa(b,[-.16,.16,-.06,.12],[-.15,.15,-.06,.11],-.2,.2,c1)}
+  straps(b,sc,M);return fin(b)}
+ // ---------------------------------------------------------------- cache delle geometrie
+ // versione leggera (per chi è lontano più di 30 m): niente smussi e sfere con meno facce, stessi colori
+ const GC=new Map();function G(key,fn,low){key=(low?'L':'')+key;let g=GC.get(key);if(!g){LOWQ=!!low;try{g=fn()}finally{LOWQ=false}GC.set(key,g)}return g}
+ const geoSet=(s,l)=>({torso:G('t'+s.id,()=>torsoGeo(s),l),head:G('h'+s.id,()=>headGeo(s),l),aL:G('aL'+s.id,()=>armGeo(s,-1),l),aR:G('aR'+s.id,()=>armGeo(s,1),l),
+   thL:G('thL'+s.id,()=>thighGeo(s,-1),l),thR:G('thR'+s.id,()=>thighGeo(s,1),l),shL:G('shL'+s.id,()=>shinGeo(s,-1),l),shR:G('shR'+s.id,()=>shinGeo(s,1),l),boot:G('b'+s.id,()=>bootGeo(s),l)});
+ const packG=(p,body,l)=>G('p'+p.id+(body||'m'),()=>packGeo(p,body),l);
+ // ---------------------------------------------------------------- personaggio nel gioco: stessa struttura di prima
+ const mesh=()=>{const m=new THREE.Mesh(undefined,MAT);m.frustumCulled=true;return m};
+ const ARMSC=[.14,.58,.16];
+ function build(bot){const group=new THREE.Group(),body=new THREE.Group();group.add(body);const rig={group,body,__sk:1};
+  const tm=mesh();body.add(tm);rig.__tm=tm;rig.torso=new THREE.Object3D();body.add(rig.torso);
+  const hm=mesh();body.add(hm);rig.__hm=hm;rig.head=new THREE.Object3D();rig.head.position.set(0,1.63,-.015);body.add(rig.head);
+  rig.hat=new THREE.Object3D();body.add(rig.hat);
+  const pg=new THREE.Group();pg.position.set(0,1.15,.2);body.add(pg);const pm=mesh();pg.add(pm);rig.pack=pg;rig.__pm=pm;
+  for(const[n,x]of[['leftArm',-.3],['rightArm',.3]]){const a=new THREE.Object3D();a.position.set(x,1.12,0);a.scale.set(...ARMSC);body.add(a);const v=new THREE.Group();v.scale.set(1/ARMSC[0],1/ARMSC[1],1/ARMSC[2]);a.add(v);const m=mesh();v.add(m);rig[n]=a;rig['__'+n]=m}
+  for(const[n,x]of[['leftLeg',-.13],['rightLeg',.13]]){const o=new THREE.Mesh(geometries.box,MAT);o.scale.set(.17,.69,.2);o.position.set(x,.49,0);body.add(o);rig[n]=o}
+  for(const[n,x]of[['leftBoot',-.13],['rightBoot',.13]]){const o=mesh();o.position.set(x,.12,-.05);body.add(o);rig[n]=o}
+  const tool=new THREE.Mesh(geometries.box,materials.boots);tool.scale.set(.06,.09,.54);tool.position.set(.28,1,-.27);body.add(tool);rig.tool=tool;
+  const shadow=new THREE.Mesh(new THREE.CircleGeometry(.42,12),materials.shadow);shadow.rotation.x=-Math.PI/2;shadow.position.y=.025;group.add(shadow);rig.shadow=shadow;
+  // gambe: conversione subito (ginocchio), poi le geometrie low poly al posto dei cubi
+  try{if(globalThis.LegIK){LegIK.convert(rig)}}catch(e){S.err='ik '+e.message}
+  S.built++;return rig}
+ function dress(rig,sid,pid,low){const s=SKM.get(sid)||SK[0],p=PKM.get(pid)||PK[0];const key=s.id+'|'+p.id+(low?'|L':'');if(rig.__look===key)return;rig.__look=key;
+  const g=geoSet(s,low);rig.__tm.geometry=g.torso;rig.__hm.geometry=g.head;rig.__leftArm.geometry=g.aL;rig.__rightArm.geometry=g.aR;
+  const M=BD[s.b];rig.leftArm.position.x=-M.ax;rig.rightArm.position.x=M.ax;
+  rig.__pm.geometry=packG(p,s.b,low);
+  if(rig.__ik){for(const[side,sg]of[['left',-1],['right',1]]){const L=rig.__ik[side];const th=L.hip.children.find(o=>o.isMesh),sh=L.knee.children.find(o=>o.isMesh&&o!==L.boot);
+    if(th){th.geometry=sg<0?g.thL:g.thR;th.scale.set(1,1,1);th.material=rig.__z?MATZ:MAT}if(sh){sh.geometry=sg<0?g.shL:g.shR;sh.scale.set(1,1,1);sh.material=rig.__z?MATZ:MAT}L.boot.geometry=g.boot;L.boot.scale.set(1,1,1)}}
+  else{for(const n of['leftLeg','rightLeg']){rig[n].material=materials.pants}rig.leftBoot.geometry=g.boot;rig.rightBoot.geometry=g.boot}
+  rig.__mode=s.c;S.dressed++}
+ function zombie(rig){if(rig.__zm)return;rig.__zm=1;rig.group.traverse(o=>{if(o.isMesh&&o.material===MAT)o.material=MATZ})}
+ // ---------------------------------------------------------------- chi indossa cosa
+ const KEY='uz-look';let SEL={sk:'base',pk:'base'};try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v&&SKM.has(v.sk))SEL.sk=v.sk;if(v&&PKM.has(v.pk))SEL.pk=v.pk}catch(e){}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(SEL))}catch(e){}}
+ const byId=new Map();const hash=str=>{let h=2166136261;for(const ch of String(str))h=Math.imul(h^ch.charCodeAt(0),16777619);return h>>>0};
+ // online: ogni giocatore manda il suo look all'host, che lo mette nella lista dei giocatori (arriva a tutti)
+ function netLook(e){try{const N=globalThis.NetSys&&NetSys.NS;if(!N||!N.roster||!N.role)return null;const idx=e.__remote??e.__idx;if(idx==null)return null;const r=N.roster.find(x=>x.idx===idx);return r&&r.look&&SKM.has(r.look.sk)?r.look:null}catch(x){return null}}
+ function lookOf(e){if(!e||e===player)return SEL;const nl=netLook(e);if(nl)return nl;if(e.__look)return e.__look;
+  const id=e.id??e.__name??null;if(id!=null&&byId.has(id)){e.__look=byId.get(id);return e.__look}
+  // stesso bot = stesso personaggio su tutti i dispositivi (dipende solo dal suo numero)
+  const h=hash('uz'+(id??Math.random()));const s=SK[h%SK.length];const p=((h>>>8)%100)<22?PK[0]:PK[(h>>>12)%PK.length];const look={sk:s.id,pk:p.id};S.bots++;
+  if(id!=null)byId.set(id,look);e.__look=look;return look}
+ let sent='';function netTick(){try{const NS=globalThis.NetSys&&NetSys.NS,X=NetSys._;if(!NS||!NS.role)return;const k=SEL.sk+'|'+SEL.pk;
+  if(!X.HK.host.look)X.HK.host.look=(c,d)=>{const look={sk:SKM.has(d.sk)?d.sk:'base',pk:PKM.has(d.pk)?d.pk:'base'};c.look=look;const r=NS.roster.find(r=>r.idx===c.idx);if(r){r.look=look;X.lobbyBcast()}S.netIn=(S.netIn||0)+1};
+  if(k===sent)return;if(NS.role==='host'&&NS.roster&&NS.roster[0]){NS.roster[0].look={...SEL};X.lobbyBcast();sent=k}
+  else if(NS.role==='client'&&NS.host&&NS.host.open){X.toHost({t:'look',sk:SEL.sk,pk:SEL.pk});sent=k;S.netOut=(S.netOut||0)+1}}catch(e){S.err='net '+e.message}}
+ // ---------------------------------------------------------------- installazione nel gioco
+ function install(){
+  makeCharacter=function(bot){return build(bot)};
+  {const ac=animateCharacter;animateCharacter=function(rig,e){try{if(rig&&rig.__sk&&e){const L=lookOf(e);if(e!==player&&camera){const d=Math.abs(e.x-camera.position.x)+Math.abs(e.z-camera.position.z);rig.__low=rig.__low?d>30:d>40}else rig.__low=false;dress(rig,L.sk,L.pk,rig.__low);if(rig.__z&&!rig.__zm)zombie(rig)}}catch(x){S.err=x.message}return ac(rig,e)}}
+  // il personaggio già creato al caricamento: lo rifaccio col modello nuovo
+  try{if(typeof playerRig!=='undefined'&&playerRig&&!playerRig.__sk){scene.remove(playerRig.group);playerRig=build(false);scene.add(playerRig.group)}}catch(e){S.err='player '+e.message}
+ lockerUI();setInterval(netTick,2000)}
+ // ---------------------------------------------------------------- ARMADIETTO (lobby)
+ const RAR=[['Comune','#9aa3a6'],['Non comune','#5fb35a'],['Raro','#3f8fe0'],['Epico','#a35ce0'],['Mitico','#e0484a'],['Leggendario','#f0a030'],['Ultra','#3fe0d0']];
+ let UI=null,PV=null;
+ function lockerUI(){const css=`
+#lbLock{}
+#uzLocker{position:fixed;inset:0;z-index:60;display:none;background:radial-gradient(ellipse at 30% 40%,#2c6a6e 0%,#163c42 60%,#0d2a30 100%);font-family:system-ui,'Segoe UI',sans-serif;color:#1d4d52}
+#uzLocker.on{display:flex}
+#uzLocker .lk-l{flex:0 0 38%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-width:0}
+#uzLocker canvas{width:100%;height:78%;max-height:560px;touch-action:none}
+#uzLocker .lk-nm{background:#f4ecd8;border:2px solid #7fd8d0;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);padding:8px 26px;text-align:center;margin-top:6px;max-width:92%}
+#uzLocker .lk-nm b{display:block;font-size:18px;color:#1d4d52}#uzLocker .lk-nm small{font-size:12px;font-weight:700;letter-spacing:.5px}
+#uzLocker .lk-r{flex:1;display:flex;flex-direction:column;padding:14px 14px 10px 0;min-width:0}
+#uzLocker .lk-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#uzLocker .lk-tab,#uzLocker .lk-f,#uzLocker .lk-x{border:0;font:800 14px system-ui;padding:9px 16px;cursor:pointer;clip-path:polygon(5% 0,100% 0,95% 100%,0 100%);background:#1f6066;color:#e8f6f4}
+#uzLocker .lk-tab.on{background:#f08a2a;color:#fff}#uzLocker .lk-f{font-size:12px;padding:7px 12px;background:#e8dfc8;color:#1d4d52}#uzLocker .lk-f.on{background:#7fd8d0}
+#uzLocker .lk-x{margin-left:auto;background:#f4ecd8;color:#1d4d52}
+#uzLocker .lk-g{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));grid-auto-rows:min-content;gap:8px;padding:10px 4px 6px 0;align-content:start;-webkit-overflow-scrolling:touch}
+#uzLocker .lk-c{position:relative;background:#f4ecd8;border:0;padding:0;cursor:pointer;clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%);display:flex;flex-direction:column;align-items:stretch;aspect-ratio:.74;overflow:hidden}
+#uzLocker .lk-c img{width:100%;flex:1 1 0;min-height:0;object-fit:contain;display:block;background:linear-gradient(#cfe6e2,#a8cfc8)}
+#uzLocker .lk-c span{font:700 11px/1.15 system-ui;color:#1d4d52;padding:3px 4px 4px;text-align:center;min-height:30px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+#uzLocker .lk-c i{position:absolute;left:0;top:0;right:0;height:5px}
+#uzLocker .lk-c.sel{outline:4px solid #f08a2a;outline-offset:-4px}
+#uzLocker .lk-c.sel::after{content:'✓';position:absolute;right:6px;top:6px;background:#f08a2a;color:#fff;font:900 13px system-ui;width:22px;height:22px;display:grid;place-items:center;border-radius:50%}
+#uzLocker .lk-ct{color:#cfe6e2;font:700 12px system-ui;margin-left:4px}
+@media (max-width:700px),(max-height:480px){#uzLocker{flex-direction:row}#uzLocker .lk-l{flex-basis:34%}#uzLocker .lk-g{grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}#uzLocker .lk-tab{padding:7px 10px;font-size:12px}}
+@media (orientation:portrait){#uzLocker{flex-direction:column}#uzLocker .lk-l{flex:0 0 40%}#uzLocker canvas{height:82%}#uzLocker .lk-r{padding:6px 10px}}`;
+  const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+  const side=document.querySelector('#lobby .lb-side');if(side&&!document.getElementById('lbLock')){const bt=document.createElement('button');bt.className='lb-box lb-btn';bt.id='lbLock';bt.innerHTML='<i>👕</i>Armadietto';const set=document.getElementById('lbSet');(set?set.parentNode:side).insertBefore(bt,set?set:null);bt.onclick=()=>open()}
+  const d=document.createElement('div');d.id='uzLocker';d.innerHTML=`<div class="lk-l"><canvas id="lkCv"></canvas><div class="lk-nm"><b id="lkName"></b><small id="lkRar"></small></div></div>
+<div class="lk-r"><div class="lk-top"><button class="lk-tab on" data-t="sk">Personaggi</button><button class="lk-tab" data-t="pk">Zaini</button><button class="lk-x" id="lkClose">Fatto</button></div>
+<div class="lk-top" style="margin-top:8px"><button class="lk-f on" data-f="all">Tutti</button><button class="lk-f" data-f="semplice">Semplici</button><button class="lk-f" data-f="strava">Stravaganti</button><span class="lk-ct" id="lkCt"></span></div>
+<div class="lk-g" id="lkGrid"></div></div>`;document.body.appendChild(d);UI={d,tab:'sk',f:'all'};
+  d.querySelectorAll('.lk-tab').forEach(b=>b.onclick=()=>{UI.tab=b.dataset.t;d.querySelectorAll('.lk-tab').forEach(x=>x.classList.toggle('on',x===b));grid()});
+  d.querySelectorAll('.lk-f').forEach(b=>b.onclick=()=>{UI.f=b.dataset.f;d.querySelectorAll('.lk-f').forEach(x=>x.classList.toggle('on',x===b));grid()});
+  document.getElementById('lkClose').onclick=close}
+ function open(){if(!UI)return;UI.d.classList.add('on');preview();grid();label()}
+ function close(){if(!UI)return;UI.d.classList.remove('on');save();if(PV){cancelAnimationFrame(PV.raf);PV.r.dispose();PV.r.forceContextLoss&&PV.r.forceContextLoss();PV=null}
+  try{if(playerRig)playerRig.__look=null}catch(e){}}
+ function label(){const isS=UI.tab==='sk',it=isS?SKM.get(SEL.sk):PKM.get(SEL.pk);document.getElementById('lkName').textContent=(isS?'':'Zaino · ')+it.n;const r=RAR[it.r];const el=document.getElementById('lkRar');el.textContent=r[0].toUpperCase()+(isS?(it.c==='strava'?' · STRAVAGANTE':''):'');el.style.color=r[1]==='#9aa3a6'?'#5a6266':r[1]}
+ function preview(){if(PV)return;const cv=document.getElementById('lkCv');const r=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,preserveDrawingBuffer:true});r.setPixelRatio(Math.min(2,devicePixelRatio||1));
+  const sc=new THREE.Scene();sc.add(new THREE.HemisphereLight('#fff4e0','#4a6a50',2.1));const sun=new THREE.DirectionalLight('#ffe8c8',2.2);sun.position.set(-2,4,-3);sc.add(sun);const back=new THREE.DirectionalLight('#9fd8ff',.8);back.position.set(2,2,3);sc.add(back);
+  // isoletta low poly sotto i piedi
+  const ib=B();seed=4;cyl(ib,0,-.12,0,.85,.55,.24,9,'#7aa04a');cyl(ib,0,-.38,0,.55,.15,.3,9,'#8a6a4a');for(let i=0;i<5;i++){const a=i/5*Math.PI*2+.4;dode(ib,Math.cos(a)*.62,-.02,Math.sin(a)*.62,.07,'#8a8f88')}ell(ib,.55,.05,.35,.06,.12,.06,'#4f7a3a',{ws:5,hs:4});
+  const isl=new THREE.Mesh(fin(ib),MAT);sc.add(isl);
+  const cam=new THREE.PerspectiveCamera(30,1,.1,30);const rig=build(false);sc.add(rig.group);rig.shadow.visible=false;rig.tool.visible=false;
+  PV={r,sc,cam,rig,ang:Math.PI*.82,drag:null,raf:0,isl};
+  cv.onpointerdown=e=>{PV.drag=e.clientX;cv.setPointerCapture(e.pointerId)};cv.onpointermove=e=>{if(PV&&PV.drag!=null){PV.ang+=(e.clientX-PV.drag)*.012;PV.drag=e.clientX}};cv.onpointerup=()=>{if(PV)PV.drag=null};
+  const tick=()=>{if(!PV)return;PV.raf=requestAnimationFrame(tick);const w=cv.clientWidth,h=cv.clientHeight;if(w<2||h<2)return;if(cv.width!==Math.round(w*r.getPixelRatio()))r.setSize(w,h,false);
+   cam.aspect=w/h;cam.updateProjectionMatrix();if(PV.drag==null)PV.ang+=.006;const R=4.6;cam.position.set(Math.sin(PV.ang)*R,1.55,Math.cos(PV.ang)*R);cam.lookAt(0,.95,0);
+   dress(rig,SEL.sk,SEL.pk);const t=performance.now()/1000;rig.body.rotation.set(0,0,0);rig.leftArm.rotation.set(Math.sin(t*1.3)*.06,0,.08);rig.rightArm.rotation.set(-Math.sin(t*1.3)*.06,0,-.08);r.render(sc,cam)};tick()}
+ // miniature: stesse luci dell'anteprima, renderer a parte (una volta per voce, poi in memoria)
+ const TH=new Map();let TR=null;
+ function thumb(kind,it){const k=kind+it.id;if(TH.has(k))return TH.get(k);if(!TR){const c=document.createElement('canvas');c.width=176;c.height=194;TR={r:new THREE.WebGLRenderer({canvas:c,antialias:true,alpha:true,preserveDrawingBuffer:true}),sc:new THREE.Scene(),cam:new THREE.PerspectiveCamera(26,176/194,.1,20)};
+   TR.sc.add(new THREE.HemisphereLight('#fff4e0','#4a6a50',2.1));const s=new THREE.DirectionalLight('#ffe8c8',2.2);s.position.set(-2,4,-3);TR.sc.add(s);TR.rig=build(false);TR.rig.shadow.visible=false;TR.rig.tool.visible=false;TR.sc.add(TR.rig.group)}
+  const isS=kind==='sk';dress(TR.rig,isS?it.id:SEL.sk,isS?SEL.pk:it.id);const R=isS?4.4:2.2;const a=isS?Math.PI*.86:Math.PI*.15;TR.cam.position.set(Math.sin(a)*R,isS?1.3:1.5,Math.cos(a)*R);TR.cam.lookAt(0,isS?.92:1.18,isS?0:.15);
+  TR.r.render(TR.sc,TR.cam);const u=TR.r.domElement.toDataURL('image/png');TH.set(k,u);S.thumbs++;return u}
+ let gridJob=0;
+ function grid(){const g=document.getElementById('lkGrid');if(!g)return;g.innerHTML='';const isS=UI.tab==='sk',list=(isS?SK:PK).filter(it=>UI.f==='all'||(isS?it.c:it.c2)===UI.f);
+  document.getElementById('lkCt').textContent=list.length+(isS?' personaggi':' zaini');const job=++gridJob;const cards=[];
+  for(const it of list){const b=document.createElement('button');b.className='lk-c'+((isS?SEL.sk:SEL.pk)===it.id?' sel':'');b.innerHTML=`<i style="background:${RAR[it.r][1]}"></i><img alt=""><span></span>`;b.querySelector('span').textContent=it.n;
+   b.onclick=()=>{if(isS){SEL.sk=it.id;TH.forEach((v,k)=>{if(k.startsWith('pk'))TH.delete(k)})}else SEL.pk=it.id;save();g.querySelectorAll('.lk-c').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');label()};g.appendChild(b);cards.push([b,it])}
+  // miniature a gruppi, senza bloccare
+  let i=0;const step=()=>{if(job!==gridJob||!UI.d.classList.contains('on'))return;const t0=performance.now();while(i<cards.length&&performance.now()-t0<14){const[b,it]=cards[i++];try{b.querySelector('img').src=thumb(UI.tab,it)}catch(e){S.err='thumb '+e.message}}if(i<cards.length)requestAnimationFrame(step)};requestAnimationFrame(step)}
+ return{install,SK,PK,sel:()=>({...SEL}),set:(sk,pk)=>{if(sk&&SKM.has(sk))SEL.sk=sk;if(pk&&PKM.has(pk))SEL.pk=pk;save()},open,close,build,dress,lookOf,
+  stats:()=>({...S,skins:SK.length,strava:SK.filter(s=>s.c==='strava').length,packs:PK.length,cache:GC.size}),_:{geoSet,packG,MAT,RAR,THREE}}})();
+globalThis.SkinSys=SkinSys;
+SafeRun.run('personaggi e zaini',()=>SkinSys.install());
 
 // ===== 0.16.0 · App per PC e Android: il gioco avvisa l'app che è partito e mostra gli aggiornamenti pronti =====
 const AppSys=(()=>{const S={app:!!(globalThis.uzApp&&uzApp.app),ready:false,update:null};
