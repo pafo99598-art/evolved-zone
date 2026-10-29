@@ -8288,9 +8288,10 @@ body.playing #h62Side{display:flex}
   keysEl=el('div','h62Keys','<span><i>M</i>MAPPA</span><span><i>TAB</i>INVENTARIO</span><span><i>R</i>ARRAMPICA</span><span><i>E</i>USA</span>');document.body.appendChild(keysEl);
   // icone sui tasti touch (le scritte restano piccole sotto)
   const ico={jump:['jump','Salta'],crouch:['crouch','Accov.'],climb:['climb','Arrampica'],slide:['slide','Scivola'],sprint:['run','Corri'],gather:['hand','Usa'],heal:['plus','Cura'],build:['grid','Kit'],eat:['food','Cibo']};
-  for(const id in ico){const b=document.getElementById(id);if(!b||b.__h62)continue;b.__h62=1;const sp=el('span','',I[ico[id][0]]);sp.style.cssText='display:block;line-height:0';b.insertBefore(sp,b.firstChild)}
+  ICO=ico;icons();
   // lobby: isola con anteprima disegnata dalla mappa
   try{keysEl.style.display=''}catch(e){}}
+ let ICO=null;function icons(){if(!ICO)return;for(const id in ICO){const b=document.getElementById(id);if(!b||b.querySelector('.h62i'))continue;const sp=el('span','',I[ICO[id][0]]);sp.className='h62i';sp.style.cssText='display:block;line-height:0';b.insertBefore(sp,b.firstChild)}}
  function sel(i){try{if(i<0){player.weaponSlot=-1}else if(player.weapons&&player.weapons[i]){if(player.weaponSlot===i)return;player.weaponSlot=i}else return;player.reloadLeft=0;player.swapLeft=.2;try{if(typeof sound==='function')sound('swap')}catch(e){}}catch(e){}}
  addEventListener('keydown',e=>{try{if(typeof phase==='undefined'||phase!=='playing')return;if(e.target&&/input|textarea/i.test(e.target.tagName))return;if(e.key==='3'){sel(-1)}else if(e.key==='4'){click('heal')}else if(e.key==='5'){click('eat')}}catch(x){}},true);
  const pad=n=>String(n).padStart(2,'0');let last=0;
@@ -8298,7 +8299,7 @@ body.playing #h62Side{display:flex}
    const cv=document.createElement('canvas');cv.width=220;cv.height=96;const g=cv.getContext('2d');g.fillStyle='#7fc4d6';g.fillRect(0,0,220,96);const R=(D.raggio||500)*1.7,c=D.centro;
    for(let y=0;y<96;y+=2)for(let x=0;x<220;x+=2){const wx=c[0]+(x-110)/110*R,wz=c[1]+(y-48)/110*R;let sd=-1;try{sd=IslandSys.sdAt(wx,wz)}catch(e){}if(sd>0){const h=heightAt(wx,wz);g.fillStyle=sd<8?'#e9d8a6':h>45?'#8aa35e':'#9cc06a';g.fillRect(x,y,2,2)}}
    isl.__th=cv;thumbDone=true}catch(e){}}
- function tick(){const now=performance.now();if(now-last<120)return;last=now;S.ticks++;
+ function tick(){const now=performance.now();if(now-last<120)return;last=now;S.ticks++;try{icons()}catch(e){}
   try{const hp=Math.max(0,Math.round(player.hp||0)),ar=Math.ceil(player.armor||0);const H=document.getElementById('h62Hp'),A=document.getElementById('h62Ar');H.firstChild.style.width=Math.min(100,hp)+'%';H.lastChild.textContent=hp;A.firstChild.style.width=Math.min(100,ar)+'%';A.lastChild.textContent=ar;
    document.querySelector('#h62Fd span').textContent=Math.round(player.food??100);document.querySelector('#h62St span').textContent=Math.round(player.stamina??100);
    const nm=(globalThis.NetSys&&NetSys.NS&&NetSys.NS.name)||'Sopravvissuto';const ne=document.getElementById('h62Nm');if(ne.textContent!==nm)ne.textContent=nm}catch(e){}
