@@ -66,12 +66,12 @@ body:not(.playing) #aimBtn,body:not(.playing) #grabBtn{display:none!important}@m
 <div class="hud"><div class="card vitals"><div class="eyebrow">VALDARNO / EVOLVED ZONE 3D</div><div class="row"><b id="hpText">SALUTE 100</b><span id="alive">13 vivi</span></div><div class="bar"><i id="hpBar"></i></div><div class="row"><span id="foodText">Energia 100</span><span id="time">00:00</span></div><div class="bar"><i id="foodBar" style="background:#c3a978"></i></div></div><div class="card stats"><div id="ammo">120 colpi</div><div id="wood">0 legno</div><div id="zoneText">Zona · 450 m</div></div><div class="menuButtons"><button id="full" aria-label="Schermo intero">⛶</button><button id="pause" aria-label="Pausa">Ⅱ</button></div></div>
 <div id="feed" aria-live="polite"></div><div id="survival"></div><div id="teamHUD"></div><div id="notice" role="status">Preparazione del mondo 3D…</div><div id="compass">N ↖ · mappa reale</div><div id="mapShade"></div><div id="mapTitle">VALDARNO · 6 × 6 km · N ↖</div><canvas id="minimap" width="500" height="500"></canvas><button id="mapButton">MAPPA · M</button><div id="reticle"></div><div id="lookHint">TRASCINA QUI · VISUALE</div>
 <div class="motion"><button id="crouch"><b>⌄</b>Accov.</button><button id="jump"><b>↑</b>Salta</button><button id="climb"><b>↟</b>Arrampica</button><button id="slide"><b>⇢</b>Scivola</button></div><div id="stick" aria-label="Joystick del personaggio"><div id="knob"></div></div><button id="sprint">CORRI</button><div class="actions"><div class="utility"><button id="gather"><b>✦</b>Raccogli</button><button id="heal"><b>+</b>Cura · 1</button><button id="build"><b>▤</b>Kit / crea</button><button id="eat"><b>●</b>Cibo · 1</button></div><button id="fire">SPARA<br><small>trascina: mira</small></button></div><div id="foot">© OpenStreetMap contributors · ODbL<br>Rilievo Mapzen / EU-DEM / USGS · edifici semplificati</div>
-<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.45</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
+<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.46</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
 <div class="lb-mid"><div class="lb-side"><button class="lb-box lb-btn" id="lbBag"><i>🎒</i>Inventario</button><button class="lb-box lb-btn" id="lbSet"><i>⚙</i>Impostazioni</button></div><div class="lb-hero"><div class="em">🧗</div><h1>EVOLVED ZONE</h1></div><div class="lb-side"><button class="lb-box lb-btn" id="lbGrp"><i>👥</i>Gruppo</button></div></div>
 <div class="lb-bot"><div class="lb-modes" id="lbModes"><button data-n="1">Singolo</button><button data-n="2">Duo</button><button data-n="3">Trio</button><button data-n="4">Squadra</button></div><button id="lbPlay">GIOCA</button></div>
 <div id="lbGroup"><div class="box"><h3>Gruppo online</h3><div id="lbNetSlot"></div><button id="lbGrpClose" style="width:100%;margin-top:10px">Chiudi</button></div></div></div>
 <div id="result"><div class="rays"></div><div id="confetti"></div><div class="rbox"><div class="trophy">🏆</div><h2 id="rsTitle">VITTORIA!</h2><div id="rsSub">Ultimo superstite del Valdarno</div><div class="rs"><div><span id="rsKills">0</span><small>UCCISIONI</small></div><div><span id="rsTime">0:00</span><small>TEMPO</small></div></div><button id="rsBack">TORNA ALLA LOBBY</button></div></div>
-<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.45.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
+<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.46.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
 <div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.4 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
 <div id="weaponHud"><b id="weaponName">A MANI VUOTE</b><span id="weaponAmmo">Cerca una cassa di armi</span><div><button id="reload">Ricarica</button><button id="swap">Cambia arma</button><button id="rest">Riposa</button></div></div>
 <div id="flightStatus" hidden></div><button id="deploy" hidden>LANCIATI · E</button>
@@ -536,7 +536,7 @@ const zoneRadius=zoneAt;zoneAt=function(t){const z=zoneRadius(t),c=zoneCenterAt(
 // Decision rate is independent of rendering rate: all 100 actors remain simulated.
 botStep=function(dt){aiAccum+=dt;if(aiAccum<.10)return;dt=Math.min(aiAccum,.25);aiAccum=0;const participants=[...humans(),...bots];for(const b of bots){if(b.hp<=0||b.inBus||b.parachute||b.skydiving)continue;b.cd-=dt;if(b.downed){b.downTime-=dt;b.moving=0;if(b.downTime<=0){b.hp=0;b.downed=false;addFeed(eventName(b)+' non è stato rianimato in tempo')}continue}if(mode==='battle'&&distance(b,zone)>zone.r)damage(b,dt*((globalThis.GAME_CFG&&GAME_CFG.zone)?(elapsed>GAME_CFG.zone.lateAt?GAME_CFG.zone.lateDamage:GAME_CFG.zone.damage):(elapsed>1020?15:3.5)),null);if(b.hp<=0)continue;const p=BOT_PROFILES[b.profile||0];if(b.team===0){const wounded=participants.find(o=>o!==b&&o.team===0&&o.downed&&o.hp>0);if(wounded){if(distance(b,wounded)<2.7){b.revive=(b.revive||0)+dt;if(b.revive>=6){wounded.downed=false;wounded.hp=45;wounded.bleeding=0;b.revive=0;addFeed(eventName(wounded)+' è stato rianimato')}b.moving=0}else steer(b,wounded,dt);continue}}
  let target=null,nearest=Infinity;if(globalThis.FoeGrid){const r_=FoeGrid.nearest(b,participants);target=r_[0];nearest=r_[1]}else for(const o of participants)if(o!==b&&o.hp>0&&!o.downed&&!o.inBus&&!o.parachute&&!o.skydiving&&o.team!==b.team){const d=distance(b,o);if(d<nearest){target=o;nearest=d}}if(!target)continue;const sight=foggy?Math.min(55,p.perception):night>.65?p.perception*.65:p.perception,seen=nearest<(target.torchOn?Math.max(140,sight):sight)&&!wallHit(b,target).hit,unsafe=distance(b,zone)>zone.r-90;let goal=null;b.moving=0;if(b.observed!==target.id){b.observed=target.id;b.react=p.reaction}b.react=Math.max(0,(b.react||0)-dt);
- if(b.hp<Math.max(p.cover,55)&&b.med>0&&!seen&&elapsed>b.healAt){b.med--;b.hp=Math.min(100,b.hp+35);b.bleeding=0;b.healAt=elapsed+12}
+ if(b.hp<Math.max(p.cover,55)&&b.med>0&&!seen&&elapsed>b.healAt){b.med--;b.hp=Math.min(100,b.hp+35);b.bleeding=0;b.healAt=elapsed+7}
  const bg_=globalThis.BotBrain?BotBrain.goal(b,target,seen,nearest,dt):null;if(bg_)goal=bg_;else if(unsafe&&!b.__eng)goal=zone;else if(b.team===0&&!seen)goal=distance(b,primaryPlayer)>10?primaryPlayer:null;else if(seen){if(b.hp<p.cover){const cover=nearbyBuildings(b.x,b.z,40).sort((a,c)=>distance(b,a)-distance(b,c))[0];if(cover)goal=findFree(cover.x+(cover.x-target.x)/(distance(cover,target)||1)*12,cover.z+(cover.z-target.z)/(distance(cover,target)||1)*12)}if(!goal&&nearest>18+p.risk*20){const a=Math.atan2(b.z-target.z,b.x-target.x)+(b.id%2?.4:-.4);goal={x:target.x+Math.cos(a)*(25-p.aggression*10),z:target.z+Math.sin(a)*(25-p.aggression*10)}}else if(!goal){/* E6: mentre spara si sposta di lato */const sd=(b.id%2?1:-1)*(Math.sin(elapsed*.6+b.id)>0?1:-1),a=Math.atan2(b.z-target.z,b.x-target.x)+sd*.5,r=Math.max(nearest,6);goal={x:target.x+Math.cos(a)*r,z:target.z+Math.sin(a)*r}}}else if(drop&&!drop.taken&&distance(b,drop)<700+p.aggression*700)goal=drop;else{const heard=noiseEvents.filter(n=>elapsed-n.t<9&&distance(b,n)<n.r).at(-1);goal=heard||{x:b.x+Math.cos(b.turn)*25,z:b.z+Math.sin(b.turn)*25};b.turn+=dt*.035}
  if(goal)steer(b,goal,dt);if(seen&&nearest<weaponSpec(b).range&&b.cd<=0&&b.react<=0){b.angle=Math.atan2(b.x-target.x,b.z-target.z);shoot(b,target);b.cd=Math.max(.45,weaponSpec(b).rate+p.reaction*.7+rng()*.4)}if(drop&&!drop.taken&&elapsed-drop.t>18&&distance(b,drop)<3){drop.taken=true;b.med++;extraMeshesDirty=true}}
 };
@@ -1340,7 +1340,7 @@ function propsRebuild(){const list=genProps(player.x,player.z),cnt={};for(const 
 function propsUpdate(dt){if(!PG)propsInit();PG.visible=!inside;if(inside)return;pcd-=dt;if(dirty||Math.hypot(player.x-lastP.x,player.z-lastP.z)>22){lastP={x:player.x,z:player.z};dirty=false;propsRebuild()}
  for(const p of cur)if(p.t==='bramble'&&Math.hypot(p.x-player.x,p.z-player.z)<1.1&&player.y-p.y<.8){damage(player,5*dt,null);break}}
 function rewardP(t){const m=mats();({tree:()=>{player.wood+=4;m.stick++},bush:()=>{player.cloth=(player.cloth||0)+1},bramble:()=>{player.rations=(player.rations||0)+1},rock:()=>{m.stone+=3},stick:()=>{m.stick+=2;player.wood++},ore:()=>{m.metal+=3},gold:()=>{m.gold++},wreck:()=>{m.scrap+=3;m.metal++;m.wire++},wire:()=>{m.wire+=2}})[t]();tell(NAMEP[t]+' distrutto');inventoryHUD()}
-function propHit(){globalThis.__phc=(globalThis.__phc||0)+1;if(phase!=='playing'||inside||pcd>0||player.inBus||player.onBus)return;let b=null,bd=3.4;for(const p of cur){const d=Math.hypot(p.x-player.x,p.z-player.z)-PRAD(p);if(d<bd){bd=d;b=p}}if(!b)return;pcd=.3;const hp=(php.get(b.id)??PR[b.t])-toolMult(b.t);if(hp>0){php.set(b.id,hp);tell(NAMEP[b.t]+' · colpi rimasti '+hp);return}broken.add(b.id);php.delete(b.id);dirty=true;if(b.t==='wreck'&&globalThis.VehSys){VehSys.legacyWreck(b);return}rewardP(b.t)}
+function propHit(){if(phase!=='playing'||inside||pcd>0||player.inBus||player.onBus)return;let b=null,bd=3.4;for(const p of cur){const d=Math.hypot(p.x-player.x,p.z-player.z)-PRAD(p);if(d<bd){bd=d;b=p}}if(!b)return;pcd=.3;const hp=(php.get(b.id)??PR[b.t])-toolMult(b.t);if(hp>0){php.set(b.id,hp);tell(NAMEP[b.t]+' · colpi rimasti '+hp);return}broken.add(b.id);php.delete(b.id);dirty=true;if(b.t==='wreck'&&globalThis.VehSys){VehSys.legacyWreck(b);return}rewardP(b.t)}
 $('gather').addEventListener('click',propHit);void('keydown',e=>{if(e.key.toLowerCase()==='e'&&!e.repeat&&!/INPUT|SELECT/.test(e.target.tagName))propHit()});
 // ---- bus su strada ----
 const DRIVE=new Set(['primary','secondary','tertiary','residential','unclassified','living_street','motorway','motorway_link','primary_link','tertiary_link','service']);
@@ -1444,7 +1444,7 @@ $('crPick').onclick=()=>{const m=mats();if(m.stick<2||m.metal<3){tell('Materiali
 
 // ===== v0.9.0: COMBAT FOUNDATION + MELEE A MANI VUOTE + DISTRUZIONE AMBIENTALE =====
 // Un solo sistema autorevole per ciascuna parte: Combat (stati, attacchi, danni), Destr (oggetti distruttibili), MeleeAI (bot).
-const GAME_VERSION='0.45.0';
+const GAME_VERSION='0.46.0';
 const v5=globalThis.__V5||{shake:0,fail:{}};
 const EventBus=(()=>{const L=new Map();return{on(t,f){if(!L.has(t))L.set(t,[]);L.get(t).push(f)},emit(t,d){const a=L.get(t);if(a)for(const f of a){try{f(d)}catch(e){console.warn('evento '+t,e)}}}}})();
 const CombatState={IDLE:'IDLE',AIMING:'AIMING',ATTACKING:'ATTACKING',RECOVERY:'RECOVERY',HIT:'HIT',STAGGER:'STAGGER',DODGE:'DODGE',DEAD:'DEAD'};
@@ -1815,7 +1815,7 @@ const MeleeAI=(()=>{
   if(tgt&&tgt.hp>0&&td<8&&(a.seen||td<4)){if(armed&&td>2.2&&!(b.botReloadUntil>elapsed)){a.active=false;setMode(b,'FIREARM');return}a.active=true;setMode(b,td>1.75?'APPROACH':'ATTACK','vicino');return}
   // 2. cura (propria o di squadra)
   if(b.role==='HEAL'){const mate=bots.find(o=>o!==b&&o.team===b.team&&o.hp>0&&o.hp<45&&Math.hypot(o.x-b.x,o.z-b.z)<25);if(mate&&(b.med||0)>0){a.active=true;a.healMate=mate;setMode(b,'HEAL','squadra');return}}
-  if(b.hp<Math.max(55,p.cover||40)&&(b.med||0)>0&&(!a.seen||td>35||(a.coverObj&&!a.coverObj.dead&&a.mode==='COVER'))){a.active=true;a.healMate=null;setMode(b,'HEAL',a.seen?'in copertura':'nessuno in vista');return}
+  if(b.hp<Math.max(55,p.cover||40)&&(b.med||0)>0&&elapsed>(b.healAt||0)&&(!a.seen||td>35||(a.coverObj&&!a.coverObj.dead&&a.mode==='COVER'))){a.active=true;a.healMate=null;setMode(b,'HEAL',a.seen?'in copertura':'nessuno in vista');return}
   // 3. fuga: molto ferito con nemico vicino e senza copertura
   if(b.hp<22&&tgt&&td<25&&!(a.coverObj&&!a.coverObj.dead)){const cv=findCover(b,tgt);if(cv){a.coverObj=cv.o;a.coverPt=cv;a.coverT=8;a.active=true;setMode(b,'COVER','ferito');return}a.active=true;setMode(b,'ESCAPE','ferito');return}
   // 4. ricarica (non a distanza di corpo a corpo)
@@ -1856,7 +1856,7 @@ const MeleeAI=(()=>{
   switch(a.mode){
    case 'ESCAPE':{let gx=zone.x,gz=zone.z;if(!isUnsafe(b)&&tgt){const dx=b.x-tgt.x,dz=b.z-tgt.z,l=Math.hypot(dx,dz)||1;gx=b.x+dx/l*15;gz=b.z+dz/l*15}go(b,gx,gz,5.2,dt);return}
    case 'HEAL':{if(a.healMate){const m=a.healMate;if(m.hp<=0||m.hp>=60){a.healMate=null;a.think=0;return}if(Math.hypot(m.x-b.x,m.z-b.z)>2){go(b,m.x,m.z,4.4,dt);return}b.moving=0;a.healT+=dt;if(a.healT>2.5){a.healT=0;b.med--;m.hp=Math.min(100,m.hp+30);m.bleeding=0;a.healMate=null;a.think=0;EventBus.emit('AI_HEAL',{b,m})}return}
-    if(a.coverPt&&a.coverObj&&!a.coverObj.dead&&Math.hypot(a.coverPt.x-b.x,a.coverPt.z-b.z)>1.2){go(b,a.coverPt.x,a.coverPt.z,4.2,dt);return}if(tgt&&a.seen){const dx_=b.x-tgt.x,dz_=b.z-tgt.z,l_=Math.hypot(dx_,dz_)||1,sd_=b.id%2?1:-1;b.crouched=false;go(b,b.x+dx_/l_*6-dz_/l_*4*sd_,b.z+dz_/l_*6+dx_/l_*4*sd_,2.8,dt)}else{b.moving=0;b.crouched=true}a.healT+=dt;if(a.healT>(b.moving?3.2:2.5)){a.healT=0;if((b.med||0)>0){b.med--;b.hp=Math.min(100,b.hp+35);b.bleeding=0;EventBus.emit('AI_HEAL',{b,m:b})}a.think=0}return}
+    if(a.coverPt&&a.coverObj&&!a.coverObj.dead&&Math.hypot(a.coverPt.x-b.x,a.coverPt.z-b.z)>1.2){go(b,a.coverPt.x,a.coverPt.z,4.2,dt);return}if(tgt&&a.seen){const dx_=b.x-tgt.x,dz_=b.z-tgt.z,l_=Math.hypot(dx_,dz_)||1,sd_=b.id%2?1:-1;b.crouched=false;go(b,b.x+dx_/l_*6-dz_/l_*4*sd_,b.z+dz_/l_*6+dx_/l_*4*sd_,2.8,dt)}else{b.moving=0;b.crouched=true}a.healT+=dt;if(a.healT>(b.moving?3.2:2.5)){a.healT=0;if((b.med||0)>0){b.med--;b.hp=Math.min(100,b.hp+35);b.bleeding=0;b.healAt=elapsed+7;EventBus.emit('AI_HEAL',{b,m:b})}a.think=0}return}
    case 'RELOAD':{if(tgt&&a.seen){const cv=a.coverPt&&a.coverObj&&!a.coverObj.dead?a.coverPt:null;if(cv){go(b,cv.x,cv.z,4,dt);return}const dx=b.x-tgt.x,dz=b.z-tgt.z,l=Math.hypot(dx,dz)||1;go(b,b.x+dx/l*4-dz/l*2,b.z+dz/l*4+dx/l*2,3.2,dt)}else b.moving=0;return}
    case 'SEARCH':{const s=a.search,w=s&&s.pts[s.i];s&&(s.t+=dt);if(!w||s.t>50){if(s)s.done();a.search=null;a.active=false;a.think=0;setMode(b,'NONE');return}go(b,w.x,w.z,3.8,dt,w.y);if(Math.hypot(w.x-b.x,w.z-b.z)<1.2&&Math.abs((b.y||0)-w.y)<1.6){s.i++;EventBus.emit('AI_SEARCH',{b,i:s.i,n:s.pts.length})}return}
    case 'LOOT':{const it=a.item;if(!it||!items.includes(it)){a.item=null;a.think=0;return}go(b,it.x,it.z,4.6,dt,it.y);if(Math.hypot(it.x-b.x,it.z-b.z)<1.4){if(it.type==='weapon'){b.weapons=[{kind:it.kind||'smg',rarity:it.rarity||0,rounds:WEAPONS[it.kind||'smg'].mag}];b.weaponSlot=0}else b.med=(b.med||0)+1;items.splice(items.indexOf(it),1);itemsDirty=true;a.item=null;a.think=0;EventBus.emit('AI_LOOT',{b,type:it.type})}return}
@@ -8956,7 +8956,7 @@ const Valori55=(()=>{const S={applied:[],spawn:null,err:''};
  try{set(AI_DIFFICULTY.easy,'dodge',.2,'difficulty.easy.dodge');set(AI_DIFFICULTY.easy,'reaction',1.6,'difficulty.easy.reaction')}catch(e){}
  // ---- quantità a inizio partita (isola da 0,55 km²) ----
  const PER={food:260,wood:390,med:250,ammo:300,heavyAmmo:300,shells:300,cloth:110,scrap:55,powder:70,herbs:60,water:60,stone:60};
- const WEAPONS=80,MOTOS=6;
+ const WEAPONS=14,MOTOS=6;/* armi a terra: 80 → 14 ogni 0,55 km² (Michele 1/11/2026) */
  const hs=(a,b)=>{const n=Math.sin(a*12.9898+b*78.233)*43758.5453;return n-Math.floor(n)};
  function shuffle(a,seed){let s=seed;for(let i=a.length-1;i>0;i--){s=(s*1103515245+12345)>>>0;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
  function apply(){try{if(typeof items==='undefined'||!globalThis.IslandSys)return;const D=IslandSys.data(),k=(D.area_km2||.55)/.55;const out={k:+k.toFixed(2),prima:items.length};
@@ -9021,7 +9021,7 @@ SafeRun.run('avvio veloce',()=>AvvioSys.install());
 // - rarità nuove per le armi: Mitica ×1,24, Leggendaria ×1,30, Ultra ×1,36 (continua il +6%); Ultra con aspetto e spari speciali.
 // - raccogliendo un'arma uguale a una che hai già, la tua sale di rarità (fino a Ultra).
 // - probabilità (a terra / casse) dalla tabella del 31/10.
-GAME_CFG.e1={keepGround:{all:.25,weapon:.5},slideChance:.7,slideEvery:3,slideSpeed:[.5,1.2],groundCut:{food:.5,med:.5,ammo:.5,heavyAmmo:.5,shells:.5,wood:.4},crateSupplies:2,
+GAME_CFG.e1={groundWeapons:14,keepGround:{all:.25,weapon:.5},slideChance:.7,slideEvery:3,slideSpeed:[.5,1.2],groundCut:{food:.5,med:.5,ammo:.5,heavyAmmo:.5,shells:.5,wood:.4},crateSupplies:2,
  rarGround:[35,25,20,11,5,3,1],rarCrate:[6,16,28,25,14,8,3],factors:[1,1.06,1.12,1.18,1.24,1.30,1.36]};
 const E1=(()=>{const C=GAME_CFG.e1,S={slide:0,slides:[],cut:0,rerolled:0,merges:0,crates:0,err:''};
  // ---------------------------------------------------------------- rarità nuove
@@ -9083,7 +9083,9 @@ const E1=(()=>{const C=GAME_CFG.e1,S={slide:0,slides:[],cut:0,rerolled:0,merges:
    if(NL&&NC){for(let k=NL.length-1;k>=0;k--){const o=NL[k];if(Math.hypot(o.x-b.x,o.z-b.z)<2.6){if(o.m&&o.m.parent)o.m.parent.remove(o.m);NL.splice(k,1);b.neon=(b.neon|0)+1;S.botNeon=(S.botNeon|0)+1}}
     if(w&&!w.neon&&(b.neon|0)>=NC.cost){b.neon-=NC.cost;w.neon=1;w.nl=0;S.botNeonGuns=(S.botNeonGuns|0)+1}
     else if(w&&w.neon&&typeof neonUpCost==='function'&&(b.neon|0)>=neonUpCost(w.nl|0)){b.neon-=neonUpCost(w.nl|0);w.nl=(w.nl|0)+1;S.botNeonUps=(S.botNeonUps|0)+1}}}}
- function install(){hookZone();hookSetup();hookCrates();hookMerge();hookShots();
+ // 0.46 (Michele 1/11): circa 14 armi normali a terra ogni 0,55 km². Il gioco ne aggiunge altre vicino ai punti di atterraggio dei bot: si tolgono quelle in più (restano quelle di casse, eventi e caccia)
+ function hookStock(){if(!globalThis.BotBrain||!BotBrain.stockWeapons)return;const sw=BotBrain.stockWeapons;BotBrain.stockWeapons=function(){const r=sw.apply(this,arguments);try{const D=IslandSys.data(),k=(D.area_km2||.55)/.55,want=Math.round(C.groundWeapons*k);const L=items.filter(it=>it.type==='weapon'&&!it.__keep);if(L.length>want){for(let i=L.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[L[i],L[j]]=[L[j],L[i]]}const drop=new Set(L.slice(want));items=items.filter(it=>!drop.has(it));itemsDirty=true}S.groundWeapons=Math.min(L.length,want)}catch(e){S.err='armi '+e.message}return r}}
+ function install(){hookZone();hookSetup();hookCrates();hookMerge();hookShots();hookStock();
   {const rd=render;render=function(dt){rd(dt);try{ultraLook();tickFx(dt||1/30)}catch(e){}}}
   {const sp=step;step=function(dt){const r=sp.apply(this,arguments);try{if(typeof phase!=='undefined'&&phase==='playing')botsUp(dt||1/30)}catch(e){S.err='bot '+e.message}return r}}}
  return{install,roll,stats:()=>({...S,rarities:RARITY.length}),_:{newZone,rebalance}}})();
@@ -9276,7 +9278,7 @@ const Loot71=(()=>{const S={ySet:0,stars:0,looks:0,picksTap:0,picksClick:0,unstu
    if(globalThis.Bot6){const ex=Bot6.exit(b);if(ex){b.x=ex.x;b.z=ex.z;b.y=heightAt(ex.x,ex.z);moved=true;S.exits=(S.exits||0)+1}}
    if(!moved)
    for(const off of[0,.6,-.6,1.2,-1.2,2,-2,Math.PI]){const a=Math.atan2(dz,dx)+off,st=2.5+h.n*.8,x=b.x+Math.cos(a)*st,z=b.z+Math.sin(a)*st;
-    try{if(typeof waterAt==='function'&&waterAt(x,z)>0.4)continue;const q=findFree(x,z);if(!q||Math.hypot(q.x-b.x,q.z-b.z)>6)continue;if(typeof MapSys!=='undefined'&&MapSys.inside&&!MapSys.inside(q.x,q.z))continue;const y=heightAt(q.x,q.z);if(Math.abs(y-(b.y||y))>2.2&&!(b.y-y>2.2))continue;b.x=q.x;b.z=q.z;if(b.grounded!==false)b.y=y;moved=true;break}catch(e){}}
+    try{if(typeof waterAt==='function'&&waterAt(x,z)>0.4)continue;const q=findFree(x,z);if(!q||Math.hypot(q.x-b.x,q.z-b.z)>6)continue;if(typeof MapSys!=='undefined'&&MapSys.inside&&!MapSys.inside(q.x,q.z))continue;const y=heightAt(q.x,q.z);if(Math.abs(y-(b.y||y))>2.2&&!(b.y-y>2.2))continue;b.x=q.x;b.z=q.z;if(b.grounded!==false)b.y=y;moved=true;/* 0.46: per 3 s gira intorno all'ostacolo invece di tornare contro il muro */{const ux=Math.cos(a),uz=Math.sin(a),sx=b.x+ux*9,sz=b.z+uz*9;if(!(typeof insideBuilding==='function'&&insideBuilding(sx,sz,.5))&&(typeof MapSys==='undefined'||!MapSys.inside||MapSys.inside(sx,sz)))b.__side={x:sx,z:sz,t:now+3}}break}catch(e){}}
    if(moved){S.unstuck++;h.n=Math.min(4,h.n+1);h.x=b.x;h.z=b.z;h.t=now;b.__lootIt=b.__lootIt&&Math.hypot(b.__lootIt.x-b.x,b.__lootIt.z-b.z)<40?b.__lootIt:null}else h.t=now-3}}
  // ---------------------------------------------------------------- ciclo
  function hookDrop(){if(typeof dropItem!=='function')return;const di=dropItem;dropItem=function(o,it){const n=items.length,r=di.apply(this,arguments);try{if(o===player)for(let i=n;i<items.length;i++)items[i].__mine=typeof elapsed!=='undefined'?elapsed:0}catch(e){}return r}}
@@ -9327,8 +9329,8 @@ const Events=(()=>{const S={plan:[],done:[],err:'',guard:0,meteors:0,crystals:0,
  // ---------------------------------------------------------------- piano della partita
  function makePlan(){planned=true;active=[];pending.length=0;S.done=[];if(G){scene.remove(G);G=null}
   try{const zc=zoneCenters[zoneCenters.length-1];seed=(Math.round(zc.x*7.13)^Math.round(zc.z*13.7)^(zoneCenters.length*977))>>>0}catch(e){seed=(Math.random()*1e9)>>>0}
-  R=mul(seed);const n=Math.floor(R()*7),end=(globalThis.UZ_ZONE_END||(GAME_CFG.zone&&GAME_CFG.zone.end)||450)-50;const pool=TYPES.slice();const plan=[];
-  let t=40+(R()-.5)*30;for(let i=0;i<n;i++){if(t>end)break;const k=Math.floor(R()*pool.length);plan.push({t:Math.round(t),type:pool.splice(k,1)[0],seed:(seed+i*7919)>>>0});t+=25+R()*Math.max(10,(end-t)/Math.max(1,n-i)*1.4)}
+  R=mul(seed);/* 0.46 (Michele 1/11): almeno 1 evento garantito in ogni partita */const n=Math.max(1,Math.floor(R()*7)),end=(globalThis.UZ_ZONE_END||(GAME_CFG.zone&&GAME_CFG.zone.end)||450)-50;const pool=TYPES.slice();const plan=[];
+  let t=40+(R()-.5)*30;for(let i=0;i<n;i++){if(t>end&&i>0)break;const k=Math.floor(R()*pool.length);plan.push({t:Math.round(t),type:pool.splice(k,1)[0],seed:(seed+i*7919)>>>0});t+=25+R()*Math.max(10,(end-t)/Math.max(1,n-i)*1.4)}
   S.plan=plan.map(p=>p.t+'s '+p.type);return plan}
  let plan=[];
  // ---------------------------------------------------------------- 1. meteoriti neon
@@ -9865,6 +9867,7 @@ SafeRun.run('direzione colpi',()=>HitDir.install());
 const Bot6=(()=>{const S={eng:0,close:0,exits:0,err:''};
  function hookDamage(){const dm=damage;damage=function(e,n,owner){const r=dm.apply(this,arguments);try{if(e&&owner&&owner!==e&&n>0&&typeof bots!=='undefined'&&e.hp>0&&bots.includes(e))e.__hitBy={e:owner,t:elapsed}}catch(er){}return r}}
  function hookBrain(){if(!globalThis.BotBrain)return;const g=BotBrain.goal;BotBrain.goal=function(b,target,seen,nearest,dt){try{
+   if(b.__side){if(elapsed<b.__side.t&&Math.hypot(b.__side.x-b.x,b.__side.z-b.z)>1.5){S.side=(S.side||0)+1;return{x:b.__side.x,z:b.__side.z}}b.__side=null}
    const hb=b.__hitBy,hit=hb&&elapsed-hb.t<4&&hb.e&&hb.e.hp>0&&hb.e.team!==b.team;const armed=!!(typeof equipped==='function'&&equipped(b));
    const eng=!!target&&target.hp>0&&armed&&(nearest<8||(seen&&nearest<45)||hit);b.__eng=eng;
    if(eng){S.eng++;if(nearest<8)S.close++;
@@ -9881,12 +9884,65 @@ const Bot6=(()=>{const S={eng:0,close:0,exits:0,err:''};
 globalThis.Bot6=Bot6;
 SafeRun.run('E6 bot',()=>Bot6.install());
 
+// ===== 0.46 · E7: SCHERMO INTERO E INTERFACCIA DEL TELEFONO PIÙ SEMPLICE (1/11/2026) =====
+// Telefono: premendo Gioca il gioco va a schermo intero (se esci col tasto ⛶ non lo rimette più in quella sessione).
+// Telefono, meno tasti a schermo:
+// - via "Arrampica" e "Scivola": li fa il tasto azione al centro, che compare solo quando servono;
+// - il tasto azione non ripete "Salta" (c'è già il tasto Salta);
+// - "Ricarica" solo con un'arma da fuoco col caricatore non pieno; "Riposa" solo con il fiato sotto metà;
+// - "Spalla destra" diventa un tasto rotondo piccolo ⇄;
+// - via la riga meteo; il suggerimento "tocca · spara · trascina" sparisce dopo 25 s.
+// PC: il tasto ⛶ c'è anche nella lobby; in partita il primo clic blocca il mouse sulla visuale (Esc per liberarlo), come prima.
+const E7=(()=>{const S={fs:0,fsNo:0,hidden:0,err:''};const TOUCH=(()=>{try{return matchMedia('(pointer:coarse)').matches||'ontouchstart' in window}catch(e){return false}})();
+ let userLeft=false,wasFs=false;
+ function css(){const st=document.createElement('style');st.id='e7css';st.textContent=
+  'body.e7t #climb,body.e7t #slide,body.e7t #survival{display:none!important}'+
+  'body.e7t #shoulderBtn{font-size:0!important;width:48px!important;height:48px!important;min-width:0!important;padding:0!important;border-radius:50%!important;display:flex!important;align-items:center;justify-content:center}'+
+  'body.e7t #shoulderBtn::after{content:"\\21C4";font-size:24px;line-height:1}'+
+  'body.e7t #lookHint.e7off,body.e7t #h62Rest.e7off,body.e7t #h62Rel.e7off,body.e7t #ctxBtn.e7off{display:none!important}'+
+  '#e7fs{position:fixed;top:76px;right:14px;z-index:60;width:46px;height:46px;border-radius:12px;border:2px solid #e8d9b5;background:#f4ecd8;color:#1d4d52;font:700 22px system-ui;box-shadow:0 3px 0 #c9b88f;cursor:pointer}#e7fs:hover{background:#fff6e2}';document.head.appendChild(st)}
+ function fsOn(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
+ function goFs(){if(fsOn())return;try{const el=document.documentElement,f=el.requestFullscreen||el.webkitRequestFullscreen;if(!f)return;const r=f.call(el,{navigationUI:'hide'});S.fs++;if(r&&r.catch)r.catch(()=>{S.fsNo++})}catch(e){S.fsNo++}}
+ function toggleFs(){if(fsOn()){userLeft=true;try{(document.exitFullscreen||document.webkitExitFullscreen).call(document)}catch(e){}}else{userLeft=false;goFs()}}
+ function hookPlay(){const b=document.getElementById('lbPlay');if(!b)return;b.addEventListener('click',()=>{if(TOUCH&&!userLeft)goFs()},{capture:true})}
+ function lobbyBtn(){if(TOUCH)return;const b=document.createElement('button');b.id='e7fs';b.title='Schermo intero';b.textContent='⛶';b.addEventListener('click',e=>{e.stopPropagation();toggleFs()});document.body.appendChild(b);
+  const full=document.getElementById('full');if(full)full.onclick=()=>toggleFs()}
+ function tag(id,off){const e=document.getElementById(id);if(!e)return;if(off!==e.classList.contains('e7off')){e.classList.toggle('e7off',off);S.hidden++}}
+ let t=0;function tick(dt){t-=dt||.05;if(t>0)return;t=.2;const playing=typeof phase!=='undefined'&&phase==='playing';
+  const fb=document.getElementById('e7fs');if(fb)fb.style.display=playing?'none':'block';
+  const f=fsOn();if(wasFs&&!f)userLeft=true;wasFs=f;
+  if(!TOUCH||!playing||!player)return;
+  tag('lookHint',(typeof elapsed!=='undefined'?elapsed:0)>25);
+  let rel=false;try{const w=typeof equipped==='function'?equipped():null;rel=!!(w&&w.kind&&typeof WEAPONS!=='undefined'&&WEAPONS[w.kind]&&(w.rounds|0)<WEAPONS[w.kind].mag)}catch(e){}tag('h62Rel',!rel);
+  tag('h62Rest',!((player.stamina??100)<50));
+  const c=document.getElementById('ctxBtn');if(c)tag('ctxBtn',/^(JUMP|SALTA)$/i.test((c.textContent||'').trim()))}
+ function install(){css();if(TOUCH)document.body.classList.add('e7t');hookPlay();lobbyBtn();
+  {const rd=render;render=function(dt){rd.apply(this,arguments);try{tick(dt)}catch(e){S.err=e.message}}}
+  setInterval(()=>{try{const fb=document.getElementById('e7fs');if(fb)fb.style.display=(typeof phase!=='undefined'&&phase==='playing')?'none':'block'}catch(e){}},500)}
+ return{install,stats:()=>({...S,touch:TOUCH,fs:fsOn()}),_:{toggleFs,tick}}})();
+globalThis.E7=E7;
+SafeRun.run('E7 interfaccia',()=>E7.install());
+
+// ===== 0.46 · CRAZYGAMES MULTIGIOCATORE (1/11/2026) =====
+// Richiesta del modulo CrazyGames per i giochi online: tasto "invita" di CrazyGames e "instant multiplayer".
+// - Quando ospiti una lobby online, CrazyGames mostra il suo tasto Invita (con il codice della lobby); sparisce quando la partita parte o esci.
+// - Se il giocatore arriva da CrazyGames con "gioca subito con gli amici" (isInstantMultiplayer), il gioco crea da solo una lobby tutti contro tutti.
+// Fuori da CrazyGames non fa niente.
+const CGmp=(()=>{const S={shown:0,hidden:0,instant:0,err:''};let shownFor=null,instantDone=false;
+ function sdk(){try{return globalThis.EZcg&&EZcg.on()?EZcg.sdk():null}catch(e){return null}}
+ function tick(){const K=sdk();if(!K||!K.game||typeof NetSys==='undefined')return;try{
+   const st=NetSys.stats(),inLobby=typeof phase!=='undefined'&&phase!=='playing';
+   if(!instantDone&&K.game.isInstantMultiplayer&&inLobby&&!st.code){instantDone=true;S.instant++;try{NetSys.create('ffa')}catch(e){S.err='crea '+e.message}}
+   const want=st.role==='host'&&st.code&&!st.started?st.code:null;
+   if(want!==shownFor){if(want){try{K.game.showInviteButton({lobby:want});S.shown++}catch(e){S.err='invita '+e.message}}else{try{K.game.hideInviteButton();S.hidden++}catch(e){}}shownFor=want}
+  }catch(e){S.err=e.message}}
+ function install(){setInterval(tick,1000)}
+ return{install,stats:()=>({...S,shownFor})}})();
+globalThis.CGmp=CGmp;
+SafeRun.run('CrazyGames multigiocatore',()=>CGmp.install());
+
 globalThis.__X={EventBus,Destr,pgrid:()=>pgrid,act:()=>act(),GAME_VERSION,ACTIONS,ACT,animals:()=>animals,SP,DTYPE};
 globalThis.__v8={buses:()=>buses,inside:()=>inside,enter,act,exitB,openLoot,propHit,cur:()=>cur,skLv:()=>skLv,mats};
 globalThis.__v7={animals:()=>animals,interact,ability,near,riding:()=>riding,sat};
 }
-
-globalThis.__T={craft:(k,a)=>craft(k,a),buses:()=>__v8.buses(),MAI:()=>__v9.MeleeAI,nearbyB:(x,z,r)=>nearbyBuildings(x,z,r),wallHit:(a,b)=>wallHit(a,b),P:()=>player,ph:()=>phase,bots:()=>bots,land:()=>{if(globalThis.Roster)Roster.landNow();flight=null;for(const e of [player]){e.inBus=false;e.skydiving=false;e.parachute=false;e.y=heightAt(e.x,e.z);e.grounded=true}},setYaw:v=>{yaw=v},setPitch:v=>{pitch=v},fire:()=>fire(),move:(e,x,z)=>moveEntity(e,x,z),setHeld:v=>{fireHeld=v},keys:()=>keys,dmg:(e,n)=>damage(e,n,null),dmg2:(e,n,o)=>damage(e,n,o),pseg:(x,z,a,b)=>pointSegment(x,z,a,b),scene:()=>scene,prig:()=>playerRig,appr:()=>(typeof APPROVED!=='undefined'?APPROVED:null),vegT:()=>vegetationTiles,propsCur:()=>cur,rg:()=>resourceGroup,hset:(f)=>{const s=heightAt;heightAt=f;return s},B:()=>buildings,elapsed:()=>elapsed,cam:()=>camera,items:()=>items,barriers:()=>barriers,motos:()=>motos,zone:()=>zone,gather:()=>gather(),swap:()=>swapWeapon(),reload:()=>reloadWeapon(),eq:()=>equipped(),W:()=>WEAPONS,perf:(on)=>{if(on&&!globalThis.__pf){globalThis.__pf={n:0,ms:0,rms:0};const s0=step,r0=render;step=function(dt){const t=performance.now();s0(dt);__pf.ms+=performance.now()-t;__pf.n++};render=function(dt){const t=performance.now();r0(dt);__pf.rms=(__pf.rms||0)+performance.now()-t};}return globalThis.__pf},pitch:()=>pitch,yaw:()=>yaw,setEl:v=>{elapsed=v},sprint:()=>sprintToggle,stepF:(dt)=>step(dt),renderF:(dt)=>render(dt),setYawP:(y,p)=>{yaw=y;pitch=p},surf:(x,z)=>surfaceAt(x,z),pin:(x,z,p)=>pointIn(x,z,p),h:(x,z)=>heightAt(x,z),ib:(x,z)=>insideBuilding(x,z,0),act:(n)=>action(n),fov:()=>camera.fov,animals:()=>__X.animals(),water:(x,z)=>waterAt(x,z),land2:(x,z)=>{try{return landAt(x,z)?.kind||''}catch(e){return ''}},onRoad:(x,z)=>onRoad(x,z,0),cd:()=>chunkData,LAND:()=>LAND,swim:()=>player.swimming,brk:(n)=>{const s0=step;let k=n;step=function(dt){if(k-->0)throw new Error('test step');s0(dt)}},frameN:()=>frame,setup:(a,b)=>setup(a,b),startG:(t)=>start(t||'battle'),free:(x,z)=>findFree(x,z),setWind:(x,z)=>{wind={x,z}},rinfo:()=>({calls:renderer.info.render.calls,tris:renderer.info.render.triangles,rigs:botRigs.filter(r=>r.group.visible).length}),rigVis:()=>bots.reduce((n,b,i)=>n+(b.inBus&&botRigs[i]&&botRigs[i].group.visible?1:0),0)};
-globalThis.__T.run=function(src){return eval(src)};
-globalThis.__mvHook=(()=>{const m0=moveEntity;moveEntity=function(e,x,z){if(!globalThis.__mv)return m0(e,x,z);const t=performance.now();m0(e,x,z);__mv.ms+=performance.now()-t;__mv.n++}})();globalThis.EventBus=__X.EventBus;globalThis.Destr=__X.Destr;Object.defineProperty(globalThis,'pgrid',{get:()=>__X.pgrid()});globalThis.act=__X.act;globalThis.GAME_VERSION=__X.GAME_VERSION;globalThis.ACTIONS=__X.ACTIONS;globalThis.ACT=__X.ACT;
 </script></body></html>
