@@ -90,7 +90,7 @@ body.inLobby:not(.ezReady) #lobby{visibility:hidden!important}
 <div class="lb-bot"><div class="lb-modes" id="lbModes"><button data-n="1">Singolo</button><button data-n="2">Duo</button><button data-n="3">Trio</button><button data-n="4">Squadra</button></div><button id="lbPlay">GIOCA</button></div>
 <div id="lbGroup"><div class="box"><h3>Gruppo online</h3><div id="lbNetSlot"></div><button id="lbGrpClose" style="width:100%;margin-top:10px">Chiudi</button></div></div></div>
 <div id="result"><div class="rays"></div><div id="confetti"></div><div class="rbox"><div class="trophy">🏆</div><h2 id="rsTitle">VITTORIA!</h2><div id="rsSub">Ultimo superstite del Valdarno</div><div class="rs"><div><span id="rsKills">0</span><small>UCCISIONI</small></div><div><span id="rsTime">0:00</span><small>TEMPO</small></div></div><button id="rsBack">TORNA ALLA LOBBY</button></div></div>
-<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.66.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
+<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.66.3</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
 <div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.4 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
 <div id="weaponHud"><b id="weaponName">A MANI VUOTE</b><span id="weaponAmmo">Cerca una cassa di armi</span><div><button id="reload">Ricarica</button><button id="swap">Cambia arma</button><button id="rest">Riposa</button></div></div>
 <div id="flightStatus" hidden></div><button id="deploy" hidden>LANCIATI · E</button>
@@ -1463,7 +1463,7 @@ $('crPick').onclick=()=>{const m=mats();if(m.stick<2||m.metal<3){tell('Materiali
 
 // ===== v0.9.0: COMBAT FOUNDATION + MELEE A MANI VUOTE + DISTRUZIONE AMBIENTALE =====
 // Un solo sistema autorevole per ciascuna parte: Combat (stati, attacchi, danni), Destr (oggetti distruttibili), MeleeAI (bot).
-const GAME_VERSION='0.66.0';
+const GAME_VERSION='0.66.3';
 const v5=globalThis.__V5||{shake:0,fail:{}};
 const EventBus=(()=>{const L=new Map();return{on(t,f){if(!L.has(t))L.set(t,[]);L.get(t).push(f)},emit(t,d){const a=L.get(t);if(a)for(const f of a){try{f(d)}catch(e){console.warn('evento '+t,e)}}}}})();
 const CombatState={IDLE:'IDLE',AIMING:'AIMING',ATTACKING:'ATTACKING',RECOVERY:'RECOVERY',HIT:'HIT',STAGGER:'STAGGER',DODGE:'DODGE',DEAD:'DEAD'};
@@ -4405,7 +4405,7 @@ const CamSys=(()=>{const C=GAME_CFG.camera,S={autoFP:0,manual:0,clampFrames:0,mi
   for(const[dx,dy,dz]of[[rx*.26,0,rz*.26],[-rx*.26,0,-rz*.26],[0,.17,0],[0,-.17,0],[fx*.17,0,fz*.17]]){const bx=x+dx,by=y+dy,bz=z+dz;if(solid(bx,by,bz)||solid(x+dx*.5,y+dy*.5,z+dz*.5))return false;try{const w=wallHit({x,z},{x:bx,z:bz},y,by);if(w&&w.t<1)return false}catch(e){}}return true}
  function head(){const cr=player.crouched||player.slide>0;return{x:player.x,y:player.y+(cr?1.0:1.5),z:player.z}}
  let lastFr=-1,tick=0;function frameTick(){tick++}
- function update(dt0){const dt=tick!==lastFr?dt0:0;lastFr=tick;if(phase!=='playing'||!player||player.inBus||player.skydiving||player.parachute||(typeof inside!=='undefined'&&inside)){showRig(true);return}
+ function update(dt0){const dt=tick!==lastFr?dt0:0;lastFr=tick;if(globalThis.TelMode&&TelMode.on()&&typeof phase!=='undefined'&&phase==='playing'){if(auto){auto=false;freeT=0;label()}showRig(true);return}/*0.66: dal telefono mai prima persona*/if(phase!=='playing'||!player||player.inBus||player.skydiving||player.parachute||(typeof inside!=='undefined'&&inside)){showRig(true);return}
   S.frames++;const H=head(),cp=camera.position,vx=cp.x-H.x,vy=cp.y-H.y,vz=cp.z-H.z,L=Math.hypot(vx,vy,vz);let allowed=L;
   if(L>.05){let t=1;try{t=Math.min(t,wallHit({x:H.x,z:H.z},{x:cp.x,z:cp.z},H.y,cp.y).t)}catch(e){}
    const n=Math.ceil(L/STEP);for(let i=1;i<=n;i++){const k=i/n;if(k>t)break;if(solid(H.x+vx*k,H.y+vy*k,H.z+vz*k)){t=Math.min(t,(i-1)/n);break}}
@@ -4422,7 +4422,7 @@ const CamSys=(()=>{const C=GAME_CFG.camera,S={autoFP:0,manual:0,clampFrames:0,mi
    const k=globalThis.AimSys?AimSys.k():0;if(k<.02&&Math.abs(camera.fov-C.fpFov)>.05){camera.fov+=(C.fpFov-camera.fov)*Math.min(1,dt*10);camera.updateProjectionMatrix()}}
   else{if(L>.05&&dCur<L){const s=dCur/L;camera.position.set(H.x+vx*s,H.y+vy*s,H.z+vz*s)}showRig(true)}}
  function showRig(v){try{if(!playerRig||!playerRig.group)return;if(!v){playerRig.group.visible=false;hidRig=true}else if(hidRig){playerRig.group.visible=true;hidRig=false}}catch(e){}}
- return{update,frameTick,setMode,cycle,slide,solid,mode:()=>mode,auto:()=>auto,fp:()=>mode===3||auto,dist:()=>dCur,label,stats:()=>({...S,minDist:+S.minDist.toFixed(2),mode,auto})}})();
+ return{update,frameTick,setMode,cycle,slide,solid,mode:()=>mode,auto:()=>auto,fp:()=>!(globalThis.TelMode&&TelMode.on())&&(mode===3||auto),dist:()=>dCur,label,stats:()=>({...S,minDist:+S.minDist.toFixed(2),mode,auto})}})();
 globalThis.CamSys=CamSys;
 {const cu23=cameraUpdate;cameraUpdate=function(dt){cu23(dt);SafeRun.run('visuale',()=>CamSys.update(dt))}}
 {const rd23=render;render=function(dt){CamSys.frameTick();return rd23(dt)}}
@@ -11482,7 +11482,7 @@ SafeRun.run('bot 0.63',()=>Bot98.install());
 // Valori miei (da approvare nel Centro di controllo): telecamera 13 m su e 9 m dietro (circa 55°), campo visivo 50°; scansione 55 m,
 // visuale che si allarga di 1,4 volte se c'è un nemico entro 35 m, e torna normale 3 s dopo l'ultimo segnale.
 GAME_CFG.tel={camH:13,camB:9,fov:50,lookAhead:1.5,auto:false,scanR:55,alertR:35,zoomOut:1.4,alertHold:3,blink:2,
- headChance:.2,tapSpread:1.3,holdT:.3,dead:14,lockCone:.16,lockLat:1.6,showMax:40,reloadCalm:2.5,xrayR:30,follow:.08};
+ headChance:.2,tapSpread:1.3,holdT:.3,dead:14,lockCone:.16,lockLat:1.6,showMax:40,reloadCalm:2.5,xrayR:30,follow:.08,runAt:.85,slideDrop:.7,slideCd:2.5};
 // T2 (Michele 6/11): tasto sparo come Brawl Stars. Trascini e vedi dove spari e fin dove arriva; rilasci subito = 1 colpo; tenuto = come
 // tenere premuto su PC; un tocco = mira da solo al nemico più vicino (+30% di dispersione, valore di Michele). Testa da telefono:
 // 1 colpo su 5 (Michele). Mira in altezza automatica. Ricarica automatica quando non combatti. Valori miei: tenuto dopo 0,3 s,
@@ -11495,12 +11495,15 @@ const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alert
  const now=()=>performance.now()/1000;
  // ---------------------------------------------------------------- telecamera (il "su" dello schermo è sempre il nord)
  const anc={x:0,y:0,z:0,ok:false};let zk=1,alertUntil=0;
- function hookCam(){const cu=cameraUpdate;let lt=0;cameraUpdate=function(dt){const r=cu.apply(this,arguments);try{if(!active())return r;const tn=performance.now(),d=Math.min(.1,Math.max(.001,lt?(tn-lt)/1000:1/30));lt=tn;/* tempo vero: la visuale si allarga in tempo reale */
+ function hookCam(){const cu=cameraUpdate;let lt=0;cameraUpdate=function(dt){const r=cu.apply(this,arguments);try{if(!active()){if(on&&typeof phase!=='undefined'&&phase==='playing'&&typeof player!=='undefined'&&player&&(player.inBus||player.skydiving))airCam();return r}const tn=performance.now(),d=Math.min(.1,Math.max(.001,lt?(tn-lt)/1000:1/30));lt=tn;/* tempo vero: la visuale si allarga in tempo reale */
    try{yaw=0;pitch=-.35}catch(e){}
    const want=now()<alertUntil?C.zoomOut:1;zk+=(want-zk)*Math.min(1,d*(want>zk?6:2.5));
    const k=anc.ok?1-Math.exp(-10*d):1;anc.x+=(player.x-anc.x)*k;anc.y+=((player.y||0)-anc.y)*k;anc.z+=(player.z-anc.z)*k;anc.ok=true;
    camera.position.set(anc.x,anc.y+C.camH*zk,anc.z+C.camB*zk);camera.lookAt(anc.x,anc.y+.8,anc.z-C.lookAhead*zk);
    if(Math.abs(camera.fov-C.fov)>.01||camera.near!==.5){camera.fov=C.fov;camera.near=.5;camera.updateProjectionMatrix()}S.frames++}catch(e){S.err='cam '+e.message}return r}}
+ // in elicottero e in caduta: vista da fuori, alta, che guarda l'isola sotto (dal telefono mai prima persona)
+ function airCam(){const px=player.x,py=player.y||0,pz=player.z;if(player.inBus){camera.position.set(px,py+16,pz+30);camera.lookAt(px,py-40,pz-50)}else{camera.position.set(px,py+C.camH*1.7,pz+C.camB*1.7);camera.lookAt(px,py,pz-2)}
+  try{yaw=0;pitch=-.35}catch(e){}if(Math.abs(camera.fov-C.fov)>.01||camera.near!==.5){camera.fov=C.fov;camera.near=.5;camera.updateProjectionMatrix()}anc.ok=false;S.air=(S.air||0)+1;try{if(typeof playerRig!=='undefined'&&playerRig&&playerRig.group)playerRig.group.visible=player.hp>0}catch(e){}}
  const active=()=>on&&typeof phase!=='undefined'&&phase==='playing'&&typeof player!=='undefined'&&player&&!player.inBus&&!player.skydiving;
  // ---------------------------------------------------------------- personaggio evidenziato quando qualcosa lo copre (alberi, tetti, muri)
  // una copia del personaggio che si disegna SOLO dove c'è qualcosa davanti (prova di profondità "dietro"): costa pochissimo
@@ -11624,10 +11627,17 @@ const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alert
  function hudCss(){const st=document.createElement('style');st.id='tel3css';st.textContent=
   'body.telAlto.playing #crouch,body.telAlto.playing #jump,body.telAlto.playing #sprint,body.telAlto.playing #gather,body.telAlto.playing #heal,body.telAlto.playing #build,body.telAlto.playing #eat,body.telAlto.playing #climb,body.telAlto.playing #slide,'+
   'body.telAlto.playing #dodgeBtn,body.telAlto.playing #shoulderBtn,body.telAlto.playing #h62Bar,body.telAlto.playing #h62Side,body.telAlto.playing #lpChips,body.telAlto.playing #mapButton,body.telAlto.playing #full,body.telAlto.playing #foot,body.telAlto.playing #weaponHud,body.telAlto.playing #animUI,body.telAlto.playing #qSlotBtn{display:none!important}'+
+  /* 0.66 (video di Michele): via le scritte che si accavallano sul telefono */
+  'body.telAlto.playing #comboTxt,body.telAlto.playing #matFeed,body.telAlto.playing #objHp,body.telAlto.playing #lkCard,body.telAlto.playing #swap,body.telAlto.playing #rest,body.telAlto.playing #reload,body.telAlto.playing #h62Rel,body.telAlto.playing #h62Rest,'+
+  'body.telAlto.playing #notice,body.telAlto.playing #fpComp,body.telAlto.playing #fpCross,body.telAlto.playing #fpHolo,body.telAlto.playing #fpPanel,body.telAlto.playing #fpScan,body.telAlto.playing #fpZone,body.telAlto.playing #viewSwipe,'+
+  'body.telAlto.playing #mobEdit,body.telAlto.playing #mobLayout,body.telAlto.playing #animBtn,body.telAlto.playing #animHud,body.telAlto.playing #abilBtn,body.telAlto.playing #grabBtn,body.telAlto.playing #hookBtn,body.telAlto.playing #uzFortBtn,body.telAlto.playing #torch,body.telAlto.playing #e7fs,body.telAlto.playing #damageNumbers,body.telAlto.playing #dmgNums,body.telAlto.playing #compass{display:none!important}'+
+  'body.telAlto.playing #feed{left:12px!important;right:auto!important;top:140px!important;bottom:auto!important;width:min(240px,32vw)!important;max-height:60px!important;overflow:hidden!important}body.telAlto.playing #feed .fm:not(.special){display:none!important}body.telAlto.playing #feed .fm.special:nth-child(n+3){display:none!important}body.telAlto.playing #feed .fm{font-size:11px!important;padding:3px 8px!important}'+
+  'body.telAlto.playing #e3Ban{top:auto!important;bottom:auto!important;top:82px!important;transform:translateX(-50%) scale(.72)!important;left:50%!important;transform-origin:top center!important}'+
+  'body.telAlto.playing #teamHUD{top:140px!important;left:auto!important;right:12px!important;font-size:10px!important}'+
   'body.telAlto.playing #minimap{position:fixed!important;top:10px!important;right:62px!important;left:auto!important;bottom:auto!important;width:92px!important;height:92px!important}'+
   'body.telAlto.playing #chatBtn{top:108px!important;right:12px!important;bottom:auto!important;left:auto!important}'+
   '.tel3{display:none;position:fixed;z-index:40;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif}body.telAlto.playing .tel3{display:flex}'+
-  '#telChips{right:162px;top:12px;flex-direction:column;gap:6px}#telChips span{height:30px;padding:0 10px 0 8px;border-radius:15px;background:rgba(247,240,225,.96);box-shadow:0 3px 0 rgba(0,0,0,.12);display:flex;align-items:center;gap:5px;font:900 14px system-ui;color:#1d3c40}'+
+  'body.telAlto.p95fly #ctxBtn,body.zaOpen .tel3,body.zaOpen #telAim,body.p95fly .tel3,body.p95fly #telAim{display:none!important}'+'#telChips{right:162px;top:12px;flex-direction:column;gap:6px}#telChips span{height:30px;padding:0 10px 0 8px;border-radius:15px;background:rgba(247,240,225,.96);box-shadow:0 3px 0 rgba(0,0,0,.12);display:flex;align-items:center;gap:5px;font:900 14px system-ui;color:#1d3c40}'+
   '#telBag{left:12px;top:84px;width:50px;height:50px;border-radius:15px;background:rgba(247,240,225,.96);box-shadow:0 3px 0 rgba(0,0,0,.12);align-items:center;justify-content:center;color:#c2452e;border:0}'+
   '#telW{left:50%;bottom:10px;transform:translateX(-50%);gap:8px;align-items:flex-end}#telW button{position:relative;width:76px;height:56px;border-radius:14px;border:0;padding:0;box-shadow:0 3px 0 rgba(0,0,0,.2);overflow:hidden}'+
   '#telW button.on{width:86px;height:64px;outline:3px solid #fff}#telW img{position:absolute;left:4px;right:4px;top:2px;width:calc(100% - 8px);height:66%;object-fit:contain;filter:drop-shadow(0 1px 1px #0006)}'+
@@ -11644,7 +11654,7 @@ const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alert
   el.addEventListener('pointermove',e=>{if(x0===null)return;const dx=e.clientX-x0,dy=e.clientY-y0;if(Math.abs(dx)>26||Math.abs(dy)>26){const step=(Math.abs(dx)>Math.abs(dy)?dx:-dy)>0?1:-1;hud[key]=(hud[key]+step+list.length)%list.length;x0=e.clientX;y0=e.clientY;moved=true;paintRound(el,list,key);try{SFX.play('swap',.5)}catch(er){}}});
   const up=e=>{if(x0===null)return;x0=null;if(!moved)use(list[hud[key]][0]);paintRound(el,list,key)};el.addEventListener('pointerup',up);el.addEventListener('pointercancel',()=>{x0=null})}
  function paintRound(el,list,key){const it=list[hud[key]],n=cntOf(it[2]);el.innerHTML=(key==='c'?'<span class="n">+</span>':'')+'<span>'+tr(it[1]).toUpperCase()+'</span><span class="q">'+n+'</span><span class="d">'+list.map((_,i)=>'<i class="'+(i===hud[key]?'on':'')+'"></i>').join('')+'</span>';el.classList.toggle('zero',!n);el.setAttribute('aria-label',tr(it[1])+' · '+n)}
- function buildHud(){if(hud.built)return;hud.built=true;hudCss();
+ function buildHud(){if(hud.built)return;hud.built=true;
   mk('telChips','div','<span aria-label="vivi"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1f8a8f" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.5 3.6-8 8-8s8 3.5 8 8z"/></svg><em id="telAl" style="font-style:normal">0</em></span><span aria-label="uccisioni"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c2452e" aria-hidden="true"><path d="M12 2C7 2 4 5.5 4 10c0 2.6 1.2 4.4 3 5.5V19h2v-2h2v2h2v-2h2v2h2v-3.5c1.8-1.1 3-2.9 3-5.5 0-4.5-3-8-8-8z"/><circle cx="9" cy="10" r="2" fill="#f7f0e1"/><circle cx="15" cy="10" r="2" fill="#f7f0e1"/></svg><em id="telKi" style="font-style:normal">0</em></span>');
   const bag=mk('telBag','btn','<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 8a5 5 0 0110 0v12H7z"/><path d="M9 8V6a3 3 0 016 0v2M7 13h10"/></svg>');bag.setAttribute('aria-label',tr('Zaino'));bag.onclick=e=>{e.stopPropagation();try{Zaino.open()}catch(er){}};
   mk('telW','div');const w=document.getElementById('telW');w.addEventListener('pointerdown',e=>{e.stopPropagation()});w.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;e.stopPropagation();selW(+b.dataset.s)});
@@ -11667,6 +11677,16 @@ const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alert
  addEventListener('storage',e=>{if(e.key==='uz-tel-keys')applyKeys()});
  // salto, scavalco e arrampicata automatici: se cammini contro qualcosa e non avanzi
  let blk={t:0,x:0,z:0,cd:0};
+ // corsa automatica: joystick spinto quasi tutto → corri (Michele 6/11)
+ let runSet=false,crSet=false,slCd=0,bushT=0,inBush=false;
+ function autoRun(dt){if(!active()||player.hp<=0)return;const jx=(typeof joy!=='undefined'&&joy)?joy.x:0,jy=(typeof joy!=='undefined'&&joy)?joy.y:0,m=Math.hypot(jx,jy);
+  try{if(m>C.runAt&&!sprintToggle){sprintToggle=true;runSet=true;hud.runs=(hud.runs||0)+1}else if(m<C.runAt-.25&&runSet){sprintToggle=false;runSet=false}}catch(e){}
+  const o=opt();slCd-=dt;
+  // scivolata: corri in discesa ripida
+  if(o.autoSlide&&m>C.runAt&&slCd<=0&&!(player.slide>0)&&!player.swimming){const fx=jx/m,fz=jy/m,h0=heightAt(player.x,player.z),h1=heightAt(player.x+fx*2,player.z+fz*2);if(h0-h1>C.slideDrop){try{action('slide')}catch(e){}slCd=C.slideCd;hud.slides=(hud.slides||0)+1}}
+  // accovacciata: dentro un cespuglio ti abbassi, appena esci ti rialzi
+  bushT-=dt;if(o.autoCrouch&&bushT<=0){bushT=.25;inBush=false;try{for(const ob of Destr.DS.values()){if(!ob||ob.dead||ob.t!=='bush')continue;if(Math.abs(ob.x-player.x)<1.4&&Math.abs(ob.z-player.z)<1.4&&Math.hypot(ob.x-player.x,ob.z-player.z)<1.15*(ob.q||ob.s||1)){inBush=true;break}}}catch(e){}
+   if(inBush&&!player.crouched&&!(player.slide>0)){try{action('crouch')}catch(e){}crSet=true;hud.crouches=(hud.crouches||0)+1}else if(!inBush&&crSet&&player.crouched){try{action('crouch')}catch(e){}crSet=false}}}
  function autoMove(dt){const o=opt();if(!o.autoJump&&!o.autoClimb)return;if(!active()||player.hp<=0||player.climb||player.swimming||player.inVehicle)return;
   const jx=(typeof joy!=='undefined'&&joy)?joy.x:0,jy=(typeof joy!=='undefined'&&joy)?joy.y:0,m=Math.hypot(jx,jy);blk.cd-=dt;if(m<.35){blk.t=0;blk.x=player.x;blk.z=player.z;return}
   blk.t+=dt;if(blk.t<.28)return;const moved=Math.hypot(player.x-blk.x,player.z-blk.z);blk.t=0;blk.x=player.x;blk.z=player.z;if(moved>.35||blk.cd>0)return;
@@ -11683,13 +11703,13 @@ const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alert
  function paint(){if(BTN)BTN.textContent='Prova telefono: '+(on?'SÌ':'NO')}
  // ----------------------------------------------------------------
  function set(v){on=!!v;S.on=on;anc.ok=false;zk=1;try{document.body.classList.toggle('telAlto',on)}catch(e){}if(!on){globalThis.__bldCut=null;cutKey='';try{BuildSys.markMesh()}catch(e){}}}
- function install(){hookCam();hookNoise();hookShots();aimBtn();set(on);
-  {const sp=step;step=function(dt){const r=sp.apply(this,arguments);try{if(on){cutTick();fireTick();autoMove(dt||1/30)}}catch(e){S.err='passo '+e.message}return r}}
+ function install(){hookCam();hookNoise();hookShots();aimBtn();hudCss();set(on);
+  {const sp=step;step=function(dt){const r=sp.apply(this,arguments);try{if(on){cutTick();fireTick();autoMove(dt||1/30);autoRun(dt||1/30)}}catch(e){S.err='passo '+e.message}return r}}
   setInterval(()=>{try{scan();xray();xrayOthers();hudTick()}catch(e){S.err='scan '+e.message}},250);
   (function loop(){try{radar();drawAim()}catch(e){S.err='radar '+e.message}requestAnimationFrame(loop)})();
   setInterval(()=>{try{lobbyBtn()}catch(e){}},500);
   try{EventBus.on('MATCH_SEED',()=>{SEEN.clear();last.clear();NOISE.length=0;alertUntil=0;zk=1;anc.ok=false})}catch(e){}}
- return{install,set,on:()=>on,prova:PROVA,stats:()=>({...S,on,zk:+zk.toFixed(2),cutKey,seenNow:SEEN.size,fire:{...tel2,aim:!!tel2.aim}}),_:{scan,cutTick,SEEN,MARK,shootDir,pickTarget,fireTick,tel2,drawAim,hud,hudTick,useYellow,useCure,autoMove,applyKeys,opt,OPT_DEF,KEYS}}})();
+ return{install,set,on:()=>on,prova:PROVA,stats:()=>({...S,on,zk:+zk.toFixed(2),cutKey,seenNow:SEEN.size,fire:{...tel2,aim:!!tel2.aim}}),_:{scan,cutTick,SEEN,MARK,shootDir,pickTarget,fireTick,tel2,drawAim,hud,hudTick,useYellow,useCure,autoMove,autoRun,applyKeys,opt,OPT_DEF,KEYS}}})();
 globalThis.TelMode=TelMode;
 SafeRun.run('telefono dall\'alto',()=>TelMode.install());
 
@@ -11777,7 +11797,7 @@ const UI100=(()=>{const S={phone:false,fs:0,lock:0,sheet:0,keys:0,err:''};const 
  function tick(){const ph=phoneUI();try{document.body.classList.toggle('lbCov',(typeof phase==='undefined'||phase!=='playing')&&!onTop())}catch(e){}S.phone=ph;document.body.classList.toggle('ph100',ph&&(typeof phase==='undefined'||phase!=='playing'));document.body.classList.toggle('ph100r',PHONE);if(ph){modeUI();paintMode()}settingsUI()}
  function install(){css();rotUI();setInterval(()=>{try{tick()}catch(e){S.err=e.message}},400);
   // al primo tocco sul telefono: schermo intero e orizzontale (il browser lo permette solo dopo un tocco)
-  addEventListener('pointerdown',()=>{try{if(PHONE&&!document.fullscreenElement)goFull()}catch(e){}},{capture:true,passive:true})}
+  for(const ev of['pointerup','click','touchend'])addEventListener(ev,()=>{try{if(PHONE&&!document.fullscreenElement)goFull()}catch(e){}},{capture:true,passive:true})}/* il tocco vale come gesto solo al rilascio */
  return{install,openKeys,openSheet,stats:()=>({...S})}})();
 globalThis.UI100=UI100;
 SafeRun.run('telefono lobby',()=>UI100.install());
