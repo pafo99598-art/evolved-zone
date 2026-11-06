@@ -3336,9 +3336,10 @@ const BuildSys=(()=>{
  // 0.15.0: capienza secondo il preset grafico (Ultra: molti più edifici veri insieme)
  let CAP=24000,CAPG=4000;function meshInit(){if(BW){for(const m of[BW,BG,BF]){scene.remove(m);m.dispose&&m.dispose()}}CAP=globalThis.__bldCap||24000;CAPG=Math.round(CAP/6);const g=new THREE.BoxGeometry(1,1,1);BW=new THREE.InstancedMesh(g,new THREE.MeshLambertMaterial({color:'#fff'}),CAP);BG=new THREE.InstancedMesh(g,new THREE.MeshLambertMaterial({color:'#fff',transparent:true,opacity:.33,depthWrite:false}),CAPG);BF=new THREE.InstancedMesh(g,new THREE.MeshLambertMaterial({color:'#fff'}),CAP);try{globalThis.BldTex&&(BldTex.panel(BW.material),BldTex.panel(BF.material))}catch(e){}for(const m of[BW,BG,BF]){m.count=0;m.frustumCulled=false;scene.add(m)}}
  function rebuildMesh(){if(!BW||(globalThis.__bldCap||24000)!==CAP)meshInit();let nw=0,ng=0,nf=0;const box=(M,x,y,z,sx,sy,sz,ang,col)=>{const cap=M===BG?CAPG:CAP,n=M===BW?nw:M===BG?ng:nf;if(n>=cap)return;O3.position.set(x,y,z);O3.rotation.set(0,ang,0);O3.scale.set(sx,sy,sz);O3.updateMatrix();M.setMatrixAt(n,O3.matrix);M.setColorAt(n,C3);if(M===BW)nw++;else if(M===BG)ng++;else nf++};
-  for(const L of ACTIVE){const base=L.b.k54?'#e3cfa6':L.b.col55?L.b.col55:L.bm&&globalThis.BldMat?BldMat.M[L.bm].col:BMAT_STATS[L.mat].col;
-   for(const o of L.panels){if(o.dead)continue;C3.set(o.comp==='door'?'#5a3d22':o.comp==='part'?'#d8cfbd':base);if(o.stage)C3.multiplyScalar(1-o.stage*.13);if(o.comp==='weak')C3.multiplyScalar(.9);if(o.ext&&o.L>0&&o.comp!=='door')C3.offsetHSL(0,0,.02);
+  for(const L of ACTIVE){const CUT=(globalThis.__bldCut&&globalThis.__bldCut.L===L)?globalThis.__bldCut.f:-1;/*0.66 telefono dall'alto: si vede solo il piano dove sei*/const base=L.b.k54?'#e3cfa6':L.b.col55?L.b.col55:L.bm&&globalThis.BldMat?BldMat.M[L.bm].col:BMAT_STATS[L.mat].col;
+   for(const o of L.panels){if(o.dead)continue;if(CUT>=0&&o.L>CUT)continue;C3.set(o.comp==='door'?'#5a3d22':o.comp==='part'?'#d8cfbd':base);if(o.stage)C3.multiplyScalar(1-o.stage*.13);if(o.comp==='weak')C3.multiplyScalar(.9);if(o.ext&&o.L>0&&o.comp!=='door')C3.offsetHSL(0,0,.02);
     const x=o.x,z=o.z,y=o.y,ang=o.ang,tilt=o.stage>=3?.03:0;
+    if(CUT>=0&&o.L===CUT){if(o.comp==='window'||(o.comp==='door'&&o.open))continue;const hh=Math.min(o.h,o.comp==='frame'?BUILD_CFG.sill:1.15);box(BW,x,y+hh/2,z,o.w+.02,hh,o.d,ang,0);continue}
     if(o.comp==='frame'){box(BW,x,y+BUILD_CFG.sill/2,z,o.w,BUILD_CFG.sill,o.d,ang,0);box(BW,x,y+(BUILD_CFG.winTop+o.h)/2,z,o.w,o.h-BUILD_CFG.winTop,o.d,ang,0);C3.multiplyScalar(.8);const jx=Math.cos(ang)*(o.w/2-.08),jz=-Math.sin(ang)*(o.w/2-.08);for(const s of[-1,1])box(BW,x+jx*s,y+(BUILD_CFG.sill+BUILD_CFG.winTop)/2,z+jz*s,.14,BUILD_CFG.winTop-BUILD_CFG.sill,o.d+.04,ang,0)
      // isola nuova (B2): persiane verdi aperte ai lati della finestra, come le case del concept
      if((L.b.k54||(L.b.v55&&!L.b.coop55&&!L.b.shop55))&&o.ext&&o.nx!==undefined){const ow=o.w-.28,sw=Math.min(.75,ow*.5),hh=BUILD_CFG.winTop-BUILD_CFG.sill,ux=Math.cos(ang),uz=-Math.sin(ang),off=o.d/2+.05;C3.set('#4f7a46');if(o.stage)C3.multiplyScalar(1-o.stage*.13);
@@ -3349,11 +3350,11 @@ const BuildSys=(()=>{
    // angoli portanti (indistruttibili) e cornicione
    if(L.foundMin<L.base-.05){C3.set('#7d766c');for(let i=0;i<L.b.p.length;i++){const a=L.b.p[i],c=L.b.p[(i+1)%L.b.p.length],l=Math.hypot(c[0]-a[0],c[1]-a[1]),hh=L.base-L.foundMin+.3;box(BW,(a[0]+c[0])/2,L.base-hh/2+.02,(a[1]+c[1])/2,l+.3,hh,.36,Math.atan2(-(c[1]-a[1]),c[0]-a[0]),0)}}
    if(L.door){const d=L.door,g=heightAt(d.x+d.nx*2.4,d.z+d.nz*2.4),top=L.base+.1;if(top-g>.15){C3.set('#8f877b');for(let i=0;i<4;i++){const o0=(i+.5)*.6,y1=top-(i/4)*(top-g);box(BW,d.x+d.nx*o0,(y1+g)/2-.1,d.z+d.nz*o0,d.w,y1-g+.2,.62,d.ang,0)}}}
-   C3.set(base).multiplyScalar(.82);for(const q of L.b.p)box(BW,q[0],L.base+L.b.h/2,q[1],.42,L.b.h+.05,.42,0,0);
+   C3.set(base).multiplyScalar(.82);{const ph=CUT>=0?CUT*L.LH+1.15:L.b.h+.05;for(const q of L.b.p)box(BW,q[0],L.base+ph/2,q[1],.42,ph,.42,0,0)}
    // pavimenti/soffitti/tetto a piastrelle (con il vano scala aperto ai piani superiori)
-   for(let f=0;f<=L.F;f++){C3.set(f===L.F?'#6e655c':f===0?'#8b7f70':'#a99d8a');for(const t of L.tiles){if(f>0&&t.stairs)continue;if(holeT(L,f,t))continue;const fo=L.fl.get(f+':'+t.i)||null;if(fo&&fo.stage){C3.set(f===L.F?'#6e655c':'#a99d8a').multiplyScalar(1-fo.stage*.12)}else C3.set(f===L.F?'#6e655c':f===0?'#8b7f70':'#a99d8a');box(BF,t.x,L.base+f*L.LH+.03,t.z,(L.T||BUILD_CFG.tile)+.02,.14,(L.T||BUILD_CFG.tile)+.02,Math.atan2(-L.uz,L.ux),0)}}
+   for(let f=0;f<=L.F;f++){if(CUT>=0&&f>CUT)continue;C3.set(f===L.F?'#6e655c':f===0?'#8b7f70':'#a99d8a');for(const t of L.tiles){if(f>0&&t.stairs)continue;if(holeT(L,f,t))continue;const fo=L.fl.get(f+':'+t.i)||null;if(fo&&fo.stage){C3.set(f===L.F?'#6e655c':'#a99d8a').multiplyScalar(1-fo.stage*.12)}else C3.set(f===L.F?'#6e655c':f===0?'#8b7f70':'#a99d8a');box(BF,t.x,L.base+f*L.LH+.03,t.z,(L.T||BUILD_CFG.tile)+.02,.14,(L.T||BUILD_CFG.tile)+.02,Math.atan2(-L.uz,L.ux),0)}}
    // scale: gradini per ogni rampa
-   if(L.stair){C3.set('#9a8f80');const s=L.stair,steps=10;for(let f=0;f<L.F;f++)for(let i=0;i<steps;i++){const u=s.u0+(i+.5)/steps*(s.u1-s.u0),w=L.toW(u,(s.v0+s.v1)/2),hgt=(i+1)/steps*L.LH;box(BF,w.x,L.base+f*L.LH+hgt/2,w.z,(s.u1-s.u0)/steps+.02,hgt,s.v1-s.v0,Math.atan2(-L.uz,L.ux),0)}}}
+   if(L.stair){C3.set('#9a8f80');const s=L.stair,steps=10;for(let f=0;f<(CUT>=0?CUT+1:L.F);f++)for(let i=0;i<steps;i++){const u=s.u0+(i+.5)/steps*(s.u1-s.u0),w=L.toW(u,(s.v0+s.v1)/2),hgt=(i+1)/steps*L.LH;box(BF,w.x,L.base+f*L.LH+hgt/2,w.z,(s.u1-s.u0)/steps+.02,hgt,s.v1-s.v0,Math.atan2(-L.uz,L.ux),0)}}}
   BW.count=nw;BG.count=ng;BF.count=nf;for(const m of[BW,BG,BF]){m.instanceMatrix.needsUpdate=true;if(m.instanceColor)m.instanceColor.needsUpdate=true}dirtyMesh=false}
  // ---- grafo di navigazione interno (stanze/portali) ricostruito solo quando cambia la struttura ----
  function segDist(ax,az,bx,bz,cx,cz,dx,dz){if(segInter(ax,az,bx,bz,cx,cz,dx,dz))return 0;return Math.min(pointSegment(ax,az,[cx,cz],[dx,dz]),pointSegment(bx,bz,[cx,cz],[dx,dz]),pointSegment(cx,cz,[ax,az],[bx,bz]),pointSegment(dx,dz,[ax,az],[bx,bz]))}
@@ -3430,7 +3431,7 @@ const BuildSys=(()=>{
   if(ACTIVE.length)for(const b of bots){if(b.hp<=0||b.inBus||b.parachute||b.skydiving)continue;const L=bAt(b.x,b.z);if(!L){// fuori: quota reale del terreno (soglia/portico compresi) vicino agli edifici attivi, usata da collisioni in altezza e linea di vista
    if(b.__inB||ACTIVE.some(q=>Math.abs(q.b.x-b.x)<70&&Math.abs(q.b.z-b.z)<70)){const pc=porchY(b.x,b.z),g=heightAt(b.x,b.z);b.y=pc!==null&&pc>g?pc:g;b.__fy=b.y;b.__fx=b.x;b.__fz=b.z}b.__inB=false;continue}b.__inB=true;// riferimento: l'ultima quota assegnata qui (b.y puo essere sporcato da altri sistemi che usano surfaceAt del giocatore)
    const ok=b.__fy!=null&&Math.hypot(b.x-(b.__fx??1e9),b.z-(b.__fz??1e9))<3,f=floorAt(b.x,b.z,ok?b.__fy:(b.y??L.base));if(f!==null){b.y=f;b.__fy=f;b.__fx=b.x;b.__fz=b.z}}vaultBots()}
- return{tick,searchPlan,ACTIVE,STATE,activate,deactivate,floorAt,RF,tileAt,floorObj,holeAt,canBreak,obstacleTop,colliders,nearPanels,waypoint,toggleDoor,doorNear,bAt,buildNav,ver:()=>ver,eligible,refreshColliders}})();
+ return{tick,searchPlan,ACTIVE,STATE,activate,deactivate,floorAt,RF,tileAt,floorObj,holeAt,canBreak,obstacleTop,colliders,nearPanels,waypoint,toggleDoor,doorNear,bAt,buildNav,ver:()=>ver,eligible,refreshColliders,markMesh:()=>{dirtyMesh=true}}})();
 globalThis.BuildSys=BuildSys;
 // la logica base dei bot non deve riportare a terra chi e su un piano o sul tetto di un edificio modulare
 // linea di vista negli edifici modulari: quote reali (occhi a y+1.3), solai opachi tranne il vano scala, pareti esterne sfiorate dall'interno ignorate
@@ -11467,24 +11468,77 @@ const Bot98=(()=>{const C=GAME_CFG.bot98,S={react:0,vault:0,jump:0,barricade:0,c
 globalThis.Bot98=Bot98;
 SafeRun.run('bot 0.63',()=>Bot98.install());
 
-// ===== 0.66 · MODALITÀ TELEFONO "DALL'ALTO" — passo 1: la telecamera (6/11/2026) =====
-// Michele (6/11): su telefono Evolved Zone si gioca come Brawl Stars: visuale più o meno dall'alto, comandi semplici,
-// stesso mondo e stessa partita di chi gioca da PC (chi è da telefono e chi è da PC si incontrano nella stessa partita).
-// Passo 1: solo la telecamera. Spenta finché la modalità non è finita: si accende con ?vista=alto o TelMode.set(true).
-// Valori miei (da approvare nel Centro di controllo): telecamera a 13 m d'altezza e 9 m dietro (circa 55° dall'orizzonte), campo visivo 50°.
-GAME_CFG.tel={camH:13,camB:9,fov:50,lookAhead:1.5};
-const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,err:''};let on=false;
- try{on=/[?&]vista=alto/.test(location.search)}catch(e){}
- const anc={x:0,y:0,z:0,ok:false};
- function hookCam(){const cu=cameraUpdate;cameraUpdate=function(dt){const r=cu.apply(this,arguments);try{if(!on||typeof phase==='undefined'||phase!=='playing'||!player||player.inBus||player.skydiving)return r;
-   // la visuale non gira: il "su" dello schermo è sempre il nord, come in Brawl Stars
+// ===== 0.66 · MODALITÀ TELEFONO "DALL'ALTO" — T1: telecamera, personaggio sempre visibile, case a piani, scansione (6/11/2026) =====
+// Michele (6/11): su telefono Evolved Zone si gioca come Brawl Stars: visuale dall'alto, comandi semplici, stesso mondo e stessa
+// partita di chi gioca da PC. Lobby, zaino e terminale restano come ora. Nella versione di prova c'è un tasto in lobby per accenderla
+// e spegnerla; nella versione ufficiale si accenderà da sola riconoscendo il telefono (quando la modalità sarà finita: auto=false per ora).
+// T1 (Michele): sotto un albero o sotto qualcosa che copre il personaggio, il personaggio si evidenzia; nelle case si vede solo dentro
+// e solo il piano dove sei; nella minimappa una scansione continua mostra i nemici che si muovono o fanno rumore (pallini rossi che
+// lampeggiano) e, se ne rileva uno, la visuale si allarga in fretta ma con dolcezza.
+// Valori miei (da approvare nel Centro di controllo): telecamera 13 m su e 9 m dietro (circa 55°), campo visivo 50°; scansione 55 m,
+// visuale che si allarga di 1,4 volte se c'è un nemico entro 35 m, e torna normale 3 s dopo l'ultimo segnale.
+GAME_CFG.tel={camH:13,camB:9,fov:50,lookAhead:1.5,auto:false,scanR:55,alertR:35,zoomOut:1.4,alertHold:3,blink:2};
+const TelMode=(()=>{const C=GAME_CFG.tel,S={on:false,frames:0,cut:0,seen:0,alerts:0,xray:0,err:''};
+ const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+ const PROVA=(()=>{try{return/prova|localhost|127\.0\.0\.1|\/T\d{3}\.html|TCG\.html/.test(location.href)}catch(e){return false}})();
+ const PHONE=(()=>{try{return matchMedia('(pointer:coarse)').matches&&Math.min(screen.width,screen.height)<=900}catch(e){return false}})();
+ let on=false;try{on=/[?&]vista=alto/.test(location.search)||(PROVA?ls('uz-tel')==='1':(C.auto&&PHONE))}catch(e){}
+ const now=()=>performance.now()/1000;
+ // ---------------------------------------------------------------- telecamera (il "su" dello schermo è sempre il nord)
+ const anc={x:0,y:0,z:0,ok:false};let zk=1,alertUntil=0;
+ function hookCam(){const cu=cameraUpdate;let lt=0;cameraUpdate=function(dt){const r=cu.apply(this,arguments);try{if(!active())return r;const tn=performance.now(),d=Math.min(.1,Math.max(.001,lt?(tn-lt)/1000:1/30));lt=tn;/* tempo vero: la visuale si allarga in tempo reale */
    try{yaw=0;pitch=-.35}catch(e){}
-   const k=anc.ok?1-Math.exp(-10*(dt||1/30)):1;anc.x+=(player.x-anc.x)*k;anc.y+=((player.y||0)-anc.y)*k;anc.z+=(player.z-anc.z)*k;anc.ok=true;
-   camera.position.set(anc.x,anc.y+C.camH,anc.z+C.camB);camera.lookAt(anc.x,anc.y+.8,anc.z-C.lookAhead);
-   if(Math.abs(camera.fov-C.fov)>.01||camera.near!==.5){camera.fov=C.fov;camera.near=.5;camera.updateProjectionMatrix()}S.frames++}catch(e){S.err=e.message}return r}}
- function set(v){on=!!v;S.on=on;anc.ok=false;try{document.body.classList.toggle('telAlto',on)}catch(e){}}
- function install(){hookCam();set(on)}
- return{install,set,on:()=>on,stats:()=>({...S,on})}})();
+   const want=now()<alertUntil?C.zoomOut:1;zk+=(want-zk)*Math.min(1,d*(want>zk?6:2.5));
+   const k=anc.ok?1-Math.exp(-10*d):1;anc.x+=(player.x-anc.x)*k;anc.y+=((player.y||0)-anc.y)*k;anc.z+=(player.z-anc.z)*k;anc.ok=true;
+   camera.position.set(anc.x,anc.y+C.camH*zk,anc.z+C.camB*zk);camera.lookAt(anc.x,anc.y+.8,anc.z-C.lookAhead*zk);
+   if(Math.abs(camera.fov-C.fov)>.01||camera.near!==.5){camera.fov=C.fov;camera.near=.5;camera.updateProjectionMatrix()}S.frames++}catch(e){S.err='cam '+e.message}return r}}
+ const active=()=>on&&typeof phase!=='undefined'&&phase==='playing'&&typeof player!=='undefined'&&player&&!player.inBus&&!player.skydiving;
+ // ---------------------------------------------------------------- personaggio evidenziato quando qualcosa lo copre (alberi, tetti, muri)
+ // una copia del personaggio che si disegna SOLO dove c'è qualcosa davanti (prova di profondità "dietro"): costa pochissimo
+ const XM=new THREE.MeshBasicMaterial({color:'#7ff6ff',transparent:true,opacity:.62,depthWrite:false,depthFunc:THREE.GreaterDepth});
+ function xray(){try{const g=typeof playerRig!=='undefined'&&playerRig&&playerRig.group;if(!g)return;const add=[];
+   g.traverse(m=>{if(!m.isMesh||m.isInstancedMesh||m.userData.__xr||m.userData.__xrOf)return;const mt=m.material;if(!mt||Array.isArray(mt)||mt.transparent)return;add.push(m)});
+   for(const m of add){const c=new THREE.Mesh(m.geometry,XM);c.userData.__xrOf=1;c.renderOrder=999;c.frustumCulled=false;m.add(c);m.userData.__xr=c;S.xray++}
+   XM.visible=active()&&player.hp>0}catch(e){S.err='xray '+e.message}}
+ // ---------------------------------------------------------------- case a piani: si vede solo dentro e solo il piano dove sei
+ let cutKey='';
+ function cutTick(){let L0=null,f0=-1;try{if(active()&&typeof BuildSys!=='undefined'){for(const L of BuildSys.ACTIVE){if(!pointIn(player.x,player.z,L.b.p))continue;const LH=L.LH||(L.b.h/Math.max(1,L.F)),top=L.base+L.F*LH;if((player.y||0)>top-.4)break;f0=Math.max(0,Math.min(L.F-1,Math.floor(((player.y||0)-L.base+.4)/LH)));L0=L;break}}}catch(e){S.err='cut '+e.message}
+  const key=L0?(L0.id||'b')+':'+f0:'';if(key===cutKey)return;cutKey=key;globalThis.__bldCut=L0?{L:L0,f:f0}:null;S.cut++;try{BuildSys.markMesh()}catch(e){}}
+ // ---------------------------------------------------------------- scansione: nemici che si muovono o fanno rumore
+ const NOISE=[],last=new Map(),SEEN=new Map();
+ function hookNoise(){if(typeof noise!=='function')return;const n0=noise;noise=function(x,z,r){try{NOISE.push({x,z,t:now()});if(NOISE.length>60)NOISE.shift()}catch(e){}return n0.apply(this,arguments)}}
+ function enemies(){const out=[];try{for(const b of bots)out.push(b)}catch(e){}try{if(typeof humans==='function')for(const h of humans())if(h!==player)out.push(h)}catch(e){}return out.filter(e=>e&&e.hp>0&&!e.inBus&&(player.team==null||e.team!==player.team))}
+ function scan(){if(!active())return;const t=now();for(const e of enemies()){const d=Math.hypot(e.x-player.x,e.z-player.z);const p=last.get(e);last.set(e,{x:e.x,z:e.z});if(d>C.scanR)continue;
+   const moved=p&&Math.hypot(e.x-p.x,e.z-p.z)>.25,loud=NOISE.some(n=>t-n.t<1.5&&Math.hypot(n.x-e.x,n.z-e.z)<4);if(!moved&&!loud)continue;
+   SEEN.set(e,{t,x:e.x,z:e.z});S.seen++;if(d<C.alertR){if(t>alertUntil)S.alerts++;alertUntil=t+C.alertHold}}
+  for(const[e,v]of SEEN)if(t-v.t>C.blink)SEEN.delete(e)}
+ // radar disegnato sopra la minimappa (stessa scala: la minimappa mostra 180 m attorno a te)
+ let RC=null,rc=null;
+ function radar(){const mm=document.getElementById('mm2');const show=active()&&mm&&mm.style.display!=='none'&&!(typeof mapOpen!=='undefined'&&mapOpen);
+  if(!RC){RC=document.createElement('canvas');RC.id='telRadar';RC.style.cssText='position:fixed;pointer-events:none;z-index:31;border-radius:50%';document.body.appendChild(RC);rc=RC.getContext('2d')}
+  if(!show){RC.style.display='none';return}const b=mm.getBoundingClientRect();if(b.width<20){RC.style.display='none';return}
+  const dpr=Math.min(2,devicePixelRatio||1),sz=Math.round(b.width);if(RC.width!==sz*dpr){RC.width=RC.height=sz*dpr;RC.style.width=RC.style.height=sz+'px'}RC.style.left=b.left+'px';RC.style.top=b.top+'px';RC.style.display='block';
+  const c=rc,W=sz*dpr,R=W/2,k=R/180,t=now();c.clearRect(0,0,W,W);c.save();c.beginPath();c.arc(R,R,R,0,6.283);c.clip();
+  const sr=C.scanR*k,a=(t*2.2)%6.283;const g=c.createConicGradient?c.createConicGradient(a-1.2,R,R):null;
+  if(g){g.addColorStop(0,'rgba(79,240,255,0)');g.addColorStop(.19,'rgba(79,240,255,.32)');g.addColorStop(.191,'rgba(79,240,255,0)');c.fillStyle=g;c.beginPath();c.moveTo(R,R);c.arc(R,R,sr,a-1.2,a);c.closePath();c.fill()}
+  c.strokeStyle='rgba(79,240,255,.55)';c.lineWidth=1.5*dpr;c.beginPath();c.arc(R,R,sr,0,6.283);c.stroke();
+  for(const[e,v]of SEEN){const x=R+(v.x-player.x)*k,y=R+(v.z-player.z)*k,on=Math.sin((t-v.t)*14)>-.2,al=1-(t-v.t)/C.blink;if(!on)continue;c.fillStyle='rgba(255,59,59,'+Math.max(.25,al)+')';c.beginPath();c.arc(x,y,4.2*dpr,0,6.283);c.fill();c.strokeStyle='rgba(255,255,255,'+al+')';c.lineWidth=1.2*dpr;c.stroke()}
+  c.restore()}
+ // ---------------------------------------------------------------- tasto in lobby (solo nella versione di prova)
+ let BTN=null;
+ function lobbyBtn(){if(!PROVA)return;if(!BTN){BTN=document.createElement('button');BTN.type='button';BTN.id='telBtn';BTN.style.cssText='position:fixed;right:max(330px,36vw);top:max(74px,18vh);z-index:9000;height:44px;padding:0 12px;border-radius:12px;border:2px solid #1f8a8f;background:#f7f0e1;color:#1d3c40;font:800 12px system-ui,sans-serif;box-shadow:0 2px 8px #0004;cursor:pointer';
+   BTN.onclick=e=>{e.stopPropagation();set(!on);ls('uz-tel',on?'1':'0');paint()};document.body.appendChild(BTN)}
+  BTN.style.display=(typeof phase!=='undefined'&&phase==='playing')?'none':'block';paint()}
+ function paint(){if(BTN)BTN.textContent='Prova telefono: '+(on?'SÌ':'NO')}
+ // ----------------------------------------------------------------
+ function set(v){on=!!v;S.on=on;anc.ok=false;zk=1;try{document.body.classList.toggle('telAlto',on)}catch(e){}if(!on){globalThis.__bldCut=null;cutKey='';try{BuildSys.markMesh()}catch(e){}}}
+ function install(){hookCam();hookNoise();set(on);
+  {const sp=step;step=function(dt){const r=sp.apply(this,arguments);try{if(on)cutTick()}catch(e){S.err='passo '+e.message}return r}}
+  setInterval(()=>{try{scan();xray()}catch(e){S.err='scan '+e.message}},250);
+  (function loop(){try{radar()}catch(e){S.err='radar '+e.message}requestAnimationFrame(loop)})();
+  setInterval(()=>{try{lobbyBtn()}catch(e){}},500);
+  try{EventBus.on('MATCH_SEED',()=>{SEEN.clear();last.clear();NOISE.length=0;alertUntil=0;zk=1;anc.ok=false})}catch(e){}}
+ return{install,set,on:()=>on,prova:PROVA,stats:()=>({...S,on,zk:+zk.toFixed(2),cutKey,seenNow:SEEN.size}),_:{scan,cutTick,SEEN}}})();
 globalThis.TelMode=TelMode;
 SafeRun.run('telefono dall\'alto',()=>TelMode.install());
 
