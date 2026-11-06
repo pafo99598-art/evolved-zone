@@ -62,8 +62,12 @@ export class Accounts {
     let b = {}; try { b = await req.json(); } catch (e) {}
     try {
       if (path === 'redeem') { // codice → gettone del dispositivo (sito)
-        const c = this.one('SELECT * FROM code WHERE code=?', String(b.code || '').toUpperCase().trim());
-        if (!c || c.exp < Date.now()) return json({ ok: false, err: 'codice' }, 404);
+        // 0.61 sicurezza: al massimo 8 codici sbagliati ogni 10 minuti per indirizzo (niente tentativi a raffica)
+        const ip = req.headers.get('cf-connecting-ip') || 'x', now = Date.now(); this.fails = this.fails || new Map();
+        for (const [k, v] of this.fails) if (now - v.t > 600e3) this.fails.delete(k);
+        const f = this.fails.get(ip); if (f && f.n >= 8) return json({ ok: false, err: 'troppi tentativi' }, 429);
+        const c = this.one('SELECT * FROM code WHERE code=?', String(b.code || '').toUpperCase().trim().slice(0, 12));
+        if (!c || c.exp < Date.now()) { const g = f || { n: 0, t: now }; g.n++; this.fails.set(ip, g); return json({ ok: false, err: 'codice' }, 404); }
         this.sql.exec('DELETE FROM code WHERE code=?', c.code);
         const tok = rnd(24); this.sql.exec('INSERT INTO dev(token,acc,created) VALUES(?,?,?)', tok, c.acc, Date.now());
         const a = this.one('SELECT name,save,t FROM acc WHERE id=?', c.acc);
