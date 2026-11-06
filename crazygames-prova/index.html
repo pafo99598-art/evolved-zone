@@ -85,12 +85,12 @@ body.inLobby:not(.ezReady) #lobby{visibility:hidden!important}
 <div class="hud"><div class="card vitals"><div class="eyebrow">VALDARNO / EVOLVED ZONE 3D</div><div class="row"><b id="hpText">SALUTE 100</b><span id="alive">13 vivi</span></div><div class="bar"><i id="hpBar"></i></div><div class="row"><span id="foodText">Energia 100</span><span id="time">00:00</span></div><div class="bar"><i id="foodBar" style="background:#c3a978"></i></div></div><div class="card stats"><div id="ammo">120 colpi</div><div id="wood">0 legno</div><div id="zoneText">Zona · 450 m</div></div><div class="menuButtons"><button id="full" aria-label="Schermo intero">⛶</button><button id="pause" aria-label="Pausa">Ⅱ</button></div></div>
 <div id="feed" aria-live="polite"></div><div id="survival"></div><div id="teamHUD"></div><div id="notice" role="status">Preparazione del mondo 3D…</div><div id="compass">N ↖ · mappa reale</div><div id="mapShade"></div><div id="mapTitle">VALDARNO · 6 × 6 km · N ↖</div><canvas id="minimap" width="500" height="500"></canvas><button id="mapButton">MAPPA · M</button><div id="reticle"></div><div id="lookHint">TRASCINA QUI · VISUALE</div>
 <div class="motion"><button id="crouch"><b>⌄</b>Accov.</button><button id="jump"><b>↑</b>Salta</button><button id="climb"><b>↟</b>Arrampica</button><button id="slide"><b>⇢</b>Scivola</button></div><div id="stick" aria-label="Joystick del personaggio"><div id="knob"></div></div><button id="sprint">CORRI</button><div class="actions"><div class="utility"><button id="gather"><b>✦</b>Raccogli</button><button id="heal"><b>+</b>Cura · 1</button><button id="build"><b>▤</b>Kit / crea</button><button id="eat"><b>●</b>Cibo · 1</button></div><button id="fire">SPARA<br><small>trascina: mira</small></button></div><div id="foot">© OpenStreetMap contributors · ODbL<br>Rilievo Mapzen / EU-DEM / USGS · edifici semplificati</div>
-<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.64</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
+<div id="lobby"><div class="lb-top"><div class="lb-box"><i>🧗</i><div><b>Sopravvissuto</b><small>VALDARNO · v0.65</small></div></div><div class="lb-box"><i>🏆</i><div><b id="lbWins">0</b><small>VITTORIE</small></div></div><div class="lb-box"><i>💀</i><div><b id="lbKills">0</b><small>UCCISIONI</small></div></div><a id="lbApk" class="lb-box lb-apk" download>⬇ SCARICA APK</a></div>
 <div class="lb-mid"><div class="lb-side"><button class="lb-box lb-btn" id="lbBag"><i>🎒</i>Inventario</button><button class="lb-box lb-btn" id="lbSet"><i>⚙</i>Impostazioni</button></div><div class="lb-hero"><div class="em">🧗</div><h1>EVOLVED ZONE</h1></div><div class="lb-side"><button class="lb-box lb-btn" id="lbGrp"><i>👥</i>Gruppo</button></div></div>
 <div class="lb-bot"><div class="lb-modes" id="lbModes"><button data-n="1">Singolo</button><button data-n="2">Duo</button><button data-n="3">Trio</button><button data-n="4">Squadra</button></div><button id="lbPlay">GIOCA</button></div>
 <div id="lbGroup"><div class="box"><h3>Gruppo online</h3><div id="lbNetSlot"></div><button id="lbGrpClose" style="width:100%;margin-top:10px">Chiudi</button></div></div></div>
 <div id="result"><div class="rays"></div><div id="confetti"></div><div class="rbox"><div class="trophy">🏆</div><h2 id="rsTitle">VITTORIA!</h2><div id="rsSub">Ultimo superstite del Valdarno</div><div class="rs"><div><span id="rsKills">0</span><small>UCCISIONI</small></div><div><span id="rsTime">0:00</span><small>TEMPO</small></div></div><button id="rsBack">TORNA ALLA LOBBY</button></div></div>
-<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.64.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
+<div id="animHud"></div><button id="dodgeBtn">SCHIVA</button><div id="comboTxt"></div><div id="objHp"></div><div id="verBadge">v0.65.0</div><div id="animUI"><button id="abilBtn"></button><button id="animBtn"></button></div><button id="shoulderBtn">◀ SPALLA DESTRA ▶</button>
 <div id="overlay"><div class="panel"><div class="eyebrow">VERSIONE 0.4 / SURVIVAL 200</div><h1>Valdarno <span>3D.</span><br>Evolved Zone.</h1><p id="intro">Cammina tra le strade di Incisa, Figline e Burchio.<br>Clic sinistro / tocco per sparare, G per il rampino.</p><div class="chips"><span>6 × 6 KM REALI</span><span>200 PARTECIPANTI</span><span>EDIFICI 3D</span></div><div id="setup"><select id="teamSize" aria-label="Dimensione squadra"><option value="1">Singolo</option><option value="2">Duo · posti liberi riempiti da bot amici</option><option value="3">Trio · posti liberi riempiti da bot amici</option><option value="4">Quartetto · posti liberi riempiti da bot amici</option></select><select id="startPlace" aria-label="Località di partenza"><option value="incisa">Incisa · centro</option><option value="figline">Figline · Piazza Marsilio Ficino</option><option value="burchio" selected>Burchio · centro</option></select><div class="instructions"><div><strong>Pollice sinistro</strong>Joystick: cammina e corri.</div><div><strong>Pollice destro</strong>Trascina: gira la visuale. Tocco breve: colpo. Tocco fermo: raffica.</div></div></div><div id="network"><div class="netrow"><button id="hostRoom">Crea lobby Internet</button><button id="leaveRoom" disabled>Esci lobby</button></div><div class="netrow"><input id="roomInput" maxlength="8" placeholder="Codice amico" aria-label="Codice lobby"><button id="joinRoom">Entra</button></div><p id="netStatus" role="status">Solo e bot: nessuna connessione necessaria.</p><p class="note">Lobby sperimentale via PeerJS/WebRTC: chi crea ospita la partita e deve tenere il gioco aperto. Alcune reti mobili possono impedire il collegamento.</p></div><button id="start" class="primary">Gioca in 3D</button><button id="explore" class="secondary">Esplora liberamente · senza bot</button><button id="resume" class="primary hidden">Riprendi</button><button id="restart" class="secondary hidden">Torna al menu</button><button id="info" class="secondary">Comandi, geografia e limiti</button><button id="diagnosticsMenu" class="secondary">Esporta diagnosi</button><div id="help"><p><b>Android:</b> usa il joystick a sinistra e trascina sullo scenario a destra nello stesso momento. Puoi anche trascinare sul pulsante SPARA per muovere la visuale mentre fai fuoco. La camera segue sempre il personaggio. La modalità orizzontale offre più spazio.</p><p><b>PC:</b> WASD muove rispetto alla telecamera; trascina lo scenario con il mouse per girare la visuale. Spazio salta, clic sinistro spara (F alternativo), X accovaccia, Z scivola, V scavalca, R ricarica, Tab cambia arma, I apre il kit, Maiusc corre, E raccoglie, Q cura, C mangia, M apre la mappa, Esc mette in pausa.</p><p>200 partecipanti tra giocatori e bot, salute, energia, risorse e fronte di fuoco che alterna soste e chiusure fino a circa 18 minuti. Raccogli entro 4 metri. I colpi seguono il mirino, con dispersione e danni diversi per testa, busto e gambe. Gli edifici e gli ostacoli bloccano movimento e colpi. CORRI attiva/disattiva la corsa; scivola mentre corri. Puoi scavalcare bordi fino a 2,4 metri, non scalare tutte le pareti. In esplorazione non ci sono avversari o fame.</p><p><b>Survival:</b> corsa e spari attirano i bot. Ferite sanguinanti richiedono bende. Pioggia e freddo richiedono cibo o una tettoia. Il ciclo giorno/notte cambia la visibilità: la torcia aiuta ma ti rende visibile. Le casse di rifornimenti vengono contese dai bot. Il kit unifica materiali, ricette rapide, cure, protezioni e scorte; fino a 8 bende fabbricate e la torcia vengono conservate localmente. Nessun peso dello zaino. I compagni possono essere rianimati tenendo la posizione vicino a loro dopo aver premuto USA. Le moto sono presso le località di partenza: avvicinati e premi USA; premi di nuovo per scendere.</p><p><b>Geografia:</b> strade e sagome degli edifici derivano da OpenStreetMap. Le altezze usano dati OSM quando presenti, altrimenti sono stimate. Facciate, colori, vegetazione di gioco e personaggi sono inventati. Il rilievo deriva da Mapzen Terrain Tiles, campionato ogni 93,75 m: le colline sono approssimate, gli interni e i dettagli delle facciate non sono riprodotti. Non è una ricostruzione della qualità di GTA.</p><p>Il quadrato di 6 × 6 km è ruotato di 30° per comprendere Figline e Burchio lungo la diagonale. Burchio è la partenza predefinita. Le coordinate usano metri con proiezione locale approssimata, senza ridurre intenzionalmente le distanze.</p><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a> · <a id="geoDownload" download="geografia-3D.json">Scarica dati geografici</a>. Motore Three.js, licenza MIT. Nessun asset o marchio dei giochi citati. PeerJS: licenza MIT; servizio di connessione esterno attivato solo usando la lobby.</p></div><p id="error" class="hidden"></p><p class="note">Browser con WebGL 2 richiesto. File autonomo, nessun account o acquisto. Non è un APK. Singolo, duo, trio e quartetto.</p></div></div>
 <div id="weaponHud"><b id="weaponName">A MANI VUOTE</b><span id="weaponAmmo">Cerca una cassa di armi</span><div><button id="reload">Ricarica</button><button id="swap">Cambia arma</button><button id="rest">Riposa</button></div></div>
 <div id="flightStatus" hidden></div><button id="deploy" hidden>LANCIATI · E</button>
@@ -1463,7 +1463,7 @@ $('crPick').onclick=()=>{const m=mats();if(m.stick<2||m.metal<3){tell('Materiali
 
 // ===== v0.9.0: COMBAT FOUNDATION + MELEE A MANI VUOTE + DISTRUZIONE AMBIENTALE =====
 // Un solo sistema autorevole per ciascuna parte: Combat (stati, attacchi, danni), Destr (oggetti distruttibili), MeleeAI (bot).
-const GAME_VERSION='0.64.0';
+const GAME_VERSION='0.65.0';
 const v5=globalThis.__V5||{shake:0,fail:{}};
 const EventBus=(()=>{const L=new Map();return{on(t,f){if(!L.has(t))L.set(t,[]);L.get(t).push(f)},emit(t,d){const a=L.get(t);if(a)for(const f of a){try{f(d)}catch(e){console.warn('evento '+t,e)}}}}})();
 const CombatState={IDLE:'IDLE',AIMING:'AIMING',ATTACKING:'ATTACKING',RECOVERY:'RECOVERY',HIT:'HIT',STAGGER:'STAGGER',DODGE:'DODGE',DEAD:'DEAD'};
@@ -3219,7 +3219,7 @@ SafeRun.run('isole',()=>IslandSys.install());
 // Lo stato dei danni resta in memoria anche quando l'edificio torna alla mesh semplice per distanza.
 const BUILD_CFG={radius:70,keep:115,keepDamaged:240,max:16,maxArea:1e9,maxH:40,maxVerts:48,maxSlope:1.6,seg:2.6,tile:1.5,wallT:.3,doorW:1.15,doorH:2.2,sill:.9,winTop:2.25};
 const BCOMP={// componente → categoria, moltiplicatori, nome
- wall:{n:'Muro',cat:'MEDIUM',hp:1,thr:1,cover:1,imp:.5},struct:{n:'Muro portante',cat:'HEAVY',hp:2.2,thr:1.8,cover:1,imp:1},weak:{n:'Parete debole',cat:'LIGHT',hp:.42,thr:.35,cover:1,imp:.2},
+ wall:{n:'Muro',cat:'MEDIUM',hp:1,thr:1,cover:1,imp:.5},struct:{n:'Muro portante',cat:'HEAVY',hp:1.1,/*0.65 Michele: vita dimezzata (era 2.2)*/thr:1.8,cover:1,imp:1},weak:{n:'Parete debole',cat:'LIGHT',hp:.42,thr:.35,cover:1,imp:.2},
  door:{n:'Porta',cat:'LIGHT',hp:.35,thr:.3,cover:0,imp:0,mat:'WOOD'},window:{n:'Finestra',cat:'LIGHT',hp:.08,thr:0,cover:0,imp:0,mat:'GLASS'},frame:{n:'Telaio',cat:'MEDIUM',hp:.6,thr:1,cover:0,imp:.3},
  part:{n:'Tramezzo',cat:'LIGHT',hp:.5,thr:.4,cover:1,imp:.1},corner:{n:'Angolo portante',cat:'INDESTRUCTIBLE',hp:99,thr:999,cover:1,imp:1},floor:{n:'Solaio',cat:'MEDIUM',hp:.5,thr:.5,cover:0,imp:0}};
 const BMAT_STATS={WOOD:{hp:80,thr:3,col:'#8a6a45'},BRICK:{hp:160,thr:8,col:'#a65a42'},CONCRETE:{hp:600,thr:14,col:'#b5b0a6'},STONE:{hp:300,thr:16,col:'#9b958a'},METAL:{hp:220,thr:12,col:'#7d8288'},GLASS:{hp:120,thr:0,col:'#cfeaf3'}};
@@ -9875,7 +9875,7 @@ const Map2=(()=>{const S={shots:0,lastShot:0,ms:0,err:'',open:0};const TOUCH=mat
 globalThis.Map2=Map2;
 SafeRun.run('mappa nuova',()=>Map2.install());
 
-// ===== 0.44 · E5: TORNADO NEON E ISOLE VOLANTI (31/10/2026) =====
+// ===== 0.44 · E5: TORNADO NEON E ISOLE VOLANTI (31/10/2026) · 0.65 correnti d'aria nuove + bot presi (6/11) =====
 // Michele (31/10): un tornado neon parte dalla zona e spazza tutto; quando arriva si formano almeno 5 isolette sopra l'isola:
 // si vedono staccarsi dall'isola principale e salire, lasciando il cratere a terra; correnti d'aria sollevano i giocatori sulle isole,
 // che diventano una piccola mappa giocabile sopra l'isola.
@@ -9906,10 +9906,35 @@ const Tornado=(()=>{const C=GAME_CFG.tornado,S={runs:0,islands:0,lifts:0,swept:0
   const ring=new THREE.Mesh(new THREE.TorusGeometry(r*.97,.12,4,22),new THREE.MeshBasicMaterial({color:'#ff3fd0'}));ring.rotation.x=Math.PI/2;ring.position.y=-1.35;g.add(ring);return g}
  function craterMesh(r){const g=new THREE.Group();const c=new THREE.Mesh(new THREE.CircleGeometry(r*1.05,14),new THREE.MeshLambertMaterial({color:'#3a2c24',polygonOffset:true,polygonOffsetFactor:-2}));c.rotation.x=-Math.PI/2;c.position.y=.07;g.add(c);
   const rimM=new THREE.MeshLambertMaterial({color:'#7a5c40',flatShading:true});for(let k=0;k<10;k++){const a=k/10*6.283,b=new THREE.Mesh(new THREE.DodecahedronGeometry(1+Math.random()*.9,0),rimM);b.position.set(Math.cos(a)*r*1.05,.3,Math.sin(a)*r*1.05);b.scale.y=.55;g.add(b)}return g}
- // corrente d'aria: colonna di spirali azzurre dal suolo all'isola
- function draftMesh(h){const g=new THREE.Group();const m=new THREE.MeshBasicMaterial({color:'#3fd0ff',transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide});
-  const col=new THREE.Mesh(new THREE.CylinderGeometry(C.liftR,C.liftR,h,14,1,true),m);col.position.y=h/2;g.add(col);
-  for(let i=0;i<10;i++){const s=new THREE.Mesh(new THREE.TorusGeometry(C.liftR*.8,.08,3,16),new THREE.MeshBasicMaterial({color:'#bff4ff',transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false}));s.rotation.x=Math.PI/2;s.userData.k=i/10;g.add(s)}g.userData.h=h;return g}
+ // corrente d'aria (0.65): niente più cono pieno. Strisce di vento che salgono a spirale (shader), mulinello di polvere a terra,
+ // frecce che invitano a entrare, scie luminose che corrono verso l'isola e un alone sotto l'isola. Chi entra (giocatore, bot) viene preso.
+ const DV='varying vec2 vU;varying vec3 vN;varying vec3 vV;varying float vD;void main(){vU=uv;vec4 w=modelMatrix*vec4(position,1.);vN=normalize(mat3(modelMatrix)*normal);vec3 d=cameraPosition-w.xyz;vD=length(d);vV=d/vD;gl_Position=projectionMatrix*viewMatrix*w;}';
+ const DF='uniform float uT,uH,uTw,uA;uniform vec3 uC;varying vec2 vU;varying vec3 vN;varying vec3 vV;varying float vD;float h(float n){return fract(sin(n)*43758.5453);}'+
+  'void main(){float X=(vU.x+vU.y*uTw)*26.;float id=floor(X),fx=fract(X);float sp=.8+h(id)*1.4;float y=vU.y*uH/7.-uT*sp+h(id*3.1)*9.;float g=fract(y);'+
+  'float st=smoothstep(0.,.12,g)*smoothstep(.7,.3,g)*smoothstep(.5,.05,abs(fx-.5))*(.35+h(id*7.3)*.65);float fr=pow(1.-abs(dot(vN,vV)),2.);'+
+  'float vf=smoothstep(0.,.06,vU.y)*smoothstep(1.,.8,vU.y);float df=1.-smoothstep(280.,560.,vD);gl_FragColor=vec4(uC*(.4+st*.6),(st*.42+fr*.08)*vf*df*uA);}';
+ const SV='varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}';
+ const SF='uniform float uT;varying vec2 vU;void main(){vec2 p=vU-.5;float r=length(p)*2.;float a=atan(p.y,p.x);float arms=.5+.5*sin(a*3.+r*9.-uT*5.);'+
+  'float m=smoothstep(1.,.55,r)*smoothstep(.05,.3,r);gl_FragColor=vec4(vec3(.75,.97,1.),pow(arms,3.)*m*.55);}';
+ let DOT=null,ARW=null;
+ function dotTex(){if(DOT)return DOT;const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d'),g=x.createRadialGradient(16,16,0,16,16,16);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.4,'rgba(190,245,255,.6)');g.addColorStop(1,'rgba(190,245,255,0)');x.fillStyle=g;x.fillRect(0,0,32,32);return DOT=new THREE.CanvasTexture(c)}
+ function arrowTex(){if(ARW)return ARW;const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');x.lineCap='round';x.lineJoin='round';x.shadowColor='#4ff0ff';x.shadowBlur=10;x.strokeStyle='#e9fdff';x.lineWidth=9;x.beginPath();x.moveTo(12,44);x.lineTo(32,22);x.lineTo(52,44);x.stroke();return ARW=new THREE.CanvasTexture(c)}
+ function draftMesh(h){const g=new THREE.Group(),R=C.liftR,U=[];
+  const col=(r,tw,col,al)=>{const u={uT:{value:0},uH:{value:h},uTw:{value:tw},uA:{value:al},uC:{value:new THREE.Color(col)}};U.push(u);const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r*1.08,h,24,1,true),new THREE.ShaderMaterial({uniforms:u,vertexShader:DV,fragmentShader:DF,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));m.position.y=h/2;m.renderOrder=2;g.add(m)};
+  col(R,.22,'#5fd8ff',1);col(R*.55,-.35,'#b9f3ff',.45);
+  // mulinello a terra
+  const su={uT:{value:0}};U.push(su);const sw=new THREE.Mesh(new THREE.PlaneGeometry(R*4,R*4),new THREE.ShaderMaterial({uniforms:su,vertexShader:SV,fragmentShader:SF,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));sw.rotation.x=-Math.PI/2;sw.position.y=.12;g.add(sw);
+  // scie luminose che salgono a spirale fino all'isola
+  const N=110,P=new Float32Array(N*3),D=[];for(let i=0;i<N;i++){D.push({a:Math.random()*6.283,r:.3+Math.random()*(R-.3),y:Math.random()*h,s:7+Math.random()*9,w:(1.2+Math.random()*1.6)*(i%3?1:-1)})}
+  const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(P,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({map:dotTex(),size:.5,transparent:true,opacity:.75,depthWrite:false,blending:THREE.AdditiveBlending,color:'#dffcff'}));pts.frustumCulled=false;g.add(pts);
+  // frecce all'ingresso: "sali da qui"
+  const AR=[];for(let i=0;i<3;i++){const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:arrowTex(),transparent:true,depthWrite:false,color:'#bff8ff'}));sp.scale.set(1.6,1.6,1);sp.userData.k=i/3;g.add(sp);AR.push(sp)}
+  // alone sotto l'isola: arrivo
+  const halo=new THREE.Mesh(new THREE.RingGeometry(R*.9,R*1.9,28),new THREE.MeshBasicMaterial({color:'#9ff4ff',transparent:true,opacity:.2,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));halo.rotation.x=-Math.PI/2;halo.position.y=h-2.4;g.add(halo);
+  g.userData={h,U,D,P,pg,AR,halo};return g}
+ function draftAnim(g,dt,t){const u=g.userData;for(const U of u.U)U.uT.value=t;const h=u.h,P=u.P;for(let i=0;i<u.D.length;i++){const d=u.D[i];d.y+=d.s*dt;d.a+=d.w*dt;if(d.y>h){d.y=0;d.r=.3+Math.random()*(C.liftR-.3)}const rr=d.r*(1-.35*d.y/h);P[i*3]=Math.cos(d.a)*rr;P[i*3+1]=d.y;P[i*3+2]=Math.sin(d.a)*rr}u.pg.attributes.position.needsUpdate=true;
+  for(const s of u.AR){const k=(s.userData.k+t*.7)%1;s.position.set(0,.6+k*3.4,0);s.material.opacity=Math.sin(k*Math.PI)*.95}
+  u.halo.material.opacity=.14+.08*Math.sin(t*3);u.halo.rotation.z=t*.4}
  // ---------------------------------------------------------------- tornado
  function funnel(){const g=new THREE.Group();for(let i=0;i<9;i++){const k=i/8,r0=4+k*k*36,h=14;const c=new THREE.Mesh(new THREE.CylinderGeometry(r0+3,r0,h,16,1,true),new THREE.MeshBasicMaterial({color:i%2?'#c02aa8':'#2a8fc0',transparent:true,opacity:.34+(1-k)*.12,depthWrite:false,side:THREE.DoubleSide}));c.position.y=h/2+i*h*.92;c.userData.sp=(i%2?1:-1)*(2+k*2);g.add(c)}
   // nucleo scuro e strisce neon luminose che girano (danno profondità senza diventare bianco)
@@ -9955,32 +9980,48 @@ const Tornado=(()=>{const C=GAME_CFG.tornado,S={runs:0,islands:0,lifts:0,swept:0
   for(const I of ISL){if(I.t<6){I.t+=dt;const k=Math.min(1,I.t/6),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2,prev=I.y;I.y=I.y0+(I.top-I.y0)*e;I.mesh.position.y=I.y;I.mesh.rotation.y+=dt*.25*(1-k);
     // chi era sopra sale insieme all'isola
     for(const e of[player,...bots])if(e&&e.__onI===I){e.y=I.y;e.vy=0}
-    if(k>=1){for(const e of[player,...bots])if(e&&e.__onI===I)e.__onI=null;I.draft=draftMesh(I.top-I.y0+2);I.draft.position.set(I.dx,I.y0,I.dz);grp().add(I.draft);
+    if(k>=1){for(const e of[player,...bots])if(e&&e.__onI===I){e.__onI=null;if(e!==player)e.__isl=I}I.gy=heightAt(I.dx,I.dz);I.draft=draftMesh(I.top-I.gy+2);I.draft.position.set(I.dx,I.gy,I.dz);grp().add(I.draft);
      if(host()&&!I.loot){I.loot=true;const ks=Object.keys(WEAPONS),rar=(globalThis.E1&&E1.roll)?E1.roll(GAME_CFG.e1.rarCrate,Math.random()):2;items.push({x:I.x+1,z:I.z-1,y:I.top,type:'weapon',kind:ks[Math.floor(Math.random()*ks.length)],rarity:rar,__r7:1,__keep:1,id:66000+Math.floor(Math.random()*1e6)},{x:I.x-1.5,z:I.z+.8,y:I.top,type:['med','ammo','heavyAmmo','shells'][Math.floor(Math.random()*4)],__keep:1,id:66000+Math.floor(Math.random()*1e6)});itemsDirty=true}}}
    else{I.mesh.position.y=I.top+Math.sin(performance.now()/1000*.6+I.x)*.25;I.y=I.top}
-   if(I.draft){const tm=performance.now()/1000,h=I.draft.userData.h;for(const s of I.draft.children)if(s.geometry.type==='TorusGeometry'){const k=(s.userData.k+tm*.35)%1;s.position.y=k*h;s.material.opacity=.7*Math.sin(k*Math.PI)}}}}
+   if(I.draft&&Math.abs(I.dx-camera.position.x)<600&&Math.abs(I.dz-camera.position.z)<600)draftAnim(I.draft,dt,performance.now()/1000)}}
  // ---------------------------------------------------------------- camminare sopra le isole (stesso sistema di tetti e ponti)
  let REF=-1e9;
  function topAt(x,z){for(const I of ISL){if(I.t<6)continue;if(Math.hypot(x-I.x,z-I.z)<I.r-.4&&REF>=I.top-1.6)return I.top}return null}
  function hookSurface(){const sa=surfaceAt;surfaceAt=function(x,z){const r=sa(x,z);if(!ISL.length)return r;try{const t=topAt(x,z);if(t!==null&&t>r)return t}catch(e){}return r}
   const pm=playerMotion;playerMotion=function(dt){const old=REF;REF=player.y;try{return pm.apply(this,arguments)}finally{REF=old}}}
- // corrente d'aria: sale e porta sopra l'isola
- function drafts(dt){if(!player||player.hp<=0||player.inBus)return;
+ // corrente d'aria: prende chiunque ci entri (giocatore e bot), sale a spirale e porta sopra l'isola
+ const isBot=e=>e!==player;
+ function lift(e,I,dt){// fase 1: sale nella colonna girando; fase 2: scivola sopra l'isola e si posa (le fasi non tornano indietro)
+  if(isBot(e)&&e.__ly!=null)e.y=e.__ly;/* i bot: la quota la tiene la corrente, non il terreno */
+  if(!e.__over&&e.y<I.top+3){e.__uv=Math.min(C.lift,(e.__uv||4)+dt*22);e.y+=e.__uv*dt;e.__ly=e.y;e.vy=0;e.grounded=false;e.skydiving=false;e.parachute=false;e.__ua=(e.__ua||0)+dt*2.4;
+    const tx=I.dx+Math.cos(e.__ua)*.9,tz=I.dz+Math.sin(e.__ua)*.9,k=Math.min(1,dt*(isBot(e)?8:3));e.x+=(tx-e.x)*k;e.z+=(tz-e.z)*k;if(isBot(e)){e.moving=1;e.angle=e.__ua}return}
+  e.__over=1;const ax=I.x-e.x,az=I.z-e.z,L=Math.hypot(ax,az);if(L>I.r*.45){e.x+=ax/L*Math.min(L,9*dt);e.z+=az/L*Math.min(L,9*dt);e.y=I.top+2.5-Math.min(2.5,(1-L/(I.r+6))*3);e.__ly=e.y;e.vy=0;e.grounded=false;if(isBot(e))e.angle=Math.atan2(-ax,-az)}
+  else{e.__up=null;e.__over=0;e.__uv=0;e.__ly=null;e.vy=0;e.y=I.top;if(isBot(e)){e.__isl=I;S.botLanded=(S.botLanded||0)+1}else S.landed++}}
+ let FX=null,fov=0;
+ function windFx(on){if(!FX){FX=document.createElement('div');FX.id='e5wind';const st=document.createElement('style');st.textContent='#e5wind{position:fixed;inset:0;pointer-events:none;z-index:25;opacity:0;transition:opacity .35s;background:repeating-conic-gradient(from 0deg at 50% 50%,#dffcff00 0deg 5deg,#dffcff55 5.4deg,#dffcff00 6deg 11deg);-webkit-mask:radial-gradient(circle at 50% 50%,transparent 32%,#000 75%);mask:radial-gradient(circle at 50% 50%,transparent 32%,#000 75%);animation:e5w .18s steps(2) infinite}#e5wind.on{opacity:.75}@keyframes e5w{50%{transform:rotate(2.5deg) scale(1.03)}}';document.head.appendChild(st);document.body.appendChild(FX)}FX.classList.toggle('on',!!on)}
+ let fovA=0;function hookFov(){if(typeof cameraUpdate!=='function')return;const cu=cameraUpdate;cameraUpdate=function(dt){if(fovA){camera.fov-=fovA;fovA=0}const r=cu.apply(this,arguments);try{const want=player&&player.__up&&player.hp>0?(player.__over?6:12):0;fov+=(want-fov)*Math.min(1,(dt||1/30)*5);if(!want&&fov<.3)fov=0;if(fov){fovA=fov;camera.fov+=fov}camera.updateProjectionMatrix()}catch(e){}return r}}/* si toglie prima e si rimette dopo: non si accumula */
+ function drafts(dt){if(!player)return;
   if(player.__tv){const v=player.__tv;player.x+=v.x*dt;player.z+=v.z*dt;v.t-=dt;if(v.t<=0)player.__tv=null}
-  for(const I of ISL){if(!I.draft)continue;const d=Math.hypot(player.x-I.dx,player.z-I.dz);if(player.__up===I){
-     // fase 1: sale nella colonna; fase 2: resta sopra e scivola verso il centro dell'isola, poi si posa (le fasi non tornano indietro)
-     if(!player.__over&&player.y<I.top+3){player.y+=C.lift*dt;player.vy=0;player.grounded=false;player.skydiving=false;player.parachute=false;const ax=player.x-I.dx,az=player.z-I.dz;player.x-=ax*Math.min(1,dt*3);player.z-=az*Math.min(1,dt*3)}
-     else{player.__over=1;const ax=I.x-player.x,az=I.z-player.z,L=Math.hypot(ax,az);if(L>I.r*.45){player.x+=ax/L*Math.min(L,9*dt);player.z+=az/L*Math.min(L,9*dt);player.y=I.top+2.5;player.vy=0;player.grounded=false}else{player.__up=null;player.__over=0;player.vy=0;S.landed++}}
-     continue}
-   if(d<C.liftR&&player.y<I.top-1){player.__up=I;S.lifts++;try{SFX.play('whoosh',.8)}catch(e){}try{tell(tr('Corrente d\'aria: sali sull\'isola volante!'))}catch(e){}}}}
+  if(player.hp>0&&!player.inBus){if(player.__up)lift(player,player.__up,dt);else for(const I of ISL){if(!I.draft)continue;if(Math.hypot(player.x-I.dx,player.z-I.dz)<C.liftR&&player.y<I.top-1){player.__up=I;player.__uv=4;player.__ua=Math.atan2(player.z-I.dz,player.x-I.dx);S.lifts++;try{SFX.play('whoosh',.8)}catch(e){}snd(.6,2.6);try{tell(tr('Corrente d\'aria: sali sull\'isola volante!'))}catch(e){}break}}}
+  windFx(player.__up&&player.hp>0&&!player.__over);
+  if(typeof bots==='undefined'||!host())return;const ready=ISL.filter(I=>I.draft);if(!ready.length)return;
+  for(const b of bots){if(!b||b.hp<=0||b.inBus||b.skydiving||b.downed){b&&(b.__up=null);continue}
+   if(b.__up){lift(b,b.__up,dt);continue}
+   // sopra un'isola: restano in quota; se escono dal bordo aprono il paracadute e scendono
+   if(b.__isl){const I=b.__isl,d=Math.hypot(b.x-I.x,b.z-I.z);if(d<I.r-.6){b.y=I.top;continue}b.__isl=null;b.parachute=true;b.y=I.top;S.botJump=(S.botJump||0)+1;continue}
+   if(b.parachute)continue;
+   for(const I of ready){const d=Math.hypot(b.x-I.dx,b.z-I.dz);
+    if(d<C.liftR&&(b.y??0)<I.top-1){b.__up=I;b.__uv=4;b.__ly=b.y??heightAt(b.x,b.z);b.__ua=Math.atan2(b.z-I.dz,b.x-I.dx);b.__over=0;S.botLifts=(S.botLifts||0)+1;break}
+    // un bot su quattro, se non sta combattendo, va a prendere la corrente vicina
+    if(b.id%4===0&&d<35&&!(b.mAI&&b.mAI.seen)){const k=Math.min(d,3.6*dt);b.x+=(I.dx-b.x)/d*k;b.z+=(I.dz-b.z)/d*k;b.angle=Math.atan2(b.x-I.dx,b.z-I.dz);b.moving=1;break}}}}
  // ---------------------------------------------------------------- mappa
  function marks(){const out=[];try{for(const ev of(globalThis.Events?Events._.active():[]))if(ev.type==='tornado'&&ev.pos&&ev.age<ev.dur-8)out.push({x:ev.pos.x,z:ev.pos.z,i:'🌪',type:'tornado',big:1})}catch(e){}for(const I of ISL)out.push({x:I.x,z:I.z,i:'☁',type:'isola'});return out}
  // ---------------------------------------------------------------- partita nuova: via le isole vecchie
- let was=false;function reset(){ISL.length=0;FALL.length=0;if(G){scene.remove(G);G=null}}
- function install(){hookSurface();
+ let was=false;function reset(){ISL.length=0;FALL.length=0;if(G){scene.remove(G);G=null}try{player.__up=null;player.__over=0;windFx(false);if(fovA){camera.fov-=fovA;fovA=0;fov=0}for(const b of bots){b.__up=null;b.__isl=null;b.__over=0}}catch(e){}}
+ function install(){hookSurface();hookFov();
   try{Events.register('tornado',{name:['🌪️','Tornado neon','Strappa pezzi di isola: le correnti d\'aria portano lassù'],start,tick})}catch(e){S.err='registra '+e.message}
   {const sp=step;step=function(dt){const r=sp.apply(this,arguments);try{const pl=typeof phase!=='undefined'&&phase==='playing';if(pl&&!was&&(typeof elapsed==='undefined'||elapsed<5))reset();was=pl;if(pl){isletTick(dt||1/30);drafts(dt||1/30)}}catch(e){S.err='passo '+e.message}return r}}}
- return{install,marks,stats:()=>({...S,isole:ISL.map(I=>Math.round(I.top-I.y0)+'m'+(I.draft?'':' sale'))}),_:{start,tick,ISL,topAt}}})();
+ return{install,marks,stats:()=>({...S,isole:ISL.map(I=>Math.round(I.top-I.y0)+'m'+(I.draft?'':' sale'))}),_:{start,tick,ISL,topAt,rip}}})();
 globalThis.Tornado=Tornado;
 SafeRun.run('E5 tornado',()=>Tornado.install());
 
@@ -11398,7 +11439,7 @@ SafeRun.run('dettagli 0.63',()=>Dettagli97.install());
 // Valori miei nel Centro di controllo: reazione entro 0,3 s, scavalco fino a 1,35 m (come il giocatore), riparo ogni 40 s,
 // benda fatta sul campo ogni 45 s se senza cure e fuori combattimento da 8 s.
 GAME_CFG.bot98={vaultMax:1.35,jumpMax:.6,stuckT:.7,barricadeCd:40,barricadeUnder:60,craftCd:45,craftCalm:8};
-const Bot98=(()=>{const C=GAME_CFG.bot98,S={react:0,vault:0,jump:0,barricade:0,craft:0,err:''};const alive=b=>b&&b.hp>0&&!b.inBus&&!b.parachute&&!b.skydiving&&!b.downed;
+const Bot98=(()=>{const C=GAME_CFG.bot98,S={react:0,vault:0,jump:0,barricade:0,craft:0,err:''};const alive=b=>b&&b.hp>0&&!b.inBus&&!b.parachute&&!b.skydiving&&!b.downed&&!b.__up;/*0.65: non dentro le correnti d'aria*/
  // ---------------------------------------------------------------- 1. colpiti: si girano subito verso chi spara
  function hookHit(){const dm=damage;damage=function(e,n,owner){const r=dm.apply(this,arguments);try{if(e&&owner&&owner!==e&&n>0&&e.hp>0&&typeof bots!=='undefined'&&bots.includes(e)&&owner.hp>0&&owner.team!==e.team){
     const a=e.mAI;if(a){const cur=a.target,cd=cur&&cur.hp>0?Math.hypot(cur.x-e.x,cur.z-e.z):1e9,od=Math.hypot(owner.x-e.x,owner.z-e.z);
