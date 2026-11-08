@@ -194,6 +194,78 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
 .rv.on{opacity:1;transform:none}
 @media (max-width:420px){.feat div{padding:14px}.feat p{font-size:.84rem}.feat h3{font-size:.8rem}.btn{font-size:.72rem}.btn.main{font-size:.95rem}.toast{font-size:.75rem}}
 @media(prefers-reduced-motion:reduce){.rise,.rv{opacity:1!important;transform:none!important;animation:none!important}#site.enter .s-logo{animation:none}.more,.toast{animation:none}}
+
+/* =========================================================
+   SEZIONE «IL GIOCO» · capitoli animati allo scorrimento
+   ========================================================= */
+.g-head{max-width:760px;margin:0 auto 10px;text-align:center;padding:30px 20px;border-radius:20px;background:#07030fcc;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.g-head h2{font:900 clamp(1.7rem,6vw,3rem)/1.05 var(--disp);color:#fff;letter-spacing:.04em;text-shadow:0 0 16px var(--pink)}
+.g-head .lore{margin-top:12px;color:#e6dcff;font-size:clamp(.98rem,2.8vw,1.12rem);line-height:1.6}
+.g-head .lore b{color:var(--yellow)}
+.chapters{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,9vh,110px);padding:40px 0 20px}
+.chap{--p:0;--rx:0deg;--ry:0deg;display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:clamp(18px,4vw,50px);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.chap:nth-child(even){grid-template-columns:1fr 1.25fr}
+.chap:nth-child(even) .c-pic{order:2}
+.c-pic{position:relative;perspective:900px}
+.c-frame{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;border:2px solid var(--c);
+ box-shadow:0 0 0 1px #ffffff22,0 0 34px color-mix(in srgb,var(--c) 55%,transparent),0 30px 60px #000c;
+ transform:rotateX(var(--rx)) rotateY(var(--ry)) translateY(calc(var(--p) * -26px));transition:transform .25s ease-out,box-shadow .3s}
+.c-frame img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;transform:translateY(calc(var(--p) * 9%)) scale(1.06);will-change:transform}
+.c-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#07030fcc),repeating-linear-gradient(transparent 0 3px,#00000014 3px 4px)}
+.chap:hover .c-frame{box-shadow:0 0 0 1px #fff6,0 0 50px var(--c),0 30px 60px #000c}
+.c-num{position:absolute;left:14px;bottom:8px;z-index:2;font:900 clamp(2.4rem,7vw,4.2rem)/1 var(--disp);color:transparent;-webkit-text-stroke:2px var(--c);text-shadow:0 0 18px var(--c);opacity:.95}
+.c-txt{position:relative;z-index:2;padding:10px 4px;text-shadow:0 2px 12px #000,0 0 4px #000}
+.c-tag{display:inline-block;font:700 .7rem var(--disp);letter-spacing:.3em;color:var(--c);margin-bottom:8px}
+.c-txt h3{font:900 clamp(1.6rem,5.2vw,3rem)/1.02 var(--disp);color:#fff;letter-spacing:.03em;text-shadow:0 0 18px var(--c)}
+.c-txt p{margin-top:10px;font-size:clamp(1rem,2.8vw,1.18rem);color:#e6dcff;line-height:1.5}
+.c-more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 16px;border-radius:99px;border:1.5px solid var(--c);color:#fff;background:#07030fcc;
+ font:800 .72rem var(--disp);letter-spacing:.16em;transition:.2s}
+.chap:hover .c-more{background:var(--c);color:#07030f}
+/* entrata allo scorrimento */
+.chap .c-pic,.chap .c-txt{opacity:0;transition:opacity .9s ease,transform .9s cubic-bezier(.2,1,.3,1)}
+.chap .c-pic{transform:translateX(-60px) scale(.94)}
+.chap .c-txt{transform:translateX(60px)}
+.chap:nth-child(even) .c-pic{transform:translateX(60px) scale(.94)}
+.chap:nth-child(even) .c-txt{transform:translateX(-60px)}
+.chap.on .c-pic,.chap.on .c-txt{opacity:1;transform:none}
+.chap.on .c-txt{transition-delay:.15s}
+@media (max-width:760px){
+ .chap,.chap:nth-child(even){grid-template-columns:1fr;gap:12px}
+ .chap:nth-child(even) .c-pic{order:0}
+ .c-txt{padding:0 6px}
+}
+/* =========================================================
+   PAGINA DI DETTAGLIO (si apre a cerchio dal punto toccato)
+   ========================================================= */
+#detail{position:fixed;inset:0;z-index:9;background:#07030f;overflow-y:auto;-webkit-overflow-scrolling:touch;
+ clip-path:circle(0 at var(--ox,50%) var(--oy,50%));transition:clip-path .7s cubic-bezier(.7,0,.2,1);visibility:hidden}
+#detail.open{clip-path:circle(150% at var(--ox,50%) var(--oy,50%));visibility:visible}
+.d-hero{position:relative;height:min(62vh,560px);overflow:hidden}
+.d-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 6s ease-out}
+#detail.open .d-hero img{transform:scale(1)}
+.d-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#07030f55,transparent 35%,#07030f 100%)}
+.d-title{position:absolute;left:0;right:0;bottom:16px;z-index:2;padding:0 20px;max-width:900px;margin:0 auto}
+.d-title .c-tag{font-size:.75rem}
+.d-title h2{font:900 clamp(2.2rem,8vw,4.6rem)/1 var(--disp);color:#fff;text-shadow:0 0 22px var(--c)}
+.d-body{max-width:820px;margin:0 auto;padding:10px 20px 90px}
+.d-body p{font-size:clamp(1.02rem,2.8vw,1.15rem);line-height:1.7;color:#e6dcff;margin:16px 0}
+.d-body p b{color:#fff}
+.d-body h4{font:800 .8rem var(--disp);letter-spacing:.3em;color:var(--c);margin:34px 0 12px}
+.d-gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.d-gal img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1.5px solid #ffffff22}
+.d-video{aspect-ratio:16/9;border-radius:14px;border:2px dashed #ffffff33;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px;background:#0d0620}
+.d-nav{display:flex;justify-content:space-between;gap:10px;margin-top:40px}
+.d-nav button,.d-close{border:1.5px solid var(--c);background:#07030fcc;color:#fff;border-radius:99px;padding:11px 16px;font:800 .72rem var(--disp);letter-spacing:.12em;cursor:pointer}
+.d-close{position:fixed;top:14px;right:14px;z-index:10;width:46px;height:46px;padding:0;font-size:1.1rem;display:grid;place-items:center}
+.d-nav button:hover,.d-close:hover{background:var(--c);color:#07030f}
+body.detail-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){#detail{transition:none}.chap .c-pic,.chap .c-txt{opacity:1;transform:none}}
+
+/* isole che entrano una alla volta */
+.rv .isles span{opacity:0;transform:translateY(22px) scale(.9);transition:opacity .6s,transform .6s cubic-bezier(.2,1.4,.4,1)}
+.rv.on .isles span{opacity:1;transform:none}
+.rv.on .isles span:nth-child(2){transition-delay:.12s}.rv.on .isles span:nth-child(3){transition-delay:.24s}
+.rv.on .isles span:nth-child(4){transition-delay:.36s}.rv.on .isles span:nth-child(5){transition-delay:.48s}
 </style>
 </head>
 <body>
@@ -260,18 +332,11 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   </header>
 
   <section class="s-sec" id="gioco">
-    <div class="panel rv">
+    <div class="g-head rv">
       <h2>IL GIOCO</h2>
-      <p class="sub">Un battle royale 3D in stile low poly, nato tra le colline del Valdarno. Entri, atterri, sopravvivi.</p>
-      <div class="feat">
-        <div><i>🚁</i><h3>LANCIATI</h3><p>Sali sull'elicottero, scegli dove saltare e apri il paracadute.</p></div>
-        <div><i>🎒</i><h3>SOPRAVVIVI</h3><p>Apri le casse, raccogli armi, munizioni e cure prima degli altri.</p></div>
-        <div><i>🔫</i><h3>COMBATTI</h3><p>Pugni, pistola, fucile e pompa. Ogni colpo conta.</p></div>
-        <div><i>🌀</i><h3>LA ZONA SI STRINGE</h3><p>Resta dentro o perdi vita. Alla fine ne resta solo uno.</p></div>
-        <div><i>🤖</i><h3>MAI DA SOLO</h3><p>I bot riempiono la partita: entri e giochi subito.</p></div>
-        <div><i>📱</i><h3>PC E TELEFONO</h3><p>Tastiera e mouse, oppure comandi touch sul telefono.</p></div>
-      </div>
+      <p class="lore">Nel futuro i ghiacciai si sono sciolti e la terra si è spezzata: il mondo è diventato un arcipelago di <b>piccolissime isole</b>. Alcune sono vere, come Figline, Incisa, Leccio e Burchio. Altre sono artificiali, stampate in 3D.<br>Un elicottero ti lascia su una di queste. <b>Ogni partita è un film.</b></p>
     </div>
+    <div class="chapters" id="chapters"></div>
   </section>
 
   <section class="s-sec" id="isole">
@@ -297,6 +362,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     <p>Evolved Zone · Valdarno, Italia · 2026</p>
   </footer>
 </div>
+<div id="detail" hidden role="dialog" aria-modal="true" aria-label="Dettagli"></div>
 <button class="testbtn" id="testBtn" type="button" hidden></button>
 
 <script>
@@ -356,16 +422,22 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   };
 
   function startMusic(){
-    if (!audioOn) return;
+    if (!audioOn || (typeof EV !== "undefined" && EV.on) || MUS) return;   // durante l'evento suona la colonna sonora
     if (!music){ music = new Audio(SND.music); music.loop = true; music.volume = VOL.music; }
     var p = music.play(); if (p && p.catch) p.catch(function(){});
   }
+  // Sblocco audio: i browser lo permettono solo dopo un gesto vero (dito che si alza, clic, tasto).
+  // Riprova a OGNI gesto finché l'audio non è davvero acceso (prima bastava un tocco «sbagliato» per bloccarlo).
   function unlock(){
-    if (unlocked) return; unlocked = true;
-    try { ac = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){}
+    if (!audioOn) return;
+    if (!ac){ try { ac = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){} }
+    if (ac && ac.state !== "running"){ try { ac.resume(); } catch(e){} }
+    unlocked = true;
     btn.classList.remove("invite");
     document.getElementById("toast").hidden = true;
-    startMusic(); setBtn();
+    if (typeof EV !== "undefined" && EV.on){ if (!MUS) musicStart(); }    // evento già in corso: la musica entra al punto giusto
+    else if (!music || music.paused) startMusic();
+    setBtn();
   }
   var btn = document.getElementById("audioBtn");
   function setBtn(){ btn.setAttribute("aria-pressed", String(audioOn && unlocked)); }
@@ -377,12 +449,16 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     setBtn();
   });
   // il primo tocco ovunque sblocca l'audio (se non è stato spento)
-  ["pointerdown","keydown"].forEach(function(ev){
-    window.addEventListener(ev, function(e){ if (btn.contains(e.target)) return; if (!unlocked && audioOn) unlock(); }, true);
+  ["pointerup","touchend","click","keydown"].forEach(function(ev){
+    window.addEventListener(ev, function(e){
+      if (btn.contains(e.target) || !audioOn) return;
+      if (!unlocked || !ac || ac.state !== "running" || (music && music.paused && !EV.on && !MUS)) unlock();
+    }, true);
   });
   document.addEventListener("visibilitychange", function(){
     if (!music) return;
     if (document.hidden) music.pause(); else if (audioOn && unlocked) startMusic();
+    if (!document.hidden && ac && ac.state !== "running" && audioOn && unlocked){ try { ac.resume(); } catch(e){} }
   });
 
   /* =========================================================
@@ -670,8 +746,11 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
      13,1–15 s   energia al massimo: lampeggia, trema, la musica sale
      15 s        esplode in frammenti → DROP musicale + entrata del sito (≈5 s)
      ========================================================= */
+  // tutte le immagini del gioco: a ogni evento ne escono 6 a caso, in ordine casuale → ogni visitatore vede un evento diverso
   var IMGS = ["assets/img/ez_heli_synthwave.webp","assets/img/ez_strada_neon.webp","assets/img/ez_elicottero_neon.webp",
-              "assets/img/ez_cassa_casale.webp","assets/img/ez_elicottero_tramonto.webp","assets/img/ez_heli_tramonto.webp"];
+              "assets/img/ez_cassa_casale.webp","assets/img/ez_elicottero_tramonto.webp","assets/img/ez_heli_tramonto.webp",
+              "assets/img/ez_w_heli_tramonto.webp","assets/img/ez_w_strada_tramonto.webp","assets/img/ez_w_cabina_tramonto.webp",
+              "assets/img/ez_w_heli_neon.webp","assets/img/ez_w_strada_neon.webp"];
   var BEAT = 60/128;
   var INTRO_B = 8, EXP_B = 32, MAX_B = 28;
   var INTRO = INTRO_B*BEAT, EXP = EXP_B*BEAT, MAXT = MAX_B*BEAT, END = EXP + 5.2;   // intro 3,75 s, esplosione a 15 s, fine a 20,2 s
@@ -692,11 +771,12 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
       pos = [[-.30,-.32],[.30,.31],[.30,-.32],[-.30,.31],[0,-.36],[0,.35]]; }
     else { cw = Math.min(vw*.15, vh*.30, 240);
       pos = [[-.32,-.25],[.32,-.25],[-.38,.02],[.38,.02],[-.30,.27],[.30,.27]]; }
-    return pos.map(function(p,i){ return {x:vw/2 + p[0]*vw, y:vh/2 + p[1]*vh, cw:cw, col:EVCOL[i], beamT:BEAM_T[i], img:IMGOBJ[i], shown:false}; });
+    var pick = IMGOBJ.slice().sort(function(){ return Math.random() - .5; });            // mescolo
+    return pos.map(function(p,i){ return {x:vw/2 + p[0]*vw, y:vh/2 + p[1]*vh, cw:cw, col:EVCOL[i], beamT:BEAM_T[i], img:pick[i], shown:false}; });
   }
 
   /* ---------- COLONNA SONORA DELL'EVENTO (suonata dal browser, nessun file) ---------- */
-  var MUS = null, NOISE = null;
+  var MUS = null, NOISE = null, MUS_WAIT = null;
   function nf(semi){ return 440*Math.pow(2, semi/12); }                  // nota: semitoni da LA 440
   var CH = [[-12,-9,-5],[-16,-12,-9],[-9,-5,-2],[-14,-10,-7]];           // La min, Fa, Do, Sol
   var ROOT = [-36,-40,-33,-38];
@@ -787,11 +867,17 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   function musicStart(){
     musicStop();
     if (!audioOn || !ac) return;
-    try { if (ac.state === "suspended") ac.resume(); } catch(e){}
+    if (ac.state !== "running"){                                  // audio non ancora acceso: riprovo appena si accende
+      var token = {}; MUS_WAIT = token;
+      try { ac.resume().then(function(){ if (MUS_WAIT === token && EV.on && !MUS) musicStart(); }); } catch(e){}
+      return;
+    }
+    var offset = EV.on ? (performance.now() - EV.t0)/1000 : 0;   // secondi di evento già passati
     var bus = ac.createGain(), comp = ac.createDynamicsCompressor();
     comp.threshold.value = -14; comp.ratio.value = 4; comp.attack.value = .003; comp.release.value = .15;
     bus.gain.value = .9; bus.connect(comp); comp.connect(ac.destination);
-    MUS = {bus:bus, comp:comp, t0:ac.currentTime + .06, list:score(), i:0};
+    MUS = {bus:bus, comp:comp, t0:ac.currentTime + .06 - offset, list:score(), i:0};
+    while (MUS.i < MUS.list.length && MUS.list[MUS.i][0] < offset - .05) MUS.i++;   // salto le note già passate
     MUS.timer = setInterval(function(){                       // programma le note con 0,4 s di anticipo
       if (!MUS) return;
       var horizon = ac.currentTime - MUS.t0 + .4;
@@ -803,12 +889,16 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     }, 50);
     // la musica del sito torna dopo il drop
     MUS.back = setTimeout(function(){
-      if (!music || !audioOn || !unlocked) return;
+      var m0 = MUS; MUS = null;                                    // la colonna sonora è finita
+      if (m0){ clearInterval(m0.timer); }
+      if (!audioOn || !unlocked) return;
+      if (!music){ music = new Audio(SND.music); music.loop = true; }
       music.volume = 0; startMusic();
       var v = 0, iv = setInterval(function(){ v += .02; music.volume = Math.min(VOL.music, v); if (v >= VOL.music) clearInterval(iv); }, 100);
-    }, (EXP_B + DROP_BEATS)*BEAT*1000 + 2500);
+    }, Math.max(0, (EXP_B + DROP_BEATS)*BEAT*1000 + 2500 - offset*1000));
   }
   function musicStop(){
+    MUS_WAIT = null;
     if (!MUS) return;
     clearInterval(MUS.timer); clearTimeout(MUS.back);
     var m = MUS; MUS = null;
@@ -935,19 +1025,19 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
       var x0 = Math.min.apply(0,xs), x1 = Math.max.apply(0,xs), y0 = Math.min.apply(0,ys), y1 = Math.max.apply(0,ys);
       var bw = x1-x0, bh = y1-y0, nw = b.img.naturalWidth, nh = b.img.naturalHeight;
       var z = 1.12 - .12*ease((et - b.beamT)/4), k = Math.max(bw/nw, bh/nh)*z, iw = nw*k, ih = nh*k;
-      bctx.globalAlpha = ia*(.88 + .12*flick);
+      bctx.globalAlpha = ia;
       bctx.drawImage(b.img, (x0 + bw/2 - iw/2)*D, (y0 + bh/2 - ih/2)*D, iw*D, ih*D);
       bctx.globalAlpha = 1;
     }
     // luce del fascio sopra l'immagine: bianca vicino al cristallo, colorata e leggera dove c'è l'immagine
     var g = bctx.createLinearGradient(cxp*D,cyp*D,ex*D,ey*D);
     g.addColorStop(0, "rgba(255,255,255,"+((.9*flick)*fade).toFixed(3)+")");
-    g.addColorStop(.22, hexA(b.col, (.5*flick + .3*maxp)*fade));
-    g.addColorStop(.5, hexA(b.col, (.08 + .35*maxp)*fade));
-    g.addColorStop(1, hexA(b.col, (.03 + .3*maxp)*fade));
+    g.addColorStop(.16, hexA(b.col, (.38*flick + .3*maxp)*fade));
+    g.addColorStop(.36, hexA(b.col, (.03 + .3*maxp)*fade));
+    g.addColorStop(1, hexA(b.col, (.0 + .25*maxp)*fade));
     bctx.globalCompositeOperation = "lighter"; bctx.fillStyle = g; bctx.fillRect(0,0,evB.width,evB.height);
     // righe di scansione nel fascio (effetto proiettore)
-    bctx.fillStyle = "rgba(0,0,0,.18)";
+    bctx.fillStyle = "rgba(0,0,0,.07)";
     for (var y = ((et*60)%6)*D; y < evB.height; y += 6*D) bctx.fillRect(0,y,evB.width,2*D);
     bctx.restore();
     // bordi al neon
@@ -1059,6 +1149,110 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   }
   requestAnimationFrame(frame);
 
+  /* =========================================================
+     SEZIONE «IL GIOCO»: capitoli + pagine di dettaglio
+     Michele: i testi sono qui sotto. "foto" = immagini nella pagina, "video" = file video (quando ci sono).
+     ========================================================= */
+  var GAME = [
+    {tag:"CAPITOLO 01", title:"IL LANCIO", col:"#ffe14d", img:"assets/img/ez_w_heli_tramonto.webp",
+     line:"Sali sull'elicottero. Scegli dove saltare.",
+     text:["Ogni partita inizia in volo. L'elicottero attraversa l'isola su una rotta sempre diversa: tu scegli il momento giusto, salti, cadi in picchiata e apri il paracadute dove vuoi atterrare.",
+           "<b>Da dove viene l'idea.</b> Nel Valdarno un elicottero vero passa quasi ogni giorno sopra Rignano, Leccio, Burchio, Incisa e Reggello. Vederlo sorvolare casa è diventato il nostro «battle bus»: l'elicottero che porta tutti nella zona."],
+     foto:["assets/img/ez_w_cabina_tramonto.webp","assets/img/ez_w_heli_neon.webp","assets/img/ez_elicottero_neon.webp"], video:""},
+    {tag:"CAPITOLO 02", title:"SOPRAVVIVENZA", col:"#3fd0ff", img:"assets/img/ez_cassa_casale.webp",
+     line:"Casse, armi, cure. Prendile prima degli altri.",
+     text:["Appena tocchi terra sei disarmato. Corri dentro case e casolari, apri le casse, raccogli armi, munizioni e cure.",
+           "Non sei lì per caso: ogni partita ti dà un compito, e lo scopri solo giocando. Ogni partita è diversa, come un film.",
+           "<b>Ispirazione:</b> i giochi di sopravvivenza come ARK: Survival Evolved e The Forest."],
+     foto:["assets/img/ez_w_strada_tramonto.webp","assets/img/ez_strada_neon.webp"], video:""},
+    {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/ez_w_strada_neon.webp",
+     line:"Pugni, pistola, fucile, pompa. Ogni colpo conta.",
+     text:["Si parte a mani nude. Poi pistola, fucile e fucile a pompa: trova l'arma giusta prima di chi ti sta cercando.",
+           "<b>Ispirazione:</b> i grandi battle royale — Fortnite, PUBG, Apex Legends e Hyper Scape."],
+     foto:["assets/img/ez_strada_neon.webp","assets/img/ez_w_strada_tramonto.webp"], video:""},
+    {tag:"CAPITOLO 04", title:"THE BURN", col:"#ff7a3c", img:"assets/img/ez_w_heli_neon.webp",
+     line:"La zona brucia e si stringe. Resta dentro.",
+     text:["Col passare dei minuti la zona sicura si restringe. Fuori c'è «The Burn»: ti consuma la vita, poco alla volta.",
+           "Devi muoverti, e prima o poi incontrerai gli altri. Alla fine ne resta uno solo."],
+     foto:["assets/img/ez_heli_synthwave.webp"], video:""},
+    {tag:"CAPITOLO 05", title:"MAI DA SOLO", col:"#3fd0ff", img:"assets/img/ez_strada_neon.webp",
+     line:"Fino a 50 giocatori. Se mancano, entrano i bot.",
+     text:["Fino a 50 giocatori su un'isola piccola: ci si incontra presto e la partita non si ferma mai.",
+           "Se non ci sono abbastanza persone online, la partita si riempie di bot: entri e giochi subito, a qualsiasi ora."],
+     foto:[], video:""},
+    {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/ez_heli_tramonto.webp",
+     line:"Tastiera e mouse. Nel browser o da scaricare.",
+     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows."],
+     foto:[], video:""},
+    {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff3fd0", img:"assets/img/ez_elicottero_tramonto.webp",
+     line:"Comandi touch, pensati per il pollice.",
+     text:["Sul telefono giochi con i comandi touch, pensati per lo schermo piccolo. Su Android puoi anche scaricarlo come app."],
+     foto:[], video:""}
+  ];
+  var chapEl = document.getElementById("chapters");
+  GAME.forEach(function(g,i){
+    var a = document.createElement("article");
+    a.className = "chap"; a.style.setProperty("--c", g.col); a.tabIndex = 0; a.setAttribute("role","button");
+    a.setAttribute("aria-label", g.title + ": apri i dettagli");
+    a.innerHTML = '<div class="c-pic"><div class="c-frame"><img src="'+g.img+'" alt="" loading="lazy"><span class="c-num">0'+(i+1)+'</span></div></div>'+
+      '<div class="c-txt"><span class="c-tag">'+g.tag+'</span><h3>'+g.title+'</h3><p>'+g.line+'</p><span class="c-more">SCOPRI ▸</span></div>';
+    a.addEventListener("click", function(e){ openDetail(i, e.clientX, e.clientY); });
+    a.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); var r = a.getBoundingClientRect(); openDetail(i, r.left+r.width/2, r.top+r.height/2); } });
+    // inclinazione 3D che segue mouse o dito
+    var fr = a.querySelector(".c-frame");
+    a.addEventListener("pointermove", function(e){
+      var r = fr.getBoundingClientRect(), x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+      a.style.setProperty("--ry", (x*12).toFixed(1)+"deg"); a.style.setProperty("--rx", (-y*10).toFixed(1)+"deg");
+    });
+    a.addEventListener("pointerleave", function(){ a.style.setProperty("--ry","0deg"); a.style.setProperty("--rx","0deg"); });
+    chapEl.appendChild(a);
+  });
+  // entrata dei capitoli + movimento delle immagini mentre scorri
+  var chaps = [].slice.call(chapEl.children);
+  if ("IntersectionObserver" in window){
+    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) e.target.classList.add("on"); }); },{threshold:.2});
+    chaps.forEach(function(c){ cio.observe(c); });
+  } else chaps.forEach(function(c){ c.classList.add("on"); });
+  var scrollQueued = false;
+  function onScroll(){
+    if (scrollQueued || site.hidden) return; scrollQueued = true;
+    requestAnimationFrame(function(){
+      scrollQueued = false; var vh = innerHeight;
+      chaps.forEach(function(c){
+        var r = c.getBoundingClientRect(); if (r.bottom < -50 || r.top > vh + 50) return;
+        var p = ((r.top + r.height/2) - vh/2) / (vh/2 + r.height/2);   // -1 sopra … 0 al centro … +1 sotto
+        c.style.setProperty("--p", Math.max(-1, Math.min(1, p)).toFixed(3));
+      });
+    });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); window.addEventListener("resize", onScroll);
+
+  // pagina di dettaglio
+  var det = document.getElementById("detail"), detIdx = 0;
+  function openDetail(i, x, y){
+    detIdx = i; var g = GAME[i];
+    det.style.setProperty("--c", g.col);
+    det.style.setProperty("--ox", (x||innerWidth/2)+"px"); det.style.setProperty("--oy", (y||innerHeight/2)+"px");
+    var html = '<button class="d-close" type="button" aria-label="Chiudi">✕</button>'+
+      '<div class="d-hero"><img src="'+g.img+'" alt=""><div class="d-title"><span class="c-tag">'+g.tag+'</span><h2>'+g.title+'</h2></div></div>'+
+      '<div class="d-body"><p><b>'+g.line+'</b></p>' + g.text.map(function(t){ return "<p>"+t+"</p>"; }).join("");
+    if (g.foto.length) html += '<h4>IMMAGINI</h4><div class="d-gal">'+g.foto.map(function(f){ return '<img src="'+f+'" alt="" loading="lazy">'; }).join("")+'</div>';
+    html += '<h4>VIDEO</h4>' + (g.video ? '<video src="'+g.video+'" controls playsinline style="width:100%;border-radius:14px"></video>' : '<div class="d-video">🎬 Video in arrivo</div>');
+    html += '<div class="d-nav"><button type="button" data-go="-1">◂ '+(GAME[(i+GAME.length-1)%GAME.length].title)+'</button><button type="button" data-go="1">'+(GAME[(i+1)%GAME.length].title)+' ▸</button></div></div>';
+    det.innerHTML = html; det.scrollTop = 0;
+    det.hidden = false; document.body.classList.add("detail-open");
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ det.classList.add("open"); }); });
+    det.querySelector(".d-close").addEventListener("click", closeDetail);
+    [].forEach.call(det.querySelectorAll("[data-go]"), function(b){ b.addEventListener("click", function(e){
+      openDetail((detIdx + Number(b.getAttribute("data-go")) + GAME.length) % GAME.length, e.clientX, e.clientY); }); });
+    sample("whoosh", 1.2, .5);
+  }
+  function closeDetail(){
+    det.classList.remove("open"); document.body.classList.remove("detail-open");
+    setTimeout(function(){ if (!det.classList.contains("open")) det.hidden = true; }, 700);
+  }
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !det.hidden) closeDetail(); });
+
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);
   function backToCountdown(){
@@ -1081,7 +1275,9 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
                    : "▶ AVVIA L'EVENTO<small>pagina di prova</small>";
     };
     tb.addEventListener("click", function(e){
-      e.stopPropagation(); unlock();
+      e.stopPropagation();
+      audioOn = true; try { localStorage.setItem("ez_audio","1"); } catch(err){}   // in prova l'audio si riaccende sempre
+      unlock();
       if (EV.on) return;
       if (siteMode) backToCountdown(); else startEvent(false);
       setTB();

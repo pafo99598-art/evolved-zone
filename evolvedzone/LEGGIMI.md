@@ -1,11 +1,11 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 8
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 9
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
 ## Come funziona
 - **Prima delle 15:00 del 17/11**: pagina countdown (logo con 13 suoni, cristallo da colpire, musica, Instagram).
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
-- **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce interamente riempiti dalle 6 immagini del gioco, energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
+- **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
 
 ## Partenza esatta alle 15:00
@@ -17,6 +17,9 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 ## Da fare prima del 17/11
 In `index.html` cerca `var LINKS` e incolla i 4 link veri (browser, crazygames, pc, android). Finché un link è vuoto il pulsante mostra «Link in arrivo».
 
+## Testi de «Il gioco»
+In `index.html` cerca `var GAME`: ogni capitolo ha titolo, frase, testo della pagina di dettaglio, foto e video.
+
 ## Prove
 - `prova.html` → pagina di prova di Michele: tasto ▶ che avvia l'evento e ↺ che torna al countdown (non indicizzata, ma chi ha il link la apre).
 - `?prova=10` → countdown di 10 secondi e poi l'evento.
@@ -26,6 +29,6 @@ In `index.html` cerca `var LINKS` e incolla i 4 link veri (browser, crazygames, 
 |---|---|
 | `index.html` | Tutta la pagina (countdown + evento + sito ufficiale). |
 | `assets/logo.webp` | Logo ufficiale (da `cgassets/logo_t.png`) con contorno neon. |
-| `assets/img/*.webp` | Le 6 immagini di Michele (fasci dell'evento + galleria Stagione 1). |
+| `assets/img/*.webp` | Le 11 immagini di Michele (fasci dell'evento + capitoli de «Il gioco»). |
 | `assets/snd/m_neon.mp3` | Musica «Ora neon» del gioco (originale, ElevenLabs, account di Michele). |
 | `assets/snd/*.mp3` | Effetti del gioco, tutti CC0 (vedi `snd/FONTI.md` del gioco). |
