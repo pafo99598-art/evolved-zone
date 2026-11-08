@@ -14,6 +14,7 @@
  --horizon:68vh}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
+html{overflow-x:clip}
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh;-webkit-tap-highlight-color:transparent}
 
 /* ===== SFONDO (fisso) ===== */
@@ -136,7 +137,7 @@ body.ev main > .count{transition-delay:1.2s} body.ev main > .when{transition-del
 /* =========================================================
    SITO UFFICIALE
    ========================================================= */
-#site{position:relative;z-index:2}
+#site{position:relative;z-index:2;overflow-x:clip}   /* niente che sbordi di lato (sul telefono rimpicciolirebbe tutta la pagina) */
 .s-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 16px 40px}
 .s-logo{width:min(520px,92vw,92vh);height:auto;margin:8px 0 2px}
 .cta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:min(560px,100%);margin-top:6px}
@@ -266,6 +267,49 @@ body.detail-open{overflow:hidden}
 .rv.on .isles span{opacity:1;transform:none}
 .rv.on .isles span:nth-child(2){transition-delay:.12s}.rv.on .isles span:nth-child(3){transition-delay:.24s}
 .rv.on .isles span:nth-child(4){transition-delay:.36s}.rv.on .isles span:nth-child(5){transition-delay:.48s}
+
+/* video breve del capitolo (parte col mouse sopra / al centro sul telefono) */
+.c-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;z-index:1}
+.chap.playing .c-frame video{opacity:1}
+.c-num{z-index:3}
+/* isole */
+.isles2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.isle{--c:#3fd0ff;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 10px 16px;border-radius:16px;border:1.5px dashed #ffffff40;background:#0d0620;color:var(--c);cursor:pointer;
+ transition:transform .3s cubic-bezier(.2,1.4,.4,1),box-shadow .3s,border-color .3s}
+.isle svg{width:100%;max-width:130px;height:auto;animation:isfloat 4s ease-in-out infinite}
+.isle:nth-child(2) svg{animation-delay:-1s}.isle:nth-child(3) svg{animation-delay:-2s}.isle:nth-child(4) svg{animation-delay:-3s}
+@keyframes isfloat{50%{transform:translateY(-6px)}}
+.isle b{font:800 .85rem var(--disp);letter-spacing:.08em;color:#fff}
+.isle small{font:600 .68rem Inter,system-ui,sans-serif;color:var(--muted)}
+.isle.live{border:2px solid var(--yellow);box-shadow:0 0 22px #ffe14d44}
+.isle.live small{color:var(--yellow)}
+.isle:hover{transform:translateY(-6px) scale(1.03);border-color:var(--c);box-shadow:0 0 26px color-mix(in srgb,var(--c) 45%,transparent)}
+.rv .isle{opacity:0;transform:translateY(26px) scale(.9)}
+.rv.on .isle{opacity:1;transform:none;transition:opacity .6s,transform .6s cubic-bezier(.2,1.4,.4,1)}
+.rv.on .isle:nth-child(2){transition-delay:.1s}.rv.on .isle:nth-child(3){transition-delay:.2s}.rv.on .isle:nth-child(4){transition-delay:.3s}.rv.on .isle:nth-child(5){transition-delay:.4s}
+.d-hero-empty{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 70%,color-mix(in srgb,var(--c) 45%,transparent),transparent 60%),linear-gradient(#12052e,#07030f)}
+/* QR */
+.qrbtn{position:fixed;top:14px;left:14px;z-index:6;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--pink);background:#07030fcc;color:#fff;cursor:pointer;
+ box-shadow:0 0 14px #ff3fd055;animation:qrglitch 8s infinite}
+.qrbtn svg{width:22px;height:22px}
+.qrbtn:hover{background:var(--pink)}
+@keyframes qrglitch{0%,93%,100%{transform:none;filter:none}
+ 94%{transform:translate(-3px,1px) skewX(12deg);filter:drop-shadow(-3px 0 #3fd0ff) drop-shadow(3px 0 #ff3fd0) brightness(1.6)}
+ 95%{transform:translate(3px,-2px) skewX(-10deg);filter:drop-shadow(3px 0 #3fd0ff) drop-shadow(-3px 0 #ff3fd0)}
+ 96%{transform:translate(-1px,0);filter:hue-rotate(90deg) brightness(1.8)}
+ 97%{transform:translate(2px,1px) skewX(6deg);filter:drop-shadow(-2px 0 #3fd0ff) drop-shadow(2px 0 #ff3fd0)}}
+body.ev .qrbtn{opacity:0;pointer-events:none}
+#qrModal{position:fixed;inset:0;z-index:11;display:grid;place-items:center;padding:20px;background:#07030fe6;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.qr-card{position:relative;width:min(340px,100%);text-align:center;padding:26px 22px 22px;border-radius:20px;background:#0d0620;border:2px solid var(--pink);box-shadow:0 0 40px #ff3fd066;animation:qrin .35s cubic-bezier(.2,1.5,.4,1)}
+@keyframes qrin{from{transform:scale(.8);opacity:0}}
+.qr-img{margin:12px auto 10px;width:min(240px,70vw);border-radius:12px;overflow:hidden;box-shadow:0 0 0 3px #fff,0 0 26px #3fd0ff88}
+.qr-img svg{display:block;width:100%;height:auto}
+.qr-card p{color:#e6dcff;font-size:.92rem}
+.qr-act{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.qr-act button,.qr-x{border:1.5px solid var(--cyan);background:#07030f;color:#fff;border-radius:99px;padding:9px 14px;font:800 .68rem var(--disp);letter-spacing:.12em;cursor:pointer}
+.qr-act button:hover{background:var(--cyan);color:#07030f}
+.qr-x{position:absolute;top:10px;right:10px;width:34px;height:34px;padding:0}
+@media(prefers-reduced-motion:reduce){.qrbtn,.isle svg{animation:none}}
 </style>
 </head>
 <body>
@@ -288,6 +332,19 @@ body.detail-open{overflow:hidden}
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><g class="on"><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></g><g class="off"><path d="m16 9 5 6M21 9l-5 6"/></g></svg>
   <span>AUDIO</span>
 </button>
+
+<button class="qrbtn" id="qrBtn" type="button" aria-label="Mostra il QR del sito">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14v2"/></svg>
+</button>
+<div id="qrModal" hidden role="dialog" aria-modal="true" aria-label="QR del sito">
+  <div class="qr-card">
+    <button class="qr-x" type="button" aria-label="Chiudi">✕</button>
+    <span class="c-tag">EVOLVED ZONE</span>
+    <div class="qr-img"><svg width="258" height="258" class="segno"><g transform="scale(6)"><path fill="#fff" d="M0 0h43v43h-43z"/><path class="qrline" stroke="#12052e" d="M3 3.5h7m5 0h3m2 0h2m3 0h5m3 0h7m-37 1h1m5 0h1m1 0h2m1 0h3m1 0h4m2 0h2m7 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m3 0h2m1 0h1m4 0h1m2 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h8m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h2m1 0h2m1 0h2m2 0h2m3 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h2m3 0h5m1 0h1m2 0h3m4 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h3m1 0h1m4 0h1m1 0h2m1 0h7m-28 1h1m1 0h4m1 0h1m3 0h1m1 0h4m1 0h1m3 0h1m2 0h1m2 0h2m1 0h2m1 0h1m-35 1h1m2 0h1m2 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h3m1 0h1m1 0h4m-31 1h1m1 0h1m2 0h2m2 0h1m1 0h2m3 0h1m1 0h4m1 0h1m1 0h2m1 0h1m3 0h1m-37 1h1m4 0h1m1 0h4m2 0h1m2 0h1m1 0h2m3 0h2m1 0h1m2 0h6m1 0h1m-36 1h3m2 0h3m3 0h2m1 0h1m2 0h3m3 0h1m2 0h1m2 0h1m4 0h1m-36 1h5m4 0h1m1 0h1m1 0h1m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m2 0h1m1 0h2m-35 1h2m1 0h3m4 0h1m3 0h4m1 0h3m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m-36 1h1m2 0h2m3 0h1m1 0h4m3 0h1m3 0h2m5 0h8m-37 1h2m2 0h5m1 0h1m1 0h5m1 0h2m1 0h1m1 0h3m4 0h1m3 0h1m1 0h1m-37 1h3m1 0h1m4 0h4m1 0h2m1 0h3m1 0h2m1 0h1m2 0h2m2 0h1m3 0h1m-36 1h2m4 0h3m1 0h3m1 0h4m1 0h5m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-36 1h1m1 0h2m2 0h1m1 0h1m1 0h8m1 0h1m1 0h1m2 0h1m2 0h1m6 0h2m-37 1h1m2 0h1m2 0h1m4 0h4m2 0h4m1 0h1m3 0h5m1 0h1m-33 1h6m2 0h1m1 0h1m2 0h1m1 0h2m2 0h2m2 0h1m1 0h4m2 0h3m-34 1h2m4 0h1m1 0h5m1 0h2m1 0h4m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-37 1h1m1 0h2m1 0h1m1 0h1m1 0h3m3 0h2m1 0h2m2 0h2m2 0h4m1 0h1m2 0h1m-34 1h1m3 0h7m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m-34 1h1m1 0h2m1 0h1m7 0h2m2 0h1m2 0h2m1 0h1m1 0h4m3 0h2m-34 1h2m4 0h1m1 0h3m2 0h1m1 0h2m1 0h2m4 0h2m1 0h1m2 0h1m1 0h2m1 0h2m-37 1h1m1 0h3m4 0h3m1 0h1m1 0h2m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m-35 1h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h1m2 0h3m2 0h4m1 0h8m-27 1h5m2 0h4m2 0h2m2 0h1m2 0h1m3 0h3m-35 1h7m3 0h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h5m-37 1h1m5 0h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h2m2 0h2m1 0h2m3 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h7m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m3 0h1m2 0h1m4 0h1m-36 1h1m1 0h3m1 0h1m10 0h1m3 0h4m3 0h1m2 0h3m1 0h2m-37 1h1m5 0h1m1 0h7m1 0h3m8 0h1m1 0h4m1 0h3m-37 1h7m3 0h1m2 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1"/></g></svg></div>
+    <p>Inquadra con la fotocamera per aprire il sito</p>
+    <div class="qr-act"><button type="button" id="qrCopy">COPIA LINK</button><button type="button" id="qrShare">CONDIVIDI</button></div>
+  </div>
+</div>
 
 <main>
   <span class="badge">Stagione 1 · Neon '80</span>
@@ -342,14 +399,8 @@ body.detail-open{overflow:hidden}
   <section class="s-sec" id="isole">
     <div class="panel rv">
       <h2>LE ISOLE</h2>
-      <p class="sub">Si parte da Simple Island. Le isole del Valdarno arrivano con gli aggiornamenti.</p>
-      <div class="isles">
-        <span class="live">SIMPLE ISLAND<small>Disponibile</small></span>
-        <span>FIGLINE<small>In arrivo</small></span>
-        <span>INCISA<small>In arrivo</small></span>
-        <span>BURCHIO<small>In arrivo</small></span>
-        <span>LECCIO<small>In arrivo</small></span>
-      </div>
+      <p class="sub">Il mondo si è spezzato in tante piccole isole. Si parte da Simple Island; le isole vere del Valdarno arrivano con gli aggiornamenti. Tocca un'isola per scoprirla.</p>
+      <div class="isles2" id="islesList"></div>
     </div>
   </section>
 
@@ -1151,67 +1202,90 @@ body.detail-open{overflow:hidden}
 
   /* =========================================================
      SEZIONE «IL GIOCO»: capitoli + pagine di dettaglio
-     Michele: i testi sono qui sotto. "foto" = immagini nella pagina, "video" = file video (quando ci sono).
+     Michele: i testi sono qui sotto.
+       img  = immagine del capitolo (si vede quando non ci sei sopra)   ← PROVVISORIE finché Michele non manda quelle giuste
+       clip = video breve 10–15 s che parte da solo (mouse sopra / capitolo al centro sul telefono)
+       foto = immagini nella pagina di dettaglio, video = video nella pagina di dettaglio
      ========================================================= */
   var GAME = [
-    {tag:"CAPITOLO 01", title:"IL LANCIO", col:"#ffe14d", img:"assets/img/ez_w_heli_tramonto.webp",
+    {tag:"CAPITOLO 01", title:"IL LANCIO", col:"#ffe14d", img:"assets/img/ez_heli_tramonto.webp", clip:"",
      line:"Sali sull'elicottero. Scegli dove saltare.",
      text:["Ogni partita inizia in volo. L'elicottero attraversa l'isola su una rotta sempre diversa: tu scegli il momento giusto, salti, cadi in picchiata e apri il paracadute dove vuoi atterrare.",
            "<b>Da dove viene l'idea.</b> Nel Valdarno un elicottero vero passa quasi ogni giorno sopra Rignano, Leccio, Burchio, Incisa e Reggello. Vederlo sorvolare casa è diventato il nostro «battle bus»: l'elicottero che porta tutti nella zona."],
-     foto:["assets/img/ez_w_cabina_tramonto.webp","assets/img/ez_w_heli_neon.webp","assets/img/ez_elicottero_neon.webp"], video:""},
-    {tag:"CAPITOLO 02", title:"SOPRAVVIVENZA", col:"#3fd0ff", img:"assets/img/ez_cassa_casale.webp",
+     foto:["assets/img/ez_elicottero_neon.webp","assets/img/ez_heli_synthwave.webp"], video:""},
+    {tag:"CAPITOLO 02", title:"SOPRAVVIVENZA", col:"#3fd0ff", img:"assets/img/ez_cassa_casale.webp", clip:"",
      line:"Casse, armi, cure. Prendile prima degli altri.",
      text:["Appena tocchi terra sei disarmato. Corri dentro case e casolari, apri le casse, raccogli armi, munizioni e cure.",
-           "Non sei lì per caso: ogni partita ti dà un compito, e lo scopri solo giocando. Ogni partita è diversa, come un film.",
+           "Ogni partita è diversa, come un film: non sai mai cosa troverai e chi incontrerai.",
            "<b>Ispirazione:</b> i giochi di sopravvivenza come ARK: Survival Evolved e The Forest."],
-     foto:["assets/img/ez_w_strada_tramonto.webp","assets/img/ez_strada_neon.webp"], video:""},
-    {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/ez_w_strada_neon.webp",
+     foto:["assets/img/ez_strada_neon.webp"], video:""},
+    {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/ez_strada_neon.webp", clip:"",
      line:"Pugni, pistola, fucile, pompa. Ogni colpo conta.",
      text:["Si parte a mani nude. Poi pistola, fucile e fucile a pompa: trova l'arma giusta prima di chi ti sta cercando.",
            "<b>Ispirazione:</b> i grandi battle royale — Fortnite, PUBG, Apex Legends e Hyper Scape."],
-     foto:["assets/img/ez_strada_neon.webp","assets/img/ez_w_strada_tramonto.webp"], video:""},
-    {tag:"CAPITOLO 04", title:"THE BURN", col:"#ff7a3c", img:"assets/img/ez_w_heli_neon.webp",
-     line:"La zona brucia e si stringe. Resta dentro.",
-     text:["Col passare dei minuti la zona sicura si restringe. Fuori c'è «The Burn»: ti consuma la vita, poco alla volta.",
-           "Devi muoverti, e prima o poi incontrerai gli altri. Alla fine ne resta uno solo."],
-     foto:["assets/img/ez_heli_synthwave.webp"], video:""},
-    {tag:"CAPITOLO 05", title:"MAI DA SOLO", col:"#3fd0ff", img:"assets/img/ez_strada_neon.webp",
+     foto:["assets/img/ez_cassa_casale.webp"], video:""},
+    {tag:"CAPITOLO 04", title:"THE BURN", col:"#ff7a3c", img:"assets/img/ez_heli_synthwave.webp", clip:"",
+     line:"Un cerchio di fuoco che si stringe. E brucia tutto.",
+     text:["È la zona sicura di ogni battle royale, ma qui non c'è una tempesta: c'è <b>The Burn</b>, un cerchio di fuoco che si restringe e brucia tutto quello che trova davanti.",
+           "Fuoco, radiazioni, tempesta e neon: fuori dal cerchio perdi vita, poco alla volta. Devi muoverti, e prima o poi incontrerai gli altri. Alla fine ne resta uno solo."],
+     foto:[], video:""},
+    {tag:"CAPITOLO 05", title:"MAI DA SOLO", col:"#3fd0ff", img:"assets/img/ez_elicottero_neon.webp", clip:"",
      line:"Fino a 50 giocatori. Se mancano, entrano i bot.",
      text:["Fino a 50 giocatori su un'isola piccola: ci si incontra presto e la partita non si ferma mai.",
            "Se non ci sono abbastanza persone online, la partita si riempie di bot: entri e giochi subito, a qualsiasi ora."],
      foto:[], video:""},
-    {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/ez_heli_tramonto.webp",
+    {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/ez_elicottero_tramonto.webp", clip:"",
      line:"Tastiera e mouse. Nel browser o da scaricare.",
-     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows."],
+     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows.",
+           "<b>Comandi principali</b><br>WASD muoviti · Mouse mira · Clic sinistro spara · Clic destro mira · Spazio salta / apri il paracadute · Shift corri · E raccogli · R ricarica · I zaino · M mappa · Esc pausa"],
      foto:[], video:""},
-    {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff3fd0", img:"assets/img/ez_elicottero_tramonto.webp",
+    {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff3fd0", img:"assets/img/ez_heli_tramonto.webp", clip:"",
      line:"Comandi touch, pensati per il pollice.",
-     text:["Sul telefono giochi con i comandi touch, pensati per lo schermo piccolo. Su Android puoi anche scaricarlo come app."],
+     text:["Sul telefono la visuale ti segue dall'alto, con comandi semplici pensati per lo schermo piccolo. Su Android puoi anche scaricarlo come app.",
+           "<b>Comandi principali</b><br>Levetta a sinistra per muoverti · Tasto rosso: spara, colpisci, raccogli, apri casse e porte · Tasto giallo: costruisci o lancia · Tasto cure: scorri per scegliere · Correre, abbassarsi e schivare sono automatici"],
      foto:[], video:""}
   ];
+  /* LE ISOLE · model = modellino 3D .glb (in arrivo, 1:1 con la realtà) */
+  var ISLES = [
+    {tag:"DISPONIBILE", title:"SIMPLE ISLAND", col:"#ffe14d", live:true, img:"", model:"",
+     line:"L'isola da cui si parte.", text:["Piccola, veloce, perfetta per imparare: è la prima isola di Evolved Zone, disponibile dal lancio."]},
+    {tag:"IN ARRIVO", title:"FIGLINE", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"INCISA", col:"#ff3fd0", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"BURCHIO", col:"#ffe14d", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"LECCIO", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]}
+  ];
+
   var chapEl = document.getElementById("chapters");
   GAME.forEach(function(g,i){
     var a = document.createElement("article");
     a.className = "chap"; a.style.setProperty("--c", g.col); a.tabIndex = 0; a.setAttribute("role","button");
     a.setAttribute("aria-label", g.title + ": apri i dettagli");
-    a.innerHTML = '<div class="c-pic"><div class="c-frame"><img src="'+g.img+'" alt="" loading="lazy"><span class="c-num">0'+(i+1)+'</span></div></div>'+
+    a.innerHTML = '<div class="c-pic"><div class="c-frame"><img src="'+g.img+'" alt="" loading="lazy">'+
+      (g.clip ? '<video muted loop playsinline preload="none" src="'+g.clip+'"></video>' : '')+
+      '<span class="c-num">0'+(i+1)+'</span></div></div>'+
       '<div class="c-txt"><span class="c-tag">'+g.tag+'</span><h3>'+g.title+'</h3><p>'+g.line+'</p><span class="c-more">SCOPRI ▸</span></div>';
-    a.addEventListener("click", function(e){ openDetail(i, e.clientX, e.clientY); });
-    a.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); var r = a.getBoundingClientRect(); openDetail(i, r.left+r.width/2, r.top+r.height/2); } });
-    // inclinazione 3D che segue mouse o dito
-    var fr = a.querySelector(".c-frame");
+    a.addEventListener("click", function(e){ openDetail(GAME, i, e.clientX, e.clientY); });
+    a.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); var r = a.getBoundingClientRect(); openDetail(GAME, i, r.left+r.width/2, r.top+r.height/2); } });
+    var fr = a.querySelector(".c-frame"), vid = a.querySelector("video");
     a.addEventListener("pointermove", function(e){
       var r = fr.getBoundingClientRect(), x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
       a.style.setProperty("--ry", (x*12).toFixed(1)+"deg"); a.style.setProperty("--rx", (-y*10).toFixed(1)+"deg");
     });
-    a.addEventListener("pointerleave", function(){ a.style.setProperty("--ry","0deg"); a.style.setProperty("--rx","0deg"); });
+    // video breve: parte col mouse sopra, si ferma quando esci (torna l'immagine)
+    a.addEventListener("pointerenter", function(e){ if (vid && e.pointerType === "mouse") playClip(a, vid, true); });
+    a.addEventListener("pointerleave", function(e){ a.style.setProperty("--ry","0deg"); a.style.setProperty("--rx","0deg"); if (vid && e.pointerType === "mouse") playClip(a, vid, false); });
     chapEl.appendChild(a);
   });
-  // entrata dei capitoli + movimento delle immagini mentre scorri
-  var chaps = [].slice.call(chapEl.children);
+  function playClip(a, vid, on){
+    if (on){ var p = vid.play(); if (p && p.catch) p.catch(function(){}); a.classList.add("playing"); }
+    else { vid.pause(); a.classList.remove("playing"); }
+  }
+  // entrata dei capitoli; sul telefono il video parte quando il capitolo è al centro dello schermo
+  var chaps = [].slice.call(chapEl.children), touchDev = matchMedia("(hover: none)").matches;
   if ("IntersectionObserver" in window){
     var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) e.target.classList.add("on"); }); },{threshold:.2});
-    chaps.forEach(function(c){ cio.observe(c); });
+    var vio = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target.querySelector("video"); if (v && touchDev) playClip(e.target, v, e.isIntersecting); }); },{threshold:.65});
+    chaps.forEach(function(c){ cio.observe(c); vio.observe(c); });
   } else chaps.forEach(function(c){ c.classList.add("on"); });
   var scrollQueued = false;
   function onScroll(){
@@ -1220,38 +1294,66 @@ body.detail-open{overflow:hidden}
       scrollQueued = false; var vh = innerHeight;
       chaps.forEach(function(c){
         var r = c.getBoundingClientRect(); if (r.bottom < -50 || r.top > vh + 50) return;
-        var p = ((r.top + r.height/2) - vh/2) / (vh/2 + r.height/2);   // -1 sopra … 0 al centro … +1 sotto
+        var p = ((r.top + r.height/2) - vh/2) / (vh/2 + r.height/2);
         c.style.setProperty("--p", Math.max(-1, Math.min(1, p)).toFixed(3));
       });
     });
   }
   window.addEventListener("scroll", onScroll, {passive:true}); window.addEventListener("resize", onScroll);
 
-  // pagina di dettaglio
-  var det = document.getElementById("detail"), detIdx = 0;
-  function openDetail(i, x, y){
-    detIdx = i; var g = GAME[i];
+  // isole: carte cliccabili
+  var isleEl = document.getElementById("islesList");
+  ISLES.forEach(function(g,i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "isle" + (g.live ? " live" : ""); b.style.setProperty("--c", g.col);
+    b.innerHTML = '<svg viewBox="0 0 120 70" aria-hidden="true"><polygon points="10,48 30,30 46,36 60,18 78,32 96,26 110,46 92,58 60,62 28,58" fill="#1a0a3a" stroke="currentColor" stroke-width="2"/><polygon points="10,48 28,58 60,62 92,58 110,46 100,54 60,66 20,56" fill="currentColor" opacity=".35"/></svg>'+
+      '<b>'+g.title+'</b><small>'+g.tag+'</small>';
+    b.addEventListener("click", function(e){ openDetail(ISLES, i, e.clientX, e.clientY); });
+    isleEl.appendChild(b);
+  });
+
+  // pagina di dettaglio (capitoli e isole)
+  var det = document.getElementById("detail"), detList = GAME, detIdx = 0;
+  function openDetail(list, i, x, y){
+    detList = list; detIdx = i; var g = list[i];
     det.style.setProperty("--c", g.col);
     det.style.setProperty("--ox", (x||innerWidth/2)+"px"); det.style.setProperty("--oy", (y||innerHeight/2)+"px");
+    var hero = g.img ? '<img src="'+g.img+'" alt="">' : '<div class="d-hero-empty"></div>';
     var html = '<button class="d-close" type="button" aria-label="Chiudi">✕</button>'+
-      '<div class="d-hero"><img src="'+g.img+'" alt=""><div class="d-title"><span class="c-tag">'+g.tag+'</span><h2>'+g.title+'</h2></div></div>'+
+      '<div class="d-hero">'+hero+'<div class="d-title"><span class="c-tag">'+g.tag+'</span><h2>'+g.title+'</h2></div></div>'+
       '<div class="d-body"><p><b>'+g.line+'</b></p>' + g.text.map(function(t){ return "<p>"+t+"</p>"; }).join("");
-    if (g.foto.length) html += '<h4>IMMAGINI</h4><div class="d-gal">'+g.foto.map(function(f){ return '<img src="'+f+'" alt="" loading="lazy">'; }).join("")+'</div>';
-    html += '<h4>VIDEO</h4>' + (g.video ? '<video src="'+g.video+'" controls playsinline style="width:100%;border-radius:14px"></video>' : '<div class="d-video">🎬 Video in arrivo</div>');
-    html += '<div class="d-nav"><button type="button" data-go="-1">◂ '+(GAME[(i+GAME.length-1)%GAME.length].title)+'</button><button type="button" data-go="1">'+(GAME[(i+1)%GAME.length].title)+' ▸</button></div></div>';
+    if (g.foto && g.foto.length) html += '<h4>IMMAGINI</h4><div class="d-gal">'+g.foto.map(function(f){ return '<img src="'+f+'" alt="" loading="lazy">'; }).join("")+'</div>';
+    if (list === ISLES) html += '<h4>MODELLINO 3D</h4><div class="d-video">🏝️ Modellino 3D dell\'isola in arrivo<br><small>potrai girarlo e ingrandirlo con il mouse o con il dito</small></div>';
+    else html += '<h4>VIDEO</h4>' + (g.video ? '<video src="'+g.video+'" controls playsinline style="width:100%;border-radius:14px"></video>' : '<div class="d-video">🎬 Video in arrivo</div>');
+    var n = list.length;
+    html += '<div class="d-nav"><button type="button" data-go="-1">◂ '+list[(i+n-1)%n].title+'</button><button type="button" data-go="1">'+list[(i+1)%n].title+' ▸</button></div></div>';
     det.innerHTML = html; det.scrollTop = 0;
     det.hidden = false; document.body.classList.add("detail-open");
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ det.classList.add("open"); }); });
     det.querySelector(".d-close").addEventListener("click", closeDetail);
     [].forEach.call(det.querySelectorAll("[data-go]"), function(b){ b.addEventListener("click", function(e){
-      openDetail((detIdx + Number(b.getAttribute("data-go")) + GAME.length) % GAME.length, e.clientX, e.clientY); }); });
+      openDetail(detList, (detIdx + Number(b.getAttribute("data-go")) + n) % n, e.clientX, e.clientY); }); });
     sample("whoosh", 1.2, .5);
   }
   function closeDetail(){
     det.classList.remove("open"); document.body.classList.remove("detail-open");
     setTimeout(function(){ if (!det.classList.contains("open")) det.hidden = true; }, 700);
   }
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !det.hidden) closeDetail(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape"){ if (!det.hidden) closeDetail(); if (!qrM.hidden) qrClose(); } });
+
+  /* ---------- QR del sito ---------- */
+  var qrB = document.getElementById("qrBtn"), qrM = document.getElementById("qrModal"), SITE_URL = "https://pafo99598-art.github.io/evolved-zone/evolvedzone/";
+  function qrClose(){ qrM.hidden = true; }
+  qrB.addEventListener("click", function(e){ e.stopPropagation(); qrM.hidden = false; sample("neon0", 1.1, .6); });
+  qrM.addEventListener("click", function(e){ if (e.target === qrM || e.target.closest(".qr-x")) qrClose(); });
+  document.getElementById("qrCopy").addEventListener("click", function(){
+    var b = this;
+    function ok(){ b.textContent = "✓ COPIATO"; setTimeout(function(){ b.textContent = "COPIA LINK"; }, 1800); }
+    if (navigator.clipboard) navigator.clipboard.writeText(SITE_URL).then(ok, function(){}); else ok();
+  });
+  var qrShare = document.getElementById("qrShare");
+  if (navigator.share) qrShare.addEventListener("click", function(){ navigator.share({title:"Evolved Zone", url:SITE_URL}).catch(function(){}); });
+  else qrShare.hidden = true;
 
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);
@@ -1270,9 +1372,8 @@ body.detail-open{overflow:hidden}
     tb.hidden = false;
     var setTB = function(){
       tb.disabled = EV.on;
-      tb.innerHTML = EV.on ? "… EVENTO IN CORSO<small>pagina di prova</small>"
-                   : siteMode ? "↺ TORNA AL COUNTDOWN<small>pagina di prova</small>"
-                   : "▶ AVVIA L'EVENTO<small>pagina di prova</small>";
+      var au = !audioOn ? "audio spento" : !ac ? "audio: tocca la pagina" : ac.state === "running" ? (MUS ? "audio ok · musica evento ♪" : "audio ok") : "audio bloccato: tocca";
+      tb.innerHTML = (EV.on ? "… EVENTO IN CORSO" : siteMode ? "↺ TORNA AL COUNTDOWN" : "▶ AVVIA L'EVENTO") + "<small>pagina di prova · " + au + "</small>";
     };
     tb.addEventListener("click", function(e){
       e.stopPropagation();

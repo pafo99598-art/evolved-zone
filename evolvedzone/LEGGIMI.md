@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 9
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 10
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -17,8 +17,11 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 ## Da fare prima del 17/11
 In `index.html` cerca `var LINKS` e incolla i 4 link veri (browser, crazygames, pc, android). Finché un link è vuoto il pulsante mostra «Link in arrivo».
 
-## Testi de «Il gioco»
-In `index.html` cerca `var GAME`: ogni capitolo ha titolo, frase, testo della pagina di dettaglio, foto e video.
+## Testi de «Il gioco» e «Le isole»
+In `index.html` cerca `var GAME` (7 capitoli: `img` immagine, `clip` video breve che parte col mouse sopra o al centro dello schermo sul telefono, `text`, `foto`, `video`) e `var ISLES` (isole: `model` = modellino 3D .glb in arrivo).
+
+## QR
+Icona QR in alto a sinistra (countdown e sito): apre il QR del sito, con «copia link» e «condividi». Glitch neon ogni 8 s.
 
 ## Prove
 - `prova.html` → pagina di prova di Michele: tasto ▶ che avvia l'evento e ↺ che torna al countdown (non indicizzata, ma chi ha il link la apre).
