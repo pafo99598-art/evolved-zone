@@ -1,11 +1,11 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 6
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 7
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
 ## Come funziona
 - **Prima delle 15:00 del 17/11**: pagina countdown (logo con 13 suoni, cristallo da colpire, musica, Instagram).
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
-- **Alle 15:00 in punto (chi è sulla pagina)**: evento di 15 s → il cristallo va al centro e accelera, 6 fasci di luce accendono le 6 immagini del gioco, energia al massimo, esplosione in frammenti, entra il sito ufficiale.
+- **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 17 s a tempo di musica (128 battiti/min) → il cristallo va al centro e accelera, 6 fasci di luce con dentro le 6 immagini del gioco, energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
 
 ## Da fare prima del 17/11
