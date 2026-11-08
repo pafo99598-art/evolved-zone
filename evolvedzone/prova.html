@@ -125,7 +125,13 @@ h1{margin:6px 0 0;line-height:0}
 #site h1{filter:brightness(calc(1 + var(--pulse,0) * .5)) drop-shadow(0 0 calc(var(--pulse,0) * 28px) #ff3fd0)}
 #site h1.gl{animation:a-glitch .4s steps(2)}
 .hline{opacity:calc(.55 + var(--pulse,0) * .45)}
-body.ev main{opacity:0;transition:opacity 1.1s}
+/* inizio evento: il countdown svanisce piano, una scritta alla volta */
+main > *{transition:opacity 1.8s ease, filter 1.8s ease, transform 1.8s ease}
+body.ev main > *{opacity:0;filter:blur(8px);transform:translateY(-14px) scale(.97)}
+body.ev main > .crystal{opacity:0;transition:none}
+body.ev main > .ig{transition-delay:0s} body.ev main > .badge{transition-delay:.2s}
+body.ev main > .kicker{transition-delay:.5s} body.ev main > .claim{transition-delay:.7s} body.ev main > .verbs{transition-delay:.9s}
+body.ev main > .count{transition-delay:1.2s} body.ev main > .when{transition-delay:1.5s} body.ev main > h1{transition-delay:1.9s;transition-duration:2.2s}
 .toast{position:fixed;left:50%;top:64px;transform:translateX(-50%);z-index:6;padding:9px 16px;border-radius:99px;border:1.5px solid var(--yellow);
  background:#07030fe6;color:#fff;font-size:.85rem;box-shadow:0 0 18px #ffe14d66;animation:invite 1.6s ease-in-out infinite;white-space:nowrap}
 
@@ -465,24 +471,54 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   /* =========================================================
      COUNTDOWN
      ========================================================= */
-  // Lancio: 17/11/2026 ore 15:00 ora italiana (UTC+1)
+  // Lancio: 17/11/2026 ore 15:00 ora italiana. Il 17/11 in Italia vale l'ora solare (UTC+1),
+  // quindi questo è un istante preciso uguale per tutti: 14:00 UTC. Chi guarda da un altro
+  // fuso orario vede partire l'evento nello stesso identico momento.
   var target = new Date("2026-11-17T15:00:00+01:00").getTime();
-  // Prova: aggiungi ?prova=10 all'indirizzo per un countdown di 10 secondi
+  var LATE_EVENT = 3*60*1000;    // chi apre la pagina entro 3 minuti dalle 15:00 vede comunque l'evento
+  var LATE_RETURN = 30*60*1000;  // chi aveva lo schermo spento alle 15:00 e torna entro 30 minuti lo vede
+  // OROLOGIO: non ci fidiamo dell'orologio del telefono/PC (può essere avanti o indietro).
+  // Leggiamo l'ora dal server che ospita il sito (intestazione "Date") e correggiamo la differenza.
+  var clockOffset = 0;
+  function nowMs(){ return Date.now() + clockOffset; }
   var pr = new URLSearchParams(location.search).get("prova");
+  var ready = false;                                          // nessuna decisione finché l'ora non è sicura
+  function syncClock(){
+    if (pr || !/^https?:/.test(location.protocol) || !window.fetch){ ready = true; return; }
+    setTimeout(function(){ ready = true; }, 2000);            // al massimo 2 s di attesa
+    var t0 = Date.now();
+    fetch(location.pathname + "?ora=" + t0, {method:"HEAD", cache:"no-store"}).then(function(r){
+      var d = r.headers.get("Date"), t1 = Date.now();
+      ready = true;
+      if (!d || t1 - t0 > 3000) return;                        // risposta troppo lenta: non è affidabile
+      var off = Date.parse(d) + 500 - (t0 + t1)/2;             // il server dà i secondi interi: +0,5 s
+      clockOffset = Math.abs(off) > 1500 ? off : 0;            // correggo solo errori oltre 1,5 secondi
+      window.__ezClockOffset = clockOffset;
+    }).catch(function(){ ready = true; });
+  }
+  syncClock(); setInterval(syncClock, 10*60*1000);
+  // Prova: aggiungi ?prova=10 all'indirizzo per un countdown di 10 secondi
   if (pr && !isNaN(pr)) target = Date.now() + Number(pr) * 1000;
   var el = {d:document.getElementById("d"),h:document.getElementById("h"),m:document.getElementById("m"),s:document.getElementById("s")};
   function p2(n){return String(n).padStart(2,"0")}
-  var timer, firstTick = true, launchedAtLoad = false;
+  var timer, firstTick = true, waitVisible = false;
   function tick(){
-    var diff = target - Date.now();
+    var diff = target - nowMs();
     if (diff <= 0){
-      clearInterval(timer);
       el.d.textContent = el.h.textContent = el.m.textContent = el.s.textContent = "00";
-      if (firstTick){ launchedAtLoad = true; firstTick = false; return; }   // aperta dopo le 15:00: sito diretto
-      startEvent(false);                                                   // ZERO: parte l'evento
+      if (!ready) return;
+      if (firstTick){                                          // pagina aperta DOPO le 15:00
+        firstTick = false; clearInterval(timer);
+        if (-diff < LATE_EVENT){ window.__ezEventAt = nowMs(); startEvent(false); } else showSite(false);
+        return;
+      }
+      if (document.hidden){ waitVisible = true; return; }      // schermo spento/scheda nascosta: aspetto che torni
+      clearInterval(timer);
+      window.__ezEventAt = nowMs();                            // (per le prove) quando è partito
+      startEvent(false);                                       // ZERO: parte l'evento
       return;
     }
-    firstTick = false;
+    if (ready) firstTick = false;
     // ultimo minuto: invito ad attivare l'audio per l'evento
     if (diff < 60000 && !unlocked && audioOn) document.getElementById("toast").hidden = false;
     var t = Math.floor(diff/1000);
@@ -491,6 +527,13 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     el.m.textContent = p2(Math.floor(t%3600/60));
     el.s.textContent = p2(t%60);
   }
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) return;
+    syncClock();
+    if (!waitVisible) return;
+    waitVisible = false; clearInterval(timer);
+    if (nowMs() - target < LATE_RETURN){ window.__ezEventAt = nowMs(); startEvent(false); } else showSite(false);
+  });
 
   /* ---------- ORIZZONTE: subito sotto la data ---------- */
   var root = document.documentElement, whenEl = document.getElementById("when");
@@ -499,7 +542,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     var y = whenEl.getBoundingClientRect().bottom + window.scrollY + 14;
     root.style.setProperty("--horizon", Math.round(y) + "px");
   }
-  tick(); timer = setInterval(tick,1000);
+  tick(); timer = setInterval(tick,250);
   horizon(); window.addEventListener("resize", horizon);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(horizon);
   logoImg.addEventListener("load", horizon);
@@ -624,16 +667,17 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
 
   /* =========================================================
      EVENTO DEL LANCIO · tutto a tempo di musica (128 battiti al minuto)
-     0–1,2 s     la pagina si spegne, il cristallo va al centro
-     1,9–8,9 s   sei fasci di luce: dentro ogni fascio un'immagine del gioco
-     10,3–12,2 s energia al massimo: lampeggia, trema, la musica sale
-     12,2 s      esplode in frammenti → DROP musicale + entrata del sito (≈5 s)
+     0–3,75 s    il countdown svanisce piano, il cristallo sale al centro e cresce lentamente
+     3,75–10,8 s sei fasci di luce: ogni fascio è riempito da un'immagine del gioco
+     13,1–15 s   energia al massimo: lampeggia, trema, la musica sale
+     15 s        esplode in frammenti → DROP musicale + entrata del sito (≈5 s)
      ========================================================= */
   var IMGS = ["assets/img/ez_heli_synthwave.webp","assets/img/ez_strada_neon.webp","assets/img/ez_elicottero_neon.webp",
               "assets/img/ez_cassa_casale.webp","assets/img/ez_elicottero_tramonto.webp","assets/img/ez_heli_tramonto.webp"];
   var BEAT = 60/128;
-  var EXP = 26*BEAT, MAXT = 22*BEAT, END = EXP + 5.2;                     // esplosione a 12,2 s, fine a 17,4 s
-  var BEAM_T = [4,7,10,13,16,19].map(function(b){ return b*BEAT; });     // i fasci partono sui battiti
+  var INTRO_B = 8, EXP_B = 32, MAX_B = 28;
+  var INTRO = INTRO_B*BEAT, EXP = EXP_B*BEAT, MAXT = MAX_B*BEAT, END = EXP + 5.2;   // intro 3,75 s, esplosione a 15 s, fine a 20,2 s
+  var BEAM_T = [8,11,14,17,20,23].map(function(b){ return b*BEAT; });   // i fasci partono sui battiti
   var DROP_BEATS = 16;
   var EVCOL = ["#ff3fd0","#3fd0ff","#ffe14d","#ff3fd0","#3fd0ff","#ffe14d"];
   var EV = {on:false};
@@ -698,30 +742,34 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   function score(){
     var S = [], B = BEAT, b, s, c;
     function at(beat, fn){ S.push([beat*B, fn]); }
-    // ---- CRESCITA (26 battiti = 12,2 s) ----
-    for (b=0;b<26;b++){
+    // ---- CRESCITA (32 battiti = 15 s): intro lenta, poi groove, poi rullante e riser ----
+    for (b=0;b<EXP_B;b++){
       c = Math.floor(b/4)%4;
       (function(b,c){
-        if (b>=4 && b<25) at(b, function(t){ I.kick(t, b<8?.55:.9); });
-        if (b>=22 && b<25) at(b+.5, function(t){ I.kick(t,.75); });
-        if (b<8 && b%4===0) at(b, function(t){ I.saws(t, CH[c].map(nf), 4*B-.1, .05, 900, .6); });
-        if (b<25) for (s=0;s<2;s++) (function(s){ at(b+s/2, function(t){ I.bass(t, nf(ROOT[c]), B/2-.03, b<8?.10:.16, 250 + 1500*Math.min(1,b/22)); }); })(s);
-        if (b>=8 && b<25) at(b+.5, function(t){ I.hat(t,.10); });
-        if (b>=16 && b<25) for (s=0;s<4;s++) (function(s){ at(b+s/4, function(t){ I.hat(t,.05); }); })(s);
-        if (b>=8 && b<25) for (s=0;s<4;s++) (function(s){ var n = CH[c][[0,1,2,1][s]];
-          at(b+s/4, function(t){ I.lead(t, nf(n+12), B/4-.02, .045 + .03*Math.min(1,(b-8)/14), 800 + 3500*Math.min(1,(b-8)/16)); }); })(s);
+        if (b<INTRO_B && b%4===0){                              // intro: accordi lunghi e basso profondo, niente cassa
+          at(b, function(t){ I.saws(t, CH[c].map(nf), 4*B-.05, .055, 700, 1.2); });
+          at(b, function(t){ I.bass(t, nf(ROOT[c]), 4*B-.1, .09, 220); });
+        }
+        if (b>=INTRO_B && b<EXP_B-1) at(b, function(t){ I.kick(t, b<12?.55:.9); });
+        if (b>=EXP_B-4 && b<EXP_B-1) at(b+.5, function(t){ I.kick(t,.75); });
+        if (b>=INTRO_B && b<12 && b%4===0) at(b, function(t){ I.saws(t, CH[c].map(nf), 4*B-.1, .05, 1100, .3); });
+        if (b>=INTRO_B && b<EXP_B-1) for (s=0;s<2;s++) (function(s){ at(b+s/2, function(t){ I.bass(t, nf(ROOT[c]), B/2-.03, b<12?.11:.16, 250 + 1500*Math.min(1,(b-INTRO_B)/22)); }); })(s);
+        if (b>=12 && b<EXP_B-1) at(b+.5, function(t){ I.hat(t,.10); });
+        if (b>=20 && b<EXP_B-1) for (s=0;s<4;s++) (function(s){ at(b+s/4, function(t){ I.hat(t,.05); }); })(s);
+        if (b>=12 && b<EXP_B-1) for (s=0;s<4;s++) (function(s){ var n = CH[c][[0,1,2,1][s]];
+          at(b+s/4, function(t){ I.lead(t, nf(n+12), B/4-.02, .045 + .03*Math.min(1,(b-12)/16), 800 + 3500*Math.min(1,(b-12)/18)); }); })(s);
       })(b,c);
     }
-    // rullante che accelera: 8vi → 16mi → 32mi
-    for (b=16;b<20;b++) for (s=0;s<2;s++) at(b+s/2, (function(b){ return function(t){ I.snare(t,.12+.02*(b-16),1); }; })(b));
-    for (b=20;b<22;b++) for (s=0;s<4;s++) at(b+s/4, (function(b){ return function(t){ I.snare(t,.2,1.05); }; })(b));
-    for (b=22;b<25.5;b+=.125) at(b, (function(b){ return function(t){ I.snare(t,.22+.05*(b-22),1.05+.1*(b-22)); }; })(b));
-    at(12, function(t){ I.riser(t, 14*B, .22); });
+    // rullante che accelera: 8vi → 16mi → 32mi, poi mezzo battito di silenzio
+    for (b=20;b<24;b++) for (s=0;s<2;s++) at(b+s/2, (function(b){ return function(t){ I.snare(t,.12+.015*(b-20),1); }; })(b));
+    for (b=24;b<28;b++) for (s=0;s<4;s++) at(b+s/4, (function(b){ return function(t){ I.snare(t,.2,1.05); }; })(b));
+    for (b=28;b<EXP_B-.5;b+=.125) at(b, (function(b){ return function(t){ I.snare(t,.22+.05*(b-28),1.05+.1*(b-28)); }; })(b));
+    at(16, function(t){ I.riser(t, 16*B, .22); });
     // ---- DROP (dopo l'esplosione, 16 battiti) ----
     for (var d=0; d<DROP_BEATS; d++){
       c = Math.floor(d/4)%4;
       (function(d,c){
-        var bb = 26 + d;
+        var bb = EXP_B + d;
         at(bb, function(t){ I.kick(t, 1, d===0); });
         if (d%4===0) at(bb, function(t){ I.crash(t,.18); });
         if (d%2===1) at(bb, function(t){ I.clap(t,.35); });
@@ -735,7 +783,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
           at(bb+s/4, function(t){ I.lead(t, nf(n+24), B/4-.03, .035, 5000); }); })(s);
       })(d,c);
     }
-    at(26+DROP_BEATS, function(t){ I.kick(t,1,true); I.crash(t,.2); I.saws(t, CH[0].map(nf), 2.6, .08, 2500, .02); I.bass(t, nf(ROOT[0]), 2.4, .2, 600); });
+    at(EXP_B+DROP_BEATS, function(t){ I.kick(t,1,true); I.crash(t,.2); I.saws(t, CH[0].map(nf), 2.6, .08, 2500, .02); I.bass(t, nf(ROOT[0]), 2.4, .2, 600); });
     return S.sort(function(a,b){ return a[0]-b[0]; });
   }
   function musicStart(){
@@ -760,7 +808,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
       if (!music || !audioOn || !unlocked) return;
       music.volume = 0; startMusic();
       var v = 0, iv = setInterval(function(){ v += .02; music.volume = Math.min(VOL.music, v); if (v >= VOL.music) clearInterval(iv); }, 100);
-    }, (26 + DROP_BEATS)*BEAT*1000 + 2500);
+    }, (EXP_B + DROP_BEATS)*BEAT*1000 + 2500);
   }
   function musicStop(){
     if (!MUS) return;
@@ -867,13 +915,14 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
 
   function clamp01(x){ return x<0?0:x>1?1:x; }
   function ease(x){ x = clamp01(x); return x*x*(3-2*x); }
+  function easeIO(x){ x = clamp01(x); return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
 
   // un fascio di luce con l'immagine proiettata dentro
   function drawBeam(b, i, cxp, cyp, sc, et, fade, widen){
     var grow = ease((et - b.beamT)/.35); if (grow <= 0) return;
     var dx = b.x - cxp, dy = b.y - cyp, l = Math.hypot(dx,dy)||1, ux = dx/l, uy = dy/l, px = -uy, py = ux;
     var Lb = l*1.45*grow, ex = cxp + ux*Lb, ey = cyp + uy*Lb;
-    var w0 = sc*.14, w1 = b.cw*1.12*grow*widen;
+    var w0 = sc*.16, w1 = b.cw*1.3*grow*widen;
     var flick = .82 + .18*Math.sin(et*31 + i*2), maxp = et > MAXT && !EV.exploded ? .5+.5*Math.abs(Math.sin(et*24)) : 0;
     var D = dpr;
     bctx.save();
@@ -881,19 +930,22 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     bctx.moveTo((cxp+px*w0)*D,(cyp+py*w0)*D); bctx.lineTo((ex+px*w1)*D,(ey+py*w1)*D);
     bctx.lineTo((ex-px*w1)*D,(ey-py*w1)*D); bctx.lineTo((cxp-px*w0)*D,(cyp-py*w0)*D); bctx.closePath();
     bctx.clip();
-    // l'immagine dentro al fascio (dritta, con un lento zoom)
+    // l'immagine RIEMPIE tutto il fascio: copre il rettangolo che contiene il fascio (dal cristallo alla fine)
     var ia = clamp01((et - b.beamT - .2)/.5) * fade;
     if (b.img.complete && b.img.naturalWidth && ia > 0){
-      var z = 1.14 - .14*ease((et - b.beamT)/3.5), iw = b.cw*1.75*z, ih = iw*1.25;
-      bctx.globalAlpha = ia*(.85 + .15*flick);
-      bctx.drawImage(b.img, (b.x - iw/2)*D, (b.y - ih/2)*D, iw*D, ih*D);
+      var xs = [cxp+px*w0, ex+px*w1, ex-px*w1, cxp-px*w0], ys = [cyp+py*w0, ey+py*w1, ey-py*w1, cyp-py*w0];
+      var x0 = Math.min.apply(0,xs), x1 = Math.max.apply(0,xs), y0 = Math.min.apply(0,ys), y1 = Math.max.apply(0,ys);
+      var bw = x1-x0, bh = y1-y0, nw = b.img.naturalWidth, nh = b.img.naturalHeight;
+      var z = 1.12 - .12*ease((et - b.beamT)/4), k = Math.max(bw/nw, bh/nh)*z, iw = nw*k, ih = nh*k;
+      bctx.globalAlpha = ia*(.88 + .12*flick);
+      bctx.drawImage(b.img, (x0 + bw/2 - iw/2)*D, (y0 + bh/2 - ih/2)*D, iw*D, ih*D);
       bctx.globalAlpha = 1;
     }
     // luce del fascio sopra l'immagine: bianca vicino al cristallo, colorata e leggera dove c'è l'immagine
     var g = bctx.createLinearGradient(cxp*D,cyp*D,ex*D,ey*D);
     g.addColorStop(0, "rgba(255,255,255,"+((.9*flick)*fade).toFixed(3)+")");
-    g.addColorStop(.28, hexA(b.col, (.55*flick + .3*maxp)*fade));
-    g.addColorStop(.55, hexA(b.col, (.12 + .35*maxp)*fade));
+    g.addColorStop(.22, hexA(b.col, (.5*flick + .3*maxp)*fade));
+    g.addColorStop(.5, hexA(b.col, (.08 + .35*maxp)*fade));
     g.addColorStop(1, hexA(b.col, (.03 + .3*maxp)*fade));
     bctx.globalCompositeOperation = "lighter"; bctx.fillStyle = g; bctx.fillRect(0,0,evB.width,evB.height);
     // righe di scansione nel fascio (effetto proiettore)
@@ -912,11 +964,11 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     var et = (now - EV.t0)/1000, vw = innerWidth, vh = innerHeight, m = Math.min(vw,vh);
     bctx.clearRect(0,0,evB.width,evB.height); ectx.clearRect(0,0,evF.width,evF.height);
     var energy = clamp01(et/EXP);
-    var shake = et>7 && !EV.exploded ? 10*Math.pow(clamp01((et-7)/(EXP-7)),2) : 0;
+    var shake = et>EXP-5 && !EV.exploded ? 10*Math.pow(clamp01((et-(EXP-5))/5),2) : 0;
     var sx = rnd(-shake,shake), sy = rnd(-shake,shake);
-    var e1 = ease(et/1.2);
+    var e1 = easeIO(et/INTRO);                                     // salita lenta e progressiva
     var cxp = EV.from.x + (vw/2 - EV.from.x)*e1 + sx, cyp = EV.from.y + (vh/2 - EV.from.y)*e1 + sy;
-    var sc = EV.sc0 + (m*.09 - EV.sc0)*e1 + m*.06*ease((et-1.2)/(MAXT-1.2));
+    var sc = EV.sc0 + (m*.09 - EV.sc0)*e1 + m*.06*ease((et-INTRO)/(MAXT-INTRO));
     if (et > MAXT) sc *= 1 + .08*Math.abs(Math.sin(et*22));
     if (EV.exploded){ cxp = EV.ex; cyp = EV.ey; sc = EV.esc; }
     // la musica del sito si abbassa: parte la colonna sonora dell'evento
@@ -935,7 +987,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
       var gr = ectx.createRadialGradient(cxp*dpr,cyp*dpr,0,cxp*dpr,cyp*dpr,sc*(1.5+3.5*energy)*dpr);
       gr.addColorStop(0,"rgba(255,255,255,"+(.25+.55*energy)+")"); gr.addColorStop(.3,"rgba(255,63,208,"+(.25+.4*energy)+")"); gr.addColorStop(1,"rgba(255,63,208,0)");
       ectx.fillStyle = gr; ectx.fillRect(0,0,evF.width,evF.height);
-      EV.spin += dt*(BASE_SPIN + 34*Math.pow(clamp01((et-.6)/(EXP-.6)),2.4));
+      EV.spin += dt*(BASE_SPIN + 1.2*clamp01(et/INTRO) + 34*Math.pow(clamp01((et-INTRO)/(EXP-INTRO)),2.4));
       var fl = et < MAXT ? .15*Math.pow(clamp01((et-6)/(MAXT-6)),2) : .5 + .5*Math.abs(Math.sin(et*25));
       EV.lastDraw = drawCrystal(ectx, cxp*dpr, cyp*dpr, sc*dpr, EV.spin, fl, 1.5);
       if (et >= EXP){ EV.ex = cxp; EV.ey = cyp; EV.esc = sc; explode(cxp, cyp, EV.lastDraw); }
@@ -1018,7 +1070,7 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
     document.body.classList.remove("ev"); mainEl.style.display = "";
     root.style.setProperty("--horizon","68vh");
     window.scrollTo(0,0);
-    clearInterval(timer); firstTick = false; tick(); timer = setInterval(tick,1000);
+    clearInterval(timer); firstTick = false; tick(); timer = setInterval(tick,250);
     horizon(); requestAnimationFrame(horizon);
   }
   if (TEST){
@@ -1040,7 +1092,8 @@ a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
   }
 
   // se la pagina si apre dopo le 15:00 del 17/11 → direttamente il sito ufficiale
-  if (launchedAtLoad || new URLSearchParams(location.search).get("sito")) showSite(false);
+  // dopo il lancio (oltre 1 ora) o con ?sito=1: subito il sito ufficiale, senza aspettare l'ora del server
+  if (new URLSearchParams(location.search).get("sito") || Date.now() - target > 3600000) showSite(false);
 })();
 </script>
 </body>
