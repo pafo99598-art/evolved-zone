@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<script>window.EZ_TEST=1</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROVA · EVOLVED ZONE · 17.11 ore 15:00</title>
+<meta name="description" content="Evolved Zone. L'evoluzione dei videogiochi: il Valdarno diventa la tua zona. Lancio 17 novembre 2026 alle 15:00.">
+<meta name="theme-color" content="#07030f">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Colori neon del gioco (stile EvoPoly Neon) */
+:root{--disp:Orbitron,"Arial Black","Helvetica Neue",Arial,sans-serif;
+ --bg:#07030f;--pink:#ff3fd0;--cyan:#3fd0ff;--yellow:#ffe14d;--violet:#7a2bff;--text:#efe9ff;--muted:#b3a7d6;
+ --horizon:68vh}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh;-webkit-tap-highlight-color:transparent}
+
+/* ===== SFONDO (fisso) ===== */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+ background:linear-gradient(180deg,#05020d 0%,#12052e 38%,#3a0b5c 58%,#7a1f6e calc(var(--horizon) - 1%),#07030f var(--horizon))}
+.stars{position:absolute;left:0;right:0;top:0;height:var(--horizon)}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.15}}
+.sun{position:absolute;left:50%;top:var(--horizon);transform:translate(-50%,-100%);width:min(440px,74vw);aspect-ratio:2/1;border-radius:999px 999px 0 0;
+ background:linear-gradient(#ffe14d 0%,#ff9a3c 35%,#ff3fd0 75%,#b02bd6 100%);opacity:.75;overflow:hidden;filter:drop-shadow(0 0 40px #ff3fd088)}
+.sun::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 calc(9px + 1.2%),#2a0840 calc(9px + 1.2%) calc(14px + 1.2%));
+ -webkit-mask-image:linear-gradient(transparent 35%,#000 60%);mask-image:linear-gradient(transparent 35%,#000 60%)}
+.hills{position:absolute;left:0;width:100%;top:var(--horizon);transform:translateY(-100%);height:clamp(50px,11vh,110px)}
+.floor{position:absolute;left:0;right:0;top:var(--horizon);bottom:0;overflow:hidden}
+.floor canvas{display:block;width:100%;height:100%}
+.floor::after{content:"";position:absolute;inset:0;background:linear-gradient(#ff3fd040 0,transparent 12%)}
+.hline{position:absolute;left:0;right:0;top:var(--horizon);height:2px;background:var(--pink);box-shadow:0 0 14px 2px var(--pink)}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 3px,#0000001f 3px 4px)}
+/* strato effetti (scintille, colpi) */
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+
+/* ===== CONTENUTO ===== */
+main{position:relative;z-index:2;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px 28px}
+.badge{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:5px 14px;border-radius:99px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;background:#07030f99;box-shadow:0 0 14px #3fd0ff55}
+
+/* --- LOGO: fluttua, ronza come un neon, al clic suona e si anima --- */
+h1{margin:6px 0 0;line-height:0}
+.logo-btn{display:inline-block;border:0;background:none;padding:0;cursor:pointer;line-height:0;animation:float 4.5s ease-in-out infinite;touch-action:manipulation}
+.logo-btn:focus-visible{outline:2px dashed var(--cyan);outline-offset:6px;border-radius:12px}
+.logo-btn img{width:min(480px,90vw);height:auto;display:block;animation:hum 6s infinite;user-select:none;-webkit-user-drag:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-8px) rotate(.6deg)}}
+@keyframes hum{0%,95%,100%{filter:none}96%{filter:brightness(1.3)}97%{filter:brightness(.85)}98%{filter:brightness(1.2)}}
+/* mini animazioni al clic (una a caso) */
+.logo-btn img.a-bounce{animation:a-bounce .55s cubic-bezier(.3,1.6,.5,1)}
+.logo-btn img.a-shake{animation:a-shake .5s linear}
+.logo-btn img.a-glitch{animation:a-glitch .5s steps(2) }
+.logo-btn img.a-flip{animation:a-flip .7s ease-in-out}
+.logo-btn img.a-pulse{animation:a-pulse .6s ease-out}
+.logo-btn img.a-wobble{animation:a-wobble .6s ease-in-out}
+@keyframes a-bounce{0%{transform:scale(1)}25%{transform:scale(1.12,.86)}50%{transform:scale(.92,1.1)}75%{transform:scale(1.04,.97)}100%{transform:scale(1)}}
+@keyframes a-shake{0%,100%{transform:none}10%,50%,90%{transform:translateX(-7px) rotate(-1.5deg)}30%,70%{transform:translateX(7px) rotate(1.5deg)}}
+@keyframes a-glitch{0%{transform:translate(-5px,2px) skewX(8deg);filter:drop-shadow(-6px 0 #3fd0ff) drop-shadow(6px 0 #ff3fd0) hue-rotate(60deg)}
+ 25%{transform:translate(6px,-3px) skewX(-6deg);filter:drop-shadow(6px 0 #3fd0ff) drop-shadow(-6px 0 #ff3fd0)}
+ 50%{transform:translate(-3px,0);filter:drop-shadow(-4px 0 #3fd0ff) drop-shadow(4px 0 #ff3fd0) hue-rotate(-60deg) brightness(1.4)}
+ 75%{transform:translate(4px,2px) skewX(4deg);filter:drop-shadow(3px 0 #3fd0ff) drop-shadow(-3px 0 #ff3fd0)}
+ 100%{transform:none;filter:none}}
+@keyframes a-flip{0%{transform:perspective(800px) rotateY(0)}100%{transform:perspective(800px) rotateY(360deg)}}
+@keyframes a-pulse{0%{transform:scale(1);filter:brightness(1)}30%{transform:scale(1.09);filter:brightness(1.6) drop-shadow(0 0 22px #ff3fd0)}100%{transform:scale(1);filter:brightness(1)}}
+@keyframes a-wobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg) scale(1.03)}40%{transform:rotate(5deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.kicker{margin-top:4px;font-family:var(--disp);font-weight:600;font-size:clamp(.66rem,2.5vw,.85rem);letter-spacing:.34em;text-transform:uppercase;color:var(--cyan);text-shadow:0 0 4px #07030f,0 0 10px #07030f,0 0 14px #3fd0ff88}
+.claim{margin-top:4px;font-size:clamp(1.02rem,3.6vw,1.35rem);font-weight:600;color:#fff;text-shadow:0 2px 12px #000}
+.claim b{color:var(--yellow);text-shadow:0 0 12px #ffe14d88}
+.verbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 14px}
+.verbs span{font-family:var(--disp);font-weight:800;font-size:clamp(.66rem,2.5vw,.84rem);letter-spacing:.16em;padding:6px 12px;border-radius:8px;border:1px solid currentColor;background:#07030fcc;animation:flick 4s infinite}
+.verbs span:nth-child(1){color:var(--cyan);box-shadow:0 0 12px #3fd0ff55}
+.verbs span:nth-child(2){color:var(--pink);box-shadow:0 0 12px #ff3fd055;animation-delay:1.3s}
+.verbs span:nth-child(3){color:var(--yellow);box-shadow:0 0 12px #ffe14d55;animation-delay:2.6s}
+@keyframes flick{0%,92%,100%{opacity:1}94%{opacity:.35}96%{opacity:1}97%{opacity:.5}}
+.count{display:flex;gap:8px;justify-content:center}
+.box{min-width:70px;padding:10px 6px;border:1px solid var(--pink);border-radius:12px;background:#0b0418e6;box-shadow:0 0 16px #ff3fd044}
+.box b{display:block;font-family:var(--disp);font-weight:900;font-size:clamp(1.45rem,6vw,2.3rem);line-height:1.15;color:#fff;text-shadow:0 0 10px var(--pink)}
+.box small{color:var(--muted);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase}
+.when{position:relative;z-index:1;margin-top:8px;padding:3px 14px;border-radius:99px;background:#07030fd9;color:var(--yellow);font-size:.92rem;box-shadow:0 0 0 1px #ffe14d33}
+.crystal{display:block;width:120px;height:150px;margin-top:6px;cursor:crosshair;touch-action:manipulation}
+.ig{display:inline-flex;align-items:center;gap:8px;margin-top:6px;color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;text-shadow:0 0 8px #000}
+.ig svg{width:34px;height:34px;padding:7px;border-radius:10px;border:1.5px solid var(--pink);background:#07030fcc;box-shadow:0 0 14px #ff3fd066;transition:.2s}
+.ig:hover svg{background:var(--pink);box-shadow:0 0 26px var(--pink)}
+
+/* --- tasto audio --- */
+.audio{position:fixed;top:14px;right:14px;z-index:6;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 9px;border-radius:99px;border:1.5px solid var(--cyan);background:#07030fcc;color:#fff;
+ font:600 .72rem/1 var(--disp);letter-spacing:.14em;cursor:pointer;box-shadow:0 0 14px #3fd0ff55}
+.audio svg{width:20px;height:20px}
+.audio .on{display:none}
+.audio[aria-pressed="true"] .on{display:inline}.audio[aria-pressed="true"] .off{display:none}
+.audio[aria-pressed="false"]{border-color:#ffffff55;box-shadow:none;color:var(--muted)}
+.audio.invite{animation:invite 1.6s ease-in-out infinite}
+@keyframes invite{50%{box-shadow:0 0 22px var(--cyan)}}
+
+@media (max-height:760px) and (min-width:600px){.logo-btn img{width:min(400px,90vw)}.crystal{width:100px;height:124px}}
+@media (max-width:400px){.verbs{flex-wrap:nowrap;gap:5px}.verbs span{padding:5px 8px;letter-spacing:.08em;font-size:.66rem}.box{min-width:62px}.audio span{display:none}}
+@media (min-width:1200px) and (min-height:900px){
+ .logo-btn img{width:640px}.badge{font-size:.85rem}.kicker{font-size:1rem}.claim{font-size:1.6rem}
+ .verbs span{font-size:1rem;padding:8px 16px}.box{min-width:96px;padding:14px 8px}.box b{font-size:3rem}.box small{font-size:.75rem}
+ .when{font-size:1.1rem}.crystal{width:150px;height:190px}.sun{width:600px}}
+@media(prefers-reduced-motion:reduce){.stars i,.verbs span,.logo-btn,.logo-btn img,.audio.invite{animation:none}}
+
+/* =========================================================
+   EVENTO DEL LANCIO (17/11 ore 15:00)
+   ========================================================= */
+#stage{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+#stage canvas{position:absolute;inset:0;width:100%;height:100%}
+#cards{position:absolute;inset:0}
+.evcard{position:absolute;width:var(--cw);height:calc(var(--cw)*1.25);margin:calc(var(--cw)*-.625) 0 0 calc(var(--cw)*-.5);
+ border-radius:8px;overflow:hidden;border:3px solid #fff;box-shadow:0 0 0 2px var(--c),0 0 34px var(--c),0 18px 40px #000a;
+ opacity:0;transform:scale(.15) rotate(var(--r));filter:brightness(3);
+ transition:opacity .4s,transform .65s cubic-bezier(.2,1.5,.4,1),filter .7s}
+.evcard img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 9s linear}
+.evcard.on{opacity:1;transform:scale(1) rotate(var(--r));filter:none}
+.evcard.on img{transform:scale(1)}
+.evcard.max{animation:cardmax .18s steps(2) infinite}
+@keyframes cardmax{50%{filter:brightness(1.6)}}
+.evcard.out{opacity:0;transform:translate(var(--ox),var(--oy)) scale(1.7) rotate(calc(var(--r) * 4));transition:opacity .8s,transform .9s ease-in;animation:none}
+#flashOv{position:absolute;inset:0;background:#fff;opacity:0}
+body.ev main{opacity:0;transition:opacity 1.1s}
+.toast{position:fixed;left:50%;top:64px;transform:translateX(-50%);z-index:6;padding:9px 16px;border-radius:99px;border:1.5px solid var(--yellow);
+ background:#07030fe6;color:#fff;font-size:.85rem;box-shadow:0 0 18px #ffe14d66;animation:invite 1.6s ease-in-out infinite;white-space:nowrap}
+
+/* =========================================================
+   SITO UFFICIALE
+   ========================================================= */
+#site{position:relative;z-index:2}
+.s-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 16px 40px}
+.s-logo{width:min(520px,92vw,92vh);height:auto;margin:8px 0 2px}
+.cta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:min(560px,100%);margin-top:6px}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:13px 10px;border-radius:12px;border:2px solid var(--pink);
+ background:#0b0418e6;color:#fff;text-decoration:none;font:800 .82rem/1.2 var(--disp);letter-spacing:.08em;box-shadow:0 0 16px #ff3fd055;transition:transform .2s,box-shadow .2s,background .2s}
+.btn small{font:500 .68rem/1.2 Inter,system-ui,sans-serif;letter-spacing:0;color:var(--muted)}
+.btn.main{grid-column:1/-1;font-size:1.1rem;padding:18px 10px;border-color:var(--yellow);box-shadow:0 0 24px #ffe14d66}
+.btn.c{border-color:var(--cyan);box-shadow:0 0 16px #3fd0ff55}
+a.btn:hover{transform:translateY(-3px);box-shadow:0 0 30px var(--pink)}
+a.btn.main:hover{box-shadow:0 0 34px var(--yellow)}
+.btn.off{opacity:.5;border-style:dashed;box-shadow:none;cursor:default}
+.more{margin-top:22px;color:var(--muted);font:600 .72rem var(--disp);letter-spacing:.3em;text-decoration:none;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+.s-sec{padding:40px 16px}
+.panel{max-width:1040px;margin:0 auto;padding:34px 22px;border-radius:20px;background:#07030fd9;border:1px solid #ffffff1c;box-shadow:0 0 40px #0008;
+ -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.panel h2{font:900 clamp(1.5rem,5vw,2.4rem)/1.1 var(--disp);text-align:center;color:#fff;letter-spacing:.04em;text-shadow:0 0 14px var(--pink)}
+.panel .sub{text-align:center;color:var(--muted);max-width:620px;margin:10px auto 26px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,36vw),1fr));gap:12px}
+.feat div{padding:20px;border-radius:14px;background:linear-gradient(160deg,#1a0a3a,#0d0620);border:1px solid #ffffff1a;transition:.25s}
+.feat div:hover{border-color:var(--cyan);box-shadow:0 0 22px #3fd0ff44;transform:translateY(-3px)}
+.feat i{font-style:normal;font-size:1.7rem}
+.feat h3{font:800 .95rem var(--disp);color:var(--cyan);margin:6px 0 4px;letter-spacing:.05em}
+.feat p{color:var(--muted);font-size:.93rem}
+.isles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.isles span{padding:11px 18px;border-radius:12px;font:700 .82rem var(--disp);letter-spacing:.08em;border:1px dashed #ffffff44;color:var(--muted)}
+.isles span.live{border:2px solid var(--yellow);color:#fff;box-shadow:0 0 18px #ffe14d55}
+.isles small{display:block;font:500 .66rem Inter,system-ui,sans-serif;letter-spacing:0;margin-top:2px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.gallery button{border:0;padding:0;background:none;cursor:zoom-in;border-radius:12px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 0 0 2px #ff3fd088;transition:.25s}
+.gallery button:nth-child(even){box-shadow:0 0 0 2px #3fd0ff88}
+.gallery button:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 0 0 2px var(--yellow),0 0 26px #ffe14d66}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.s-foot{text-align:center;padding:50px 16px 70px;color:var(--muted);font-size:.85rem}
+.s-foot img{width:180px;height:auto}
+.replay{margin:18px auto 6px;display:inline-block;padding:10px 18px;border-radius:99px;border:1.5px solid var(--pink);background:#07030fcc;color:#fff;
+ font:700 .75rem var(--disp);letter-spacing:.12em;cursor:pointer;box-shadow:0 0 14px #ff3fd055}
+.replay:hover{background:var(--pink)}
+/* tasto della pagina di PROVA (solo prova.html) */
+.testbtn{position:fixed;left:14px;bottom:14px;z-index:8;padding:12px 16px;border-radius:12px;border:2px dashed var(--yellow);background:#07030ff0;color:var(--yellow);
+ font:800 .8rem var(--disp);letter-spacing:.1em;cursor:pointer;box-shadow:0 0 18px #ffe14d55}
+.testbtn small{display:block;font:600 .6rem Inter,system-ui,sans-serif;color:var(--muted);letter-spacing:.05em;margin-top:2px}
+.testbtn:disabled{opacity:.6;cursor:wait}
+@media (max-width:600px){.testbtn{left:auto;right:12px;bottom:12px;padding:0;width:56px;height:56px;border-radius:50%;font-size:0;overflow:hidden}
+ .testbtn::first-letter{font-size:1.3rem}.testbtn small{display:none}}
+#lightbox{position:fixed;inset:0;z-index:7;background:#07030ff2;display:grid;place-items:center;padding:20px;cursor:zoom-out}
+#lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 0 0 2px var(--pink),0 0 40px #ff3fd066}
+/* entrate */
+.rise{opacity:0}
+#site.enter .rise{animation:rise .8s cubic-bezier(.2,1,.3,1) forwards;animation-delay:var(--d,0s)}
+#site.enter .s-logo{animation:slam 1.1s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes slam{0%{opacity:0;transform:scale(2.8);filter:blur(14px) brightness(3)}55%{opacity:1;filter:blur(0) brightness(1.5)}100%{transform:scale(1);filter:none}}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+.rv.on{opacity:1;transform:none}
+@media (max-width:420px){.feat div{padding:14px}.feat p{font-size:.84rem}.feat h3{font-size:.8rem}.btn{font-size:.72rem}.btn.main{font-size:.95rem}.toast{font-size:.75rem}}
+@media(prefers-reduced-motion:reduce){.rise,.rv{opacity:1!important;transform:none!important;animation:none!important}#site.enter .s-logo{animation:none}.more,.toast{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="stars" id="stars"></div>
+  <div class="sun"></div>
+  <!-- colline del Valdarno, low poly al neon -->
+  <svg class="hills" viewBox="0 0 1000 100" preserveAspectRatio="none">
+    <polygon points="0,100 0,62 70,40 140,58 210,22 290,50 360,30 430,55 500,38 570,60 640,26 720,48 800,18 880,44 940,34 1000,52 1000,100" fill="#1a0636" stroke="#3fd0ff" stroke-width="1.5" vector-effect="non-scaling-stroke" opacity=".85"/>
+    <polygon points="0,100 0,78 90,60 170,80 250,58 330,76 420,64 500,82 590,62 680,80 760,56 850,76 930,66 1000,74 1000,100" fill="#0e0322" stroke="#ff3fd0" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <div class="floor"><canvas id="floor"></canvas></div>
+  <div class="hline"></div>
+  <div class="scan"></div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<button class="audio invite" id="audioBtn" type="button" aria-pressed="false" aria-label="Audio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><g class="on"><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></g><g class="off"><path d="m16 9 5 6M21 9l-5 6"/></g></svg>
+  <span>AUDIO</span>
+</button>
+
+<main>
+  <span class="badge">Stagione 1 · Neon '80</span>
+  <h1><button class="logo-btn" id="logoBtn" type="button" aria-label="Evolved Zone (premi per un suono)"><img id="logoImg" src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526" draggable="false"></button><span class="sr">Evolved Zone</span></h1>
+
+  <p class="kicker">L'evoluzione dei videogiochi</p>
+  <p class="claim">Il <b>Valdarno</b> diventa la tua zona.</p>
+  <div class="verbs"><span>SOPRAVVIVI</span><span>COMBATTI</span><span>EVOLVI</span></div>
+
+  <div class="count" id="count">
+    <div class="box"><b id="d">--</b><small>giorni</small></div>
+    <div class="box"><b id="h">--</b><small>ore</small></div>
+    <div class="box"><b id="m">--</b><small>min</small></div>
+    <div class="box"><b id="s">--</b><small>sec</small></div>
+  </div>
+  <p class="when" id="when">17 novembre 2026 · ore 15:00</p>
+
+  <!-- cristallo neon che gira (premilo: gli spari) -->
+  <canvas class="crystal" id="crystal" aria-label="Cristallo neon" role="img"></canvas>
+
+  <a class="ig" href="https://www.instagram.com/tilt.companyy/" target="_blank" rel="noopener" aria-label="Instagram @tilt.companyy">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
+    @tilt.companyy
+  </a>
+</main>
+
+<!-- ============ EVENTO DEL LANCIO ============ -->
+<div id="stage" hidden aria-hidden="true">
+  <canvas id="evBack"></canvas>
+  <div id="cards"></div>
+  <canvas id="evFront"></canvas>
+  <div id="flashOv"></div>
+</div>
+<div class="toast" id="toast" hidden>🔊 Tocca lo schermo: l'evento del lancio ha l'audio!</div>
+
+<!-- ============ SITO UFFICIALE (appare dopo l'esplosione) ============ -->
+<div id="site" hidden>
+  <header class="s-hero">
+    <span class="badge rise" style="--d:.5s">Stagione 1 · Disponibile ora</span>
+    <h1 style="line-height:0"><img class="s-logo" src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526"></h1>
+    <p class="kicker rise" style="--d:.7s">L'evoluzione dei videogiochi</p>
+    <p class="claim rise" style="--d:.85s">Il <b>Valdarno</b> diventa la tua zona.</p>
+    <div class="verbs rise" style="--d:1s"><span>SOPRAVVIVI</span><span>COMBATTI</span><span>EVOLVI</span></div>
+    <div class="cta rise" id="cta" style="--d:1.2s"></div>
+    <a class="more rise" href="#gioco" style="--d:1.6s">▼ SCOPRI IL GIOCO</a>
+  </header>
+
+  <section class="s-sec" id="gioco">
+    <div class="panel rv">
+      <h2>IL GIOCO</h2>
+      <p class="sub">Un battle royale 3D in stile low poly, nato tra le colline del Valdarno. Entri, atterri, sopravvivi.</p>
+      <div class="feat">
+        <div><i>🚁</i><h3>LANCIATI</h3><p>Sali sull'elicottero, scegli dove saltare e apri il paracadute.</p></div>
+        <div><i>🎒</i><h3>SOPRAVVIVI</h3><p>Apri le casse, raccogli armi, munizioni e cure prima degli altri.</p></div>
+        <div><i>🔫</i><h3>COMBATTI</h3><p>Pugni, pistola, fucile e pompa. Ogni colpo conta.</p></div>
+        <div><i>🌀</i><h3>LA ZONA SI STRINGE</h3><p>Resta dentro o perdi vita. Alla fine ne resta solo uno.</p></div>
+        <div><i>🤖</i><h3>MAI DA SOLO</h3><p>I bot riempiono la partita: entri e giochi subito.</p></div>
+        <div><i>📱</i><h3>PC E TELEFONO</h3><p>Tastiera e mouse, oppure comandi touch sul telefono.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-sec" id="isole">
+    <div class="panel rv">
+      <h2>LE ISOLE</h2>
+      <p class="sub">Si parte da Simple Island. Le isole del Valdarno arrivano con gli aggiornamenti.</p>
+      <div class="isles">
+        <span class="live">SIMPLE ISLAND<small>Disponibile</small></span>
+        <span>FIGLINE<small>In arrivo</small></span>
+        <span>INCISA<small>In arrivo</small></span>
+        <span>BURCHIO<small>In arrivo</small></span>
+        <span>LECCIO<small>In arrivo</small></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-sec" id="stagione">
+    <div class="panel rv">
+      <h2>STAGIONE 1 · NEON '80</h2>
+      <p class="sub">Tramonti al neon, colline toscane e un elicottero pronto al lancio.</p>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <footer class="s-foot rv">
+    <img src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526" loading="lazy">
+    <div><a class="ig" href="https://www.instagram.com/tilt.companyy/" target="_blank" rel="noopener" aria-label="Instagram @tilt.companyy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
+      @tilt.companyy</a></div>
+    <button class="replay" id="replay" type="button">↺ RIVEDI L'ESPLOSIONE</button>
+    <p>Evolved Zone · Valdarno, Italia · 2026</p>
+  </footer>
+</div>
+<div id="lightbox" hidden><img alt=""></div>
+<button class="testbtn" id="testBtn" type="button" hidden></button>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function rnd(a,b){return a+Math.random()*(b-a)}
+
+  /* =========================================================
+     AUDIO: musica di sottofondo + effetti
+     I browser fanno partire l'audio solo dopo un tocco/clic:
+     la musica parte al primo tocco sulla pagina.
+     ========================================================= */
+  var SND = {
+    music:"assets/snd/m_neon.mp3",
+    neon0:"assets/snd/neon_0.mp3", neon1:"assets/snd/neon_1.mp3",
+    heartfast:"assets/snd/heartfast_0.mp3", heart:"assets/snd/heart_0.mp3",
+    boar:"assets/snd/boar_0.mp3", gull:"assets/snd/gull_2.mp3",
+    magic:"assets/snd/magic_0.mp3", coins:"assets/snd/coins_1.mp3",
+    trap:"assets/snd/trap_0.mp3", weapon:"assets/snd/pickup_weapon_0.mp3",
+    bell:"assets/snd/bell_0.mp3", whoosh:"assets/snd/whoosh_0.mp3",
+    revolver:"assets/snd/g_revolver_0.mp3", pistol:"assets/snd/g_pistol_0.mp3",
+    marksman:"assets/snd/g_marksman_0.mp3", glass:"assets/snd/imp_glass_0.mp3",
+    boom:"assets/snd/boom_1.mp3", gbreak:"assets/snd/glass_break_0.mp3"
+  };
+  var VOL = {music:.35, sfx:.8};
+  var audioOn = true;
+  try { if (localStorage.getItem("ez_audio") === "0") audioOn = false; } catch(e){}
+  var unlocked = false, ac = null, music = null, cache = {};
+
+  function sample(key, rate, vol, delay){
+    if (!audioOn || !unlocked) return;
+    var go = function(){
+      var base = cache[key] || (cache[key] = new Audio(SND[key]));
+      var a = base.cloneNode();
+      a.volume = Math.min(1, (vol||1) * VOL.sfx);
+      if (rate){ a.preservesPitch = false; a.mozPreservesPitch = false; a.webkitPreservesPitch = false; a.playbackRate = rate; }
+      var p = a.play(); if (p && p.catch) p.catch(function(){});
+    };
+    delay ? setTimeout(go, delay) : go();
+  }
+  // suoni sintetizzati "neon anni '80" (nessun file)
+  function tone(type, f0, f1, dur, vol, when){
+    if (!audioOn || !ac) return;
+    var t = ac.currentTime + (when||0), o = ac.createOscillator(), g = ac.createGain(), lp = ac.createBiquadFilter();
+    o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t+dur);
+    lp.type = "lowpass"; lp.frequency.value = 4200; lp.Q.value = 6;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol||.12, t+.012); g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+    o.connect(lp); lp.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+dur+.02);
+  }
+  var synth = {
+    zapUp:   function(){ tone("sawtooth",180,1700,.28,.10); },
+    laserDn: function(){ tone("square",1900,110,.32,.07); },
+    arp:     function(){ [523,659,784,1047,1319].forEach(function(f,i){ tone("triangle",f,f*1.01,.11,.13,i*.07); }); },
+    buzz:    function(){ for (var i=0;i<5;i++) tone("sawtooth",58+rnd(-4,4),60,.06,.09,i*rnd(.05,.11)); },
+    ping:    function(){ tone("sine",1400,2600,.22,.14); tone("triangle",2800,2200,.3,.05,.03); },
+    dread:   function(){ tone("sawtooth",110,55,.9,.07); tone("sine",55,50,1,.12); }
+  };
+
+  function startMusic(){
+    if (!audioOn) return;
+    if (!music){ music = new Audio(SND.music); music.loop = true; music.volume = VOL.music; }
+    var p = music.play(); if (p && p.catch) p.catch(function(){});
+  }
+  function unlock(){
+    if (unlocked) return; unlocked = true;
+    try { ac = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){}
+    btn.classList.remove("invite");
+    document.getElementById("toast").hidden = true;
+    startMusic(); setBtn();
+  }
+  var btn = document.getElementById("audioBtn");
+  function setBtn(){ btn.setAttribute("aria-pressed", String(audioOn && unlocked)); }
+  btn.addEventListener("click", function(e){
+    e.stopPropagation();
+    if (!unlocked){ audioOn = true; unlock(); }
+    else { audioOn = !audioOn; if (audioOn) startMusic(); else if (music) music.pause(); }
+    try { localStorage.setItem("ez_audio", audioOn ? "1" : "0"); } catch(e){}
+    setBtn();
+  });
+  // il primo tocco ovunque sblocca l'audio (se non è stato spento)
+  ["pointerdown","keydown"].forEach(function(ev){
+    window.addEventListener(ev, function(e){ if (btn.contains(e.target)) return; if (!unlocked && audioOn) unlock(); }, true);
+  });
+  document.addEventListener("visibilitychange", function(){
+    if (!music) return;
+    if (document.hidden) music.pause(); else if (audioOn && unlocked) startMusic();
+  });
+
+  /* =========================================================
+     STRATO EFFETTI: scintille, scie dei colpi
+     ========================================================= */
+  var fx = document.getElementById("fx"), fctx = fx.getContext("2d"), parts = [], tracers = [], rings = [];
+  var dpr = Math.min(window.devicePixelRatio||1, 2);
+  function fxSize(){ fx.width = innerWidth*dpr; fx.height = innerHeight*dpr; }
+  fxSize(); window.addEventListener("resize", fxSize);
+  var COLS = ["#ff3fd0","#3fd0ff","#ffe14d","#ffffff"];
+  function burst(x,y,n,spd,cols){
+    for (var i=0;i<n;i++){ var a=rnd(0,Math.PI*2), v=rnd(.3,1)*spd;
+      parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-rnd(0,1.5),life:1,decay:rnd(.014,.026),c:cols[i%cols.length],s:rnd(2.5,5.5)}); }
+    kick();
+  }
+  var fxRunning = false;
+  function kick(){ if (!fxRunning){ fxRunning = true; requestAnimationFrame(fxLoop); } }
+  function fxLoop(){
+    fctx.clearRect(0,0,fx.width,fx.height);
+    fctx.globalCompositeOperation = "lighter";
+    tracers = tracers.filter(function(t){
+      t.life -= .045; if (t.life<=0) return false;
+      // scia del proiettile: trasparente da dove parte, accesa dove colpisce
+      var gr = fctx.createLinearGradient(t.x0*dpr,t.y0*dpr,t.x1*dpr,t.y1*dpr);
+      gr.addColorStop(0,"rgba(255,225,77,0)"); gr.addColorStop(.6,"rgba(255,225,77,"+(.6*t.life)+")"); gr.addColorStop(1,"rgba(255,255,255,"+t.life+")");
+      fctx.strokeStyle = gr; fctx.shadowColor="#ffe14d"; fctx.shadowBlur=18*dpr;
+      fctx.lineWidth = 6*dpr*t.life; fctx.beginPath(); fctx.moveTo(t.x0*dpr,t.y0*dpr); fctx.lineTo(t.x1*dpr,t.y1*dpr); fctx.stroke();
+      fctx.lineWidth = 2*dpr; fctx.stroke(); return true;
+    });
+    rings = rings.filter(function(r){
+      r.life -= .045; if (r.life<=0) return false; r.r += (r.v||3);
+      fctx.strokeStyle = "rgba(63,208,255,"+r.life+")"; fctx.lineWidth = (r.w||2)*dpr; fctx.shadowColor="#3fd0ff"; fctx.shadowBlur=12*dpr;
+      fctx.beginPath(); fctx.arc(r.x*dpr,r.y*dpr,r.r*dpr,0,Math.PI*2); fctx.stroke(); return true;
+    });
+    fctx.shadowBlur = 0;
+    parts = parts.filter(function(p){
+      p.life -= p.decay; if (p.life<=0) return false;
+      p.x += p.vx; p.y += p.vy; p.vy += .12; p.vx *= .98;
+      // scintilla a rombo con alone leggero (niente ombre: costano troppo sui telefoni)
+      var z = p.s*dpr*(0.5+p.life*0.5), px = p.x*dpr, py = p.y*dpr;
+      fctx.fillStyle = p.c;
+      fctx.globalAlpha = p.life*.25; fctx.beginPath(); fctx.arc(px,py,z*1.8,0,6.283); fctx.fill();
+      fctx.globalAlpha = p.life;
+      fctx.beginPath(); fctx.moveTo(px, py - z); fctx.lineTo(px + z*.45, py); fctx.lineTo(px, py + z); fctx.lineTo(px - z*.45, py); fctx.fill();
+      return true;
+    });
+    fctx.globalAlpha = 1; fctx.globalCompositeOperation = "source-over";
+    if (parts.length || tracers.length || rings.length) requestAnimationFrame(fxLoop); else { fxRunning = false; fctx.clearRect(0,0,fx.width,fx.height); }
+  }
+
+  /* =========================================================
+     LOGO: 13 suoni diversi + mini animazione a ogni clic
+     ========================================================= */
+  var LOGO_FX = [
+    function(){ sample("neon0",rnd(.9,1.2)); synth.zapUp(); },              // 1 scarica neon
+    function(){ sample("heartfast",1); },                                   // 2 cuore che corre
+    function(){ sample("boar",rnd(.8,1.3)); },                              // 3 cinghiale del Valdarno
+    function(){ sample("gull",rnd(.9,1.15)); },                             // 4 gabbiano
+    function(){ sample("magic",rnd(.9,1.1)); synth.arp(); },                // 5 evoluzione
+    function(){ sample("coins",1.1); },                                     // 6 dindi
+    function(){ sample("trap",rnd(.9,1.1)); },                              // 7 trappola
+    function(){ sample("weapon",1); },                                      // 8 arma raccolta
+    function(){ sample("bell",.7); synth.dread(); },                        // 9 campana della zona
+    function(){ sample("whoosh",1); synth.laserDn(); },                     // 10 laser
+    function(){ synth.arp(); setTimeout(synth.arp,380); },                  // 11 power-up anni '80
+    function(){ synth.buzz(); sample("neon1",.8,1,120); },                  // 12 neon che sfarfalla
+    function(){ sample("heart",.8); synth.dread(); }                        // 13 battito nel buio
+  ];
+  var bag = [];
+  function nextFx(){ if (!bag.length){ bag = LOGO_FX.map(function(_,i){return i}); bag.sort(function(){return Math.random()-.5}); } return bag.pop(); }
+  var ANIMS = ["a-bounce","a-shake","a-glitch","a-flip","a-pulse","a-wobble"], lastAnim = "";
+  var logoBtn = document.getElementById("logoBtn"), logoImg = document.getElementById("logoImg");
+  logoBtn.addEventListener("click", function(e){
+    unlock();
+    LOGO_FX[nextFx()]();
+    var a; do { a = ANIMS[(Math.random()*ANIMS.length)|0]; } while (a === lastAnim); lastAnim = a;
+    logoImg.className = ""; void logoImg.offsetWidth; logoImg.className = a;
+    var x = e.clientX, y = e.clientY;
+    if (!x && !y){ var r = logoImg.getBoundingClientRect(); x = r.left+r.width/2; y = r.top+r.height/2; }
+    if (!reduce){ burst(x,y,38,6.5,COLS); rings.push({x:x,y:y,r:6,life:1}); }
+  });
+  logoImg.addEventListener("animationend", function(){ logoImg.className = ""; });
+
+  /* =========================================================
+     COUNTDOWN
+     ========================================================= */
+  // Lancio: 17/11/2026 ore 15:00 ora italiana (UTC+1)
+  var target = new Date("2026-11-17T15:00:00+01:00").getTime();
+  // Prova: aggiungi ?prova=10 all'indirizzo per un countdown di 10 secondi
+  var pr = new URLSearchParams(location.search).get("prova");
+  if (pr && !isNaN(pr)) target = Date.now() + Number(pr) * 1000;
+  var el = {d:document.getElementById("d"),h:document.getElementById("h"),m:document.getElementById("m"),s:document.getElementById("s")};
+  function p2(n){return String(n).padStart(2,"0")}
+  var timer, firstTick = true, launchedAtLoad = false;
+  function tick(){
+    var diff = target - Date.now();
+    if (diff <= 0){
+      clearInterval(timer);
+      el.d.textContent = el.h.textContent = el.m.textContent = el.s.textContent = "00";
+      if (firstTick){ launchedAtLoad = true; firstTick = false; return; }   // aperta dopo le 15:00: sito diretto
+      startEvent(false);                                                   // ZERO: parte l'evento
+      return;
+    }
+    firstTick = false;
+    // ultimo minuto: invito ad attivare l'audio per l'evento
+    if (diff < 60000 && !unlocked && audioOn) document.getElementById("toast").hidden = false;
+    var t = Math.floor(diff/1000);
+    el.d.textContent = p2(Math.floor(t/86400));
+    el.h.textContent = p2(Math.floor(t%86400/3600));
+    el.m.textContent = p2(Math.floor(t%3600/60));
+    el.s.textContent = p2(t%60);
+  }
+
+  /* ---------- ORIZZONTE: subito sotto la data ---------- */
+  var root = document.documentElement, whenEl = document.getElementById("when");
+  function horizon(){
+    if (siteMode) return;
+    var y = whenEl.getBoundingClientRect().bottom + window.scrollY + 14;
+    root.style.setProperty("--horizon", Math.round(y) + "px");
+  }
+  tick(); timer = setInterval(tick,1000);
+  horizon(); window.addEventListener("resize", horizon);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(horizon);
+  logoImg.addEventListener("load", horizon);
+
+  /* ---------- PAVIMENTO NEON A GRIGLIA ---------- */
+  var fc = document.getElementById("floor"), fx2 = fc.getContext("2d");
+  function drawFloor(t){
+    var w = fc.clientWidth*dpr, h = fc.clientHeight*dpr;
+    if (fc.width !== w || fc.height !== h){ fc.width = w; fc.height = h; }
+    fx2.clearRect(0,0,w,h);
+    if (h <= 0) return;
+    var vx = w/2, cam = 1.4;
+    fx2.lineWidth = 1.5*dpr;
+    var step = 70*dpr, n = Math.ceil(w/step)+4;
+    for (var i=-n;i<=n;i++){
+      var gr = fx2.createLinearGradient(0,0,0,h);
+      gr.addColorStop(0,"rgba(63,208,255,0)"); gr.addColorStop(1,"rgba(63,208,255,.7)");
+      fx2.strokeStyle = gr; fx2.beginPath(); fx2.moveTo(vx + i*step*.12, 0); fx2.lineTo(vx + i*step*3, h); fx2.stroke();
+    }
+    var ph = (t*0.6) % 1;
+    for (var k=0;k<40;k++){
+      var y = h * cam / (k + 1 - ph + cam*0.4);
+      if (y > h || y < 1) continue;
+      var a = Math.min(1, y/h*1.3);
+      fx2.strokeStyle = "rgba(255,63,208,"+(0.15+0.75*a)+")";
+      fx2.beginPath(); fx2.moveTo(0,y); fx2.lineTo(w,y); fx2.stroke();
+    }
+  }
+
+  /* ---------- STELLE ---------- */
+  var st = document.getElementById("stars");
+  for (var i=0;i<70;i++){
+    var s = document.createElement("i");
+    s.style.left = (Math.random()*100)+"%";
+    s.style.top = (Math.random()*92)+"%";
+    s.style.animationDelay = (Math.random()*3)+"s";
+    if (Math.random()<.2){ s.style.width = s.style.height = "3px"; s.style.background = Math.random()<.5 ? "#3fd0ff" : "#ff3fd0"; }
+    st.appendChild(s);
+  }
+
+  /* =========================================================
+     CRISTALLO NEON 3D (disegnato a mano, nessuna libreria)
+     Al clic: sparo da fuori schermo, colpo, scintille, rumore neon.
+     ========================================================= */
+  var cv = document.getElementById("crystal"), ctx = cv.getContext("2d");
+  function size(){ cv.width = cv.clientWidth*dpr; cv.height = cv.clientHeight*dpr; }
+  size(); window.addEventListener("resize", size);
+
+  var V = [[0,1.55,0]], r1=[], r2=[], k;
+  for (k=0;k<6;k++){ var a=k*Math.PI/3;          V.push([Math.cos(a)*.62, .5, Math.sin(a)*.62]); r1.push(V.length-1); }
+  for (k=0;k<6;k++){ var b=k*Math.PI/3+Math.PI/6; V.push([Math.cos(b)*.6, -.4, Math.sin(b)*.6]); r2.push(V.length-1); }
+  V.push([0,-1.3,0]); var T=0, B=V.length-1, F=[];
+  for (k=0;k<6;k++){
+    var n=(k+1)%6;
+    F.push([T,r1[k],r1[n]]); F.push([r1[k],r2[k],r1[n]]); F.push([r1[n],r2[k],r2[n]]); F.push([B,r2[n],r2[k]]);
+  }
+  function norm(v){var l=Math.hypot(v[0],v[1],v[2]);return [v[0]/l,v[1]/l,v[2]/l]}
+  function sub(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]}
+  function cross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+  function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+  var L = norm([-.5,.7,.6]);
+
+  // disegna il cristallo su un canvas qualsiasi (piccolo nella pagina o grande nell'evento)
+  function drawCrystal(c, ox, oy, sc, ry, fl, glow){
+    var rx = 0.28, cy=Math.cos(ry), sy=Math.sin(ry), cx=Math.cos(rx), sx=Math.sin(rx);
+    var P = V.map(function(v){
+      var x = v[0]*cy - v[2]*sy, z = v[0]*sy + v[2]*cy, y = v[1];
+      var y2 = y*cx - z*sx, z2 = y*sx + z*cx, f = 4/(4 - z2);
+      return {x:ox + x*sc*f, y:oy - y2*sc*f, w:[x,y2,z2]};
+    });
+    var faces = F.map(function(f,i){
+      var a=P[f[0]].w,b=P[f[1]].w,cc=P[f[2]].w, nn = norm(cross(sub(b,a),sub(cc,a)));
+      var ctr=[(a[0]+b[0]+cc[0])/3,(a[1]+b[1]+cc[1])/3,(a[2]+b[2]+cc[2])/3];
+      if (dot(nn,ctr)<0) nn=[-nn[0],-nn[1],-nn[2]];
+      return {f:f,n:nn,z:ctr[2],i:i};
+    }).sort(function(p,q){return p.z-q.z});
+    c.lineJoin = "round";
+    faces.forEach(function(o){
+      var f=o.f;
+      c.beginPath(); c.moveTo(P[f[0]].x,P[f[0]].y); c.lineTo(P[f[1]].x,P[f[1]].y); c.lineTo(P[f[2]].x,P[f[2]].y); c.closePath();
+      if (o.n[2] > 0){
+        var l = Math.max(0,dot(o.n,L)), cyan = (o.i%4===1||o.i%4===2);
+        var r = cyan ? 20+40*l : 60+190*l, gg = cyan ? 40+150*l : 10+50*l, bb = cyan ? 90+160*l : 100+110*l;
+        r += (255-r)*fl; gg += (255-gg)*fl; bb += (255-bb)*fl;   // lampo bianco
+        o.col = "rgba("+(r|0)+","+(gg|0)+","+(bb|0)+",.82)";
+        c.fillStyle = o.col; c.fill();
+        c.shadowColor = fl > .3 ? "#3fd0ff" : "#ff3fd0"; c.shadowBlur = (12+fl*16)*dpr*(glow||1);
+        c.strokeStyle = "#ffd6f6"; c.lineWidth = 1.4*dpr*(glow||1); c.stroke(); c.shadowBlur = 0;
+      } else {
+        o.col = "rgba(122,43,255,.35)";
+        c.fillStyle = "rgba(122,43,255,.10)"; c.fill();
+        c.strokeStyle = "rgba(63,208,255,.35)"; c.lineWidth = 1*dpr; c.stroke();
+      }
+    });
+    return {P:P, faces:faces};
+  }
+
+  // stato del cristallo
+  var BASE_SPIN = 0.65;            // velocità di rotazione (prima 0.9: un po' più lento)
+  var ang = 0, spinExtra = 0, flash = 0, recoil = 0, recoilDir = 1;
+
+  cv.addEventListener("click", function(e){
+    if (EV.on) return;
+    unlock();
+    var r = cv.getBoundingClientRect();
+    var hx = e.clientX || (r.left+r.width/2), hy = e.clientY || (r.top+r.height*.45);
+    // sparo: suono dell'arma, poi impatto sul vetro e "ping" neon
+    var gun = ["revolver","pistol","marksman"][(Math.random()*3)|0];
+    sample(gun, rnd(.95,1.08), .9);
+    sample("glass", rnd(1,1.25), 1, 45);
+    setTimeout(synth.ping, 50);
+    // scia del proiettile da un angolo in basso, fuori schermo
+    var fromLeft = hx > innerWidth/2;
+    tracers.push({x0: fromLeft ? -20 : innerWidth+20, y0: innerHeight*rnd(.8,1.05), x1:hx, y1:hy, life:1});
+    rings.push({x:hx,y:hy,r:4,life:1});
+    if (!reduce) burst(hx,hy,18,4,["#ff3fd0","#3fd0ff","#ffffff"]);
+    // il cristallo reagisce: lampo, rinculo, giro veloce
+    flash = 1; recoil = 1; recoilDir = fromLeft ? 1 : -1;
+    spinExtra = Math.min(spinExtra + 7, 14);
+    kick();
+  });
+
+  /* =========================================================
+     EVENTO DEL LANCIO
+     0–1,2 s   la pagina si spegne, il cristallo va al centro
+     1,8–8,8 s sei fasci di luce, ognuno accende un'immagine del gioco
+     10,4–12,2 s energia al massimo: lampeggia, trema
+     12,2 s    esplode in frammenti → entra il sito ufficiale (fine a 15 s)
+     ========================================================= */
+  var IMGS = ["assets/img/ez_heli_synthwave.webp","assets/img/ez_strada_neon.webp","assets/img/ez_elicottero_neon.webp",
+              "assets/img/ez_cassa_casale.webp","assets/img/ez_elicottero_tramonto.webp","assets/img/ez_heli_tramonto.webp"];
+  var EXP = 12.2, END = 15, MAXT = 10.4, BEAM_T = [1.8,3.2,4.6,6.0,7.4,8.8];   // durata totale 15 s
+  var EVCOL = ["#ff3fd0","#3fd0ff","#ffe14d","#ff3fd0","#3fd0ff","#ffe14d"];
+  var EV = {on:false};
+  var stage = document.getElementById("stage"), evB = document.getElementById("evBack"), evF = document.getElementById("evFront");
+  var bctx = evB.getContext("2d"), ectx = evF.getContext("2d"), cardsEl = document.getElementById("cards"), flashOv = document.getElementById("flashOv");
+  var mainEl = document.querySelector("main"), site = document.getElementById("site");
+  IMGS.forEach(function(s){ var im = new Image(); im.src = s; });   // precarico
+
+  function evSize(){ [evB,evF].forEach(function(c){ c.width = innerWidth*dpr; c.height = innerHeight*dpr; }); }
+  // posizioni delle immagini: 3 a sinistra + 3 a destra (PC), 3 sopra + 3 sotto (telefono)
+  function cardLayout(){
+    var vw = innerWidth, vh = innerHeight, port = vh > vw, pos, cw;
+    if (port){ cw = Math.min(vw*.29, vh*.17, 200);
+      pos = [[-.32,-.34],[.32,.33],[.32,-.34],[-.32,.33],[0,-.38],[0,.37]]; }
+    else { cw = Math.min(vw*.15, vh*.30, 240);
+      pos = [[-.34,-.24],[.34,-.24],[-.40,.02],[.40,.02],[-.32,.27],[.32,.27]]; }
+    return pos.map(function(p){ return {x:vw/2 + p[0]*vw, y:vh/2 + p[1]*vh, cw:cw, dx:p[0], dy:p[1]}; });
+  }
+  function buildCards(){
+    cardsEl.innerHTML = "";
+    EV.layout = cardLayout();
+    EV.cards = EV.layout.map(function(p,i){
+      var d = document.createElement("div"), im = document.createElement("img");
+      im.src = IMGS[i]; im.alt = ""; d.appendChild(im); d.className = "evcard";
+      var l = Math.hypot(p.dx,p.dy)||1;
+      d.style.cssText = "left:"+p.x+"px;top:"+p.y+"px;--cw:"+p.cw+"px;--c:"+EVCOL[i]+";--r:"+(rnd(-7,7)).toFixed(1)+"deg;--ox:"+(p.dx/l*60).toFixed(1)+"vmax;--oy:"+(p.dy/l*60).toFixed(1)+"vmax";
+      cardsEl.appendChild(d);
+      return {el:d, x:p.x, y:p.y, cw:p.cw, shown:false, col:EVCOL[i], beamT:BEAM_T[i]};
+    });
+  }
+
+  // suoni dell'evento (solo se l'audio è attivo)
+  function noiseBurst(dur, vol){
+    if (!audioOn || !ac) return;
+    var len = ac.sampleRate*dur, buf = ac.createBuffer(1,len,ac.sampleRate), d = buf.getChannelData(0);
+    for (var i=0;i<len;i++) d[i] = (Math.random()*2-1)*Math.pow(1-i/len,2);
+    var s = ac.createBufferSource(), lp = ac.createBiquadFilter(), g = ac.createGain(), t = ac.currentTime;
+    s.buffer = buf; lp.type = "lowpass"; lp.frequency.setValueAtTime(9000,t); lp.frequency.exponentialRampToValueAtTime(180,t+dur);
+    g.gain.value = vol; s.connect(lp); lp.connect(g); g.connect(ac.destination); s.start(t);
+  }
+  function riser(){
+    if (!audioOn || !ac) return;
+    var t = ac.currentTime, o1 = ac.createOscillator(), o2 = ac.createOscillator(), lp = ac.createBiquadFilter(), g = ac.createGain();
+    o1.type = o2.type = "sawtooth"; o2.detune.value = 700;
+    [o1,o2].forEach(function(o){ o.frequency.setValueAtTime(55,t); o.frequency.exponentialRampToValueAtTime(880,t+EXP); });
+    lp.type = "lowpass"; lp.Q.value = 8; lp.frequency.setValueAtTime(200,t); lp.frequency.exponentialRampToValueAtTime(7000,t+EXP);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(.09,t+EXP-.2); g.gain.linearRampToValueAtTime(0,t+EXP);
+    o1.connect(lp); o2.connect(lp); lp.connect(g); g.connect(ac.destination);
+    o1.start(t); o2.start(t); o1.stop(t+EXP+.05); o2.stop(t+EXP+.05);
+    EV.riser = [o1,o2];
+  }
+
+  function startEvent(replay){
+    if (EV.on) return;
+    if (reduce){ showSite(true); return; }
+    var r = cv.getBoundingClientRect();
+    EV = {on:true, t0:performance.now(), last:0, exploded:false, shards:[], spin:ang, sounds:{},
+          from: replay ? {x:innerWidth/2, y:innerHeight*.6} : {x:r.left+r.width/2, y:r.top+r.height*.46},
+          sc0: replay ? 20 : cv.clientHeight*0.27};
+    window.scrollTo(0,0);
+    site.hidden = true; site.classList.remove("enter");
+    if (replay) mainEl.style.display = "none";
+    document.body.classList.add("ev");
+    stage.hidden = false; flashOv.style.transition = "none"; flashOv.style.opacity = 0;
+    evSize(); buildCards();
+    document.getElementById("toast").hidden = true;
+    riser();
+  }
+
+  function explode(cxp, cyp, last){
+    EV.exploded = true;
+    // frammenti: ogni faccia del cristallo diventa una scheggia che vola via
+    last.faces.forEach(function(o){
+      var pts = o.f.map(function(ix){ return [last.P[ix].x/dpr, last.P[ix].y/dpr]; });
+      var mx = (pts[0][0]+pts[1][0]+pts[2][0])/3, my = (pts[0][1]+pts[1][1]+pts[2][1])/3;
+      var dx = mx-cxp, dy = my-cyp, l = Math.hypot(dx,dy)||1, v = rnd(5,13);
+      EV.shards.push({x:mx,y:my,pts:pts.map(function(p){return [p[0]-mx,p[1]-my]}),vx:dx/l*v+rnd(-2,2),vy:dy/l*v+rnd(-3,1),rot:0,vr:rnd(-.25,.25),col:o.col||"#ff3fd0",life:1});
+    });
+    for (var i=0;i<46;i++){ var a = rnd(0,6.283), v = rnd(4,16), s = rnd(4,14);
+      EV.shards.push({x:cxp,y:cyp,pts:[[0,-s],[s*.6,s*.5],[-s*.6,s*.4]],vx:Math.cos(a)*v,vy:Math.sin(a)*v,rot:rnd(0,6),vr:rnd(-.3,.3),col:["#ff3fd0","#3fd0ff","#ffffff","#ffe14d"][i%4],life:1}); }
+    burst(cxp,cyp,150,15,COLS);
+    rings.push({x:cxp,y:cyp,r:10,life:1,v:20,w:5},{x:cxp,y:cyp,r:6,life:1,v:12,w:3},{x:cxp,y:cyp,r:4,life:1,v:7,w:2});
+    flashOv.style.transition = "none"; flashOv.style.opacity = 1;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ flashOv.style.transition = "opacity 1.5s ease-out"; flashOv.style.opacity = 0; }); });
+    EV.cards.forEach(function(c){ c.el.classList.remove("max"); c.el.classList.add("out"); });
+    sample("boom",.85,1); sample("gbreak",.8,1,30); sample("glass",.7,1,90);
+    noiseBurst(1.6,.5); tone("sine",140,28,1.3,.4);
+    mainEl.style.display = "none";
+    showSite(true);
+  }
+
+  // il sito ufficiale (con entrata animata)
+  var siteMode = false;
+  function showSite(animated){
+    siteMode = true;
+    clearInterval(timer);
+    mainEl.style.display = "none";
+    document.getElementById("toast").hidden = true;
+    root.style.setProperty("--horizon","74vh");
+    site.hidden = false;
+    site.classList.remove("enter"); void site.offsetWidth; site.classList.add("enter");
+    if (!animated) site.querySelectorAll(".rise").forEach(function(e){ e.style.setProperty("--d","0s"); });
+    var io = "IntersectionObserver" in window ? new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target); } });
+    },{threshold:.12}) : null;
+    site.querySelectorAll(".rv").forEach(function(e){ io ? io.observe(e) : e.classList.add("on"); });
+  }
+
+  function endEvent(){
+    EV.on = false; stage.hidden = true; cardsEl.innerHTML = "";
+    document.body.classList.remove("ev");
+    bctx.clearRect(0,0,evB.width,evB.height); ectx.clearRect(0,0,evF.width,evF.height);
+  }
+
+  function clamp01(x){ return x<0?0:x>1?1:x; }
+  function ease(x){ x = clamp01(x); return x*x*(3-2*x); }
+
+  function eventFrame(now, dt){
+    var et = (now - EV.t0)/1000, vw = innerWidth, vh = innerHeight, m = Math.min(vw,vh);
+    bctx.clearRect(0,0,evB.width,evB.height); ectx.clearRect(0,0,evF.width,evF.height);
+    // energia che sale
+    var energy = clamp01(et/EXP);
+    var shake = et>7 && !EV.exploded ? 10*Math.pow(clamp01((et-7)/(EXP-7)),2) : 0;
+    var sx = rnd(-shake,shake), sy = rnd(-shake,shake);
+    cardsEl.style.transform = shake ? "translate("+(sx*.5)+"px,"+(sy*.5)+"px)" : "";
+    var e1 = ease(et/1.2);
+    var cxp = EV.from.x + (vw/2 - EV.from.x)*e1 + sx, cyp = EV.from.y + (vh/2 - EV.from.y)*e1 + sy;
+    var sc = EV.sc0 + (m*.09 - EV.sc0)*e1 + m*.06*ease((et-1.2)/(MAXT-1.2));
+    if (et > MAXT) sc *= 1 + .08*Math.abs(Math.sin(et*22));
+    // musica che sale con l'energia
+    if (music && audioOn && unlocked) music.volume = EV.exploded ? Math.max(VOL.music, music.volume - dt*.15) : VOL.music + (.7-VOL.music)*energy;
+    // battito del cuore
+    [[5.2,"heartfast",1],[8.6,"heartfast",1.15],[10.6,"heartfast",1.3]].forEach(function(h){
+      if (et >= h[0] && !EV.sounds[h[0]]){ EV.sounds[h[0]] = 1; sample(h[1],h[2],.9); } });
+
+    // fasci di luce + immagini
+    EV.cards.forEach(function(c,i){
+      if (et < c.beamT || EV.exploded) return;
+      if (!c.shown){ c.shown = true; sample("whoosh",rnd(.8,1.1),.9); sample("neon0",rnd(.9,1.2),.8); setTimeout(function(){ c.el.classList.add("on"); }, 180); }
+      if (et > MAXT && !c.max){ c.max = true; c.el.classList.add("max"); }
+      var grow = clamp01((et - c.beamT)/.25), dx = c.x - cxp, dy = c.y - cyp, l = Math.hypot(dx,dy)||1;
+      var ux = dx/l, uy = dy/l, px = -uy, py = ux, ex = cxp + dx*grow, ey = cyp + dy*grow;
+      var w0 = sc*.12, w1 = c.cw*.55*grow, flick = .75 + .25*Math.sin(et*30 + i*2), boost = et>MAXT ? 1.6 : 1;
+      var g = bctx.createLinearGradient(cxp*dpr,cyp*dpr,ex*dpr,ey*dpr);
+      g.addColorStop(0,"rgba(255,255,255,"+(.75*flick*boost)+")"); g.addColorStop(.35,hexA(c.col,.45*flick*boost)); g.addColorStop(1,hexA(c.col,.08));
+      bctx.globalCompositeOperation = "lighter"; bctx.fillStyle = g;
+      bctx.beginPath();
+      bctx.moveTo((cxp+px*w0)*dpr,(cyp+py*w0)*dpr); bctx.lineTo((ex+px*w1)*dpr,(ey+py*w1)*dpr);
+      bctx.lineTo((ex-px*w1)*dpr,(ey-py*w1)*dpr); bctx.lineTo((cxp-px*w0)*dpr,(cyp-py*w0)*dpr); bctx.closePath(); bctx.fill();
+      bctx.strokeStyle = "rgba(255,255,255,"+(.5*flick*boost)+")"; bctx.lineWidth = 1.5*dpr;
+      bctx.beginPath(); bctx.moveTo(cxp*dpr,cyp*dpr); bctx.lineTo(ex*dpr,ey*dpr); bctx.stroke();
+      bctx.globalCompositeOperation = "source-over";
+    });
+
+    if (!EV.exploded){
+      // alone dietro al cristallo
+      var gr = ectx.createRadialGradient(cxp*dpr,cyp*dpr,0,cxp*dpr,cyp*dpr,sc*(1.5+3.5*energy)*dpr);
+      gr.addColorStop(0,"rgba(255,255,255,"+(.25+.55*energy)+")"); gr.addColorStop(.3,"rgba(255,63,208,"+(.25+.4*energy)+")"); gr.addColorStop(1,"rgba(255,63,208,0)");
+      ectx.fillStyle = gr; ectx.fillRect(0,0,evF.width,evF.height);
+      // giro sempre più veloce
+      EV.spin += dt*(BASE_SPIN + 34*Math.pow(clamp01((et-.6)/(EXP-.6)),2.4));
+      var fl = et < MAXT ? .15*Math.pow(clamp01((et-6)/(MAXT-6)),2) : .5 + .5*Math.abs(Math.sin(et*25));
+      EV.lastDraw = drawCrystal(ectx, cxp*dpr, cyp*dpr, sc*dpr, EV.spin, fl, 1.5);
+      if (et >= EXP) explode(cxp, cyp, EV.lastDraw);
+    }
+    // schegge
+    EV.shards = EV.shards.filter(function(s){
+      s.life -= .011; if (s.life <= 0) return false;
+      s.x += s.vx; s.y += s.vy; s.vy += .18; s.vx *= .985; s.rot += s.vr;
+      var co = Math.cos(s.rot), si = Math.sin(s.rot);
+      ectx.globalAlpha = s.life; ectx.fillStyle = s.col; ectx.strokeStyle = "#fff"; ectx.lineWidth = 1.2*dpr;
+      ectx.beginPath();
+      s.pts.forEach(function(p,j){ var X = (s.x + p[0]*co - p[1]*si)*dpr, Y = (s.y + p[0]*si + p[1]*co)*dpr; j ? ectx.lineTo(X,Y) : ectx.moveTo(X,Y); });
+      ectx.closePath(); ectx.fill(); ectx.stroke(); return true;
+    });
+    ectx.globalAlpha = 1;
+    if (et >= END) endEvent();
+  }
+  function hexA(h,a){ var n = parseInt(h.slice(1),16); return "rgba("+(n>>16)+","+((n>>8)&255)+","+(n&255)+","+a.toFixed(3)+")"; }
+
+  /* ---------- pulsanti del sito ufficiale ---------- */
+  // Michele: incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
+  var LINKS = { browser:"", crazygames:"", pc:"", android:"" };
+  var CTA = [["browser","▶ GIOCA ORA","Nel browser, senza installare","main"],["crazygames","CRAZYGAMES","Gioca sul portale","c"],
+             ["pc","PC","Scarica · Windows",""],["android","ANDROID","Scarica · Telefono","c"]];
+  var ctaEl = document.getElementById("cta");
+  CTA.forEach(function(b){
+    var href = LINKS[b[0]], el = document.createElement(href ? "a" : "span");
+    el.className = "btn " + b[3] + (href ? "" : " off");
+    if (href){ el.href = href; el.target = "_blank"; el.rel = "noopener"; }
+    el.innerHTML = b[1] + "<small>" + (href ? b[2] : "Link in arrivo") + "</small>";
+    if (b[3] === "main" && !href) el.className = "btn main off";
+    ctaEl.appendChild(el);
+  });
+  var gal = document.getElementById("gallery"), lb = document.getElementById("lightbox");
+  IMGS.forEach(function(s){
+    var bt = document.createElement("button"), im = document.createElement("img");
+    bt.type = "button"; bt.setAttribute("aria-label","Ingrandisci immagine"); im.src = s; im.alt = "Evolved Zone, Stagione 1"; im.loading = "lazy"; im.width = 720; im.height = 900;
+    bt.appendChild(im); gal.appendChild(bt);
+    bt.addEventListener("click", function(){ lb.querySelector("img").src = s; lb.hidden = false; });
+  });
+  lb.addEventListener("click", function(){ lb.hidden = true; });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") lb.hidden = true; });
+  document.getElementById("replay").addEventListener("click", function(){ unlock(); startEvent(true); });
+  window.addEventListener("resize", function(){ if (EV.on){ evSize(); } });
+
+  /* ---------- giro principale ---------- */
+  var last = performance.now(), t = 0;
+  function frame(now){
+    var dt = Math.min(.05,(now-last)/1000); last = now; t += dt;
+    ang += dt*(BASE_SPIN + spinExtra); spinExtra *= Math.pow(.15, dt); flash *= Math.pow(.02, dt); recoil *= Math.pow(.01, dt);
+    var w = cv.width, h = cv.height;
+    ctx.clearRect(0,0,w,h);
+    if (!EV.on && !siteMode){
+      var bob = reduce ? 0 : Math.sin(t*1.6)*h*0.025;
+      var shakeX = recoil * Math.sin(t*90) * w*0.04 + recoil*recoilDir*w*0.05;
+      var g = ctx.createRadialGradient(w/2,h*0.93,0,w/2,h*0.93,w*0.45);
+      g.addColorStop(0,"rgba(255,63,208,"+(.55+flash*.4)+")"); g.addColorStop(1,"rgba(255,63,208,0)");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(w/2,h*0.93,w*0.45,h*0.06,0,0,Math.PI*2); ctx.fill();
+      var dr = drawCrystal(ctx, w/2 + shakeX, h*0.46 + bob, h*0.27*(1+flash*.08), reduce ? .6 : ang, flash, 1);
+      var tp = dr.P[T], sp = .5+.5*Math.sin(t*3);
+      ctx.fillStyle = "rgba(255,255,255,"+(.5+.5*sp)+")"; ctx.shadowColor="#3fd0ff"; ctx.shadowBlur=16*dpr;
+      ctx.beginPath(); ctx.arc(tp.x,tp.y,(1.5+1.5*sp)*dpr,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
+    }
+    if (EV.on) eventFrame(now, dt);
+    drawFloor(reduce ? 0 : t);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
+  var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);
+  function backToCountdown(){
+    siteMode = false; site.hidden = true; site.classList.remove("enter");
+    document.body.classList.remove("ev"); mainEl.style.display = "";
+    root.style.setProperty("--horizon","68vh");
+    window.scrollTo(0,0);
+    clearInterval(timer); firstTick = false; tick(); timer = setInterval(tick,1000);
+    horizon(); requestAnimationFrame(horizon);
+  }
+  if (TEST){
+    var tb = document.getElementById("testBtn");
+    tb.hidden = false;
+    var setTB = function(){
+      tb.disabled = EV.on;
+      tb.innerHTML = EV.on ? "… EVENTO IN CORSO<small>pagina di prova</small>"
+                   : siteMode ? "↺ TORNA AL COUNTDOWN<small>pagina di prova</small>"
+                   : "▶ AVVIA L'EVENTO<small>pagina di prova</small>";
+    };
+    tb.addEventListener("click", function(e){
+      e.stopPropagation(); unlock();
+      if (EV.on) return;
+      if (siteMode) backToCountdown(); else startEvent(false);
+      setTB();
+    });
+    setTB(); setInterval(setTB, 250);
+  }
+
+  // se la pagina si apre dopo le 15:00 del 17/11 → direttamente il sito ufficiale
+  if (launchedAtLoad || new URLSearchParams(location.search).get("sito")) showSite(false);
+})();
+</script>
+</body>
+</html>
