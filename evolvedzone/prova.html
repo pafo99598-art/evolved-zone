@@ -385,6 +385,47 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 @keyframes scanl{0%{transform:translateY(0)}100%{transform:translateY(260px)}}
 .arr-hint{text-align:center;margin-top:5vh;color:var(--muted);font:700 .7rem var(--disp);letter-spacing:.3em;animation:bob 2s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.arr{height:auto}.arr-pin{position:static;height:auto;padding:40px 0}.arr-track{flex-direction:column;align-items:center;transform:none!important}.arr-card{transform:none;opacity:1;filter:none}.arr-line,.arr-hint{display:none}}
+
+/* «IL GIOCO» cliccabile */
+.g-open{display:block;margin:0 auto;border:0;background:none;cursor:pointer;color:inherit;padding:4px 10px}
+.g-open h2{transition:transform .25s,text-shadow .25s}
+.g-open:hover h2{transform:scale(1.04);text-shadow:0 0 22px var(--pink),0 0 50px var(--cyan)}
+.g-hint{display:inline-flex;gap:6px;align-items:center;margin-top:8px;padding:7px 14px;border-radius:99px;border:1.5px solid var(--cyan);color:var(--cyan);
+ font:800 .66rem var(--disp);letter-spacing:.18em;background:#07030fcc;animation:invite 1.6s ease-in-out infinite}
+/* ARMADIETTO 3D */
+#museo{position:fixed;inset:0;z-index:9;overflow-y:auto;-webkit-overflow-scrolling:touch;visibility:hidden;
+ background:linear-gradient(180deg,#05020d,#12052e),repeating-linear-gradient(90deg,transparent 0 119px,#3fd0ff10 119px 120px),repeating-linear-gradient(0deg,transparent 0 119px,#ff3fd010 119px 120px);
+ clip-path:circle(0 at var(--ox,50%) var(--oy,30%));transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+#museo.open{clip-path:circle(150% at var(--ox,50%) var(--oy,30%));visibility:visible}
+.mu-head{text-align:center;padding:70px 16px 10px}
+.mu-head h2{font:900 clamp(2rem,8vw,4rem)/1 var(--disp);color:#fff;letter-spacing:.06em;text-shadow:0 0 14px var(--cyan),0 0 40px var(--violet)}
+.mu-head p{color:var(--muted);margin-top:10px}
+.mu-grid{max-width:1180px;margin:0 auto;padding:10px 16px 90px}
+.mu-sec{margin-top:34px}
+.mu-sec h3{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:16px;
+ font:900 clamp(1.1rem,4vw,1.6rem) var(--disp);color:#fff;letter-spacing:.08em;text-shadow:0 0 14px var(--c)}
+.mu-sec h3 small{font:600 .75rem Inter,system-ui,sans-serif;color:var(--muted);letter-spacing:0;text-shadow:none}
+.mu-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,18px)}
+.mu-cell{position:relative;aspect-ratio:3/4;border-radius:10px;border:1.5px solid color-mix(in srgb,var(--c) 60%,transparent);cursor:pointer;overflow:hidden;padding:0;color:#fff;
+ background:linear-gradient(180deg,#ffffff0d,transparent 30%),radial-gradient(ellipse at 50% 92%,color-mix(in srgb,var(--c) 40%,transparent),transparent 55%),#0b0418;
+ box-shadow:inset 0 0 30px #000a,0 0 0 4px #07030f,0 0 0 5px #ffffff14;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,box-shadow .25s}
+#museo.open .mu-cell{opacity:1;transform:none;transition-delay:var(--d)}
+.mu-cell:hover{box-shadow:inset 0 0 30px #000a,0 0 0 4px #07030f,0 0 22px var(--c)}
+.mu-cell::before{content:"";position:absolute;left:10%;right:10%;bottom:6%;height:7%;border-radius:50%;border:1.5px solid var(--c);box-shadow:0 0 14px var(--c);opacity:.7}
+.mu-cell::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,#ffffff12 50%,transparent 60%);pointer-events:none}
+.mu-cell canvas{position:absolute;inset:6% 4% 16%;width:92%;height:78%}
+.mu-cell b{position:absolute;left:0;right:0;bottom:8px;font:800 clamp(.55rem,1.8vw,.8rem) var(--disp);letter-spacing:.08em;text-align:center;text-shadow:0 0 8px #000}
+.mu-tag{position:absolute;left:8px;top:6px;font:900 .7rem var(--disp);color:var(--c)}
+.mu-load,.mu-soon{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.75rem;line-height:1.5}
+#muBig{position:fixed;inset:0;z-index:12;display:grid;place-items:center;padding:16px;background:#07030fe8}
+.mu-big-box{position:relative;width:min(560px,100%);height:min(78vh,700px);border-radius:16px;border:2px solid var(--c);box-shadow:0 0 40px color-mix(in srgb,var(--c) 50%,transparent);
+ background:radial-gradient(ellipse at 50% 88%,color-mix(in srgb,var(--c) 40%,transparent),transparent 55%),#0b0418;display:flex;flex-direction:column;align-items:center;padding:16px}
+.mu-big-box b{font:900 1.3rem var(--disp);letter-spacing:.06em;text-shadow:0 0 14px var(--c)}
+.mu-big-box canvas{flex:1;width:100%;min-height:0;cursor:grab;touch-action:none}
+.mu-big-box small{color:var(--muted)}
+.arr-week{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:99px;border:1.5px solid var(--yellow);color:var(--yellow);font:800 .7rem var(--disp);letter-spacing:.16em;
+ box-shadow:0 0 16px #ffe14d55;animation:invite 2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){#museo{transition:none}.g-hint,.arr-week{animation:none}}
 </style>
 </head>
 <body>
@@ -415,7 +456,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   <div class="qr-card">
     <button class="qr-x" type="button" aria-label="Chiudi">✕</button>
     <span class="c-tag">EVOLVED ZONE</span>
-    <div class="qr-img"><svg width="258" height="258" class="segno"><g transform="scale(6)"><path fill="#fff" d="M0 0h43v43h-43z"/><path class="qrline" stroke="#12052e" d="M3 3.5h7m5 0h3m2 0h2m3 0h5m3 0h7m-37 1h1m5 0h1m1 0h2m1 0h3m1 0h4m2 0h2m7 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m3 0h2m1 0h1m4 0h1m2 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h8m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h2m1 0h2m1 0h2m2 0h2m3 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h2m3 0h5m1 0h1m2 0h3m4 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h3m1 0h1m4 0h1m1 0h2m1 0h7m-28 1h1m1 0h4m1 0h1m3 0h1m1 0h4m1 0h1m3 0h1m2 0h1m2 0h2m1 0h2m1 0h1m-35 1h1m2 0h1m2 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h3m1 0h1m1 0h4m-31 1h1m1 0h1m2 0h2m2 0h1m1 0h2m3 0h1m1 0h4m1 0h1m1 0h2m1 0h1m3 0h1m-37 1h1m4 0h1m1 0h4m2 0h1m2 0h1m1 0h2m3 0h2m1 0h1m2 0h6m1 0h1m-36 1h3m2 0h3m3 0h2m1 0h1m2 0h3m3 0h1m2 0h1m2 0h1m4 0h1m-36 1h5m4 0h1m1 0h1m1 0h1m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m2 0h1m1 0h2m-35 1h2m1 0h3m4 0h1m3 0h4m1 0h3m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m-36 1h1m2 0h2m3 0h1m1 0h4m3 0h1m3 0h2m5 0h8m-37 1h2m2 0h5m1 0h1m1 0h5m1 0h2m1 0h1m1 0h3m4 0h1m3 0h1m1 0h1m-37 1h3m1 0h1m4 0h4m1 0h2m1 0h3m1 0h2m1 0h1m2 0h2m2 0h1m3 0h1m-36 1h2m4 0h3m1 0h3m1 0h4m1 0h5m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-36 1h1m1 0h2m2 0h1m1 0h1m1 0h8m1 0h1m1 0h1m2 0h1m2 0h1m6 0h2m-37 1h1m2 0h1m2 0h1m4 0h4m2 0h4m1 0h1m3 0h5m1 0h1m-33 1h6m2 0h1m1 0h1m2 0h1m1 0h2m2 0h2m2 0h1m1 0h4m2 0h3m-34 1h2m4 0h1m1 0h5m1 0h2m1 0h4m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-37 1h1m1 0h2m1 0h1m1 0h1m1 0h3m3 0h2m1 0h2m2 0h2m2 0h4m1 0h1m2 0h1m-34 1h1m3 0h7m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m-34 1h1m1 0h2m1 0h1m7 0h2m2 0h1m2 0h2m1 0h1m1 0h4m3 0h2m-34 1h2m4 0h1m1 0h3m2 0h1m1 0h2m1 0h2m4 0h2m1 0h1m2 0h1m1 0h2m1 0h2m-37 1h1m1 0h3m4 0h3m1 0h1m1 0h2m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m-35 1h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h1m2 0h3m2 0h4m1 0h8m-27 1h5m2 0h4m2 0h2m2 0h1m2 0h1m3 0h3m-35 1h7m3 0h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h5m-37 1h1m5 0h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h2m2 0h2m1 0h2m3 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h7m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m3 0h1m2 0h1m4 0h1m-36 1h1m1 0h3m1 0h1m10 0h1m3 0h4m3 0h1m2 0h3m1 0h2m-37 1h1m5 0h1m1 0h7m1 0h3m8 0h1m1 0h4m1 0h3m-37 1h7m3 0h1m2 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1"/></g></svg></div>
+    <div class="qr-img"><svg viewBox="0 0 258 258" class="segno"><g transform="scale(6)"><path fill="#fff" d="M0 0h43v43h-43z"/><path class="qrline" stroke="#12052e" d="M3 3.5h7m5 0h3m2 0h2m3 0h5m3 0h7m-37 1h1m5 0h1m1 0h2m1 0h3m1 0h4m2 0h2m7 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m3 0h2m1 0h1m4 0h1m2 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h8m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h2m1 0h2m1 0h2m2 0h2m3 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h2m3 0h5m1 0h1m2 0h3m4 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h3m1 0h1m4 0h1m1 0h2m1 0h7m-28 1h1m1 0h4m1 0h1m3 0h1m1 0h4m1 0h1m3 0h1m2 0h1m2 0h2m1 0h2m1 0h1m-35 1h1m2 0h1m2 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h3m1 0h1m1 0h4m-31 1h1m1 0h1m2 0h2m2 0h1m1 0h2m3 0h1m1 0h4m1 0h1m1 0h2m1 0h1m3 0h1m-37 1h1m4 0h1m1 0h4m2 0h1m2 0h1m1 0h2m3 0h2m1 0h1m2 0h6m1 0h1m-36 1h3m2 0h3m3 0h2m1 0h1m2 0h3m3 0h1m2 0h1m2 0h1m4 0h1m-36 1h5m4 0h1m1 0h1m1 0h1m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m2 0h1m1 0h2m-35 1h2m1 0h3m4 0h1m3 0h4m1 0h3m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m-36 1h1m2 0h2m3 0h1m1 0h4m3 0h1m3 0h2m5 0h8m-37 1h2m2 0h5m1 0h1m1 0h5m1 0h2m1 0h1m1 0h3m4 0h1m3 0h1m1 0h1m-37 1h3m1 0h1m4 0h4m1 0h2m1 0h3m1 0h2m1 0h1m2 0h2m2 0h1m3 0h1m-36 1h2m4 0h3m1 0h3m1 0h4m1 0h5m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-36 1h1m1 0h2m2 0h1m1 0h1m1 0h8m1 0h1m1 0h1m2 0h1m2 0h1m6 0h2m-37 1h1m2 0h1m2 0h1m4 0h4m2 0h4m1 0h1m3 0h5m1 0h1m-33 1h6m2 0h1m1 0h1m2 0h1m1 0h2m2 0h2m2 0h1m1 0h4m2 0h3m-34 1h2m4 0h1m1 0h5m1 0h2m1 0h4m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-37 1h1m1 0h2m1 0h1m1 0h1m1 0h3m3 0h2m1 0h2m2 0h2m2 0h4m1 0h1m2 0h1m-34 1h1m3 0h7m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m-34 1h1m1 0h2m1 0h1m7 0h2m2 0h1m2 0h2m1 0h1m1 0h4m3 0h2m-34 1h2m4 0h1m1 0h3m2 0h1m1 0h2m1 0h2m4 0h2m1 0h1m2 0h1m1 0h2m1 0h2m-37 1h1m1 0h3m4 0h3m1 0h1m1 0h2m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m-35 1h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h1m2 0h3m2 0h4m1 0h8m-27 1h5m2 0h4m2 0h2m2 0h1m2 0h1m3 0h3m-35 1h7m3 0h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h5m-37 1h1m5 0h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h2m2 0h2m1 0h2m3 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h7m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m3 0h1m2 0h1m4 0h1m-36 1h1m1 0h3m1 0h1m10 0h1m3 0h4m3 0h1m2 0h3m1 0h2m-37 1h1m5 0h1m1 0h7m1 0h3m8 0h1m1 0h4m1 0h3m-37 1h7m3 0h1m2 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1"/></g></svg></div>
     <p>Inquadra con la fotocamera per aprire il sito</p>
     <div class="qr-act"><button type="button" id="qrCopy">COPIA LINK</button><button type="button" id="qrShare">CONDIVIDI</button></div>
   </div>
@@ -465,7 +506,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 
   <section class="s-sec" id="gioco">
     <div class="g-head rv">
-      <h2>IL GIOCO</h2>
+      <button type="button" class="g-open" id="muOpen" aria-label="Apri l'armadietto 3D"><h2>IL GIOCO</h2><span class="g-hint">TOCCA · ARMADIETTO 3D ▸</span></button>
       <p class="lore">Nel futuro i ghiacciai si sono sciolti e la terra si è spezzata: il mondo è diventato un arcipelago di <b>piccolissime isole</b>. Alcune sono vere, come Figline, Incisa, Leccio e Burchio. Altre sono artificiali, stampate in 3D.<br>Un elicottero ti lascia su una di queste. <b>Ogni partita è un film.</b></p>
     </div>
     <div class="chapters" id="chapters"></div>
@@ -474,40 +515,19 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   <section class="s-sec" id="isole">
     <div class="panel rv">
       <h2>LE ISOLE</h2>
-      <p class="sub">Il mondo si è spezzato in tante piccole isole. Si parte da Simple Island; le isole vere del Valdarno arrivano con gli aggiornamenti. Tocca un'isola per scoprirla.</p>
+      <p class="sub">Il mondo si è spezzato in tante piccole isole. Si parte da Simple Island; poi arrivano le isole vere del Valdarno e nuove isole da tutto il mondo. Tocca un'isola per scoprirla.</p>
       <div class="isles2" id="islesList"></div>
-    </div>
-  </section>
-
-  <section class="s-sec" id="personaggi">
-    <div class="panel rv">
-      <h2>PERSONAGGI E ZAINI</h2>
-      <p class="sub">I modelli 3D veri del gioco. Trascina per girarli.</p>
-      <div class="vw-tabs" role="tablist">
-        <button type="button" class="on" data-tab="MD">PERSONAGGI</button>
-        <button type="button" data-tab="PD">ZAINI</button>
-      </div>
-      <div class="viewer" id="viewer">
-        <canvas id="vwCanvas" aria-label="Modello 3D"></canvas>
-        <div class="vw-load" id="vwLoad">Caricamento modelli 3D…</div>
-        <button type="button" class="vw-arrow l" id="vwPrev" aria-label="Precedente">◂</button>
-        <button type="button" class="vw-arrow r" id="vwNext" aria-label="Successivo">▸</button>
-        <div class="vw-name"><b id="vwName">—</b><small id="vwCount"></small></div>
-      </div>
-      <div class="vw-dots" id="vwDots"></div>
-      <p class="sub small">Nel gioco ogni modello cambia colori, accessori e luci: da questi nascono tutti i personaggi e gli zaini.</p>
     </div>
   </section>
 
   <section id="arrivo" class="arr">
     <div class="arr-pin">
-      <div class="arr-head"><span class="c-tag">PROSSIMAMENTE</span><h2>IN ARRIVO</h2><p>Evolved Zone cresce partita dopo partita.</p></div>
+      <div class="arr-head"><span class="c-tag">PROSSIMAMENTE</span><h2>IN ARRIVO</h2><p>Evolved Zone cresce partita dopo partita.</p><p class="arr-week">⚡ UN AGGIORNAMENTO OGNI SETTIMANA</p></div>
       <div class="arr-track" id="arrTrack">
         <div class="arr-line"><i id="arrFill"></i></div>
-        <article class="arr-card" style="--c:#3fd0ff"><span class="arr-n">01</span><i>🏝️</i><h3>LE ISOLE DEL VALDARNO</h3><p>Figline, Incisa, Burchio e Leccio, il più fedeli possibile alla realtà.</p></article>
+        <article class="arr-card" style="--c:#3fd0ff"><span class="arr-n">01</span><i>🌍</i><h3>NUOVE ISOLE DAL MONDO</h3><p>Prima le isole del Valdarno, fedeli alla realtà. Poi nuove isole da tutto il mondo spezzato.</p></article>
         <article class="arr-card" style="--c:#ffe14d"><span class="arr-n">02</span><i>🎯</i><h3>MISSIONI</h3><p>Sei mandato sull'isola per un compito: lo scoprirai solo giocando.</p></article>
-        <article class="arr-card" style="--c:#ff7a3c"><span class="arr-n">03</span><i>🔥</i><h3>THE BURN DI FUOCO</h3><p>Dopo la stagione neon il cerchio torna fuoco vero. E in rare partite, solo fuoco.</p></article>
-        <article class="arr-card" style="--c:#ff3fd0"><span class="arr-n">04</span><i>🌆</i><h3>NUOVE STAGIONI</h3><p>Dopo il Neon '80, nuove atmosfere e nuovi oggetti a ogni stagione.</p></article>
+        <article class="arr-card" style="--c:#ff3fd0"><span class="arr-n">03</span><i>🌆</i><h3>NUOVE STAGIONI</h3><p>Dopo il Neon '80, nuove atmosfere e nuovi oggetti a ogni stagione.</p></article>
       </div>
       <div class="arr-hint">SCORRI ▸</div>
     </div>
@@ -547,6 +567,12 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     <button class="replay" id="replay" type="button">↺ RIVEDI L'ESPLOSIONE</button>
     <p>Evolved Zone · Valdarno, Italia · 2026</p>
   </footer>
+</div>
+<div id="museo" hidden role="dialog" aria-modal="true" aria-label="Armadietto 3D">
+  <button class="d-close mu-close" type="button" aria-label="Chiudi">✕</button>
+  <div class="mu-head"><span class="c-tag">EVOLVED ZONE · ARCHIVIO</span><h2>L'ARMADIETTO</h2><p>Tutti i modelli 3D del gioco, in vetrina. Tocca un modello per girarlo.</p></div>
+  <div class="mu-grid" id="muGrid"></div>
+  <div id="muBig" hidden><div class="mu-big-box"><button class="qr-x mu-x" type="button" aria-label="Chiudi">✕</button><b></b><canvas></canvas><small>Trascina per girarlo</small></div></div>
 </div>
 <div id="detail" hidden role="dialog" aria-modal="true" aria-label="Dettagli"></div>
 <button class="testbtn" id="testBtn" type="button" hidden></button>
@@ -958,7 +984,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     else { cw = Math.min(vw*.15, vh*.30, 240);
       pos = [[-.32,-.25],[.32,-.25],[-.38,.02],[.38,.02],[-.30,.27],[.30,.27]]; }
     var pick = IMGOBJ.slice().sort(function(){ return Math.random() - .5; });            // mescolo
-    return pos.map(function(p,i){ return {x:vw/2 + p[0]*vw, y:vh/2 + p[1]*vh, cw:cw, col:EVCOL[i], beamT:BEAM_T[i], img:pick[i], shown:false}; });
+    return pos.map(function(p,i){ return {x:vw/2 + p[0]*vw, y:vh/2 + p[1]*vh, cw:cw, spread:port ? .3 : .34, col:EVCOL[i], beamT:BEAM_T[i], img:pick[i], shown:false}; });
   }
 
   /* ---------- COLONNA SONORA DELL'EVENTO (suonata dal browser, nessun file) ---------- */
@@ -1191,46 +1217,88 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   function ease(x){ x = clamp01(x); return x*x*(3-2*x); }
   function easeIO(x){ x = clamp01(x); return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
 
-  // un fascio di luce con l'immagine proiettata dentro
+  // un fascio di luce che esce dal cristallo fino OLTRE il bordo dello schermo, con l'immagine proiettata in prospettiva.
+  // L'immagine «piegata» viene preparata UNA volta per fascio (cache), poi a ogni fotogramma si disegna con un solo comando.
+  function beamGeom(b, cxp, cyp, sc){
+    var dx = b.x - cxp, dy = b.y - cyp, ang = Math.atan2(dy, dx), ca = Math.cos(ang), sa = Math.sin(ang);
+    var tx = ca > 0 ? (innerWidth - cxp)/ca : ca < 0 ? -cxp/ca : 1e9, ty = sa > 0 ? (innerHeight - cyp)/sa : sa < 0 ? -cyp/sa : 1e9;
+    return {ang:ang, ca:ca, sa:sa, Lfull:Math.min(tx, ty)*1.25 + 60, w0:sc*.16};
+  }
+  function beamCache(b, G){
+    var img = b.img, nw = img.naturalWidth, nh = img.naturalHeight, D = Math.min(dpr, 1.5);
+    var hw = function(x){ return G.w0 + x*b.spread; }, L = G.Lfull, steep = Math.abs(G.sa) > .62;
+    var c = document.createElement("canvas"), x = c.getContext("2d"); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = "high";
+    var N, k, f0, f1;
+    if (!steep){
+      // coordinate del fascio: asse x lungo il fascio, y di traverso
+      var xa = L*.12, span = L - xa, H = hw(L)*2, asp = span/H, sw = nw, sh = nw/asp; if (sh > nh){ sh = nh; sw = nh*asp; }
+      var sx0 = (nw - sw)/2, sy0 = (nh - sh)/2, left = G.ca < 0;
+      c.width = Math.ceil(L*D); c.height = Math.ceil(H*D); N = Math.max(120, Math.min(600, Math.round(span/2)));
+      for (k = 0; k < N; k++){
+        f0 = k/N; f1 = (k+1)/N; var X0 = xa + span*f0, X1 = xa + span*f1 + .7, hh = hw((X0+X1)/2), u = left ? 1 - f1 : f0;
+        x.globalAlpha = .55 + .45*Math.min(1, f0*2.2);
+        x.drawImage(img, sx0 + sw*u, sy0, sw/N + .6, sh, X0*D, (H/2 - hh)*D, (X1-X0)*D, hh*2*D);
+      }
+      return {c:c, steep:false, D:D, H:H};
+    }
+    // fascio quasi verticale: fasce orizzontali in coordinate dello schermo (immagine sempre dritta)
+    var as = Math.abs(G.sa), xa2 = L*.1, span2 = L - xa2, wEnd = hw(L)*2/as;
+    var asp2 = wEnd/(span2*as), sw2 = nw, sh2 = nw/asp2; if (sh2 > nh){ sh2 = nh; sw2 = nh*asp2; }
+    var sx2 = (nw - sw2)/2, sy2 = (nh - sh2)/2, up = G.sa < 0;
+    // rettangolo che contiene il fascio, rispetto al cristallo
+    var ex = G.ca*L, ey = G.sa*L, minX = Math.min(0, ex - wEnd/2), maxX = Math.max(0, ex + wEnd/2), minY = Math.min(0, ey), maxY = Math.max(0, ey);
+    c.width = Math.ceil((maxX-minX)*D); c.height = Math.ceil((maxY-minY)*D); N = Math.max(120, Math.min(600, Math.round(span2*as/2)));
+    for (k = 0; k < N; k++){
+      f0 = k/N; f1 = (k+1)/N; var xm = xa2 + span2*(f0+f1)/2;
+      var yA = G.sa*(xa2 + span2*f0), yB = G.sa*(xa2 + span2*f1), cx = G.ca*xm, wr = hw(xm)*2/as, v = up ? 1 - f1 : f0;
+      x.globalAlpha = .55 + .45*Math.min(1, f0*2.2);
+      x.drawImage(img, sx2, sy2 + sh2*v, sw2, sh2/N + .6, (cx - wr/2 - minX)*D, (Math.min(yA,yB) - minY)*D, wr*D, (Math.abs(yB-yA)+.8)*D);
+    }
+    return {c:c, steep:true, D:D, ox:minX, oy:minY};
+  }
   function drawBeam(b, i, cxp, cyp, sc, et, fade, widen){
-    var grow = ease((et - b.beamT)/.35); if (grow <= 0) return;
-    var dx = b.x - cxp, dy = b.y - cyp, l = Math.hypot(dx,dy)||1, ux = dx/l, uy = dy/l, px = -uy, py = ux;
-    var Lb = l*1.45*grow, ex = cxp + ux*Lb, ey = cyp + uy*Lb;
-    var w0 = sc*.16, w1 = b.cw*1.3*grow*widen;
-    var flick = .82 + .18*Math.sin(et*31 + i*2), maxp = et > MAXT && !EV.exploded ? .5+.5*Math.abs(Math.sin(et*24)) : 0;
-    var D = dpr;
+    var grow = ease((et - b.beamT)/.45); if (grow <= 0) return;
+    if (!b.G) b.G = beamGeom(b, cxp, cyp, sc);
+    var G = b.G, L = G.Lfull*grow, D = dpr, spread = b.spread*widen, w0 = G.w0, hwL = w0 + L*spread;
+    var flick = .85 + .15*Math.sin(et*31 + i*2), maxp = et > MAXT && !EV.exploded ? .5+.5*Math.abs(Math.sin(et*24)) : 0;
+    var ia = clamp01((et - b.beamT - .15)/.55) * fade;
+    if (!b.C && b.img.complete && b.img.naturalWidth) b.C = beamCache(b, G);
+    // forma del fascio in coordinate dello schermo
+    var px = -G.sa, py = G.ca, ex = cxp + G.ca*L, ey = cyp + G.sa*L;
     bctx.save();
     bctx.beginPath();
-    bctx.moveTo((cxp+px*w0)*D,(cyp+py*w0)*D); bctx.lineTo((ex+px*w1)*D,(ey+py*w1)*D);
-    bctx.lineTo((ex-px*w1)*D,(ey-py*w1)*D); bctx.lineTo((cxp-px*w0)*D,(cyp-py*w0)*D); bctx.closePath();
-    bctx.clip();
-    // l'immagine RIEMPIE tutto il fascio: copre il rettangolo che contiene il fascio (dal cristallo alla fine)
-    var ia = clamp01((et - b.beamT - .2)/.5) * fade;
-    if (b.img.complete && b.img.naturalWidth && ia > 0){
-      var xs = [cxp+px*w0, ex+px*w1, ex-px*w1, cxp-px*w0], ys = [cyp+py*w0, ey+py*w1, ey-py*w1, cyp-py*w0];
-      var x0 = Math.min.apply(0,xs), x1 = Math.max.apply(0,xs), y0 = Math.min.apply(0,ys), y1 = Math.max.apply(0,ys);
-      var bw = x1-x0, bh = y1-y0, nw = b.img.naturalWidth, nh = b.img.naturalHeight;
-      var z = 1.12 - .12*ease((et - b.beamT)/4), k = Math.max(bw/nw, bh/nh)*z, iw = nw*k, ih = nh*k;
+    bctx.moveTo((cxp+px*w0)*D,(cyp+py*w0)*D); bctx.lineTo((ex+px*hwL)*D,(ey+py*hwL)*D);
+    bctx.lineTo((ex-px*hwL)*D,(ey-py*hwL)*D); bctx.lineTo((cxp-px*w0)*D,(cyp-py*w0)*D); bctx.closePath(); bctx.clip();
+    if (b.C && ia > 0){
+      var C = b.C, k = D/C.D, z = 1 + .14*(1 - ease((et - b.beamT)/4)) + (widen - 1)*.4;   // lento zoom indietro
       bctx.globalAlpha = ia;
-      bctx.drawImage(b.img, (x0 + bw/2 - iw/2)*D, (y0 + bh/2 - ih/2)*D, iw*D, ih*D);
+      if (!C.steep){
+        bctx.save(); bctx.translate(cxp*D, cyp*D); bctx.rotate(G.ang); if (G.ca < 0) bctx.scale(1,-1);
+        bctx.scale(z, z); bctx.drawImage(C.c, 0, -C.H/2*D, C.c.width*k, C.c.height*k); bctx.restore();
+      } else {
+        bctx.save(); bctx.translate(cxp*D, cyp*D); bctx.scale(z, z);
+        bctx.drawImage(C.c, C.ox*D, C.oy*D, C.c.width*k, C.c.height*k); bctx.restore();
+      }
+      // riflesso lucido che scorre lungo il fascio (pannello olografico)
+      var sp = ((et*.35 + i*.17) % 1.4) - .2, gx = cxp + G.ca*L*sp, gy = cyp + G.sa*L*sp;
+      var gl = bctx.createRadialGradient(gx*D, gy*D, 0, gx*D, gy*D, hwL*.9*D);
+      gl.addColorStop(0,"rgba(255,255,255,"+(.16*ia).toFixed(3)+")"); gl.addColorStop(1,"rgba(255,255,255,0)");
+      bctx.globalCompositeOperation = "lighter"; bctx.fillStyle = gl; bctx.fillRect(0,0,evB.width,evB.height);
       bctx.globalAlpha = 1;
     }
-    // luce del fascio sopra l'immagine: bianca vicino al cristallo, colorata e leggera dove c'è l'immagine
-    var g = bctx.createLinearGradient(cxp*D,cyp*D,ex*D,ey*D);
+    // luce del fascio: bianca vicino al cristallo, poi solo colore così l'immagine resta visibile
+    var g = bctx.createLinearGradient(cxp*D, cyp*D, ex*D, ey*D);
     g.addColorStop(0, "rgba(255,255,255,"+((.9*flick)*fade).toFixed(3)+")");
-    g.addColorStop(.16, hexA(b.col, (.38*flick + .3*maxp)*fade));
-    g.addColorStop(.36, hexA(b.col, (.03 + .3*maxp)*fade));
-    g.addColorStop(1, hexA(b.col, (.0 + .25*maxp)*fade));
+    g.addColorStop(.1, hexA(b.col, (.45*flick + .3*maxp)*fade));
+    g.addColorStop(.28, hexA(b.col, (.04 + .3*maxp)*fade));
+    g.addColorStop(1, hexA(b.col, (.0 + .22*maxp)*fade));
     bctx.globalCompositeOperation = "lighter"; bctx.fillStyle = g; bctx.fillRect(0,0,evB.width,evB.height);
-    // righe di scansione nel fascio (effetto proiettore)
-    bctx.fillStyle = "rgba(0,0,0,.07)";
-    for (var y = ((et*60)%6)*D; y < evB.height; y += 6*D) bctx.fillRect(0,y,evB.width,2*D);
     bctx.restore();
     // bordi al neon
     bctx.globalCompositeOperation = "lighter";
-    bctx.strokeStyle = hexA(b.col, .9*fade); bctx.lineWidth = 2*D;
-    bctx.beginPath(); bctx.moveTo((cxp+px*w0)*D,(cyp+py*w0)*D); bctx.lineTo((ex+px*w1)*D,(ey+py*w1)*D);
-    bctx.moveTo((cxp-px*w0)*D,(cyp-py*w0)*D); bctx.lineTo((ex-px*w1)*D,(ey-py*w1)*D); bctx.stroke();
+    bctx.strokeStyle = hexA(b.col, .95*fade); bctx.lineWidth = 2.6*D;
+    bctx.beginPath(); bctx.moveTo((cxp+px*w0)*D,(cyp+py*w0)*D); bctx.lineTo((ex+px*hwL)*D,(ey+py*hwL)*D);
+    bctx.moveTo((cxp-px*w0)*D,(cyp-py*w0)*D); bctx.lineTo((ex-px*hwL)*D,(ey-py*hwL)*D); bctx.stroke();
     bctx.globalCompositeOperation = "source-over";
   }
 
@@ -1491,89 +1559,6 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   if (navigator.share) qrShare.addEventListener("click", function(){ navigator.share({title:"Evolved Zone", url:SITE_URL}).catch(function(){}); });
   else qrShare.hidden = true;
 
-  /* =========================================================
-     PERSONAGGI E ZAINI 3D (modelli veri del gioco, da char52.js)
-     Three.js e i modelli si caricano solo quando arrivi alla sezione.
-     ========================================================= */
-  var VW_NAMES = {MD:{m:"UOMO",f:"DONNA",samurai:"SAMURAI",rapper:"RAPPER",lava:"GOLEM DI LAVA",diavolo:"DIAVOLO DEL BURN",robotec:"ROBOT",guardiano:"GUARDIANO"},
-                  PD:{base:"ZAINO BASE",anfora:"ANFORA",orsetto:"ORSETTO",pianeta:"PIANETA",portale:"PORTALE",schermo:"SCHERMO",scudo:"SCUDO",uovo:"UOVO"}};
-  var VW_ORDER = {MD:["m","f","samurai","rapper","lava","diavolo","robotec","guardiano"], PD:["base","anfora","orsetto","pianeta","portale","schermo","scudo","uovo"]};
-  var VW = {started:false, data:null, tab:"MD", idx:0, cache:{}, rotY:0, rotX:.12, drag:null, vel:.5};
-  var vwCanvas = document.getElementById("vwCanvas"), vwLoad = document.getElementById("vwLoad");
-  function vwScript(src){ return new Promise(function(ok,ko){ var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
-  function vwStart(){
-    if (VW.started) return; VW.started = true;
-    Promise.all([
-      window.THREE ? Promise.resolve() : vwScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"),
-      fetch("assets/modelli.json").then(function(r){ return r.json(); })
-    ]).then(function(res){ VW.data = res[1]; vwInit(); })
-      .catch(function(){ vwLoad.textContent = "Modelli 3D non disponibili: ricarica la pagina."; VW.started = false; });
-  }
-  function vwDec(b, T){ var s = atob(b), u = new Uint8Array(s.length); for (var i=0;i<s.length;i++) u[i] = s.charCodeAt(i); return new T(u.buffer); }
-  function vwMesh(D){
-    var q = vwDec(D.pos, Uint16Array), n = D.nv, p = new Float32Array(n*3), k, i;
-    for (i=0;i<n;i++) for (k=0;k<3;k++) p[i*3+k] = D.lo[k] + q[i*3+k]/65535*(D.hi[k]-D.lo[k]);
-    var uq = vwDec(D.uv, Uint16Array), uv = new Float32Array(n*2); for (i=0;i<n*2;i++) uv[i] = uq[i]/65535;
-    var g = new THREE.BufferGeometry();
-    g.setAttribute("position", new THREE.BufferAttribute(p,3)); g.setAttribute("uv", new THREE.BufferAttribute(uv,2));
-    if (D.i) g.setIndex(new THREE.BufferAttribute(vwDec(D.i, Uint16Array),1));
-    g.computeVertexNormals(); g.computeBoundingBox();
-    var im = new Image(), t = new THREE.Texture(im); t.flipY = false; t.encoding = THREE.sRGBEncoding;
-    im.onload = function(){ t.needsUpdate = true; }; im.src = D.tex;
-    var mesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide}));
-    var bb = g.boundingBox, c = bb.getCenter(new THREE.Vector3()), sz = bb.getSize(new THREE.Vector3());
-    var s = (D.i && D.nv < 5000 ? 1.25 : 1.7) / Math.max(sz.x, sz.y, sz.z);   // zaini un po' più piccoli mesh.scale.setScalar(s); mesh.position.set(-c.x*s, -c.y*s, -c.z*s);
-    var grp = new THREE.Group(); grp.add(mesh); return grp;
-  }
-  function vwInit(){
-    var r = VW.r = new THREE.WebGLRenderer({canvas:vwCanvas, antialias:true, alpha:true});
-    r.outputEncoding = THREE.sRGBEncoding; r.setPixelRatio(Math.min(devicePixelRatio||1, 2));
-    VW.scene = new THREE.Scene(); VW.cam = new THREE.PerspectiveCamera(32, 1, .1, 50); VW.cam.position.set(0, .15, 3.4);
-    VW.scene.add(new THREE.HemisphereLight(0xffe6ff, 0x2a1050, 1.05));
-    var d1 = new THREE.DirectionalLight(0xffffff, .9); d1.position.set(2,3,4); VW.scene.add(d1);
-    var d2 = new THREE.DirectionalLight(0x3fd0ff, .7); d2.position.set(-3,1,-2); VW.scene.add(d2);
-    var d3 = new THREE.DirectionalLight(0xff3fd0, .6); d3.position.set(3,0,-3); VW.scene.add(d3);
-    VW.pivot = new THREE.Group(); VW.scene.add(VW.pivot);
-    vwLoad.hidden = true; vwShow(); vwLoop();
-  }
-  function vwShow(){
-    if (!VW.data) return;
-    var key = VW_ORDER[VW.tab][VW.idx], id = VW.tab + key;
-    if (!VW.cache[id]) VW.cache[id] = vwMesh(VW.data[VW.tab][key]);
-    while (VW.pivot.children.length) VW.pivot.remove(VW.pivot.children[0]);
-    VW.pivot.add(VW.cache[id]); VW.pop = 0;
-    document.getElementById("vwName").textContent = VW_NAMES[VW.tab][key];
-    document.getElementById("vwCount").textContent = (VW.idx+1) + " / " + VW_ORDER[VW.tab].length;
-    var dots = document.getElementById("vwDots"); dots.innerHTML = "";
-    VW_ORDER[VW.tab].forEach(function(k,i){ var b = document.createElement("button"); b.type = "button"; b.className = i === VW.idx ? "on" : "";
-      b.setAttribute("aria-label", VW_NAMES[VW.tab][k]); b.addEventListener("click", function(){ VW.idx = i; vwShow(); }); dots.appendChild(b); });
-  }
-  function vwLoop(){
-    if (!VW.r) return;
-    var w = vwCanvas.clientWidth, h = vwCanvas.clientHeight;
-    if (vwCanvas.width !== Math.round(w*VW.r.getPixelRatio())){ VW.r.setSize(w, h, false); VW.cam.aspect = w/h; VW.cam.updateProjectionMatrix(); }
-    if (!VW.drag) VW.rotY += .008 * VW.vel; VW.vel += (1 - VW.vel)*.03;
-    VW.pop = Math.min(1, (VW.pop||0) + .07); var s = .6 + .4*(1 - Math.pow(1-VW.pop, 3));
-    VW.pivot.rotation.set(VW.rotX, VW.rotY, 0); VW.pivot.scale.setScalar(s);
-    var rr = vwCanvas.getBoundingClientRect();
-    if (rr.bottom > 0 && rr.top < innerHeight && !site.hidden) VW.r.render(VW.scene, VW.cam);
-    requestAnimationFrame(vwLoop);
-  }
-  vwCanvas.addEventListener("pointerdown", function(e){ VW.drag = {x:e.clientX, y:e.clientY, ry:VW.rotY, rx:VW.rotX}; vwCanvas.setPointerCapture(e.pointerId); });
-  vwCanvas.addEventListener("pointermove", function(e){ if (!VW.drag) return;
-    VW.rotY = VW.drag.ry + (e.clientX - VW.drag.x)*.012; VW.rotX = Math.max(-.6, Math.min(.6, VW.drag.rx + (e.clientY - VW.drag.y)*.006)); });
-  ["pointerup","pointercancel"].forEach(function(ev){ vwCanvas.addEventListener(ev, function(){ VW.drag = null; VW.vel = 0; }); });
-  function vwGo(d){ var n = VW_ORDER[VW.tab].length; VW.idx = (VW.idx + d + n) % n; vwShow(); sample("whoosh", 1.3, .4); }
-  document.getElementById("vwPrev").addEventListener("click", function(){ vwGo(-1); });
-  document.getElementById("vwNext").addEventListener("click", function(){ vwGo(1); });
-  [].forEach.call(document.querySelectorAll(".vw-tabs button"), function(b){ b.addEventListener("click", function(){
-    [].forEach.call(document.querySelectorAll(".vw-tabs button"), function(x){ x.classList.toggle("on", x === b); });
-    VW.tab = b.getAttribute("data-tab"); VW.idx = 0; vwShow(); }); });
-  if ("IntersectionObserver" in window){
-    var vio2 = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ vwStart(); vio2.disconnect(); } },{rootMargin:"400px"});
-    vio2.observe(document.getElementById("personaggi"));
-  } else vwStart();
-
   /* ---------- IN ARRIVO: scorrimento laterale guidato dallo scorrimento della pagina ---------- */
   var arr = document.getElementById("arrivo"), arrT = document.getElementById("arrTrack"), arrF = document.getElementById("arrFill");
   var arrCards = [].slice.call(arrT.querySelectorAll(".arr-card")), arrQ = false, arrLast = -1;
@@ -1594,6 +1579,128 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     });
   }
   window.addEventListener("scroll", arrScroll, {passive:true}); window.addEventListener("resize", arrScroll); arrScroll();
+
+  /* =========================================================
+     ARMADIETTO 3D (si apre toccando «IL GIOCO»): personaggi, zaini, isole come in un museo.
+     Un solo motore 3D disegna a turno ogni vetrina visibile (leggero anche sul telefono).
+     ========================================================= */
+  var MU_SECT = [
+    {k:"MD", title:"PERSONAGGI", col:"#3fd0ff", list:[["m","UOMO"],["f","DONNA"],["samurai","SAMURAI"],["rapper","RAPPER"],["lava","GOLEM DI LAVA"],["diavolo","DIAVOLO DEL BURN"],["robotec","ROBOT"],["guardiano","GUARDIANO"]]},
+    {k:"PD", title:"ZAINI", col:"#ff3fd0", list:[["base","ZAINO BASE"],["anfora","ANFORA"],["orsetto","ORSETTO"],["pianeta","PIANETA"],["portale","PORTALE"],["schermo","SCHERMO"],["scudo","SCUDO"],["uovo","UOVO"]]},
+    {k:"IS", title:"ISOLE", col:"#ffe14d", list:[["simple","SIMPLE ISLAND"],["figline","FIGLINE"],["incisa","INCISA"],["burchio","BURCHIO"],["leccio","LECCIO"]]}   // modelli in arrivo
+  ];
+  var MU = {data:null, loading:false, r:null, cache:{}, cells:[], vis:new Set(), big:null, t:0};
+  var muEl = document.getElementById("museo"), muGrid = document.getElementById("muGrid");
+  function muScript(src){ return new Promise(function(ok,ko){ var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
+  function muDec(b, T){ var s = atob(b), u = new Uint8Array(s.length); for (var i=0;i<s.length;i++) u[i] = s.charCodeAt(i); return new T(u.buffer); }
+  function muModel(sec, key){
+    var id = sec + key; if (MU.cache[id]) return MU.cache[id];
+    var D = MU.data && MU.data[sec] && MU.data[sec][key]; if (!D) return null;
+    var q = muDec(D.pos, Uint16Array), n = D.nv, p = new Float32Array(n*3), i, k;
+    for (i=0;i<n;i++) for (k=0;k<3;k++) p[i*3+k] = D.lo[k] + q[i*3+k]/65535*(D.hi[k]-D.lo[k]);
+    var uq = muDec(D.uv, Uint16Array), uv = new Float32Array(n*2); for (i=0;i<n*2;i++) uv[i] = uq[i]/65535;
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(p,3)); g.setAttribute("uv", new THREE.BufferAttribute(uv,2));
+    if (D.i) g.setIndex(new THREE.BufferAttribute(muDec(D.i, Uint16Array),1));
+    g.computeVertexNormals(); g.computeBoundingBox(); g.computeBoundingSphere();
+    var im = new Image(), t = new THREE.Texture(im); t.flipY = false; t.encoding = THREE.sRGBEncoding;
+    im.onload = function(){ t.needsUpdate = true; }; im.src = D.tex;
+    var mesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide}));
+    var c = g.boundingBox.getCenter(new THREE.Vector3()); mesh.position.set(-c.x, -c.y, -c.z);
+    var grp = new THREE.Group(); grp.add(mesh); grp.userData.r = g.boundingSphere.radius;
+    return (MU.cache[id] = grp);
+  }
+  function muLoad(){
+    if (MU.data || MU.loading) return; MU.loading = true;
+    Promise.all([ window.THREE ? Promise.resolve() : muScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"),
+                  fetch("assets/modelli.json").then(function(r){ return r.json(); }) ])
+      .then(function(res){ MU.data = res[1]; muInit(); })
+      .catch(function(){ MU.loading = false; [].forEach.call(muGrid.querySelectorAll(".mu-load"), function(e){ e.textContent = "Modelli non disponibili: riprova."; }); });
+  }
+  function muInit(){
+    var cv = document.createElement("canvas");
+    MU.r = new THREE.WebGLRenderer({canvas:cv, antialias:true, alpha:true, preserveDrawingBuffer:true});
+    MU.r.outputEncoding = THREE.sRGBEncoding; MU.r.setPixelRatio(1);
+    MU.scene = new THREE.Scene(); MU.cam = new THREE.PerspectiveCamera(30, 1, .05, 50);
+    MU.scene.add(new THREE.HemisphereLight(0xffe6ff, 0x2a1050, 1.05));
+    var d1 = new THREE.DirectionalLight(0xffffff, .9); d1.position.set(2,3,4); MU.scene.add(d1);
+    var d2 = new THREE.DirectionalLight(0x3fd0ff, .7); d2.position.set(-3,1,-2); MU.scene.add(d2);
+    var d3 = new THREE.DirectionalLight(0xff3fd0, .6); d3.position.set(3,0,-3); MU.scene.add(d3);
+    MU.pivot = new THREE.Group(); MU.scene.add(MU.pivot);
+    [].forEach.call(muGrid.querySelectorAll(".mu-load"), function(e){ e.remove(); });
+    requestAnimationFrame(muLoop);
+  }
+  // inquadra il modello: entra tutto, in altezza e in larghezza, qualsiasi forma abbia la vetrina
+  function muRender(sec, key, target, ry, rx){
+    var m = muModel(sec, key); if (!m) return false;
+    var W = target.width, H = target.height; if (!W || !H) return false;
+    if (MU.r.domElement.width !== W || MU.r.domElement.height !== H) MU.r.setSize(W, H, false);
+    while (MU.pivot.children.length) MU.pivot.remove(MU.pivot.children[0]);
+    MU.pivot.add(m); MU.pivot.rotation.set(rx||.1, ry, 0);
+    var R = m.userData.r * 1.04, vf = MU.cam.fov*Math.PI/360, aspect = W/H, hf = Math.atan(Math.tan(vf)*aspect);
+    MU.cam.aspect = aspect; MU.cam.position.set(0, 0, R / Math.sin(Math.min(vf, hf))); MU.cam.lookAt(0,0,0); MU.cam.updateProjectionMatrix();
+    MU.r.render(MU.scene, MU.cam);
+    var c2 = target.getContext("2d"); c2.clearRect(0,0,W,H); c2.drawImage(MU.r.domElement, 0, 0);
+    return true;
+  }
+  function muLoop(){
+    if (muEl.hidden){ MU.running = false; return; }
+    MU.running = true; MU.t += 1/60;
+    MU.cells.forEach(function(c, i){
+      if (!MU.vis.has(c.el) || c.sec === "IS") return;
+      if (c.cv.width !== c.cv.clientWidth){ c.cv.width = c.cv.clientWidth; c.cv.height = c.cv.clientHeight; }
+      if (((MU.frame||0) + i) % 2) return;                              // metà delle vetrine per fotogramma (più leggero)
+      muRender(c.sec, c.key, c.cv, MU.t*.6 + i);
+    });
+    if (MU.big){ var b = MU.big; if (b.cv.width !== b.cv.clientWidth*2){ b.cv.width = b.cv.clientWidth*2; b.cv.height = b.cv.clientHeight*2; }
+      if (!b.drag) b.ry += .006; muRender(b.sec, b.key, b.cv, b.ry, b.rx); }
+    MU.frame = (MU.frame||0) + 1;
+    requestAnimationFrame(muLoop);
+  }
+  // costruzione delle vetrine
+  var muIO = "IntersectionObserver" in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) MU.vis.add(e.target); else MU.vis.delete(e.target); }); },{root:muEl}) : null;
+  MU_SECT.forEach(function(S){
+    var h = document.createElement("div"); h.className = "mu-sec"; h.style.setProperty("--c", S.col);
+    h.innerHTML = '<h3><span>'+S.title+'</span><small>'+S.list.length+' modelli</small></h3><div class="mu-row"></div>';
+    var row = h.querySelector(".mu-row");
+    S.list.forEach(function(it, j){
+      var cell = document.createElement("button"); cell.type = "button"; cell.className = "mu-cell"; cell.style.setProperty("--d", (j*.06)+"s");
+      cell.innerHTML = '<canvas></canvas>' + (S.k === "IS" ? '<span class="mu-soon">🏝️<br>Modello 3D<br>in arrivo</span>' : '<span class="mu-load">…</span>') +
+        '<span class="mu-tag">'+String(j+1).padStart(2,"0")+'</span><b>'+it[1]+'</b>';
+      row.appendChild(cell);
+      var rec = {el:cell, cv:cell.querySelector("canvas"), sec:S.k, key:it[0], name:it[1], col:S.col};
+      MU.cells.push(rec);
+      if (muIO) muIO.observe(cell); else MU.vis.add(cell);
+      if (S.k !== "IS") cell.addEventListener("click", function(){ muOpenBig(rec); });
+    });
+    muGrid.appendChild(h);
+  });
+  // vetrina grande: trascina per girare
+  var muBig = document.getElementById("muBig"), muBigCv = muBig.querySelector("canvas");
+  function muOpenBig(rec){
+    MU.big = {sec:rec.sec, key:rec.key, cv:muBigCv, ry:.4, rx:.08};
+    muBig.style.setProperty("--c", rec.col); muBig.querySelector("b").textContent = rec.name;
+    muBig.hidden = false; sample("neon0", 1.2, .5);
+  }
+  muBig.querySelector(".mu-x").addEventListener("click", function(){ muBig.hidden = true; MU.big = null; });
+  muBigCv.addEventListener("pointerdown", function(e){ if (!MU.big) return; MU.big.drag = {x:e.clientX, y:e.clientY, ry:MU.big.ry, rx:MU.big.rx}; muBigCv.setPointerCapture(e.pointerId); });
+  muBigCv.addEventListener("pointermove", function(e){ var b = MU.big; if (!b || !b.drag) return;
+    b.ry = b.drag.ry + (e.clientX - b.drag.x)*.012; b.rx = Math.max(-.7, Math.min(.7, b.drag.rx + (e.clientY - b.drag.y)*.006)); });
+  ["pointerup","pointercancel"].forEach(function(ev){ muBigCv.addEventListener(ev, function(){ if (MU.big) MU.big.drag = null; }); });
+  // apertura e chiusura dell'armadietto
+  function muOpen(e){
+    muEl.style.setProperty("--ox", (e && e.clientX || innerWidth/2)+"px"); muEl.style.setProperty("--oy", (e && e.clientY || innerHeight/3)+"px");
+    muEl.hidden = false; document.body.classList.add("detail-open");
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ muEl.classList.add("open"); }); });
+    sample("whoosh", .9, .6); sample("neon1", 1, .5);
+    muLoad(); if (MU.r && !MU.running) requestAnimationFrame(muLoop);
+  }
+  function muClose(){ muEl.classList.remove("open"); muBig.hidden = true; MU.big = null; document.body.classList.remove("detail-open");
+    setTimeout(function(){ if (!muEl.classList.contains("open")) muEl.hidden = true; }, 700); }
+  document.getElementById("muOpen").addEventListener("click", muOpen);
+  muEl.querySelector(".mu-close").addEventListener("click", muClose);
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !muEl.hidden){ if (!muBig.hidden){ muBig.hidden = true; MU.big = null; } else muClose(); } });
 
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);

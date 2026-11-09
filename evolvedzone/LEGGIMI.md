@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 12
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 13
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -21,7 +21,7 @@ In `index.html` cerca `var LINKS` e incolla i 4 link veri (browser, crazygames, 
 In `index.html` cerca `var GAME` (7 capitoli: `img` immagine, `clip` video breve che parte col mouse sopra o al centro dello schermo sul telefono, `text`, `foto`, `video`) e `var ISLES` (isole: `model` = modellino 3D .glb in arrivo).
 
 ## Sezioni del sito ufficiale
-Il gioco (7 capitoli) · Le isole · Personaggi e zaini 3D (`assets/modelli.json`: 8 personaggi + 8 zaini veri del gioco, estratti da char52.js; Three.js r128 da cdnjs, caricati solo quando si arriva alla sezione) · In arrivo · Domande · Chi siamo.
+Il gioco (7 capitoli) · Le isole · Armadietto 3D (tocca «IL GIOCO»: `assets/modelli.json`: 8 personaggi + 8 zaini veri del gioco, estratti da char52.js; Three.js r128 da cdnjs, caricati solo quando si arriva alla sezione) · In arrivo · Domande · Chi siamo.
 
 ## QR
 Icona QR in alto a sinistra (countdown e sito): apre il QR del sito, con «copia link» e «condividi». Glitch neon ogni 8 s (icona e immagine del QR).
