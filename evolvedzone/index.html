@@ -6,7 +6,10 @@
 <title>EVOLVED ZONE · 17.11 ore 15:00</title>
 <meta name="description" content="Evolved Zone. L'evoluzione dei videogiochi: il Valdarno diventa la tua zona. Lancio 17 novembre 2026 alle 15:00.">
 <meta name="theme-color" content="#07030f">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/logo_s.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
 /* Colori neon del gioco (stile EvoPoly Neon) */
 :root{--disp:Orbitron,"Arial Black","Helvetica Neue",Arial,sans-serif;
@@ -502,7 +505,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 
 <main>
   <span class="badge">Stagione 1 · Neon '80</span>
-  <h1><button class="logo-btn" id="logoBtn" type="button" aria-label="Evolved Zone (premi per un suono)"><img id="logoImg" src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526" draggable="false"></button><span class="sr">Evolved Zone</span></h1>
+  <h1><button class="logo-btn" id="logoBtn" type="button" aria-label="Evolved Zone (premi per un suono)"><img id="logoImg" src="assets/logo_s.webp" fetchpriority="high" alt="Evolved Zone" width="1000" height="526" draggable="false"></button><span class="sr">Evolved Zone</span></h1>
 
   <p class="kicker">L'evoluzione dei videogiochi</p>
   <p class="claim">Il <b>Valdarno</b> diventa la tua zona.</p>
@@ -873,6 +876,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   horizon(); window.addEventListener("resize", horizon);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(horizon);
   logoImg.addEventListener("load", horizon);
+  // logo leggero subito, poi quello a piena qualità quando la pagina è pronta (stessa immagine, cambio invisibile)
+  addEventListener("load", function(){ var hi = new Image(); hi.onload = function(){ logoImg.src = hi.src; }; hi.src = "assets/logo.webp"; });
 
   /* ---------- PAVIMENTO NEON A GRIGLIA ---------- */
   var fc = document.getElementById("floor"), fx2 = fc.getContext("2d");
@@ -1012,7 +1017,9 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   var stage = document.getElementById("stage"), evB = document.getElementById("evBack"), evF = document.getElementById("evFront");
   var bctx = evB.getContext("2d"), ectx = evF.getContext("2d"), flashOv = document.getElementById("flashOv");
   var mainEl = document.querySelector("main"), site = document.getElementById("site"), siteH1 = site.querySelector("h1");
-  var IMGOBJ = IMGS.map(function(s){ var im = new Image(); im.src = s; return im; });   // precarico
+  var IMGOBJ = IMGS.map(function(s){ var im = new Image(); im.dataset.src = s; return im; });
+  function imgLoad(){ IMGOBJ.forEach(function(im){ if (!im.src) im.src = im.dataset.src; }); }   // precarico dopo il logo
+  if (document.readyState === "complete") setTimeout(imgLoad, 300); else addEventListener("load", function(){ setTimeout(imgLoad, 300); });
 
   function evSize(){ [evB,evF].forEach(function(c){ c.width = innerWidth*dpr; c.height = innerHeight*dpr; }); }
   // dove puntano i fasci: 3 a sinistra + 3 a destra (PC), 3 sopra + 3 sotto (telefono)
@@ -1190,7 +1197,9 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   }
 
   function startEvent(replay){
-    discAbort();
+    discAbort(); imgLoad();
+    // mentre l'evento va, preparo le immagini del sito ufficiale: all'entrata sono già pronte
+    setTimeout(function(){ if (window.GAME_IMGS) return; window.GAME_IMGS = (typeof GAME !== "undefined" ? GAME : []).map(function(g){ var im = new Image(); im.src = g.img; return im; }); }, 2500);
     root.style.setProperty("--act","1");
     if (EV.on) return;
     if (reduce){ showSite(true); return; }

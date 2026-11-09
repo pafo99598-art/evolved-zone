@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 9/11/2026) · versione 16
+# Sito Evolved Zone (Claude B, 9/11/2026) · versione 16.1
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -18,6 +18,9 @@ Tolti: coccodrillo, pioggia, vecchio mostro a sagoma (il mostro nuovo arriva nel
 Corretto: oggetti 3D che restavano a terra dopo un riavvio (contati: 0 oggetti a inizio di ogni nuovo avvio, 4 avvii di fila).
 Telefono: evento alleggerito (meno particelle e detriti, risoluzione 3D 1×) → circa +60% fotogrammi al secondo nella prova di confronto.
 Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
+
+## Apertura più veloce (v16.1)
+Logo leggero `assets/logo_s.webp` (87 KB) scaricato per primo, poi sostituito da `logo.webp` a piena qualità; caratteri Google non bloccano più il primo disegno; immagini dei fasci scaricate dopo il logo; immagini del sito ufficiale preparate durante l'evento. Prova 4G lenta su telefono: logo visibile 2,8 s → 1,5 s, primo disegno 0,84 → 0,45 s.
 
 ## Partenza esatta alle 15:00
 - L'ora non viene dal telefono/PC: la pagina legge l'ora del server (intestazione «Date» di GitHub) e corregge l'orologio sbagliato del dispositivo.
