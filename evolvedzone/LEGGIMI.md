@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 13
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 14
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -7,6 +7,9 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
+
+## Scene 3D dell'evento (Blocco S10)
+7 scene tra 4 e 12 s: cinghiali in carica, moto neon con piloti, combattimento laser in corsa, guardiano col rampino che esce da un fascio, caprioli e volpi, coccodrillo gigante che insegue, diavolo del Burn che salta fuori da un fascio + squadra a V. Animali e moto rifatti identici al codice del gioco (base11.html); personaggi veri con ossa (modelli.json). Corrono sul pavimento, dietro al cristallo. Modelli scaricati 20 minuti prima delle 15:00 (subito sulla pagina di prova).
 
 ## Partenza esatta alle 15:00
 - L'ora non viene dal telefono/PC: la pagina legge l'ora del server (intestazione «Date» di GitHub) e corregge l'orologio sbagliato del dispositivo.
