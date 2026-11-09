@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 15
+# Sito Evolved Zone (Claude B, 9/11/2026) · versione 16
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -8,8 +8,16 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
 
-## Scene 3D dell'evento (Blocco S11)
-10 scene tra 3,9 e 13,2 s, ognuna diversa: volpi che spuntano da terra (lucciole) · bus neon con rissa a pugni sul tetto (pioggia) · cinghiali di lato + fulmine ed esplosione (temporale) · guerra tra due squadre con esplosioni (sabbia) · rampino dal fascio + caprioli · paracadute e rissa a pugni (neve) · moto che inseguono un bus che esplode · coccodrillo gigante (nebbia tossica) · salto dal fascio + squadra · fuga finale di tutti gli animali con esplosioni. Mostro neon gigante dietro al cristallo che si risveglia in 3 tempi (occhi → testa → ruggito con onda d'urto). Animali rifatti più dettagliati con i colori del gioco.
+## Avviso «Countdown di inizio dell'evento su questa pagina» (Blocco S12)
+Compare **una sola volta per dispositivo** (memoria del browser `ez_disc`), a destra (sul telefono in basso a destra, il countdown resta libero), con accensione al neon a 1,3 s; a 6,9 s si frantuma in 42 schegge low-poly risucchiate dal cristallo che gira. Su `prova.html` compare sempre.
+
+## Versioni dell'evento (Blocco S12)
+7 versioni complete, una scelta a caso per ogni visitatore. Ogni versione = 5 momenti 3D (a 3,9 · 5,8 · 7,7 · 9,6 · 11,5 s):
+1 Carica selvaggia · 2 Guerra totale · 3 Cielo neon · 4 Strada neon · 5 Valdarno selvaggio · 6 Assalto · 7 Rissa (lista in `var VERSIONS`).
+Tolti: coccodrillo, pioggia, vecchio mostro a sagoma (il mostro nuovo arriva nel blocco S13). Negli ultimi 1,6 s fulmini leggeri escono dal cristallo e le stelle si accendono.
+Corretto: oggetti 3D che restavano a terra dopo un riavvio (contati: 0 oggetti a inizio di ogni nuovo avvio, 4 avvii di fila).
+Telefono: evento alleggerito (meno particelle e detriti, risoluzione 3D 1×) → circa +60% fotogrammi al secondo nella prova di confronto.
+Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
 
 ## Partenza esatta alle 15:00
 - L'ora non viene dal telefono/PC: la pagina legge l'ora del server (intestazione «Date» di GitHub) e corregge l'orologio sbagliato del dispositivo.
