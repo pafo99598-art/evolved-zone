@@ -310,6 +310,56 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .qr-act button:hover{background:var(--cyan);color:#07030f}
 .qr-x{position:absolute;top:10px;right:10px;width:34px;height:34px;padding:0}
 @media(prefers-reduced-motion:reduce){.qrbtn,.isle svg{animation:none}}
+
+/* immagine verticale (telefono) nel riquadro orizzontale */
+.c-frame img[src*="cap_telefono"]{object-position:50% 30%}
+/* glitch neon del QR ogni 8 s (icona e immagine) */
+.qr-img{animation:qrimg 8s infinite}
+@keyframes qrimg{0%,93%,100%{transform:none;filter:none}
+ 94%{transform:translate(-4px,0) skewX(6deg);filter:drop-shadow(-4px 0 #3fd0ff) drop-shadow(4px 0 #ff3fd0)}
+ 95%{transform:translate(4px,1px);filter:drop-shadow(4px 0 #3fd0ff) drop-shadow(-4px 0 #ff3fd0) brightness(1.3)}
+ 96%{transform:translate(-2px,-1px) skewX(-4deg);filter:hue-rotate(80deg)}
+ 97%{transform:none;filter:drop-shadow(-2px 0 #3fd0ff) drop-shadow(2px 0 #ff3fd0)}}
+/* personaggi e zaini 3D */
+.vw-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+.vw-tabs button{border:1.5px solid var(--cyan);background:#07030f;color:#fff;border-radius:99px;padding:9px 18px;font:800 .72rem var(--disp);letter-spacing:.14em;cursor:pointer}
+.vw-tabs button.on{background:var(--cyan);color:#07030f;box-shadow:0 0 18px #3fd0ff88}
+.viewer{position:relative;height:min(62vh,520px);border-radius:18px;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 85%,#ff3fd055,transparent 55%),radial-gradient(ellipse at 50% 30%,#3a0b5c,#0d0620 70%);border:1.5px solid #ffffff22}
+.viewer::after{content:"";position:absolute;left:12%;right:12%;bottom:8%;height:14%;border-radius:50%;border:2px solid #ff3fd0aa;box-shadow:0 0 24px #ff3fd0;pointer-events:none;transform:perspective(300px) rotateX(70deg)}
+#vwCanvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+#vwCanvas:active{cursor:grabbing}
+.vw-load{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+.vw-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--pink);background:#07030fcc;color:#fff;font-size:1.1rem;cursor:pointer}
+.vw-arrow.l{left:10px}.vw-arrow.r{right:10px}
+.vw-arrow:hover{background:var(--pink)}
+.vw-name{position:absolute;left:0;right:0;top:14px;z-index:2;text-align:center;pointer-events:none}
+.vw-name b{display:block;font:900 clamp(1.1rem,4vw,1.6rem) var(--disp);color:#fff;letter-spacing:.06em;text-shadow:0 0 14px var(--pink)}
+.vw-name small{color:var(--muted);font-size:.75rem}
+.vw-dots{display:flex;justify-content:center;gap:8px;margin:12px 0 4px}
+.vw-dots button{width:10px;height:10px;border-radius:50%;border:0;background:#ffffff33;cursor:pointer;padding:0}
+.vw-dots button.on{background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.sub.small{font-size:.85rem;margin-top:8px;margin-bottom:0}
+/* in arrivo */
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,40vw),1fr));gap:12px}
+.road div{position:relative;padding:20px;border-radius:14px;background:linear-gradient(160deg,#1a0a3a,#0d0620);border:1px solid #ffffff1a;overflow:hidden}
+.road div::before{content:"IN ARRIVO";position:absolute;top:12px;right:-30px;transform:rotate(35deg);background:var(--pink);color:#fff;font:800 .55rem var(--disp);letter-spacing:.1em;padding:3px 34px}
+.road i{font-style:normal;font-size:1.7rem}
+.road h3{font:800 .9rem var(--disp);color:var(--yellow);margin:6px 0 4px;letter-spacing:.05em}
+.road p{color:var(--muted);font-size:.92rem}
+/* domande */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid #ffffff1c;padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;padding:14px 34px 14px 4px;position:relative;font-weight:600;color:#fff}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:10px;font:900 1.3rem var(--disp);color:var(--cyan);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg);color:var(--pink)}
+.faq details p{padding:0 4px 14px;color:var(--muted)}
+/* chi siamo */
+.noi{text-align:center}
+.noi p{max-width:640px;margin:12px auto;color:#e6dcff;font-size:1.02rem}
+.noi p b{color:var(--yellow)}
+@media(prefers-reduced-motion:reduce){.qr-img{animation:none}}
 </style>
 </head>
 <body>
@@ -401,6 +451,65 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
       <h2>LE ISOLE</h2>
       <p class="sub">Il mondo si è spezzato in tante piccole isole. Si parte da Simple Island; le isole vere del Valdarno arrivano con gli aggiornamenti. Tocca un'isola per scoprirla.</p>
       <div class="isles2" id="islesList"></div>
+    </div>
+  </section>
+
+  <section class="s-sec" id="personaggi">
+    <div class="panel rv">
+      <h2>PERSONAGGI E ZAINI</h2>
+      <p class="sub">I modelli 3D veri del gioco. Trascina per girarli.</p>
+      <div class="vw-tabs" role="tablist">
+        <button type="button" class="on" data-tab="MD">PERSONAGGI</button>
+        <button type="button" data-tab="PD">ZAINI</button>
+      </div>
+      <div class="viewer" id="viewer">
+        <canvas id="vwCanvas" aria-label="Modello 3D"></canvas>
+        <div class="vw-load" id="vwLoad">Caricamento modelli 3D…</div>
+        <button type="button" class="vw-arrow l" id="vwPrev" aria-label="Precedente">◂</button>
+        <button type="button" class="vw-arrow r" id="vwNext" aria-label="Successivo">▸</button>
+        <div class="vw-name"><b id="vwName">—</b><small id="vwCount"></small></div>
+      </div>
+      <div class="vw-dots" id="vwDots"></div>
+      <p class="sub small">Nel gioco ogni modello cambia colori, accessori e luci: da questi nascono tutti i personaggi e gli zaini.</p>
+    </div>
+  </section>
+
+  <section class="s-sec" id="arrivo">
+    <div class="panel rv">
+      <h2>IN ARRIVO</h2>
+      <p class="sub">Evolved Zone cresce partita dopo partita.</p>
+      <div class="road">
+        <div><i>🏝️</i><h3>LE ISOLE DEL VALDARNO</h3><p>Figline, Incisa, Burchio e Leccio, il più fedeli possibile alla realtà.</p></div>
+        <div><i>🎯</i><h3>MISSIONI</h3><p>Sei mandato sull'isola per un compito: lo scoprirai solo giocando.</p></div>
+        <div><i>🔥</i><h3>THE BURN DI FUOCO</h3><p>Dopo la stagione neon il cerchio torna fuoco vero. E in rare partite, solo fuoco.</p></div>
+        <div><i>🌆</i><h3>NUOVE STAGIONI</h3><p>Dopo il Neon '80, nuove atmosfere e nuovi oggetti a ogni stagione.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-sec" id="faq">
+    <div class="panel rv">
+      <h2>DOMANDE</h2>
+      <div class="faq">
+        <details><summary>Dove si gioca?</summary><p>Nel browser, su CrazyGames, oppure scaricandolo per PC (Windows e Mac) e Android.</p></details>
+        <details><summary>Devo installare qualcosa?</summary><p>No: nel browser parte subito. Il download serve solo se vuoi l'app.</p></details>
+        <details><summary>Funziona sul telefono?</summary><p>Sì, con comandi touch pensati per il pollice. Su Android c'è anche l'app.</p></details>
+        <details><summary>Quanti giocatori ci sono in una partita?</summary><p>Fino a 50. Se non ci sono abbastanza persone online, entrano i bot: giochi subito, a qualsiasi ora.</p></details>
+        <details><summary>Quando esce?</summary><p>Il 17 novembre 2026 alle 15:00, ora italiana.</p></details>
+        <details><summary>Le isole sono posti veri?</summary><p>Alcune sì: le isole del Valdarno sono ricostruite il più fedelmente possibile. Altre, come Simple Island, sono isole artificiali, stampate in 3D nel futuro del gioco.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-sec" id="noi">
+    <div class="panel rv noi">
+      <h2>CHI SIAMO</h2>
+      <p>Evolved Zone nasce nel <b>Valdarno</b>, tra Figline, Incisa, Leccio e Burchio: i posti dove ho sempre sognato di giocare, ma dentro un mondo virtuale.</p>
+      <p>Ogni giorno un elicottero vero passa sopra queste colline. Da lì è nata l'idea del lancio, e da lì è nato tutto il resto.</p>
+      <p>Evolved Zone è un progetto indipendente di <b>Michele</b> con <b>Tilt Company</b>.</p>
+      <a class="ig" href="https://www.instagram.com/tilt.companyy/" target="_blank" rel="noopener" aria-label="Instagram @tilt.companyy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
+        Seguici: @tilt.companyy</a>
     </div>
   </section>
 
@@ -1162,7 +1271,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   // Michele: incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
   var LINKS = { browser:"", crazygames:"", pc:"", android:"" };
   var CTA = [["browser","▶ GIOCA ORA","Nel browser, senza installare","main"],["crazygames","CRAZYGAMES","Gioca sul portale","c"],
-             ["pc","PC","Scarica · Windows",""],["android","ANDROID","Scarica · Telefono","c"]];
+             ["pc","PC","Scarica · Windows e Mac",""],["android","ANDROID","Scarica · Telefono","c"]];
   var ctaEl = document.getElementById("cta");
   CTA.forEach(function(b){
     var href = LINKS[b[0]], el = document.createElement(href ? "a" : "span");
@@ -1208,38 +1317,39 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
        foto = immagini nella pagina di dettaglio, video = video nella pagina di dettaglio
      ========================================================= */
   var GAME = [
-    {tag:"CAPITOLO 01", title:"IL LANCIO", col:"#ffe14d", img:"assets/img/ez_heli_tramonto.webp", clip:"",
+    {tag:"CAPITOLO 01", title:"IL LANCIO", col:"#ffe14d", img:"assets/img/cap_lancio.webp", clip:"",
      line:"Sali sull'elicottero. Scegli dove saltare.",
      text:["Ogni partita inizia in volo. L'elicottero attraversa l'isola su una rotta sempre diversa: tu scegli il momento giusto, salti, cadi in picchiata e apri il paracadute dove vuoi atterrare.",
            "<b>Da dove viene l'idea.</b> Nel Valdarno un elicottero vero passa quasi ogni giorno sopra Rignano, Leccio, Burchio, Incisa e Reggello. Vederlo sorvolare casa è diventato il nostro «battle bus»: l'elicottero che porta tutti nella zona."],
-     foto:["assets/img/ez_elicottero_neon.webp","assets/img/ez_heli_synthwave.webp"], video:""},
-    {tag:"CAPITOLO 02", title:"SOPRAVVIVENZA", col:"#3fd0ff", img:"assets/img/ez_cassa_casale.webp", clip:"",
+     foto:[], video:""},
+    {tag:"CAPITOLO 02", title:"SOPRAVVIVENZA", col:"#3fd0ff", img:"assets/img/cap_sopravvivenza.webp", clip:"",
      line:"Casse, armi, cure. Prendile prima degli altri.",
      text:["Appena tocchi terra sei disarmato. Corri dentro case e casolari, apri le casse, raccogli armi, munizioni e cure.",
            "Ogni partita è diversa, come un film: non sai mai cosa troverai e chi incontrerai.",
            "<b>Ispirazione:</b> i giochi di sopravvivenza come ARK: Survival Evolved e The Forest."],
-     foto:["assets/img/ez_strada_neon.webp"], video:""},
-    {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/ez_strada_neon.webp", clip:"",
+     foto:[], video:""},
+    {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/cap_combattimento.webp", clip:"",
      line:"Pugni, pistola, fucile, pompa. Ogni colpo conta.",
      text:["Si parte a mani nude. Poi pistola, fucile e fucile a pompa: trova l'arma giusta prima di chi ti sta cercando.",
            "<b>Ispirazione:</b> i grandi battle royale — Fortnite, PUBG, Apex Legends e Hyper Scape."],
-     foto:["assets/img/ez_cassa_casale.webp"], video:""},
-    {tag:"CAPITOLO 04", title:"THE BURN", col:"#ff7a3c", img:"assets/img/ez_heli_synthwave.webp", clip:"",
-     line:"Un cerchio di fuoco che si stringe. E brucia tutto.",
-     text:["È la zona sicura di ogni battle royale, ma qui non c'è una tempesta: c'è <b>The Burn</b>, un cerchio di fuoco che si restringe e brucia tutto quello che trova davanti.",
-           "Fuoco, radiazioni, tempesta e neon: fuori dal cerchio perdi vita, poco alla volta. Devi muoverti, e prima o poi incontrerai gli altri. Alla fine ne resta uno solo."],
      foto:[], video:""},
-    {tag:"CAPITOLO 05", title:"MAI DA SOLO", col:"#3fd0ff", img:"assets/img/ez_elicottero_neon.webp", clip:"",
+    {tag:"CAPITOLO 04", title:"THE BURN", col:"#ff3fd0", img:"assets/img/cap_burn.webp", clip:"",
+     line:"Un cerchio che si stringe. E brucia tutto.",
+     text:["È la zona sicura di ogni battle royale, ma qui non c'è una tempesta: c'è <b>The Burn</b>, un cerchio che si restringe e brucia tutto quello che trova davanti.",
+           "In questa <b>Stagione 1 · Neon '80</b> The Burn è un muro di neon con una barriera di fuoco. Nelle prossime stagioni tornerà fuoco vero, e in rare partite sarà solo fuoco.",
+           "Fuori dal cerchio perdi vita, poco alla volta. Devi muoverti, e prima o poi incontrerai gli altri. Alla fine ne resta uno solo."],
+     foto:[], video:""},
+    {tag:"CAPITOLO 05", title:"MAI DA SOLO", col:"#3fd0ff", img:"assets/img/cap_maidasolo.webp", clip:"",
      line:"Fino a 50 giocatori. Se mancano, entrano i bot.",
      text:["Fino a 50 giocatori su un'isola piccola: ci si incontra presto e la partita non si ferma mai.",
            "Se non ci sono abbastanza persone online, la partita si riempie di bot: entri e giochi subito, a qualsiasi ora."],
      foto:[], video:""},
-    {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/ez_elicottero_tramonto.webp", clip:"",
+    {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/cap_pc.webp", clip:"",
      line:"Tastiera e mouse. Nel browser o da scaricare.",
-     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows.",
+     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows e Mac.",
            "<b>Comandi principali</b><br>WASD muoviti · Mouse mira · Clic sinistro spara · Clic destro mira · Spazio salta / apri il paracadute · Shift corri · E raccogli · R ricarica · I zaino · M mappa · Esc pausa"],
      foto:[], video:""},
-    {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff3fd0", img:"assets/img/ez_heli_tramonto.webp", clip:"",
+    {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff7a3c", img:"assets/img/cap_telefono.webp", clip:"",
      line:"Comandi touch, pensati per il pollice.",
      text:["Sul telefono la visuale ti segue dall'alto, con comandi semplici pensati per lo schermo piccolo. Su Android puoi anche scaricarlo come app.",
            "<b>Comandi principali</b><br>Levetta a sinistra per muoverti · Tasto rosso: spara, colpisci, raccogli, apri casse e porte · Tasto giallo: costruisci o lancia · Tasto cure: scorri per scegliere · Correre, abbassarsi e schivare sono automatici"],
@@ -1248,11 +1358,11 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   /* LE ISOLE · model = modellino 3D .glb (in arrivo, 1:1 con la realtà) */
   var ISLES = [
     {tag:"DISPONIBILE", title:"SIMPLE ISLAND", col:"#ffe14d", live:true, img:"", model:"",
-     line:"L'isola da cui si parte.", text:["Piccola, veloce, perfetta per imparare: è la prima isola di Evolved Zone, disponibile dal lancio."]},
-    {tag:"IN ARRIVO", title:"FIGLINE", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
-    {tag:"IN ARRIVO", title:"INCISA", col:"#ff3fd0", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
-    {tag:"IN ARRIVO", title:"BURCHIO", col:"#ffe14d", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
-    {tag:"IN ARRIVO", title:"LECCIO", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]}
+     line:"Un'isola artificiale, stampata in 3D.", text:["Nel futuro di Evolved Zone non tutte le isole sono vere: alcune sono state stampate in 3D da una tecnologia potentissima. Simple Island è una di queste.","Piccola, veloce, perfetta per imparare: è la prima isola del gioco, disponibile dal lancio."]},
+    {tag:"IN ARRIVO", title:"FIGLINE", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita il più fedelmente possibile alla realtà nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"INCISA", col:"#ff3fd0", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita il più fedelmente possibile alla realtà nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"BURCHIO", col:"#ffe14d", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita il più fedelmente possibile alla realtà nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]},
+    {tag:"IN ARRIVO", title:"LECCIO", col:"#3fd0ff", img:"", model:"", line:"Isola vera del Valdarno.", text:["Una delle isole reali del Valdarno, ricostruita il più fedelmente possibile alla realtà nel mondo spezzato di Evolved Zone. Arriva con gli aggiornamenti."]}
   ];
 
   var chapEl = document.getElementById("chapters");
@@ -1354,6 +1464,89 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   var qrShare = document.getElementById("qrShare");
   if (navigator.share) qrShare.addEventListener("click", function(){ navigator.share({title:"Evolved Zone", url:SITE_URL}).catch(function(){}); });
   else qrShare.hidden = true;
+
+  /* =========================================================
+     PERSONAGGI E ZAINI 3D (modelli veri del gioco, da char52.js)
+     Three.js e i modelli si caricano solo quando arrivi alla sezione.
+     ========================================================= */
+  var VW_NAMES = {MD:{m:"UOMO",f:"DONNA",samurai:"SAMURAI",rapper:"RAPPER",lava:"GOLEM DI LAVA",diavolo:"DIAVOLO DEL BURN",robotec:"ROBOT",guardiano:"GUARDIANO"},
+                  PD:{base:"ZAINO BASE",anfora:"ANFORA",orsetto:"ORSETTO",pianeta:"PIANETA",portale:"PORTALE",schermo:"SCHERMO",scudo:"SCUDO",uovo:"UOVO"}};
+  var VW_ORDER = {MD:["m","f","samurai","rapper","lava","diavolo","robotec","guardiano"], PD:["base","anfora","orsetto","pianeta","portale","schermo","scudo","uovo"]};
+  var VW = {started:false, data:null, tab:"MD", idx:0, cache:{}, rotY:0, rotX:.12, drag:null, vel:.5};
+  var vwCanvas = document.getElementById("vwCanvas"), vwLoad = document.getElementById("vwLoad");
+  function vwScript(src){ return new Promise(function(ok,ko){ var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
+  function vwStart(){
+    if (VW.started) return; VW.started = true;
+    Promise.all([
+      window.THREE ? Promise.resolve() : vwScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"),
+      fetch("assets/modelli.json").then(function(r){ return r.json(); })
+    ]).then(function(res){ VW.data = res[1]; vwInit(); })
+      .catch(function(){ vwLoad.textContent = "Modelli 3D non disponibili: ricarica la pagina."; VW.started = false; });
+  }
+  function vwDec(b, T){ var s = atob(b), u = new Uint8Array(s.length); for (var i=0;i<s.length;i++) u[i] = s.charCodeAt(i); return new T(u.buffer); }
+  function vwMesh(D){
+    var q = vwDec(D.pos, Uint16Array), n = D.nv, p = new Float32Array(n*3), k, i;
+    for (i=0;i<n;i++) for (k=0;k<3;k++) p[i*3+k] = D.lo[k] + q[i*3+k]/65535*(D.hi[k]-D.lo[k]);
+    var uq = vwDec(D.uv, Uint16Array), uv = new Float32Array(n*2); for (i=0;i<n*2;i++) uv[i] = uq[i]/65535;
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(p,3)); g.setAttribute("uv", new THREE.BufferAttribute(uv,2));
+    if (D.i) g.setIndex(new THREE.BufferAttribute(vwDec(D.i, Uint16Array),1));
+    g.computeVertexNormals(); g.computeBoundingBox();
+    var im = new Image(), t = new THREE.Texture(im); t.flipY = false; t.encoding = THREE.sRGBEncoding;
+    im.onload = function(){ t.needsUpdate = true; }; im.src = D.tex;
+    var mesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide}));
+    var bb = g.boundingBox, c = bb.getCenter(new THREE.Vector3()), sz = bb.getSize(new THREE.Vector3());
+    var s = (D.i && D.nv < 5000 ? 1.25 : 1.7) / Math.max(sz.x, sz.y, sz.z);   // zaini un po' più piccoli mesh.scale.setScalar(s); mesh.position.set(-c.x*s, -c.y*s, -c.z*s);
+    var grp = new THREE.Group(); grp.add(mesh); return grp;
+  }
+  function vwInit(){
+    var r = VW.r = new THREE.WebGLRenderer({canvas:vwCanvas, antialias:true, alpha:true});
+    r.outputEncoding = THREE.sRGBEncoding; r.setPixelRatio(Math.min(devicePixelRatio||1, 2));
+    VW.scene = new THREE.Scene(); VW.cam = new THREE.PerspectiveCamera(32, 1, .1, 50); VW.cam.position.set(0, .15, 3.4);
+    VW.scene.add(new THREE.HemisphereLight(0xffe6ff, 0x2a1050, 1.05));
+    var d1 = new THREE.DirectionalLight(0xffffff, .9); d1.position.set(2,3,4); VW.scene.add(d1);
+    var d2 = new THREE.DirectionalLight(0x3fd0ff, .7); d2.position.set(-3,1,-2); VW.scene.add(d2);
+    var d3 = new THREE.DirectionalLight(0xff3fd0, .6); d3.position.set(3,0,-3); VW.scene.add(d3);
+    VW.pivot = new THREE.Group(); VW.scene.add(VW.pivot);
+    vwLoad.hidden = true; vwShow(); vwLoop();
+  }
+  function vwShow(){
+    if (!VW.data) return;
+    var key = VW_ORDER[VW.tab][VW.idx], id = VW.tab + key;
+    if (!VW.cache[id]) VW.cache[id] = vwMesh(VW.data[VW.tab][key]);
+    while (VW.pivot.children.length) VW.pivot.remove(VW.pivot.children[0]);
+    VW.pivot.add(VW.cache[id]); VW.pop = 0;
+    document.getElementById("vwName").textContent = VW_NAMES[VW.tab][key];
+    document.getElementById("vwCount").textContent = (VW.idx+1) + " / " + VW_ORDER[VW.tab].length;
+    var dots = document.getElementById("vwDots"); dots.innerHTML = "";
+    VW_ORDER[VW.tab].forEach(function(k,i){ var b = document.createElement("button"); b.type = "button"; b.className = i === VW.idx ? "on" : "";
+      b.setAttribute("aria-label", VW_NAMES[VW.tab][k]); b.addEventListener("click", function(){ VW.idx = i; vwShow(); }); dots.appendChild(b); });
+  }
+  function vwLoop(){
+    if (!VW.r) return;
+    var w = vwCanvas.clientWidth, h = vwCanvas.clientHeight;
+    if (vwCanvas.width !== Math.round(w*VW.r.getPixelRatio())){ VW.r.setSize(w, h, false); VW.cam.aspect = w/h; VW.cam.updateProjectionMatrix(); }
+    if (!VW.drag) VW.rotY += .008 * VW.vel; VW.vel += (1 - VW.vel)*.03;
+    VW.pop = Math.min(1, (VW.pop||0) + .07); var s = .6 + .4*(1 - Math.pow(1-VW.pop, 3));
+    VW.pivot.rotation.set(VW.rotX, VW.rotY, 0); VW.pivot.scale.setScalar(s);
+    var rr = vwCanvas.getBoundingClientRect();
+    if (rr.bottom > 0 && rr.top < innerHeight && !site.hidden) VW.r.render(VW.scene, VW.cam);
+    requestAnimationFrame(vwLoop);
+  }
+  vwCanvas.addEventListener("pointerdown", function(e){ VW.drag = {x:e.clientX, y:e.clientY, ry:VW.rotY, rx:VW.rotX}; vwCanvas.setPointerCapture(e.pointerId); });
+  vwCanvas.addEventListener("pointermove", function(e){ if (!VW.drag) return;
+    VW.rotY = VW.drag.ry + (e.clientX - VW.drag.x)*.012; VW.rotX = Math.max(-.6, Math.min(.6, VW.drag.rx + (e.clientY - VW.drag.y)*.006)); });
+  ["pointerup","pointercancel"].forEach(function(ev){ vwCanvas.addEventListener(ev, function(){ VW.drag = null; VW.vel = 0; }); });
+  function vwGo(d){ var n = VW_ORDER[VW.tab].length; VW.idx = (VW.idx + d + n) % n; vwShow(); sample("whoosh", 1.3, .4); }
+  document.getElementById("vwPrev").addEventListener("click", function(){ vwGo(-1); });
+  document.getElementById("vwNext").addEventListener("click", function(){ vwGo(1); });
+  [].forEach.call(document.querySelectorAll(".vw-tabs button"), function(b){ b.addEventListener("click", function(){
+    [].forEach.call(document.querySelectorAll(".vw-tabs button"), function(x){ x.classList.toggle("on", x === b); });
+    VW.tab = b.getAttribute("data-tab"); VW.idx = 0; vwShow(); }); });
+  if ("IntersectionObserver" in window){
+    var vio2 = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ vwStart(); vio2.disconnect(); } },{rootMargin:"400px"});
+    vio2.observe(document.getElementById("personaggi"));
+  } else vwStart();
 
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);
