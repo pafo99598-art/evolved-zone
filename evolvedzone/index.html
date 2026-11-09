@@ -15,7 +15,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
 html{overflow-x:clip}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:clip;min-height:100vh;-webkit-tap-highlight-color:transparent}
 
 /* ===== SFONDO (fisso) ===== */
 .bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
@@ -360,6 +360,29 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .noi p{max-width:640px;margin:12px auto;color:#e6dcff;font-size:1.02rem}
 .noi p b{color:var(--yellow)}
 @media(prefers-reduced-motion:reduce){.qr-img{animation:none}}
+
+/* IN ARRIVO: la pagina si ferma e le carte scorrono di lato mentre scorri (linea del tempo neon) */
+.arr{position:relative;height:320vh}
+.arr-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.arr-head{text-align:center;padding:0 16px;margin-bottom:4vh}
+.arr-head h2{font:900 clamp(2.2rem,8vw,4.4rem)/1 var(--disp);color:#fff;letter-spacing:.04em;text-shadow:0 0 12px var(--pink),0 0 40px var(--violet)}
+.arr-head p{color:var(--muted);margin-top:8px}
+.arr-track{position:relative;display:flex;gap:6vw;padding:0 calc(50vw - min(160px,38vw));will-change:transform}
+.arr-line{position:absolute;left:0;right:0;top:50%;height:3px;background:#ffffff1a}
+.arr-line i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--cyan),var(--pink),var(--yellow));box-shadow:0 0 14px var(--pink)}
+.arr-card{position:relative;flex:0 0 min(320px,76vw);padding:26px 22px;border-radius:6px;background:#07030fee;border:2px solid var(--c);
+ clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,26px 100%,0 calc(100% - 26px));
+ box-shadow:inset 0 0 40px color-mix(in srgb,var(--c) 25%,transparent);transform:scale(.82) rotateY(18deg);opacity:.35;filter:saturate(.4);transition:transform .5s cubic-bezier(.2,1.3,.4,1),opacity .5s,filter .5s}
+.arr-card.on{transform:none;opacity:1;filter:none}
+.arr-card.on .arr-n{color:var(--c);text-shadow:0 0 22px var(--c)}
+.arr-n{position:absolute;right:16px;top:6px;font:900 3.4rem/1 var(--disp);color:#ffffff14;transition:.5s}
+.arr-card i{font-style:normal;font-size:2.2rem}
+.arr-card h3{font:900 1.15rem/1.15 var(--disp);color:#fff;margin:10px 0 8px;letter-spacing:.04em}
+.arr-card p{color:#e6dcff;font-size:.98rem}
+.arr-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--c);box-shadow:0 0 12px var(--c);animation:scanl 3s linear infinite;opacity:.7}
+@keyframes scanl{0%{transform:translateY(0)}100%{transform:translateY(260px)}}
+.arr-hint{text-align:center;margin-top:5vh;color:var(--muted);font:700 .7rem var(--disp);letter-spacing:.3em;animation:bob 2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.arr{height:auto}.arr-pin{position:static;height:auto;padding:40px 0}.arr-track{flex-direction:column;align-items:center;transform:none!important}.arr-card{transform:none;opacity:1;filter:none}.arr-line,.arr-hint{display:none}}
 </style>
 </head>
 <body>
@@ -474,16 +497,17 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     </div>
   </section>
 
-  <section class="s-sec" id="arrivo">
-    <div class="panel rv">
-      <h2>IN ARRIVO</h2>
-      <p class="sub">Evolved Zone cresce partita dopo partita.</p>
-      <div class="road">
-        <div><i>🏝️</i><h3>LE ISOLE DEL VALDARNO</h3><p>Figline, Incisa, Burchio e Leccio, il più fedeli possibile alla realtà.</p></div>
-        <div><i>🎯</i><h3>MISSIONI</h3><p>Sei mandato sull'isola per un compito: lo scoprirai solo giocando.</p></div>
-        <div><i>🔥</i><h3>THE BURN DI FUOCO</h3><p>Dopo la stagione neon il cerchio torna fuoco vero. E in rare partite, solo fuoco.</p></div>
-        <div><i>🌆</i><h3>NUOVE STAGIONI</h3><p>Dopo il Neon '80, nuove atmosfere e nuovi oggetti a ogni stagione.</p></div>
+  <section id="arrivo" class="arr">
+    <div class="arr-pin">
+      <div class="arr-head"><span class="c-tag">PROSSIMAMENTE</span><h2>IN ARRIVO</h2><p>Evolved Zone cresce partita dopo partita.</p></div>
+      <div class="arr-track" id="arrTrack">
+        <div class="arr-line"><i id="arrFill"></i></div>
+        <article class="arr-card" style="--c:#3fd0ff"><span class="arr-n">01</span><i>🏝️</i><h3>LE ISOLE DEL VALDARNO</h3><p>Figline, Incisa, Burchio e Leccio, il più fedeli possibile alla realtà.</p></article>
+        <article class="arr-card" style="--c:#ffe14d"><span class="arr-n">02</span><i>🎯</i><h3>MISSIONI</h3><p>Sei mandato sull'isola per un compito: lo scoprirai solo giocando.</p></article>
+        <article class="arr-card" style="--c:#ff7a3c"><span class="arr-n">03</span><i>🔥</i><h3>THE BURN DI FUOCO</h3><p>Dopo la stagione neon il cerchio torna fuoco vero. E in rare partite, solo fuoco.</p></article>
+        <article class="arr-card" style="--c:#ff3fd0"><span class="arr-n">04</span><i>🌆</i><h3>NUOVE STAGIONI</h3><p>Dopo il Neon '80, nuove atmosfere e nuovi oggetti a ogni stagione.</p></article>
       </div>
+      <div class="arr-hint">SCORRI ▸</div>
     </div>
   </section>
 
@@ -495,7 +519,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
         <details><summary>Devo installare qualcosa?</summary><p>No: nel browser parte subito. Il download serve solo se vuoi l'app.</p></details>
         <details><summary>Funziona sul telefono?</summary><p>Sì, con comandi touch pensati per il pollice. Su Android c'è anche l'app.</p></details>
         <details><summary>Quanti giocatori ci sono in una partita?</summary><p>Fino a 50. Se non ci sono abbastanza persone online, entrano i bot: giochi subito, a qualsiasi ora.</p></details>
-        <details><summary>Quando esce?</summary><p>Il 17 novembre 2026 alle 15:00, ora italiana.</p></details>
+        <details><summary>Posso giocarci adesso?</summary><p>Sì! Evolved Zone è uscito il 17 novembre 2026 ed è già pronto: gioca subito nel browser o scaricalo per PC e Android con i pulsanti in cima a questa pagina.</p></details>
+        <details><summary>È gratis?</summary><p>Sì, Evolved Zone è completamente gratis.</p></details>
         <details><summary>Le isole sono posti veri?</summary><p>Alcune sì: le isole del Valdarno sono ricostruite il più fedelmente possibile. Altre, come Simple Island, sono isole artificiali, stampate in 3D nel futuro del gioco.</p></details>
       </div>
     </div>
@@ -505,8 +530,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     <div class="panel rv noi">
       <h2>CHI SIAMO</h2>
       <p>Evolved Zone nasce nel <b>Valdarno</b>, tra Figline, Incisa, Leccio e Burchio: i posti dove ho sempre sognato di giocare, ma dentro un mondo virtuale.</p>
-      <p>Ogni giorno un elicottero vero passa sopra queste colline. Da lì è nata l'idea del lancio, e da lì è nato tutto il resto.</p>
-      <p>Evolved Zone è un progetto indipendente di <b>Michele</b> con <b>Tilt Company</b>.</p>
+      <p>Evolved Zone è un progetto indipendente di <b>M******</b> con <b>TILT Company</b>.</p>
       <a class="ig" href="https://www.instagram.com/tilt.companyy/" target="_blank" rel="noopener" aria-label="Instagram @tilt.companyy">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
         Seguici: @tilt.companyy</a>
@@ -1268,7 +1292,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   function hexA(h,a){ var n = parseInt(h.slice(1),16); return "rgba("+(n>>16)+","+((n>>8)&255)+","+(n&255)+","+Math.max(0,Math.min(1,a)).toFixed(3)+")"; }
 
   /* ---------- pulsanti del sito ufficiale ---------- */
-  // Michele: incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
+  // Incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
   var LINKS = { browser:"", crazygames:"", pc:"", android:"" };
   var CTA = [["browser","▶ GIOCA ORA","Nel browser, senza installare","main"],["crazygames","CRAZYGAMES","Gioca sul portale","c"],
              ["pc","PC","Scarica · Windows e Mac",""],["android","ANDROID","Scarica · Telefono","c"]];
@@ -1311,8 +1335,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 
   /* =========================================================
      SEZIONE «IL GIOCO»: capitoli + pagine di dettaglio
-     Michele: i testi sono qui sotto.
-       img  = immagine del capitolo (si vede quando non ci sei sopra)   ← PROVVISORIE finché Michele non manda quelle giuste
+     I testi sono qui sotto.
+       img  = immagine del capitolo (si vede quando non ci sei sopra)   
        clip = video breve 10–15 s che parte da solo (mouse sopra / capitolo al centro sul telefono)
        foto = immagini nella pagina di dettaglio, video = video nella pagina di dettaglio
      ========================================================= */
@@ -1547,6 +1571,27 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     var vio2 = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ vwStart(); vio2.disconnect(); } },{rootMargin:"400px"});
     vio2.observe(document.getElementById("personaggi"));
   } else vwStart();
+
+  /* ---------- IN ARRIVO: scorrimento laterale guidato dallo scorrimento della pagina ---------- */
+  var arr = document.getElementById("arrivo"), arrT = document.getElementById("arrTrack"), arrF = document.getElementById("arrFill");
+  var arrCards = [].slice.call(arrT.querySelectorAll(".arr-card")), arrQ = false, arrLast = -1;
+  function arrScroll(){
+    if (arrQ || site.hidden || reduce) return; arrQ = true;
+    requestAnimationFrame(function(){
+      arrQ = false;
+      var r = arr.getBoundingClientRect(), tot = r.height - innerHeight; if (tot <= 0) return;
+      var p = Math.max(0, Math.min(1, -r.top / tot));
+      var c0 = arrCards[0], cN = arrCards[arrCards.length-1];
+      var dist = (cN.offsetLeft + cN.offsetWidth/2) - (c0.offsetLeft + c0.offsetWidth/2);
+      arrT.style.transform = "translateX(" + (-dist*p).toFixed(1) + "px)";
+      arrF.style.width = (p*100).toFixed(1) + "%";
+      var k = Math.round(p*(arrCards.length-1));
+      arrCards.forEach(function(c,i){ c.classList.toggle("on", i === k); });
+      if (k !== arrLast && arrLast !== -1) sample("neon0", 1 + k*.08, .35);
+      arrLast = k;
+    });
+  }
+  window.addEventListener("scroll", arrScroll, {passive:true}); window.addEventListener("resize", arrScroll); arrScroll();
 
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);

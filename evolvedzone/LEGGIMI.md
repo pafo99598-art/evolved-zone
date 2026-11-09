@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 8/11/2026) · versione 11
+# Sito Evolved Zone (Claude B, 8/11/2026) · versione 12
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
