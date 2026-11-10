@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 19
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 20
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -24,6 +24,14 @@ Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
 - Telefono: col mostro la versione perde il 5° momento (fuga finale), per restare fluida.
 - **Caccia** (modello vero del gioco `e4caccia73`, aggiunto in `assets/modelli.json` alla voce `VE.jet`): passaggio di 3 caccia dal sole sopra di te con 2 missili (versioni 2, 3, 6) e **duello aereo** (versione 3): azzurri inseguiti dai rosa con raffiche, uno abbattuto esplode in aria e precipita.
 - Nuovi valori del SITO (non del gioco), scelti da Claude B: dimensione mostro 2,1 (PC) / 1,95 (telefono), distanza 95, caccia ×0,62 (passaggio) / ×0,5 (duello), passaggio 1,9 s, duello circa 2,4 s da bordo a bordo.
+
+## v20 · correzioni dal telefono di Michele
+- **Blocco a fine evento col mostro (telefono)**: dopo l'esplosione il livello 3D doveva sparire, ma la sua trasparenza tornava a 1 e restava acceso con mostro e fulmini congelati fino alla fine dell'evento. Ora sparisce davvero (1/7 s sul telefono, 1/3 s sul PC) e si spegne.
+- **Pagina principale tutta insieme**: badge, logo, pulsanti e «Scopri il gioco» entrano insieme (prima a 0 · 1 · 1,9 · 2,9 s).
+- **Stelle**: appena compare il sito tornano normali, come sul countdown (prima restavano grandi e lampeggianti fino alla fine dell'evento). Su ogni pagina nessuna stella sopra il sole.
+- **Caccia ed elicottero nell'armadietto (telefono)**: erano così grandi che sullo schermo stretto uscivano dal campo visivo della telecamera (se ne vedevano solo dei pezzi). Ora hanno la stessa grandezza degli altri modelli.
+- **IL GIOCO**: tolta la scritta blu; il titolo stesso è il pulsante, pulsa come la scritta blu, con un cursore nell'angolo in basso a sinistra che fa il clic. Apre l'armadietto 3D.
+- **Musica di sottofondo**: volume 0,35 → 0,28 (scelto da Claude B). Il brano si ripete identico ogni 31,97 s: ora arrivato a 33,97 s riparte da 2,00 s con una dissolvenza di 0,25 s (motore audio del browser), invece di ricominciare da capo a 42 s. Se il motore audio non c'è, torna il lettore normale.
 
 ## v19 (Blocco S14) · veicoli nell'armadietto e zaino di prova
 - **Armadietto 3D**: nuova sezione VEICOLI con CACCIA ed ELICOTTERO (modelli veri del gioco, `e4caccia73` ed `e2heli70`, in `assets/modelli.json` alla voce `VE`; l'elicottero ha le pale che girano).

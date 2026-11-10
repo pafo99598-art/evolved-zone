@@ -23,10 +23,11 @@ body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-ser
 /* ===== SFONDO (fisso) ===== */
 .bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
  background:linear-gradient(180deg,#05020d 0%,#12052e 38%,#3a0b5c 58%,#7a1f6e calc(var(--horizon) - 1%),#07030f var(--horizon))}
-.stars{position:absolute;left:0;right:0;top:0;height:var(--horizon)}
+.stars{position:absolute;left:0;right:0;top:0;height:var(--horizon);--sr:calc(min(440px,74vw)/2 + 10px);-webkit-mask:radial-gradient(circle at 50% 100%,transparent var(--sr),#000 calc(var(--sr) + 8px));mask:radial-gradient(circle at 50% 100%,transparent var(--sr),#000 calc(var(--sr) + 8px))}
 .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:tw 3s ease-in-out infinite}
 /* durante l'evento le stelle si «attivano»: più grandi, più luminose, lampeggio più veloce */
-body.ev .stars i{transform:scale(var(--act,1));box-shadow:0 0 calc(var(--act,1) * 4px) #fff,0 0 calc(var(--act,1) * 9px) #3fd0ff;animation:twev .7s ease-in-out infinite alternate}
+body.ev.exp .stars i{transform:none;box-shadow:none;animation:tw 3s ease-in-out infinite}
+body.ev:not(.exp) .stars i{transform:scale(var(--act,1));box-shadow:0 0 calc(var(--act,1) * 4px) #fff,0 0 calc(var(--act,1) * 9px) #3fd0ff;animation:twev .7s ease-in-out infinite alternate}
 @keyframes twev{0%{opacity:.35}100%{opacity:1}}
 @keyframes tw{50%{opacity:.15}}
 .sun{position:absolute;left:50%;top:var(--horizon);transform:translate(-50%,-100%);width:min(440px,74vw);aspect-ratio:2/1;border-radius:999px 999px 0 0;
@@ -106,7 +107,7 @@ h1{margin:6px 0 0;line-height:0}
 @media (min-width:1200px) and (min-height:900px){
  .logo-btn img{width:640px}.badge{font-size:.85rem}.kicker{font-size:1rem}.claim{font-size:1.6rem}
  .verbs span{font-size:1rem;padding:8px 16px}.box{min-width:96px;padding:14px 8px}.box b{font-size:3rem}.box small{font-size:.75rem}
- .when{font-size:1.1rem}.crystal{width:150px;height:190px}.sun{width:600px}}
+ .when{font-size:1.1rem}.crystal{width:150px;height:190px}.sun{width:600px}.stars{--sr:310px}}
 @media(prefers-reduced-motion:reduce){.stars i,.verbs span,.logo-btn,.logo-btn img,.audio.invite{animation:none}}
 
 /* =========================================================
@@ -391,9 +392,15 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.arr{height:auto}.arr-pin{position:static;height:auto;padding:40px 0}.arr-track{flex-direction:column;align-items:center;transform:none!important}.arr-card{transform:none;opacity:1;filter:none}.arr-line,.arr-hint{display:none}}
 
 /* «IL GIOCO» cliccabile */
-.g-open{display:block;margin:0 auto;border:0;background:none;cursor:pointer;color:inherit;padding:4px 10px}
-.g-open h2{transition:transform .25s,text-shadow .25s}
-.g-open:hover h2{transform:scale(1.04);text-shadow:0 0 22px var(--pink),0 0 50px var(--cyan)}
+.g-open{position:relative;display:block;width:max-content;max-width:100%;margin:0 auto;border:1.5px solid var(--cyan);border-radius:22px;background:#07030fcc;cursor:pointer;color:inherit;padding:12px 30px 14px;animation:invite 1.6s ease-in-out infinite;transition:transform .2s}
+.g-open h2{transition:text-shadow .25s;animation:gPulse 1.6s ease-in-out infinite}
+.g-open:hover{transform:scale(1.04)}.g-open:hover h2{text-shadow:0 0 22px var(--pink),0 0 50px var(--cyan)}.g-open:active{transform:scale(.97)}
+@keyframes gPulse{50%{text-shadow:0 0 16px var(--pink),0 0 30px var(--cyan)}}
+.g-cur{position:absolute;left:-6px;bottom:-16px;width:34px;height:34px;pointer-events:none;animation:gClick 2.4s ease-in-out infinite;transform-origin:30% 20%}
+.g-cur svg{position:relative;z-index:1;width:100%;height:100%;filter:drop-shadow(0 0 6px var(--cyan))}
+.g-cur i{position:absolute;left:4px;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border:2px solid var(--cyan);border-radius:50%;opacity:0;animation:gRip 2.4s ease-out infinite}
+@keyframes gClick{0%,100%{transform:translate(10px,10px)}35%{transform:translate(0,0)}42%{transform:translate(0,0) scale(.82)}50%,70%{transform:translate(0,0) scale(1)}}
+@keyframes gRip{0%,40%{opacity:0;transform:scale(.4)}44%{opacity:1;transform:scale(.6)}75%{opacity:0;transform:scale(2.6)}100%{opacity:0}}
 .g-hint{display:inline-flex;gap:6px;align-items:center;margin-top:8px;padding:7px 14px;border-radius:99px;border:1.5px solid var(--cyan);color:var(--cyan);
  font:800 .66rem var(--disp);letter-spacing:.18em;background:#07030fcc;animation:invite 1.6s ease-in-out infinite}
 /* ARMADIETTO 3D */
@@ -429,7 +436,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .mu-big-box small{color:var(--muted)}
 .arr-week{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:99px;border:1.5px solid var(--yellow);color:var(--yellow);font:800 .7rem var(--disp);letter-spacing:.16em;
  box-shadow:0 0 16px #ffe14d55;animation:invite 2s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){#museo{transition:none}.g-hint,.arr-week{animation:none}}
+@media(prefers-reduced-motion:reduce){#museo{transition:none}.g-open,.g-open h2,.g-cur,.g-cur i,.arr-week{animation:none}}
 
 /* X di chiusura: cerchio pulito, X disegnata, diventa rossa quando la premi */
 .d-close,.qr-x{font-size:0!important;color:transparent!important;width:48px!important;height:48px!important;padding:0!important;border-radius:50%!important;
@@ -578,15 +585,15 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 <!-- ============ SITO UFFICIALE (appare dopo l'esplosione) ============ -->
 <div id="site" hidden>
   <header class="s-hero">
-    <span class="badge rise" style="--d:1s">Stagione 1 · Disponibile ora</span>
+    <span class="badge rise" style="--d:.25s">Stagione 1 · Disponibile ora</span>
     <h1 style="line-height:0"><img class="s-logo" src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526"></h1>
-    <div class="cta rise" id="cta" style="--d:1.9s"></div>
-    <a class="more rise" href="#gioco" style="--d:2.9s">▼ SCOPRI IL GIOCO</a>
+    <div class="cta rise" id="cta" style="--d:.3s"></div>
+    <a class="more rise" href="#gioco" style="--d:.35s">▼ SCOPRI IL GIOCO</a>
   </header>
 
   <section class="s-sec" id="gioco">
     <div class="g-head rv">
-      <button type="button" class="g-open" id="muOpen" aria-label="Apri l'armadietto 3D"><h2>IL GIOCO</h2><span class="g-hint">TOCCA · ARMADIETTO 3D ▸</span></button>
+      <button type="button" class="g-open" id="muOpen" aria-label="Apri l'armadietto 3D"><h2>IL GIOCO</h2><span class="g-cur" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.1-3.9 2.7 6.3 2.9-1.3-2.7-6.2 5.7-.4z" fill="#fff" stroke="#07030f" stroke-width="1.6" stroke-linejoin="round"/></svg><i></i></span></button>
       <p class="lore">Nel futuro i ghiacciai si sono sciolti e la terra si è spezzata: il mondo è diventato un arcipelago di <b>piccolissime isole</b>. Alcune sono vere, come Figline, Incisa, Leccio e Burchio. Altre sono artificiali, stampate in 3D.<br>Un elicottero ti lascia su una di queste. <b>Ogni partita è un film.</b></p>
     </div>
     <div class="chapters" id="chapters"></div>
@@ -672,7 +679,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     marksman:"assets/snd/g_marksman_0.mp3", glass:"assets/snd/imp_glass_0.mp3",
     boom:"assets/snd/boom_1.mp3", gbreak:"assets/snd/glass_break_0.mp3"
   };
-  var VOL = {music:.35, sfx:.8};
+  var VOL = {music:.28, sfx:.8};   // musica abbassata (prima .35)
   var audioOn = true;
   try { if (localStorage.getItem("ez_audio") === "0") audioOn = false; } catch(e){}
   var unlocked = false, ac = null, music = null, cache = {};
@@ -706,9 +713,44 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     dread:   function(){ tone("sawtooth",110,55,.9,.07); tone("sine",55,50,1,.12); }
   };
 
+
+  // MUSICA DI SOTTOFONDO SENZA STACCHI. Il brano m_neon si ripete identico ogni 31,97 s (misurato: da 2,00 s a 33,97 s);
+  // il file però finisce a 42 s, a metà frase, e il lettore normale ripartiva da capo con uno stacco.
+  // Qui lo suona il motore audio del browser: arrivato a 33,97 s riparte da 2,00 s con una dissolvenza di 0,25 s. Si sente una musica continua.
+  var TEST_MUS = /[?&]test/.test(location.search) || window.EZ_TEST;
+  var LOOP_A = 2.0, LOOP_B = 33.9707, LOOP_X = .25;
+  function BgLoop(){ this.paused = true; this._v = VOL.music; this.buf = null; this.g = null; this.srcs = []; this.t = 0; this.fb = null; this.pos = 0; }
+  BgLoop.prototype = {
+    get volume(){ return this._v; },
+    set volume(v){ this._v = v; if (this.g && ac) this.g.gain.setTargetAtTime(v, ac.currentTime, .03); if (this.fb) this.fb.volume = v; },
+    play: function(){ var me = this; if (!me.paused) return Promise.resolve(); me.paused = false;
+      if (!ac || !window.fetch) return me._fb();
+      return me._load().then(function(){ if (!me.paused) me._go(); }, function(){ return me._fb(); }); },
+    pause: function(){ if (this.paused) return; this.paused = true; clearTimeout(this.t);
+      if (this.seg && ac) this.pos = Math.min(LOOP_B, this.seg.off + Math.max(0, ac.currentTime - this.seg.when));   // ricomincia da dov'era
+      this.srcs.forEach(function(q){ try { q.s.stop(); } catch(e){} }); this.srcs = []; this.seg = null; if (this.fb) this.fb.pause(); },
+    _fb: function(){ if (!this.fb){ this.fb = new Audio(SND.music); this.fb.loop = true; } this.fb.volume = this._v; return this.fb.play(); },
+    _load: function(){ var me = this; if (me.buf) return Promise.resolve(); if (me.lp) return me.lp;
+      me.lp = fetch(SND.music).then(function(r){ return r.arrayBuffer(); })
+        .then(function(a){ return new Promise(function(ok, ko){ ac.decodeAudioData(a, ok, ko); }); })
+        .then(function(b){ me.buf = b; }); return me.lp; },
+    _go: function(){ var me = this; if (!me.g){ me.g = ac.createGain(); me.g.connect(ac.destination); } me.g.gain.value = me._v;
+      me._seg(ac.currentTime + .05, me.pos >= LOOP_B - LOOP_X ? LOOP_A : me.pos, me.pos > 0); },
+    // un pezzo: da «off» fino a LOOP_B (+ coda per la dissolvenza); il pezzo dopo parte da LOOP_A esattamente quando questo arriva a LOOP_B
+    _seg: function(when, off, fadeIn){ var me = this; if (me.paused) return;
+      var s = ac.createBufferSource(), g = ac.createGain(), end = when + (LOOP_B - off);
+      s.buffer = me.buf; s.connect(g); g.connect(me.g);
+      g.gain.setValueAtTime(fadeIn ? 0 : 1, when); if (fadeIn) g.gain.linearRampToValueAtTime(1, when + LOOP_X);
+      g.gain.setValueAtTime(1, end); g.gain.linearRampToValueAtTime(0, end + LOOP_X);
+      s.start(when, off); s.stop(end + LOOP_X + .05);
+      var q = {s:s}; me.srcs.push(q); s.onended = function(){ me.srcs = me.srcs.filter(function(x){ return x !== q; }); };
+      me.seg = {when:when, off:off}; me.pos = 0;
+      me.t = setTimeout(function(){ me._seg(end, LOOP_A, true); }, Math.max(0, (end - ac.currentTime - 1.5)*1000)); }
+  };
+  if (TEST_MUS) window.__music = function(){ return music; };
   function startMusic(){
     if (!audioOn || (typeof EV !== "undefined" && EV.on) || MUS) return;   // durante l'evento suona la colonna sonora
-    if (!music){ music = new Audio(SND.music); music.loop = true; music.volume = VOL.music; }
+    if (!music){ music = new BgLoop(); music.volume = VOL.music; }
     var p = music.play(); if (p && p.catch) p.catch(function(){});
   }
   // Sblocco audio: i browser lo permettono solo dopo un gesto vero (dito che si alza, clic, tasto).
@@ -1187,7 +1229,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
       var m0 = MUS; MUS = null;                                    // la colonna sonora è finita
       if (m0){ clearInterval(m0.timer); }
       if (!audioOn || !unlocked) return;
-      if (!music){ music = new Audio(SND.music); music.loop = true; }
+      if (!music){ music = new BgLoop(); }
       music.volume = 0; startMusic();
       var v = 0, iv = setInterval(function(){ v += .02; music.volume = Math.min(VOL.music, v); if (v >= VOL.music) clearInterval(iv); }, 100);
     }, Math.max(0, (EXP_B + DROP_BEATS)*BEAT*1000 + 2500 - offset*1000));
@@ -1249,7 +1291,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     window.scrollTo(0,0);
     site.hidden = true; site.classList.remove("enter");
     if (replay) mainEl.style.display = "none";
-    document.body.classList.add("ev");
+    document.body.classList.add("ev"); document.body.classList.remove("exp");
     stage.hidden = false; evB.style.display = evF.style.display = ""; flashOv.style.transition = "none"; flashOv.style.opacity = 0;
     evSize(); EV.beams = beamLayout();
     document.getElementById("toast").hidden = true;
@@ -1258,7 +1300,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   }
 
   function explode(cxp, cyp, last){
-    EV.exploded = true; EV.expAt = (performance.now() - EV.t0)/1000;
+    EV.exploded = true; EV.expAt = (performance.now() - EV.t0)/1000; document.body.classList.add("exp"); root.style.setProperty("--act","1");
     // frammenti: ogni faccia del cristallo diventa una scheggia che vola via
     last.faces.forEach(function(o){
       var pts = o.f.map(function(ix){ return [last.P[ix].x/dpr, last.P[ix].y/dpr]; });
@@ -1298,7 +1340,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 
   function endEvent(){
     EV.on = false; stage.hidden = true; S3.on = false; s3Clear();
-    document.body.classList.remove("ev");
+    document.body.classList.remove("ev", "exp");
     bctx.clearRect(0,0,evB.width,evB.height); ectx.clearRect(0,0,evF.width,evF.height);
   }
 
@@ -2001,7 +2043,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     S3.ver = TEST && fv >= 1 && fv <= VERSIONS.length ? fv - 1 : (Math.random()*VERSIONS.length)|0;
     S3.plan = VERSIONS[S3.ver].m.slice();
     if (PHONE && VERSIONS[S3.ver].mon) S3.plan.pop();                // telefono: col mostro niente fuga finale (resta fluido)
-    S3.gen++; S3.on = true; S3.next = 0; S3.monOn = false; glCv.style.opacity = 1; S3.mon = {cur:0, tgt:0, a:1}; S3.bolts = []; S3.shake = 0;
+    S3.gen++; S3.on = true; S3.next = 0; S3.monOn = false; S3.fade = 1; glCv.style.opacity = 1; S3.mon = {cur:0, tgt:0, a:1}; S3.bolts = []; S3.shake = 0;
   }
   function s3Clear(){
     S3.gen++;                                                          // annulla i momenti in ritardo ancora in attesa
@@ -2020,8 +2062,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     if (!S3.on) return;
     s3Size(); S3.et = et;
     if (VERSIONS[S3.ver].mon && !S3.monOn && et >= MON_T0 && !EV.exploded){ S3.monOn = true; try { monsterGo(); } catch(e){ if (window.console) console.warn("mostro", e); } }
-    if (EV.exploded){ glCv.style.opacity = Math.max(0, (parseFloat(glCv.style.opacity)||1) - dt*3); ambEl.style.opacity = 0;
-      if (glCv.style.opacity <= 0 && S3.mon.a <= 0){ S3.on = false; s3Clear(); return; } }
+    if (EV.exploded){ S3.fade -= dt*(PHONE ? 7 : 3); glCv.style.opacity = Math.max(0, S3.fade).toFixed(3); ambEl.style.opacity = 0;   // sparisce in 1/7 s sul telefono, 1/3 s sul PC
+      if (S3.fade <= 0){ S3.on = false; s3Clear(); glCv.style.opacity = 0; return; } }
     while (S3.next < S3.plan.length && et >= SCENE_T[S3.next] && !EV.exploded){ try { M[S3.plan[S3.next]](); } catch(e){ if (window.console) console.warn("momento", S3.plan[S3.next], e); } S3.next++; }
     s3Run(S3.acts, dt); s3Run(S3.fx, dt);
     if (S3.shake > 0){ S3.shake = Math.max(0, S3.shake - dt*1.6); var k = S3.shake*8; stage.style.transform = "translate(" + rnd(-k,k).toFixed(1) + "px," + rnd(-k,k).toFixed(1) + "px)"; }
@@ -2127,7 +2169,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
         ectx.shadowColor = "#3fd0ff"; ectx.shadowBlur = 10*dpr; ectx.beginPath();
         z.p.forEach(function(q,k){ var X = (cxp + q[0])*dpr, Y = (cyp + q[1])*dpr; k ? ectx.lineTo(X,Y) : ectx.moveTo(X,Y); }); ectx.stroke(); ectx.restore(); return true; });
       root.style.setProperty("--act", (1 + 1.8*energy).toFixed(2));        // le stelle «si attivano»
-      if (et >= EXP){ EV.ex = cxp; EV.ey = cyp; EV.esc = sc; explode(cxp, cyp, EV.lastDraw); }
+      if (et >= EXP){ EV.ex = cxp; EV.ey = cyp; EV.esc = sc; explode(cxp, cyp, EV.lastDraw); EV.expAt = et; }   // stesso orologio dell'evento (anche al rallentatore della prova)
     } else {
       // dopo l'esplosione: lame di luce che attraversano lo schermo
       var te2 = et - EV.expAt;
@@ -2550,7 +2592,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
         [0, Math.PI].forEach(function(a){ var b = new THREE.Mesh(new THREE.BoxGeometry(.55*kk, .09*kk, 7.4*kk), bm); b.position.z = Math.cos(a)*3.7*kk; rot.add(b); }); inner.add(rot);
         tr.position.set(D.tail[0]*kk, D.tail[1]*kk, D.tail[2]*kk); [0, Math.PI/2].forEach(function(a){ var b = new THREE.Mesh(new THREE.BoxGeometry(.06*kk, .24*kk, 1.5*kk), bm); b.rotation.x = a; tr.add(b); }); inner.add(tr);
         grp.userData.rot = rot; grp.userData.tail = tr; }
-      var bx = new THREE.Box3().setFromObject(inner), cc = bx.getCenter(new THREE.Vector3()); inner.position.copy(cc).multiplyScalar(-1); grp.add(inner); grp.userData.r = bx.getSize(new THREE.Vector3()).length()/2*.9;
+      inner.updateMatrixWorld(true); var bx = new THREE.Box3().setFromObject(inner), cc = bx.getCenter(new THREE.Vector3()), rr = bx.getSize(new THREE.Vector3()).length()/2*.9;
+      inner.position.copy(cc).multiplyScalar(-1); var sh = new THREE.Group(); sh.scale.setScalar(1/rr); sh.add(inner); grp.add(sh); grp.userData.r = 1;
       return (MU.cache[id] = grp); }
     mesh.position.set(-c.x, -c.y, -c.z);
     grp.add(mesh); grp.userData.r = g.boundingSphere.radius;
@@ -2567,7 +2610,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     MU.r.outputEncoding = THREE.sRGBEncoding; MU.r.setPixelRatio(Math.min(devicePixelRatio||1, 1.5)); MU.r.setClearColor(0x000000, 0);
     MU.rb = new THREE.WebGLRenderer({canvas:muBigCv, antialias:true, alpha:true});   // vetrina grande: motore suo
     MU.rb.outputEncoding = THREE.sRGBEncoding; MU.rb.setPixelRatio(Math.min(devicePixelRatio||1, 2)); MU.rb.setClearColor(0x000000, 0);
-    MU.scene = new THREE.Scene(); MU.cam = new THREE.PerspectiveCamera(30, 1, .05, 50);
+    MU.scene = new THREE.Scene(); MU.cam = new THREE.PerspectiveCamera(30, 1, .05, 400);
     MU.scene.add(new THREE.HemisphereLight(0xffe6ff, 0x2a1050, 1.05));
     var d1 = new THREE.DirectionalLight(0xffffff, .9); d1.position.set(2,3,4); MU.scene.add(d1);
     var d2 = new THREE.DirectionalLight(0x3fd0ff, .7); d2.position.set(-3,1,-2); MU.scene.add(d2);
