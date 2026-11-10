@@ -1279,7 +1279,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   function s3Init(D){
     if (S3.r) return true;
     try { S3.r = new THREE.WebGLRenderer({canvas:glCv, antialias:true, alpha:true}); } catch(e){ return false; }
-    S3.r.outputEncoding = THREE.sRGBEncoding; S3.r.setPixelRatio(PHONE ? 1 : Math.min(devicePixelRatio||1, 1.5));
+    S3.r.outputEncoding = THREE.sRGBEncoding; S3.r.localClippingEnabled = true; S3.r.setPixelRatio(PHONE ? 1 : Math.min(devicePixelRatio||1, 1.5));
     var sc = S3.scene = new THREE.Scene();
     sc.fog = new THREE.Fog(0x7a1f6e, 38, 82);                         // escono dal bagliore del sole
     S3.cam = new THREE.PerspectiveCamera(42, 1, .1, 200); S3.cam.position.set(0, 2.4, 10); S3.cam.lookAt(0, 2.4, -100);
@@ -1654,15 +1654,204 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
       kinds.forEach(function(k,i){ later(i*.1, function(){ var o = animal(k, i); o.scale.setScalar(k === "fox" ? 2 : 1.7); runner(o, (i%2 ? 1 : -1)*(1 + (i%4)*1.3)*L, 34 + i, null, null, i%3 === 0 ? "lato" : null); }); });
       [0,.35,.7,1.05].forEach(function(t,i){ later(t, function(){ boom((i%2 ? 1 : -1)*(2 + i)*L, -40 + i*6, 1 + i*.2); }); }); }
   };
-  // 7 VERSIONI dell'evento: ogni visitatore ne vede una a caso (nel blocco S13 arrivano mostro, caccia, meteoriti, auto)
+  // ---------- CACCIA (modello vero del gioco, e4caccia73) ----------
+  function jetObj(scale, trail){
+    var D = S3.D && S3.D.VE && S3.D.VE.jet; if (!D) return null;
+    if (!S3.jg){ var q = dec2(D.pos, Uint16Array), n = D.nv, p = new Float32Array(n*3), i, k;
+      for (i=0;i<n;i++) for (k=0;k<3;k++) p[i*3+k] = D.lo[k] + q[i*3+k]/65535*(D.hi[k]-D.lo[k]);
+      var uq = dec2(D.uv, Uint16Array), uv = new Float32Array(n*2); for (i=0;i<n*2;i++) uv[i] = uq[i]/65535;
+      var g0 = new THREE.BufferGeometry(); g0.setAttribute("position", new THREE.BufferAttribute(p,3)); g0.setAttribute("uv", new THREE.BufferAttribute(uv,2));
+      g0.setIndex(new THREE.BufferAttribute(dec2(D.i, Uint16Array),1)); g0.computeVertexNormals();
+      var im = new Image(), t = new THREE.Texture(im); t.flipY = false; t.encoding = THREE.sRGBEncoding; im.onload = function(){ t.needsUpdate = true; }; im.src = D.tex;
+      S3.jg = g0; S3.jm = new THREE.MeshLambertMaterial({map:t}); }
+    var g = new THREE.Group(), m = new THREE.Mesh(S3.jg, S3.jm), s = D.len/(D.hi[2]-D.lo[2])*(scale||1);
+    m.scale.setScalar(s); m.position.set(-(D.hi[0]+D.lo[0])/2*s, -(D.hi[1]+D.lo[1])/2*s, -(D.hi[2]+D.lo[2])/2*s); g.add(m);
+    var L = D.len*(scale||1), span = (D.hi[0]-D.lo[0])*s;
+    // fiamma del motore (come nel gioco) e scie al neon dalle ali
+    var fl = new THREE.Mesh(new THREE.ConeGeometry(.55*(scale||1), 3.2*(scale||1), 8), glow('#ffb050', .85, true)); fl.rotation.x = -Math.PI/2; fl.position.z = L/2 + 1.2*(scale||1); g.add(fl);
+    [-1,1].forEach(function(x){ var tr = box(g, glow(trail || '#3fd0ff', .55, true), .12*(scale||1), .12*(scale||1), L*1.4, x*span*.47, 0, L*1.15); tr.userData.trail = 1; });
+    g.userData.fl = fl; g.userData.L = L; return g;
+  }
+  function jetSound(vol){ tone("sawtooth", 260, 55, 1.8, .05*(vol||1)); noiseBurst(1.9, .22*(vol||1)); }
+  // esplosione in aria (palla di fuoco + detriti che cadono)
+  function airBoom(x, y, z, size){
+    ICO = ICO || new THREE.IcosahedronGeometry(1, 0);
+    var c = new THREE.Mesh(ICO, glow('#ffe14d', 1, true)); c.position.set(x, y, z);
+    fxAdd(c, function(f, dt){ f.t += dt; var e = Math.min(1, f.t/.3); c.scale.setScalar(size*(.4 + 2.2*e)); c.rotation.y += dt*3; c.material.color.lerpColors(lin('#ffffff'), lin('#ff5a2a'), e); c.material.opacity = 1 - Math.max(0, (f.t - .2)/.5); return f.t < .7; });
+    for (var i=0;i<Math.round(8*Q);i++) (function(){ var d = box(S3.scene, mat(Math.random() < .5 ? '#2a2236' : '#ff7a3c'), .5*size, .3*size, .5*size, x, y, z); S3.scene.remove(d);
+      var vx = rnd(-8,8)*size, vy = rnd(-2,6)*size, vz = rnd(-6,6)*size;
+      fxAdd(d, function(f, dt){ f.t += dt; d.position.x += vx*dt; d.position.y += vy*dt; d.position.z += vz*dt; vy -= 14*dt; d.rotation.x += dt*7; return f.t < 1.4 && d.position.y > 0; }); })();
+    sample("boom", rnd(.7,.9), .5); S3.shake = Math.max(S3.shake, .2*size);
+  }
+  M.caccia = function(){   // 3 caccia escono dal sole e passano sopra di te, sganciano due missili davanti
+    var L = W(), lanes = [[0,0,'#3fd0ff'],[-7*L,.28,'#ff3fd0'],[7*L,.28,'#ff3fd0']];
+    jetSound(1);
+    lanes.forEach(function(q, i){ later(q[1], function(){ var j = jetObj(.62, q[2]); if (!j) return;
+      var x0 = q[0], T = 1.9;
+      add(j, function(a, dt){ a.t += dt; var f = a.t/T, e = f*f;
+        j.position.set(x0*(1 - .55*f), 17 - 11*f + (f > .8 ? (f - .8)*30 : 0), -115 + 132*e);
+        j.rotation.z = Math.sin(a.t*2.4 + i)*.25; j.rotation.x = f > .8 ? -(f - .8)*1.6 : .06;
+        j.userData.fl.scale.setScalar(1 + .3*Math.sin(a.t*40));
+        if (i === 0 && !a.m && f > .45){ a.m = 1; [-1,1].forEach(function(s){ missile(j.position.clone().add(new THREE.Vector3(s*2, -1, 0)), new THREE.Vector3(s*4*L, 0, -14)); }); }
+        if (!a.pass && j.position.z > 2){ a.pass = 1; S3.shake = Math.max(S3.shake, .5); tone("sawtooth", 140, 40, .9, .07); }
+        return f < 1.15; }); }); });
+  };
+  function missile(A, B){   // scia bianca + esplosione dove tocca terra
+    var m = box(S3.scene, glow('#ffffff', 1, true), .25, .25, 1.2, A.x, A.y, A.z), T = .55; S3.scene.remove(m);
+    fxAdd(m, function(f, dt){ f.t += dt; var k = Math.min(1, f.t/T); m.position.lerpVectors(A, B, k); m.lookAt(B);
+      if (Math.random() < .8) puff(m.position.x, m.position.y, m.position.z, "#ffffff", 1);
+      if (k >= 1){ boom(B.x, B.z, 1.3); return false; } return true; });
+  }
+  M.duello = function(){   // duello aereo davanti al sole: azzurri inseguiti dai rosa, uno viene abbattuto
+    var L = W(), dir = Math.random() < .5 ? 1 : -1, z = -46, pairs = [[0, 12], [1, 16.5]];
+    var half = Math.abs(scr3D(innerWidth, 0, z).x), sp = (2*half + 22)/2.4;          // attraversano lo schermo VERO da bordo a bordo in circa 2,4 s
+    jetSound(.8);
+    pairs.forEach(function(pr, i){ later(i*.35, function(){
+      var prey = jetObj(.5, '#3fd0ff'), hunter = jetObj(.5, '#ff3fd0'); if (!prey || !hunter) return;
+      var y = pr[1], down = i === 0, x0 = -dir*(half + 11);
+      [prey, hunter].forEach(function(j){ j.rotation.y = -dir*Math.PI/2; });
+      add(prey, function(a, dt){ a.t += dt;
+        if (a.hit){ a.ft += dt; prey.position.x += dir*sp*.6*dt; prey.position.y -= (6 + a.ft*22)*dt; prey.rotation.z += dt*5; prey.rotation.x += dt*1.5;
+          if (Math.random() < .9) puff(prey.position.x, prey.position.y, prey.position.z, "#2a1a36", 1);
+          if (prey.position.y <= .5){ boom(prey.position.x, prey.position.z, 2); return false; } return true; }
+        prey.position.set(x0 + dir*sp*a.t, y + Math.sin(a.t*3 + i)*1.5, z + Math.sin(a.t*1.7)*4); prey.rotation.z = -dir*Math.cos(a.t*3 + i)*.6;
+        if (down && prey.position.x*dir > -half*.15){ a.hit = 1; prey.userData.hit = 1; a.ft = 0; airBoom(prey.position.x, prey.position.y, prey.position.z, 1.4); }
+        return Math.abs(prey.position.x) < half + 30; });
+      add(hunter, function(a, dt){ a.t += dt; var tt = a.t - .45;
+        hunter.position.set(x0 + dir*sp*tt, y + Math.sin(tt*3 + i)*1.5 + .8, z + Math.sin(tt*1.7)*4 + 2); hunter.rotation.z = -dir*Math.cos(tt*3 + i)*.6;
+        a.cd = (a.cd || 0) - dt;
+        if (a.cd <= 0 && prey.parent && !prey.userData.hit && a.t > .3){ a.cd = PHONE ? .16 : .1; var nose = hunter.position.clone().add(new THREE.Vector3(dir*4, 0, 0)), tgt = prey.position.clone().add(new THREE.Vector3(rnd(-2,2), rnd(-1,1), 0));
+          var l = lineMesh(0xffe14d); setLine(l, nose, tgt); S3.scene.remove(l); fxAdd(l, function(f, dt){ f.t += dt; l.material.opacity = 1 - f.t*8; return f.t < .12; }); if (Math.random() < .3) tone("square", 900, 300, .06, .03); }
+        return Math.abs(hunter.position.x) < half + 30; });
+    }); });
+  };
+  // ---------- MOSTRO NEON 3D (low poly, traslucido, occhi azzurri, spigoli rosa/azzurri) ----------
+  // sale da dietro le montagne sotto al sole (≈9 s), ruggisce, alza le braccia e lancia una TEMPESTA NEON
+  // che arriva sul cristallo esattamente al momento dell'esplosione (15 s): poi esplode tutto.
+  var MON_T0 = 8.8, MON_THROW = 13.2;
+  function monster3D(){
+    var cp = [new THREE.Plane(new THREE.Vector3(0,1,0), 0)], g = new THREE.Group(), U = {mats:[], parts:[]};
+    var body = new THREE.MeshLambertMaterial({color:lin('#3a1470'), emissive:lin('#1a0636'), transparent:true, opacity:.68, fog:false, depthWrite:false, clippingPlanes:cp});
+    function edge(c){ var m = new THREE.LineBasicMaterial({color:lin(c), transparent:true, opacity:.95, fog:false, blending:THREE.AdditiveBlending, depthWrite:false, clippingPlanes:cp}); U.mats.push(m); return m; }
+    var EP = edge('#ff3fd0'), EC = edge('#3fd0ff');
+    function piece(parent, geo, x, y, z, sx, sy, sz, e){ var m = new THREE.Mesh(geo, body); m.position.set(x,y,z); m.scale.set(sx,sy,sz); m.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo), e)); parent.add(m); U.parts.push(m); return m; }
+    var flat = function(g){ g = g.toNonIndexed(); g.computeVertexNormals(); return g; };   // facce piatte low poly con la luce leggera (per vertice)
+    var CY6 = flat(new THREE.CylinderGeometry(1, .68, 1, 6, 1)), CY5 = flat(new THREE.CylinderGeometry(.55, .45, 1, 5, 1)), IC = new THREE.IcosahedronGeometry(1, 0), DO = new THREE.DodecahedronGeometry(1, 0), CO = flat(new THREE.ConeGeometry(1, 1, 4));
+    piece(g, CY6, 0, 2, 0, 6.5, 4, 4.6, EP);                          // bacino
+    var torso = grp(g, 0, 4, 0); U.torso = torso;
+    piece(torso, CY6, 0, 5.5, 0, 9, 11, 6.2, EP);                      // busto a V
+    piece(torso, IC, -2.6, 8.5, 2.6, 2.6, 2.2, 1.2, EC); piece(torso, IC, 2.6, 8.5, 2.6, 2.6, 2.2, 1.2, EC);   // pettorali
+    var core = new THREE.Mesh(IC, glow('#ff3fd0', .9, true)); core.position.set(0, 6, 3.3); core.scale.setScalar(1.1); core.material.clippingPlanes = cp; torso.add(core); U.core = core;
+    piece(torso, CY5, 0, 12, 0, 3, 2.2, 3, EC);                        // collo
+    var head = grp(torso, 0, 14.6, .6); U.head = head;
+    piece(head, IC, 0, 0, 0, 3.3, 3.6, 3, EC);
+    piece(head, DO, 0, -2, 1, 2.4, 1.3, 2, EP);                        // mascella
+    [-1,1].forEach(function(s){ var h = piece(head, CO, s*2.2, 3, -.4, .8, 4.5, .8, EP); h.rotation.z = -s*.55; h.rotation.x = -.25; });
+    var eyeM = glow('#3fd0ff', 0, true), halo = glow('#3fd0ff', 0, true); eyeM.clippingPlanes = cp; halo.clippingPlanes = cp; U.eyeM = eyeM; U.halo = halo;
+    [-1,1].forEach(function(s){ var e = box(head, eyeM, 1.25, .5, .3, s*1.15, .45, 2.75); e.rotation.z = s*.28; var hl = new THREE.Mesh(IC, halo); hl.position.set(s*1.15, .45, 2.9); hl.scale.set(1.8, 1.1, .4); head.add(hl); });
+    var mouth = box(head, glow('#ff3fd0', 0, true), 2, .2, .2, 0, -1.7, 2.6); mouth.material.clippingPlanes = cp; U.mouth = mouth;
+    U.arms = [];
+    [-1,1].forEach(function(s){
+      piece(torso, DO, s*6.2, 10.4, 0, 2.9, 2.6, 2.9, EC);             // spalla
+      var up = grp(torso, s*6.6, 10, 0); up.rotation.z = s*.3;
+      piece(up, CY5, 0, -3.6, 0, 2.6, 7.2, 2.6, EP);
+      var lo = grp(up, 0, -7.2, 0); lo.rotation.x = -.5;
+      piece(lo, CY5, 0, -3.2, 0, 2.1, 6.4, 2.1, EC);
+      var hand = grp(lo, 0, -6.8, 0); piece(hand, IC, 0, 0, 0, 1.7, 1.5, 1.7, EP);
+      for (var k=0;k<3;k++){ var c = piece(hand, CO, (k-1)*.8, -1.6, .6, .35, 1.6, .35, EC); c.rotation.x = Math.PI + .3; }
+      U.arms.push({up:up, lo:lo, hand:hand, s:s}); });
+    g.userData = U; return g;
+  }
+  function monsterGo(){
+    var o = monster3D(), U = o.userData, s = W() === 1 ? 1.95 : 2.1, z = -95, ball = null, storm = null, P0, C, P1;
+    o.scale.setScalar(s); o.position.set(0, -32*s, z); o.rotation.y = .0001;
+    // foschia luminosa sull'orizzonte (sotto al sole): il mostro esce da lì, non si vede dove è tagliato
+    var hc = document.createElement("canvas"); hc.width = 8; hc.height = 128; var hx = hc.getContext("2d"), hg = hx.createLinearGradient(0,0,0,128);
+    hg.addColorStop(0,"rgba(255,63,208,0)"); hg.addColorStop(.55,"rgba(255,90,200,.55)"); hg.addColorStop(.85,"rgba(255,150,120,.95)"); hg.addColorStop(1,"rgba(255,200,140,1)");
+    hx.fillStyle = hg; hx.fillRect(0,0,8,128);
+    var mist = new THREE.Mesh(new THREE.PlaneGeometry(1,1), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(hc), transparent:true, opacity:0, depthWrite:false, fog:false, blending:THREE.AdditiveBlending}));
+    mist.scale.set(170*s, 12*s, 1); mist.position.set(0, 6*s, z + 14); S3.scene.add(mist); U.mist = mist;
+    sample("boom", .35, .6); synth.dread();
+    add(o, function(a, dt){
+      var t = S3.et - MON_T0, rise = ease(t/2.4);
+      if (EV.exploded){                                                  // esplode insieme al cristallo
+        U.parts.forEach(function(p, i){ p.userData.v = p.userData.v || new THREE.Vector3(rnd(-1,1), rnd(-.2,1), rnd(0,1)).multiplyScalar(30); p.position.addScaledVector(p.userData.v, dt); p.rotation.x += dt*4; p.rotation.y += dt*3; });
+        U.mats.forEach(function(m){ m.opacity = Math.max(0, m.opacity - dt*2); }); U.mist.material.opacity = Math.max(0, U.mist.material.opacity - dt*2); return true; }
+      o.position.y = (-32 + 28*rise)*s;                                  // finisce col bacino sotto l'orizzonte
+      U.mist.material.opacity = .85*clamp01(t/.8);
+      U.torso.rotation.z = Math.sin(S3.et*1.3)*.03; U.torso.scale.y = 1 + Math.sin(S3.et*2.2)*.012;
+      // occhi: si accendono a scatti, poi restano accesi e pulsano
+      var eo = t < .9 ? 0 : t < 1.5 ? (Math.sin(t*40) > 0 ? 1 : .2) : .85 + .15*Math.sin(S3.et*6);
+      U.eyeM.opacity = eo; U.halo.opacity = eo*.35; U.core.material.opacity = .4 + .5*rise*(.7 + .3*Math.sin(S3.et*5));
+      U.head.rotation.x = .25*(1 - rise) - .08; U.head.rotation.y = Math.sin(S3.et*.8)*.12*(1 - ease((S3.et - 12)/1));
+      // ruggito (12,6 s): bocca accesa, testa indietro, tremore
+      var roar = clamp01((S3.et - 12.6)/.25)*(1 - clamp01((S3.et - 13.6)/.4));
+      U.mouth.material.opacity = roar; U.mouth.scale.y = 1 + roar*6; U.head.rotation.x -= roar*.35;
+      if (!a.roar && S3.et > 12.6){ a.roar = 1; sample("boom", .3, .8); tone("sawtooth", 90, 30, 1.6, .12); noiseBurst(1.4, .3); S3.shake = Math.max(S3.shake, 1); }
+      // braccia: pendono, poi si alzano sopra la testa (energia), poi lanciano in avanti
+      var lift = ease((S3.et - 11.4)/1.4), thr = ease((S3.et - MON_THROW)/.35);
+      U.arms.forEach(function(A){ A.up.rotation.z = A.s*(.3 + 1.25*lift - .9*thr); A.up.rotation.x = -1.3*thr + Math.sin(S3.et*1.5 + A.s)*.05*(1 - lift); A.lo.rotation.x = -.5 - .5*lift + .5*thr; });
+      // sfera di energia tra le mani
+      if (!ball && S3.et > 12.3){ ball = new THREE.Mesh(ICO = ICO || new THREE.IcosahedronGeometry(1,0), glow('#3fd0ff', .95, true)); S3.scene.add(ball); a.parts = [];
+        for (var i=0;i<Math.round(26*Q);i++){ var p = box(S3.scene, glow(i%2 ? '#ff3fd0' : '#3fd0ff', .9, true), .5, .5, .5, 0, 0, 0); p.userData = {a:rnd(0,6.28), b:rnd(-1,1), r:rnd(1.4,3.2), w:rnd(4,9)}; a.parts.push(p); }
+        a.zl = [[], [], []]; tone("sine", 200, 900, 1, .06); }
+      if (ball){
+        var hands = U.arms.map(function(A){ return A.hand.getWorldPosition(new THREE.Vector3()); }), mid = hands[0].clone().add(hands[1]).multiplyScalar(.5);
+        var BP, k = 0, size;
+        if (S3.et < MON_THROW + .2){ BP = U.head.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, -7*s, 2.5*s)); size = (.6 + 2.2*ease((S3.et - 12.3)/.9))*s; P0 = BP.clone(); }   // nasce davanti alla bocca
+        else {                                                         // la tempesta vola verso il cristallo: arriva quando esplode (15 s)
+          if (!C){ C = crystal3D(-8); P1 = P0.clone().add(C).multiplyScalar(.5).add(new THREE.Vector3(0, 4, 0)); sample("whoosh", .5, .9); noiseBurst(1.8, .3); }
+          k = ease((S3.et - MON_THROW - .2)/(EXP - MON_THROW - .2)); var u = 1 - k;
+          BP = new THREE.Vector3(u*u*P0.x + 2*u*k*P1.x + k*k*C.x, u*u*P0.y + 2*u*k*P1.y + k*k*C.y, u*u*P0.z + 2*u*k*P1.z + k*k*C.z);
+          size = 3.4*s + (.7 - 3.4*s)*k;                                // si stringe arrivando: non copre il cristallo
+          if (Math.random() < dt*6) bolt();
+          if (Math.random() < .6) puff(BP.x + rnd(-1,1)*size, BP.y, BP.z, Math.random() < .5 ? '#3fd0ff' : '#ff3fd0', 2);   // scia della tempesta
+        }
+        ball.position.copy(BP); ball.scale.setScalar(size*(1 + .12*Math.sin(S3.et*30))); ball.rotation.x += dt*5; ball.rotation.y += dt*7;
+        a.parts.forEach(function(p, pi){ var d = p.userData; d.a += dt*d.w;
+          if (C){ var H = hands[pi%2], f = ((S3.et - MON_THROW)*1.1 + (pi/a.parts.length)) % 1, rr = (1 - f)*5*s*.5 + .3, X = H.x + (C.x - H.x)*f, Y = H.y + (C.y - H.y)*f, Z = H.z + (C.z - H.z)*f;
+            p.position.set(X + Math.cos(d.a)*rr, Y + Math.sin(d.a)*rr, Z); p.scale.setScalar(.35 + .9*(1 - f)*s*.5); }
+          else { var r = size*d.r; p.position.set(BP.x + Math.cos(d.a)*r, BP.y + d.b*r*.6 + Math.sin(d.a*1.3)*r*.3, BP.z + Math.sin(d.a)*r); p.scale.setScalar(Math.max(.25, size*.28)); }
+          p.rotation.y += dt*6; });
+        // fulmini: dalle mani alla sfera, poi dalla sfera verso terra e verso il cristallo
+        if (!a.zt || (a.zt -= dt) <= 0){ a.zt = .05;
+          a.zl.forEach(function(l, i){ var from, to = BP;
+            if (C){ from = i < 2 ? hands[i] : BP; to = i < 2 ? C : new THREE.Vector3(BP.x + rnd(-14,14), 0, BP.z + rnd(-6,6)); } else from = hands[i%2];
+            jagBox(l, from, to, (C && i < 2 ? .5 : .28)*s*.6, i === 1 ? '#ff9fe8' : '#bfefff'); }); }
+      }
+      return true; });
+  }
+  function jagBox(list, A, B, w, col){   // fulmine spesso: 6 blocchetti luminosi a zig-zag (le linee WebGL sono sottili 1 pixel)
+    var n = 6, P = [A.clone()], L = A.distanceTo(B), j = Math.min(3, L*.08);
+    for (var i=1;i<n;i++) P.push(new THREE.Vector3().lerpVectors(A, B, i/n).add(new THREE.Vector3(rnd(-j,j), rnd(-j,j), rnd(-j,j))));
+    P.push(B.clone());
+    for (i=0;i<n;i++){ var m = list[i]; if (!m){ m = list[i] = new THREE.Mesh(BX = BX || new THREE.BoxGeometry(1,1,1), glow(col, .95, true)); S3.scene.add(m); }
+      var a0 = P[i], b0 = P[i+1]; m.position.lerpVectors(a0, b0, .5); m.lookAt(b0); m.scale.set(w, w, a0.distanceTo(b0) + w); m.material.opacity = .6 + .4*Math.random(); }
+  }
+  function jag(l, A, B){   // linea spezzata tipo fulmine (riusa 6 punti)
+    var n = 6, arr = new Float32Array(n*3);
+    for (var i=0;i<n;i++){ var f = i/(n-1), j = (i === 0 || i === n-1) ? 0 : 1.6; arr[i*3] = A.x + (B.x - A.x)*f + rnd(-j,j); arr[i*3+1] = A.y + (B.y - A.y)*f + rnd(-j,j); arr[i*3+2] = A.z + (B.z - A.z)*f + rnd(-j,j); }
+    if (!l.isJ){ l.isJ = 1; S3.scene.remove(l); var g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(arr, 3)); var L2 = new THREE.Line(g, l.material); l.material.blending = THREE.AdditiveBlending; S3.scene.add(L2); l.J = L2; }
+    l.J.geometry.attributes.position.array.set(arr); l.J.geometry.attributes.position.needsUpdate = true; l.J.geometry.computeBoundingSphere();
+  }
+  // posizione 3D del cristallo (che sta disegnato in 2D al centro), alla profondità z
+  function scr3D(sx, sy, z){   // punto 3D che sullo schermo sta in (sx, sy), alla profondità z
+    var v = new THREE.Vector3(sx/innerWidth*2 - 1, -(sy/innerHeight*2 - 1), .5).unproject(S3.cam), d = v.sub(S3.cam.position).normalize();
+    return S3.cam.position.clone().add(d.multiplyScalar((z - S3.cam.position.z)/d.z));
+  }
+  function crystal3D(z){
+    var v = new THREE.Vector3((EV.cx||innerWidth/2)/innerWidth*2 - 1, -((EV.cy||innerHeight/2)/innerHeight*2 - 1), .5).unproject(S3.cam), d = v.sub(S3.cam.position).normalize();
+    return S3.cam.position.clone().add(d.multiplyScalar((z - S3.cam.position.z)/d.z));
+  }
+  // 7 VERSIONI dell'evento: ogni visitatore ne vede una a caso. mon:1 = c'è il MOSTRO NEON (4 versioni su 7); caccia in 3 versioni, duello aereo in 1
   var VERSIONS = [
-    {n:"Carica selvaggia",   m:["volpi","cinghiali","rampino","guerra","fuga"]},
-    {n:"Guerra totale",      m:["guerra","inseguimento","salto","paracadute","fuga"]},
-    {n:"Cielo neon",         m:["paracadute","rampino","bus","salto","fuga"]},
-    {n:"Strada neon",        m:["bus","inseguimento","volpi","guerra","fuga"]},
+    {n:"Carica selvaggia",   m:["volpi","cinghiali","rampino","guerra","fuga"], mon:1},
+    {n:"Guerra totale",      m:["guerra","inseguimento","caccia","salto","fuga"]},
+    {n:"Cielo neon",         m:["paracadute","duello","rampino","caccia","fuga"]},
+    {n:"Strada neon",        m:["bus","inseguimento","volpi","guerra","fuga"], mon:1},
     {n:"Valdarno selvaggio", m:["volpi","rampino","cinghiali","paracadute","fuga"]},
-    {n:"Assalto",            m:["salto","guerra","cinghiali","inseguimento","fuga"]},
-    {n:"Rissa",              m:["paracadute","bus","guerra","volpi","fuga"]}
+    {n:"Assalto",            m:["salto","caccia","cinghiali","inseguimento","fuga"], mon:1},
+    {n:"Rissa",              m:["paracadute","bus","guerra","volpi","fuga"], mon:1}
   ];
   var SCENE_T = [3.9, 5.8, 7.7, 9.6, 11.5];                          // 5 momenti, più distanziati = più leggero
   function s3Start(){
@@ -1671,8 +1860,9 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     // VERSIONE dell'evento: una delle 7, scelta a caso per ogni visitatore (pagina di prova: ?v=1…7)
     var fv = Number(new URLSearchParams(location.search).get("v"));
     S3.ver = TEST && fv >= 1 && fv <= VERSIONS.length ? fv - 1 : (Math.random()*VERSIONS.length)|0;
-    S3.plan = VERSIONS[S3.ver].m;
-    S3.gen++; S3.on = true; S3.next = 0; glCv.style.opacity = 1; S3.mon = {cur:0, tgt:0, a:1}; S3.bolts = []; S3.shake = 0;
+    S3.plan = VERSIONS[S3.ver].m.slice();
+    if (PHONE && VERSIONS[S3.ver].mon) S3.plan.pop();                // telefono: col mostro niente fuga finale (resta fluido)
+    S3.gen++; S3.on = true; S3.next = 0; S3.monOn = false; glCv.style.opacity = 1; S3.mon = {cur:0, tgt:0, a:1}; S3.bolts = []; S3.shake = 0;
   }
   function s3Clear(){
     S3.gen++;                                                          // annulla i momenti in ritardo ancora in attesa
@@ -1683,7 +1873,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   }
   function s3Frame(et, dt){
     if (!S3.on) return;
-    s3Size();
+    s3Size(); S3.et = et;
+    if (VERSIONS[S3.ver].mon && !S3.monOn && et >= MON_T0 && !EV.exploded){ S3.monOn = true; try { monsterGo(); } catch(e){ if (window.console) console.warn("mostro", e); } }
     if (EV.exploded){ glCv.style.opacity = Math.max(0, (parseFloat(glCv.style.opacity)||1) - dt*3); ambEl.style.opacity = 0;
       if (glCv.style.opacity <= 0 && S3.mon.a <= 0){ S3.on = false; s3Clear(); return; } }
     while (S3.next < S3.plan.length && et >= SCENE_T[S3.next] && !EV.exploded){ try { M[S3.plan[S3.next]](); } catch(e){ if (window.console) console.warn("momento", S3.plan[S3.next], e); } S3.next++; }
@@ -1744,7 +1935,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   function eventFrame(now, dt){
     var et = (now - EV.t0)/1000, vw = innerWidth, vh = innerHeight, m = Math.min(vw,vh);
     if (TEST && window.__ts){ et = (now - EV.t0)/1000*window.__ts; dt *= window.__ts; }
-    if (TEST) window.__et = et;
+    if (TEST) window.__et = et; if (TEST) window.__S3 = S3;
     if (TEST && S3.scene) window.__s3n = S3.scene.children.filter(function(c){ return !c.isLight; }).length;                                     // (solo pagina di prova: per le foto automatiche)
     bctx.clearRect(0,0,evB.width,evB.height); ectx.clearRect(0,0,evF.width,evF.height);
     var energy = clamp01(et/EXP);
@@ -1761,7 +1952,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     // fasci di luce con le immagini
     var fade = 1, widen = 1;
     if (EV.exploded){ var te = et - EV.expAt; fade = 1 - clamp01(te/.45); widen = 1 + te*4; }
-    s3Frame(et, dt);
+    EV.cx = cxp; EV.cy = cyp; s3Frame(et, dt);
     if (fade > 0) EV.beams.forEach(function(b,i){
       if (et < b.beamT) return;
       if (!b.shown){ b.shown = true; sample("whoosh",rnd(.8,1.1),.8); sample("neon0",rnd(.9,1.2),.6); }

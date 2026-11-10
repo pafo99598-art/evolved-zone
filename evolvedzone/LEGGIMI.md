@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 9/11/2026) · versione 16.1
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 17
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -18,6 +18,12 @@ Tolti: coccodrillo, pioggia, vecchio mostro a sagoma (il mostro nuovo arriva nel
 Corretto: oggetti 3D che restavano a terra dopo un riavvio (contati: 0 oggetti a inizio di ogni nuovo avvio, 4 avvii di fila).
 Telefono: evento alleggerito (meno particelle e detriti, risoluzione 3D 1×) → circa +60% fotogrammi al secondo nella prova di confronto.
 Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
+
+## Mostro neon e caccia (Blocco S13a · v17)
+- **Mostro neon 3D** (low poly traslucido, occhi azzurri, spigoli rosa/azzurri) in 4 versioni su 7 (1, 4, 6, 7 · `mon:1` in `VERSIONS`). Tempi (orologio dell'evento, quindi uguali anche su telefoni lenti): sale dalla foschia sotto al sole da 8,8 s · occhi a 9,7 s · alza le braccia da 11,4 s · ruggisce a 12,6 s · sfera di energia dalla bocca · da 13,2 s fulmini spessi e fiumi di energia dalle mani al cristallo · arrivo esatto a 15 s con l'esplosione, il mostro va in pezzi.
+- Telefono: col mostro la versione perde il 5° momento (fuga finale), per restare fluida.
+- **Caccia** (modello vero del gioco `e4caccia73`, aggiunto in `assets/modelli.json` alla voce `VE.jet`): passaggio di 3 caccia dal sole sopra di te con 2 missili (versioni 2, 3, 6) e **duello aereo** (versione 3): azzurri inseguiti dai rosa con raffiche, uno abbattuto esplode in aria e precipita.
+- Nuovi valori del SITO (non del gioco), scelti da Claude B: dimensione mostro 2,1 (PC) / 1,95 (telefono), distanza 95, caccia ×0,62 (passaggio) / ×0,5 (duello), passaggio 1,9 s, duello circa 2,4 s da bordo a bordo.
 
 ## Apertura più veloce (v16.1)
 Logo leggero `assets/logo_s.webp` (87 KB) scaricato per primo, poi sostituito da `logo.webp` a piena qualità; caratteri Google non bloccano più il primo disegno; immagini dei fasci scaricate dopo il logo; immagini del sito ufficiale preparate durante l'evento. Prova 4G lenta su telefono: logo visibile 2,8 s → 1,5 s, primo disegno 0,84 → 0,45 s.
