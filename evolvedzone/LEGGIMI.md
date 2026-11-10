@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 17
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 18
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -24,6 +24,14 @@ Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
 - Telefono: col mostro la versione perde il 5° momento (fuga finale), per restare fluida.
 - **Caccia** (modello vero del gioco `e4caccia73`, aggiunto in `assets/modelli.json` alla voce `VE.jet`): passaggio di 3 caccia dal sole sopra di te con 2 missili (versioni 2, 3, 6) e **duello aereo** (versione 3): azzurri inseguiti dai rosa con raffiche, uno abbattuto esplode in aria e precipita.
 - Nuovi valori del SITO (non del gioco), scelti da Claude B: dimensione mostro 2,1 (PC) / 1,95 (telefono), distanza 95, caccia ×0,62 (passaggio) / ×0,5 (duello), passaggio 1,9 s, duello circa 2,4 s da bordo a bordo.
+
+## v18 (Blocco S13b + rifiniture)
+- **Passaggio esplosione → sito più fluido**: dopo l'esplosione i due livelli a tutto schermo dei fasci e delle schegge si spengono appena vuoti (prima venivano ridisegnati per 5 s); l'impulso a tempo di musica tocca solo titolo e linea d'orizzonte (non tutta la pagina); sul telefono metà schegge/scintille e niente tremolio del sito. Prova telefono rallentato ×4: fotogramma medio dell'entrata 250 → 49 ms, fotogramma dell'esplosione 349 → 166 ms.
+- **Bug corretto (causa vera degli «oggetti rimasti»)**: un effetto 3D creato da un altro effetto (esplosione del missile/meteorite, fumo) veniva perso dalla lista e restava congelato in scena. Ora la lista (`s3Run`) tiene anche quelli nati durante l'aggiornamento.
+- **Mostro rifatto sull'immagine di Michele**: incappucciato con punta, senza corna, spalle enormi, corpo viola scuro, braccia lunghe con avambracci azzurri trasparenti e artigli, occhi azzurri obliqui, gambe dietro l'orizzonte. Alza gli artigli verso di te e scarica i fulmini sul cristallo a 15 s.
+- **Animazioni dei personaggi** (`pose`): gomiti, busto che ruota e si piega, testa, rimbalzo del corpo; nuova posa di salto (stacco, raccolta, distensione) e doppie pistole.
+- **Momenti nuovi**: `meteoriti` (versione 5: cadono, esplodono a terra con fiamme che si spengono in 1,2 s, tre colpiscono chi corre), `auto` (versione 2: auto volante a mattoncini inseguita da una moto neon che spara, poi ti passa sopra), `corsa` (versione 5: tre piloti in sella ai cinghiali con doppie pistole, uno aggancia col rampino quello davanti).
+- Versioni: 1 volpi·cinghiali·rampino·guerra·fuga +mostro | 2 guerra·auto·caccia·salto·fuga | 3 paracadute·duello·rampino·caccia·fuga | 4 bus·inseguimento·volpi·guerra·fuga +mostro | 5 volpi·corsa·meteoriti·paracadute·fuga | 6 salto·caccia·cinghiali·inseguimento·fuga +mostro | 7 paracadute·bus·guerra·volpi·fuga +mostro.
 
 ## Apertura più veloce (v16.1)
 Logo leggero `assets/logo_s.webp` (87 KB) scaricato per primo, poi sostituito da `logo.webp` a piena qualità; caratteri Google non bloccano più il primo disegno; immagini dei fasci scaricate dopo il logo; immagini del sito ufficiale preparate durante l'evento. Prova 4G lenta su telefono: logo visibile 2,8 s → 1,5 s, primo disegno 0,84 → 0,45 s.
