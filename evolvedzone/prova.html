@@ -463,6 +463,43 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 @keyframes dcArr{50%{transform:translate(-8px,-50%)}}
 @media (max-width:600px){#disc{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 62px);right:10px;width:min(168px,43vw);padding:11px 12px 11px 13px}#disc b{font-size:.86rem}.dc-tag{font-size:.54rem;padding:2px 7px;margin-bottom:6px}.dc-arrow{display:none}}
 @media (max-width:600px) and (max-height:620px){#disc{bottom:calc(env(safe-area-inset-bottom,0px) + 54px);width:min(150px,46vw);padding:8px 10px}#disc b{font-size:.74rem}.dc-tag{margin-bottom:4px}}
+/* ---- zaino di prova (colori e forme dello zaino del gioco) ---- */
+.zn-open{display:flex;align-items:center;gap:14px;width:100%;border:2px solid #f08a2a;background:linear-gradient(100deg,#2a1608,#11202a);color:#fff;border-radius:18px;padding:14px 18px;cursor:pointer;text-align:left;font:600 .9rem var(--body,system-ui);box-shadow:0 0 22px #f08a2a55;transition:transform .15s,box-shadow .15s}
+.zn-open:hover{transform:translateY(-2px);box-shadow:0 0 34px #f08a2a99}.zn-open b{display:block;font:900 1rem var(--disp);letter-spacing:.1em;color:#ffc27a}
+.zn-open .zn-ic{flex:0 0 64px;height:64px}
+.zn-ic{display:block;background-image:url(assets/zaino/zaino_atlas.webp);background-size:800% 600%;background-repeat:no-repeat}
+.zn-note{font-size:.82rem;opacity:.8;border-left:3px solid #f08a2a;padding:2px 0 2px 12px;margin-top:12px}
+#zn{position:fixed;inset:0;z-index:95;background:radial-gradient(ellipse at 50% 60%,#1c2a22 0,#070a0c 75%);opacity:0;transition:opacity .25s;touch-action:none;user-select:none;-webkit-user-select:none;font-family:system-ui,sans-serif}
+#zn[hidden]{display:none}#zn.open{opacity:1}
+.zn-cw{position:absolute;left:50%;top:50%;width:min(96vw,1180px);height:min(74vh,640px);transform:translate(-50%,-50%) perspective(1400px) rotateX(9deg);filter:drop-shadow(0 18px 16px #000a)}
+.zn-cl{position:absolute;inset:0;clip-path:polygon(1% 4%,9% 1%,22% 3%,38% 0,55% 2%,71% 0,86% 3%,99% 1%,100% 18%,98% 39%,100% 62%,98% 83%,99% 98%,84% 100%,66% 97%,49% 100%,31% 98%,14% 100%,1% 97%,2% 74%,0 52%,2% 27%);background:#e2c896 url(assets/zaino/zaino_telo.jpg) repeat;background-size:140px;box-shadow:inset 0 0 0 14px #7a4f2236,inset 0 0 80px #5c3a1440;display:grid;grid-template-columns:24% 1fr;gap:8px;padding:4% 4% 4% 2%;box-sizing:border-box}
+.zn-pk{display:flex;align-items:center;justify-content:center;min-width:0}.zn-pk .zn-ic{width:100%;aspect-ratio:1;filter:drop-shadow(0 12px 8px #0007)}
+.zn-its{display:grid;grid-template-columns:repeat(7,1fr);gap:14px 12px;align-content:center;min-height:0;padding:0 1%}
+.zn-it{position:relative;aspect-ratio:1;cursor:grab;transition:transform .12s;max-height:96px;justify-self:center;width:100%;max-width:96px}
+.zn-it .zn-ic{position:absolute;inset:0;filter:drop-shadow(0 8px 5px #0007);pointer-events:none}
+.zn-n{position:absolute;right:-6%;bottom:-8%;background:#fffaf0;color:#3b3127;border-radius:9px;padding:1px 8px;font:800 13px system-ui;box-shadow:0 2px 0 #0003;pointer-events:none}
+.zn-it.on .zn-ic{filter:drop-shadow(0 0 3px #fff3b0) drop-shadow(0 0 12px #ffb21f) drop-shadow(0 0 22px #ffb21f)}
+.zn-it.hov{transform:scale(1.12)!important}.zn-it.hov .zn-ic{filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 14px #fff)}
+.zn-gh{position:fixed;width:84px;height:84px;pointer-events:none;z-index:5;opacity:.92;transform:translate(-50%,-50%) scale(1.1)}.zn-gh .zn-ic{width:100%;height:100%}
+.zn-msg{position:absolute;left:50%;top:14px;transform:translateX(-50%);max-width:min(78vw,620px);background:#1d4d52f2;color:#e9fffb;border-radius:14px;padding:9px 16px;font:700 14px system-ui;text-align:center;box-shadow:0 3px 0 #0004;opacity:0;pointer-events:none}
+.zn-msg.on{animation:znMsg 4.2s forwards}@keyframes znMsg{0%{opacity:0;transform:translate(-50%,-8px)}6%,82%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+.zn-foot{position:absolute;left:14px;bottom:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:60vw}
+.zn-ex{background:#f4ecd8;color:#1d3b3f;border-radius:12px;padding:6px 11px;font:800 11px system-ui;letter-spacing:.04em;box-shadow:0 3px 0 #0003}
+.zn-reset{border:0;background:#1d4d52;color:#f4ecd8;border-radius:12px;padding:7px 12px;font:800 11px system-ui;cursor:pointer;box-shadow:0 3px 0 #0003}
+.zn-cr{position:absolute;right:16px;bottom:14px;width:150px;height:92px;border:0;border-radius:18px;background:linear-gradient(#f5a43b,#ee8a24 56%,#f4ecd8 56%);box-shadow:0 4px 0 #0004,0 0 0 3px #f4ecd8 inset;cursor:pointer;font:900 15px system-ui;color:#1d3b3f;padding:0}
+.zn-cr .zn-ic{position:absolute;left:50%;top:6px;width:52px;height:52px;margin-left:-26px;filter:drop-shadow(0 3px 2px #0005)}.zn-cr b{position:absolute;left:0;right:0;bottom:9px}
+.zn-tp{position:fixed;z-index:6;display:none;pointer-events:none;min-width:150px;max-width:260px;background:#fffdf7;border-radius:16px;padding:10px 14px;box-shadow:0 8px 20px #0005;font:600 13px system-ui;color:#2b3a3c}
+.zn-tp b{display:block;font:800 18px system-ui;color:#1d3b3f}.zn-tp span{display:block;margin-top:2px}
+.zn-wh{position:fixed;inset:0;z-index:7;display:none;background:#000a}.zn-wh.op{display:block}
+.zn-ring{position:absolute;left:50%;top:50%;width:min(92vmin,600px);height:min(92vmin,600px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#f4ecd8 0 29%,#1d4d52f2 30% 100%);box-shadow:0 0 0 6px #f08a2a}
+.zn-rc{position:absolute;width:13.5%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:0;background:#f4ecd8;cursor:pointer;box-shadow:0 3px 0 #0005;font:700 9px system-ui;color:#1d4d52;padding:0;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.zn-rc .zn-ic{position:absolute;inset:5% 24% 43%}.zn-rc span:last-child{position:relative;padding-bottom:9%;line-height:1.02;font-size:clamp(6px,1.25vmin,8.5px);max-width:76%;text-align:center}.zn-rc.no{opacity:.42}
+.zn-ce{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(25vmin,160px);text-align:center;font:600 clamp(9px,1.9vmin,12px) system-ui;color:#1d4d52;pointer-events:none}
+.zn-ce b{display:block;font-size:1.2em;margin-bottom:4px}.zn-ce i{font-style:normal;font-weight:800}.zn-ce i.ko{color:#c0392b}.zn-ce i.ok{color:#1d7a4a}
+@media (max-width:760px) and (orientation:portrait){.zn-cw{width:96vw;height:min(68vh,620px);top:47%;transform:translate(-50%,-50%)}.zn-cl{grid-template-columns:1fr;padding:7% 6%}.zn-pk{display:none}.zn-its{grid-template-columns:repeat(5,1fr);gap:16px 10px}
+  .zn-n{font-size:11px;padding:0 6px}.zn-cr{width:104px;height:66px;right:8px;bottom:8px;font-size:11px;border-radius:14px}.zn-cr .zn-ic{width:36px;height:36px;margin-left:-18px;top:3px}.zn-cr b{bottom:6px}
+  .zn-foot{left:8px;bottom:8px;max-width:58vw}.zn-msg{top:70px;font-size:12px}.zn-tp{left:50%!important;top:auto!important;bottom:86px;transform:translateX(-50%)}}
+@media (max-height:520px){.zn-cw{height:72vh;top:46%}.zn-its{grid-template-columns:repeat(10,1fr);gap:8px}.zn-cr{width:104px;height:62px;font-size:11px}.zn-cr .zn-ic{width:34px;height:34px;margin-left:-17px;top:3px}.zn-cr b{bottom:5px}.zn-msg{top:6px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -2181,7 +2218,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
      text:["Appena tocchi terra sei disarmato. Corri dentro case e casolari, apri le casse, raccogli armi, munizioni e cure.",
            "Ogni partita è diversa, come un film: non sai mai cosa troverai e chi incontrerai.",
            "<b>Ispirazione:</b> i giochi di sopravvivenza come ARK: Survival Evolved e The Forest."],
-     foto:[], video:""},
+     foto:[], video:"", zaino:true},
     {tag:"CAPITOLO 03", title:"COMBATTIMENTO", col:"#ff3fd0", img:"assets/img/cap_combattimento.webp", clip:"",
      line:"Pugni, pistola, fucile, pompa. Ogni colpo conta.",
      text:["Si parte a mani nude. Poi pistola, fucile e fucile a pompa: trova l'arma giusta prima di chi ti sta cercando.",
@@ -2287,6 +2324,8 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
       '<div class="d-hero">'+hero+'<div class="d-title"><span class="c-tag">'+g.tag+'</span><h2>'+g.title+'</h2></div></div>'+
       '<div class="d-body"><p><b>'+g.line+'</b></p>' + g.text.map(function(t){ return "<p>"+t+"</p>"; }).join("");
     if (g.foto && g.foto.length) html += '<h4>IMMAGINI</h4><div class="d-gal">'+g.foto.map(function(f){ return '<img src="'+f+'" alt="" loading="lazy">'; }).join("")+'</div>';
+    if (g.zaino) html += '<h4>PROVA LO ZAINO</h4><button type="button" class="zn-open"><span class="zn-ic" style="'+znIcon('openpack')+'"></span><span><b>APRI LO ZAINO</b>Trascina gli oggetti uno sull\'altro per combinarli e apri la ruota del crafting, come nel gioco.</span></button>'+
+      '<p class="zn-note"><b>È solo un assaggio.</b> Questo zaino serve a farti provare come funziona: nel gioco quello che trovi dipende dalla partita, e oggetti, quantità e ricette possono essere diversi o cambiare con gli aggiornamenti.</p>';
     if (list === ISLES) html += '<h4>MODELLINO 3D</h4><div class="d-video">🏝️ Modellino 3D dell\'isola in arrivo<br><small>potrai girarlo e ingrandirlo con il mouse o con il dito</small></div>';
     else html += '<h4>VIDEO</h4>' + (g.video ? '<video src="'+g.video+'" controls playsinline style="width:100%;border-radius:14px"></video>' : '<div class="d-video">🎬 Video in arrivo</div>');
     var n = list.length;
@@ -2296,6 +2335,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     det.hidden = false; document.body.classList.add("detail-open");
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ det.classList.add("open"); }); });
     det.querySelector(".d-close").addEventListener("click", ovBack);
+    var zb = det.querySelector(".zn-open"); if (zb) zb.addEventListener("click", znOpen);
     [].forEach.call(det.querySelectorAll("[data-go]"), function(b){ b.addEventListener("click", function(e){
       openDetail(detList, (detIdx + Number(b.getAttribute("data-go")) + n) % n, e.clientX, e.clientY); }); });
     sample("whoosh", 1.2, .5);
@@ -2305,6 +2345,128 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     setTimeout(function(){ if (!det.classList.contains("open")) det.hidden = true; }, 700);
   }
   /* ---------- finestre sopra la pagina: si chiudono con la X, con Esc e col tasto INDIETRO del telefono ---------- */
+  /* =========================================================
+     ZAINO DI PROVA (scheda «Sopravvivenza»): telo, oggetti da trascinare e combinare, ruota del CRAFTING.
+     Icone, telo, nomi, combinazioni e ricette sono quelli veri del gioco (zaino89, craft39, ricette base): costi e quantità NON cambiati.
+     È solo un esempio: lo zaino di partenza qui sotto (ZN_START) è inventato per far provare tutto.
+     ========================================================= */
+  var ZN_IC = {wood:0,cloth:1,scrap:2,herbs:3,water:4,powder:5,stone:6,coal:7,silica:8,metal:9,copper:10,emerald:11,diamond:12,neon:13,bandages:14,med:15,rations:16,warmers:17,plates:18,lures:19,ammo:20,heavyAmmo:21,shells:22,barricades:23,bridges:24,hook:25,torch:26,lens:27,emeraldKits:28,tisane:29,helmet:30,axe:31,smoke:32,banger:33,firetorch:34,trap:35,glider:36,mine:37,tent:38,meat:39,dual:40,tools:41,openpack:42,shield:43};
+  var ZN_NM = {wood:'Legno',cloth:'Tessuto',scrap:'Rottami',herbs:'Erbe',water:'Acqua',powder:'Polvere',stone:'Pietra',coal:'Carbone',silica:'Silice',metal:'Metallo',copper:'Rame',emerald:'Smeraldo',diamond:'Diamante',neon:'Pezzo neon',bandages:'Bende',med:'Medikit',rations:'Razioni',warmers:'Scaldamani',plates:'Piastre',lures:'Richiami',ammo:'Munizioni leggere',heavyAmmo:'Munizioni fucile',shells:'Cartucce',barricades:'Barricate',bridges:'Ponti',hook:'Rampino',torch:'Torcia',lens:'Lente',emeraldKits:'Kit smeraldo',tisane:'Tisana',helmet:'Elmetto',axe:'Ascia di pietra',smoke:'Fumogeno',banger:'Petardo',firetorch:'Torcia da lanciare',trap:'Trappola a filo',glider:'Deltaplano',mine:'Mina',tent:'Tenda',meat:'Carne',stoneAny:'Pietra'};
+  var ZN_ORDER = ['med','bandages','rations','water','tisane','emeraldKits','plates','warmers','lures','ammo','heavyAmmo','shells','wood','stone','cloth','scrap','herbs','powder','coal','silica','metal','copper','emerald','diamond','neon','smoke','banger','firetorch','trap','mine','tent','glider','meat','barricades','bridges','axe','helmet','torch','lens'];
+  // combinazioni vere (trascina un oggetto su un altro): [a, b, oggetto che ottieni o null, messaggio del gioco]
+  var ZN_COMBO = [
+    ['herbs','water','tisane','Tisana: +5 salute al secondo per 15 s quando la bevi'],
+    ['cloth','water',null,'Impacco: sanguinamento fermato, +4 salute'],
+    ['wood','stone','axe','Ascia di pietra in mano a mani nude: +30% danno dei pugni, legna doppia per 3 minuti'],
+    ['wood','wood','barricades','Asse: una barricata bassa in più'],
+    ['metal','cloth','helmet','Elmetto indossato: -8% di danni alla testa'],
+    ['plates','metal',null,'Piastra rinforzata indossata: +50 protezione (fino a 100)'],
+    ['med','rations',null,'Pasto da campo: +45 salute e +40 cibo'],
+    ['water','rations',null,'Pasto completo: +60 cibo'],
+    ['warmers','cloth',null,'Coperta: calore che sale piano per 60 s'],
+    ['powder','cloth','smoke','Fumogeno: lancialo per una nube di 6 m per 10 s'],
+    ['coal','wood','firetorch','Torcia da lanciare: fuoco di 3 m per 6 s, brucia anche le case'],
+    ['lures','powder','banger','Petardo: nube di 10 m per 4 s che copre la vista'],
+    ['copper','scrap','trap','Trappola a filo: suona e rallenta chi ci passa']
+  ];
+  // ricette vere della ruota del crafting (nome, costo, cosa ottieni, nota del gioco)
+  var ZN_REC = {
+    bandage:{name:'Benda',cost:{cloth:2},out:{bandages:1},note:'Ferma il sanguinamento · +8 salute'},
+    med:{name:'Medikit',cost:{bandages:2,herbs:2},out:{med:1},note:'Ripristina 45 salute'},
+    torch:{name:'Torcia',cost:{wood:1,cloth:1},out:{torch:1},note:'Luce per la notte · resta sbloccata',once:1},
+    light:{name:'24 munizioni leggere',cost:{scrap:2,powder:1},out:{ammo:24},note:'Pistola e mitra'},
+    rifle:{name:'12 munizioni fucile',cost:{scrap:3,powder:2},out:{heavyAmmo:12},note:'Carabina'},
+    shells:{name:'6 cartucce',cost:{scrap:2,powder:2,stone:1},out:{shells:6},note:'Fucile a pompa'},
+    meal:{name:'Razione energetica',cost:{herbs:2,water:1},out:{rations:1},note:'Ripristina 40 cibo'},
+    plate:{name:'Piastra protettiva',cost:{scrap:4,cloth:2},out:{plates:1},note:'Assorbe parte dei colpi al busto'},
+    warmer:{name:'Scaldamani',cost:{cloth:1,wood:2},out:{warmers:1},note:'Ripristina 35 calore'},
+    lure:{name:'Richiamo sonoro',cost:{scrap:1,stone:2},out:{lures:1},note:'Lancialo per distrarre i bot'},
+    powderX:{name:'Polvere da sparo forte',cost:{coal:2,powder:1},out:{powder:3},note:'Carbone → più polvere per fabbricare munizioni'},
+    lens:{name:'Lente di silice (mirino)',cost:{silica:3,coal:1},out:{lens:1},note:'Quando miri ingrandisci di più · resta montata',once:1},
+    fglass:{name:'Vetri antiproiettile',cost:{silica:4},out:{},note:'Il prossimo fortino avrà 3 finestre che fermano i proiettili'},
+    stonefort:{name:'Fortino di pietra',cost:{stone:30,coal:2},out:{},note:'Il prossimo fortino (K) sarà di pietra: lastre più resistenti, senza legno'},
+    emkit:{name:'Kit cura di smeraldo',cost:{emerald:1,herbs:2},out:{emeraldKits:1},note:'Cura 30 salute in 10 s'},
+    dtip:{name:'Punta di diamante (piccone)',cost:{diamond:1,metal:2},out:{},note:'Serve il piccone · rocce e giacimenti in 1 colpo · buca il cemento più in fretta',need:'Serve un piccone'},
+    dblade:{name:'Lama di diamante',cost:{diamond:1,copper:2,wood:1},out:{},note:'Spada rara: 3 attacchi · in mano +25% resistenza e +12% velocità',once:1},
+    glider:{name:'Deltaplano',cost:{cloth:4,scrap:2,wood:1},out:{glider:1},note:'Plani per 20 s da un tetto o da una collina'},
+    mine:{name:'Mina',cost:{metal:2,copper:1,powder:1},out:{mine:1},note:'60 danni, si vede da 3 m'},
+    tent:{name:'Tenda',cost:{wood:3,stone:2,cloth:1},out:{tent:1},note:'Dentro, accovacciato, recuperi salute'}
+  };
+  var ZN_RIC = {bandage:'bandages',med:'med',torch:'torch',light:'ammo',rifle:'heavyAmmo',shells:'shells',meal:'rations',plate:'plates',warmer:'warmers',lure:'lures',powderX:'powder',lens:'lens',fglass:'silica',stonefort:'stone',emkit:'emeraldKits',dtip:'diamond',dblade:'diamond',glider:'glider',mine:'mine',tent:'tent'};
+  // zaino di partenza dell'ESEMPIO (non è un valore del gioco)
+  var ZN_START = {wood:6,stone:6,cloth:7,scrap:7,herbs:4,water:3,powder:4,coal:3,silica:4,metal:4,copper:3,emerald:1,diamond:1,bandages:2,med:1,rations:1,warmers:1,plates:1,lures:1};
+  var ZN = {el:null, inv:{}, done:{}, sel:null, drag:null, hov:null};
+  function znIcon(k){ var i = ZN_IC[k]||0; return 'background-position:'+((i%8)*100/7)+'% '+(Math.floor(i/8)*100/5)+'%'; }
+  function znCnt(k){ return ZN.inv[k]||0; }
+  function znMsg(t){ var m = ZN.el.querySelector('.zn-msg'); m.textContent = t; m.classList.remove('on'); void m.offsetWidth; m.classList.add('on'); }
+  function znBuild(){
+    var e = document.createElement('div'); e.id = 'zn'; e.hidden = true; e.setAttribute('role','dialog'); e.setAttribute('aria-label','Zaino di prova');
+    e.innerHTML = '<button class="d-close zn-x" type="button" aria-label="Chiudi">✕</button>'+
+      '<div class="zn-cw"><div class="zn-cl"><div class="zn-pk"><span class="zn-ic" style="'+znIcon('openpack')+'"></span></div><div class="zn-its"></div></div></div>'+
+      '<div class="zn-msg"></div>'+
+      '<div class="zn-foot"><span class="zn-ex">ESEMPIO · nel gioco può essere diverso</span><button type="button" class="zn-reset">↺ Ricomincia</button></div>'+
+      '<button type="button" class="zn-cr"><span class="zn-ic" style="'+znIcon('tools')+'"></span><b>CRAFTING</b></button>'+
+      '<div class="zn-tp"></div><div class="zn-wh"><div class="zn-ring"></div><div class="zn-ce"></div></div>';
+    document.body.appendChild(e); ZN.el = e;
+    e.querySelector('.zn-x').addEventListener('click', ovBack);
+    e.querySelector('.zn-reset').addEventListener('click', function(){ znReset(); znMsg('Zaino riempito di nuovo'); });
+    e.querySelector('.zn-cr').addEventListener('click', znWheel);
+    var wh = e.querySelector('.zn-wh'); wh.addEventListener('click', function(ev){ if (ev.target === wh) wh.classList.remove('op'); });
+    e.addEventListener('pointerdown', znDown);
+    addEventListener('pointermove', znMove, {passive:false}); addEventListener('pointerup', znUp); addEventListener('pointercancel', function(){ znEnd(); });
+  }
+  function znReset(){ ZN.inv = {}; for (var k in ZN_START) ZN.inv[k] = ZN_START[k]; ZN.done = {}; ZN.sel = null; znDraw(); }
+  var ZN_JIT = [-7,5,-3,8,-5,3,-8,6,-2,4,-6,7,-4,2,-9,5,-3,6,-7,4,-5,8,-2,3,-6,5,-4,7,-8,2,-3,6,-5,4];
+  function znDraw(){
+    var h = ''; ZN_ORDER.filter(function(k){ return znCnt(k) > 0; }).forEach(function(k, j){
+      var one = k === 'axe' || k === 'helmet' || k === 'torch' || k === 'lens';
+      h += '<div class="zn-it'+(ZN.sel === k ? ' on' : '')+'" data-k="'+k+'" style="transform:rotate('+ZN_JIT[j%ZN_JIT.length]+'deg)"><span class="zn-ic" style="'+znIcon(k)+'"></span>'+(one ? '' : '<span class="zn-n">'+znCnt(k)+'</span>')+'</div>'; });
+    ZN.el.querySelector('.zn-its').innerHTML = h;
+  }
+  function znCombine(a, b){
+    var r = null; ZN_COMBO.forEach(function(c){ if ((c[0] === a && c[1] === b) || (c[0] === b && c[1] === a)) r = c; });
+    if (!r){ znMsg('Non si combinano'); tone('square', 180, 120, .12, .04); return; }
+    if (a === b && znCnt(a) < 2){ znMsg('Ne servono 2'); return; }
+    if (r[2] && (r[2] === 'axe' || r[2] === 'helmet') && znCnt(r[2])){ znMsg('Ce l\'hai già'); return; }
+    ZN.inv[a]--; ZN.inv[b]--; if (r[2]) ZN.inv[r[2]] = znCnt(r[2]) + 1;
+    znMsg(r[3]); tone('triangle', 520, 880, .18, .06); znDraw();
+  }
+  function znAt(x, y){ var e = document.elementFromPoint(x, y), it = e && e.closest && e.closest('#zn .zn-it'); return it ? {k:it.getAttribute('data-k'), el:it} : null; }
+  function znTip(k, el){ var tp = ZN.el.querySelector('.zn-tp'); if (!k){ tp.style.display = 'none'; return; }
+    tp.innerHTML = '<b>'+ZN_NM[k]+'</b><span>× '+znCnt(k)+'</span><span>Toccane un altro o trascinalo per combinare</span>'; tp.style.display = 'block';
+    var r = el.getBoundingClientRect(), t = tp.getBoundingClientRect(); tp.style.left = Math.max(6, Math.min(innerWidth - t.width - 6, r.left + r.width/2 - t.width/2))+'px'; tp.style.top = Math.max(6, r.top - t.height - 12)+'px'; }
+  function znDown(e){ if (ZN.el.querySelector('.zn-wh').classList.contains('op')) return; var t = znAt(e.clientX, e.clientY);
+    if (!t){ if (!e.target.closest('.zn-cr,.zn-x,.zn-reset')){ ZN.sel = null; znTip(null); znDraw(); } return; }
+    e.preventDefault(); ZN.drag = {k:t.k, el:t.el, x0:e.clientX, y0:e.clientY, on:false, id:e.pointerId}; }
+  function znMove(e){ var d = ZN.drag; if (!d || e.pointerId !== d.id) return;
+    if (!d.on){ if (Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 8) return; d.on = true; znTip(null);
+      d.g = document.createElement('div'); d.g.className = 'zn-gh'; d.g.innerHTML = '<span class="zn-ic" style="'+znIcon(d.k)+'"></span>'; ZN.el.appendChild(d.g); }
+    e.preventDefault(); d.g.style.left = e.clientX+'px'; d.g.style.top = e.clientY+'px';
+    var t = znAt(e.clientX, e.clientY), ne = t && t.el !== d.el ? t.el : null; if (ZN.hov !== ne){ if (ZN.hov) ZN.hov.classList.remove('hov'); ZN.hov = ne; if (ne) ne.classList.add('hov'); } }
+  function znEnd(){ var d = ZN.drag; if (!d) return null; if (d.g) d.g.remove(); if (ZN.hov){ ZN.hov.classList.remove('hov'); ZN.hov = null; } ZN.drag = null; return d; }
+  function znUp(e){ var d = ZN.drag; if (!d || e.pointerId !== d.id) return; znEnd(); var t = znAt(e.clientX, e.clientY);
+    if (d.on){ if (t && t.el !== d.el) znCombine(d.k, t.k); ZN.sel = null; znDraw(); return; }
+    // tocco: il primo seleziona, il secondo combina (toccare due volte lo stesso lo combina con sé stesso, es. legno + legno)
+    if (ZN.sel){ var a = ZN.sel; ZN.sel = null; znTip(null); if (a === d.k && !(a === 'wood' && znCnt(a) > 1)){ znDraw(); return; } znCombine(a, d.k); znDraw(); return; }
+    ZN.sel = d.k; znDraw(); var el = ZN.el.querySelector('.zn-it[data-k="'+d.k+'"]'); if (el) znTip(d.k, el); tone('sine', 660, 660, .05, .03); }
+  function znCan(k){ var r = ZN_REC[k]; if (r.need) return false; if (r.once && ZN.done[k]) return false; for (var a in r.cost) if (znCnt(a) < r.cost[a]) return false; return true; }
+  function znWheel(){
+    var wh = ZN.el.querySelector('.zn-wh'), ring = wh.querySelector('.zn-ring'), ce = wh.querySelector('.zn-ce'), ks = Object.keys(ZN_REC), N = ks.length;
+    ring.innerHTML = ''; ce.innerHTML = '<b>Crafting</b>Tocca una ricetta'; ZN.sel = null; znTip(null);
+    ks.forEach(function(k, i){ var a = -Math.PI/2 + i/N*Math.PI*2, b = document.createElement('button'), r = ZN_REC[k]; b.type = 'button'; b.className = 'zn-rc' + (znCan(k) ? '' : ' no');
+      b.style.left = (50 + Math.cos(a)*41)+'%'; b.style.top = (50 + Math.sin(a)*41)+'%';
+      b.innerHTML = '<span class="zn-ic" style="'+znIcon(ZN_RIC[k])+'"></span><span>'+r.name.replace(/ \(.*\)/, '')+'</span>';
+      function info(){ ce.innerHTML = '<b>'+r.name+'</b>'+Object.keys(r.cost).map(function(c){ var ok = znCnt(c) >= r.cost[c]; return '<i class="'+(ok ? 'ok' : 'ko')+'">'+ZN_NM[c]+' '+znCnt(c)+'/'+r.cost[c]+'</i>'; }).join(' · ')+'<br>'+r.note; }
+      b.addEventListener('pointerenter', info);
+      b.addEventListener('click', function(ev){ ev.stopPropagation(); info();
+        if (r.need){ znMsg(r.need); return; } if (r.once && ZN.done[k]){ znMsg('Ce l\'hai già'); return; } if (!znCan(k)){ znMsg('Mancano dei materiali'); tone('square', 180, 120, .12, .04); return; }
+        for (var c in r.cost) ZN.inv[c] -= r.cost[c]; for (var o in r.out) ZN.inv[o] = znCnt(o) + r.out[o]; ZN.done[k] = 1;
+        znMsg('Creato: '+r.name); tone('triangle', 440, 990, .22, .07); znDraw(); znWheel(); info(); });
+      ring.appendChild(b); });
+    wh.classList.add('op'); sample('whoosh', 1.4, .35);
+  }
+  function znOpen(){ if (!ZN.el){ znBuild(); znReset(); } if (!ZN.el.hidden) return; ZN.el.hidden = false; ovPush(znClose); requestAnimationFrame(function(){ ZN.el.classList.add('open'); }); sample('whoosh', 1, .5); znMsg('Trascina un oggetto su un altro per combinarli'); }
+  function znClose(){ if (!ZN.el || ZN.el.hidden) return; ZN.el.classList.remove('open'); ZN.el.querySelector('.zn-wh').classList.remove('op'); znTip(null); znEnd(); ZN.el.hidden = true; }
   var OV = [];
   function ovPush(close){ OV.push(close); try { history.pushState({ezov:OV.length}, ""); } catch(e){} }
   function ovBack(){ if (!OV.length) return; try { history.back(); } catch(e){ var f = OV.pop(); if (f) f(); } }
@@ -2355,6 +2517,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   var MU_SECT = [
     {k:"MD", title:"PERSONAGGI", col:"#3fd0ff", list:[["m","UOMO"],["f","DONNA"],["samurai","SAMURAI"],["rapper","RAPPER"],["lava","GOLEM DI LAVA"],["diavolo","DIAVOLO DEL BURN"],["robotec","ROBOT"],["guardiano","GUARDIANO"]]},
     {k:"PD", title:"ZAINI", col:"#ff3fd0", list:[["base","ZAINO BASE"],["anfora","ANFORA"],["orsetto","ORSETTO"],["pianeta","PIANETA"],["portale","PORTALE"],["schermo","SCHERMO"],["scudo","SCUDO"],["uovo","UOVO"]]},
+    {k:"VE", title:"VEICOLI", col:"#ff8a3c", list:[["jet","CACCIA"],["heli","ELICOTTERO"]]},
     {k:"IS", title:"ISOLE", col:"#ffe14d", list:[["simple","SIMPLE ISLAND"],["figline","FIGLINE"],["incisa","INCISA"],["burchio","BURCHIO"],["leccio","LECCIO"]]}   // modelli in arrivo
   ];
   // un solo caricamento di Three.js e dei modelli, condiviso da armadietto e scene dell'evento
@@ -2381,8 +2544,18 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     var im = new Image(), t = new THREE.Texture(im); t.flipY = false; t.encoding = THREE.sRGBEncoding;
     im.onload = function(){ t.needsUpdate = true; }; im.src = D.tex;
     var mesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide}));
-    var c = g.boundingBox.getCenter(new THREE.Vector3()); mesh.position.set(-c.x, -c.y, -c.z);
-    var grp = new THREE.Group(); grp.add(mesh); grp.userData.r = g.boundingSphere.radius;
+    var c = g.boundingBox.getCenter(new THREE.Vector3()), grp = new THREE.Group();
+    if (sec === "VE"){                                                 // veicoli: grandezza vera del gioco, pale dell'elicottero che girano
+      var s = D.len/(D.hi[2]-D.lo[2]), inner = new THREE.Group(); mesh.scale.setScalar(s); mesh.position.set(-c.x*s, -D.lo[1]*s, -c.z*s); inner.add(mesh);
+      if (D.hub){ var bm = new THREE.MeshLambertMaterial({color:new THREE.Color('#3a3d38').convertSRGBToLinear()}), kk = D.len/14, rot = new THREE.Group(), tr = new THREE.Group();
+        rot.position.set(D.hub[0]*kk, D.hub[1]*kk, D.hub[2]*kk);
+        [0, Math.PI].forEach(function(a){ var b = new THREE.Mesh(new THREE.BoxGeometry(.55*kk, .09*kk, 7.4*kk), bm); b.position.z = Math.cos(a)*3.7*kk; rot.add(b); }); inner.add(rot);
+        tr.position.set(D.tail[0]*kk, D.tail[1]*kk, D.tail[2]*kk); [0, Math.PI/2].forEach(function(a){ var b = new THREE.Mesh(new THREE.BoxGeometry(.06*kk, .24*kk, 1.5*kk), bm); b.rotation.x = a; tr.add(b); }); inner.add(tr);
+        grp.userData.rot = rot; grp.userData.tail = tr; }
+      var bx = new THREE.Box3().setFromObject(inner), cc = bx.getCenter(new THREE.Vector3()); inner.position.copy(cc).multiplyScalar(-1); grp.add(inner); grp.userData.r = bx.getSize(new THREE.Vector3()).length()/2*.9;
+      return (MU.cache[id] = grp); }
+    mesh.position.set(-c.x, -c.y, -c.z);
+    grp.add(mesh); grp.userData.r = g.boundingSphere.radius;
     return (MU.cache[id] = grp);
   }
   function muLoad(){
@@ -2415,6 +2588,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   function muLoop(now){
     if (muEl.hidden){ MU.running = false; return; }
     MU.running = true; var dt = Math.min(.05, ((now||0) - (MU.last||now||0))/1000); MU.last = now; MU.t += dt;
+    for (var ck in MU.cache){ var cu = MU.cache[ck].userData; if (cu.rot){ cu.rot.rotation.y += dt*16; cu.tail.rotation.x += dt*24; } }
     var r = MU.r, W = innerWidth, H = innerHeight;
     var sz = r.getSize(new THREE.Vector2()); if (sz.x !== W || sz.y !== H) r.setSize(W, H, false);
     r.setScissorTest(false); r.clear(); r.setScissorTest(true);

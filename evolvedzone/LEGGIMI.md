@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 18
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 19
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -24,6 +24,11 @@ Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
 - Telefono: col mostro la versione perde il 5° momento (fuga finale), per restare fluida.
 - **Caccia** (modello vero del gioco `e4caccia73`, aggiunto in `assets/modelli.json` alla voce `VE.jet`): passaggio di 3 caccia dal sole sopra di te con 2 missili (versioni 2, 3, 6) e **duello aereo** (versione 3): azzurri inseguiti dai rosa con raffiche, uno abbattuto esplode in aria e precipita.
 - Nuovi valori del SITO (non del gioco), scelti da Claude B: dimensione mostro 2,1 (PC) / 1,95 (telefono), distanza 95, caccia ×0,62 (passaggio) / ×0,5 (duello), passaggio 1,9 s, duello circa 2,4 s da bordo a bordo.
+
+## v19 (Blocco S14) · veicoli nell'armadietto e zaino di prova
+- **Armadietto 3D**: nuova sezione VEICOLI con CACCIA ed ELICOTTERO (modelli veri del gioco, `e4caccia73` ed `e2heli70`, in `assets/modelli.json` alla voce `VE`; l'elicottero ha le pale che girano).
+- **Zaino di prova** nella scheda «Sopravvivenza» (pulsante «APRI LO ZAINO»): telo e icone veri del gioco (`assets/zaino/`), oggetti da trascinare uno sull'altro (sul telefono: tocco + tocco), 13 combinazioni e ruota del CRAFTING con 20 ricette. Nomi, costi, quantità e testi sono copiati dal gioco (ricette base, `craft39`, `zaino89`) senza modifiche. Senza «Sangue», tasto zaino, «Esc chiudi» e crediti OpenStreetMap. Nota «È solo un assaggio» nella scheda e scritta «ESEMPIO» nello zaino.
+- Valore del SITO scelto da Claude B: il contenuto dello zaino di partenza (`ZN_START`), inventato per far provare tutto. Non comprese: armi sul telo e relative modifiche, pezzi neon, uso/lancio degli oggetti, ricette di barricate/ponti/rampino (non erano nei file che ho).
 
 ## v18 (Blocco S13b + rifiniture)
 - **Passaggio esplosione → sito più fluido**: dopo l'esplosione i due livelli a tutto schermo dei fasci e delle schegge si spengono appena vuoti (prima venivano ridisegnati per 5 s); l'impulso a tempo di musica tocca solo titolo e linea d'orizzonte (non tutta la pagina); sul telefono metà schegge/scintille e niente tremolio del sito. Prova telefono rallentato ×4: fotogramma medio dell'entrata 250 → 49 ms, fotogramma dell'esplosione 349 → 166 ms.
