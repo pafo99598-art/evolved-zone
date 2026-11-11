@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 20
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 20.1
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -30,7 +30,7 @@ Su `prova.html` si può forzare una versione con `?v=1` … `?v=7`.
 - **Pagina principale tutta insieme**: badge, logo, pulsanti e «Scopri il gioco» entrano insieme (prima a 0 · 1 · 1,9 · 2,9 s).
 - **Stelle**: appena compare il sito tornano normali, come sul countdown (prima restavano grandi e lampeggianti fino alla fine dell'evento). Su ogni pagina nessuna stella sopra il sole.
 - **Caccia ed elicottero nell'armadietto (telefono)**: erano così grandi che sullo schermo stretto uscivano dal campo visivo della telecamera (se ne vedevano solo dei pezzi). Ora hanno la stessa grandezza degli altri modelli.
-- **IL GIOCO**: tolta la scritta blu; il titolo stesso è il pulsante, pulsa come la scritta blu, con un cursore nell'angolo in basso a sinistra che fa il clic. Apre l'armadietto 3D.
+- **IL GIOCO** (v20.1: senza contorno blu, cursore a destra che clicca sulla «O»): tolta la scritta blu; il titolo stesso è il pulsante, pulsa come la scritta blu, con un cursore nell'angolo in basso a sinistra che fa il clic. Apre l'armadietto 3D.
 - **Musica di sottofondo**: volume 0,35 → 0,28 (scelto da Claude B). Il brano si ripete identico ogni 31,97 s: ora arrivato a 33,97 s riparte da 2,00 s con una dissolvenza di 0,25 s (motore audio del browser), invece di ricominciare da capo a 42 s. Se il motore audio non c'è, torna il lettore normale.
 
 ## v19 (Blocco S14) · veicoli nell'armadietto e zaino di prova

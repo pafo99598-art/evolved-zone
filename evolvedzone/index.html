@@ -392,11 +392,11 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.arr{height:auto}.arr-pin{position:static;height:auto;padding:40px 0}.arr-track{flex-direction:column;align-items:center;transform:none!important}.arr-card{transform:none;opacity:1;filter:none}.arr-line,.arr-hint{display:none}}
 
 /* «IL GIOCO» cliccabile */
-.g-open{position:relative;display:block;width:max-content;max-width:100%;margin:0 auto;border:1.5px solid var(--cyan);border-radius:22px;background:#07030fcc;cursor:pointer;color:inherit;padding:12px 30px 14px;animation:invite 1.6s ease-in-out infinite;transition:transform .2s}
+.g-open{position:relative;display:block;width:max-content;max-width:100%;margin:0 auto;border:0;background:none;cursor:pointer;color:inherit;padding:6px 34px 10px 8px;transition:transform .2s}
 .g-open h2{transition:text-shadow .25s;animation:gPulse 1.6s ease-in-out infinite}
 .g-open:hover{transform:scale(1.04)}.g-open:hover h2{text-shadow:0 0 22px var(--pink),0 0 50px var(--cyan)}.g-open:active{transform:scale(.97)}
 @keyframes gPulse{50%{text-shadow:0 0 16px var(--pink),0 0 30px var(--cyan)}}
-.g-cur{position:absolute;left:-6px;bottom:-16px;width:34px;height:34px;pointer-events:none;animation:gClick 2.4s ease-in-out infinite;transform-origin:30% 20%}
+.g-cur{position:absolute;right:4px;bottom:-12px;width:34px;height:34px;pointer-events:none;animation:gClick 2.4s ease-in-out infinite;transform-origin:30% 20%}
 .g-cur svg{position:relative;z-index:1;width:100%;height:100%;filter:drop-shadow(0 0 6px var(--cyan))}
 .g-cur i{position:absolute;left:4px;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border:2px solid var(--cyan);border-radius:50%;opacity:0;animation:gRip 2.4s ease-out infinite}
 @keyframes gClick{0%,100%{transform:translate(10px,10px)}35%{transform:translate(0,0)}42%{transform:translate(0,0) scale(.82)}50%,70%{transform:translate(0,0) scale(1)}}
