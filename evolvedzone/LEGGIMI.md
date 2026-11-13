@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 21
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 22
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -7,6 +7,11 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
+
+## Proposte anonime (v22 · 13/11)
+- Sul sito ufficiale, quando il teaser in alto sparisce scorrendo, sotto il QR entra (ruotando) il tasto giallo **«?»**; tornando in cima esce e ricompare il teaser.
+- Apre «COSA POSSIAMO MIGLIORARE?»: messaggio anonimo fino a 5000 caratteri, bozza salvata nel browser, 1 messaggio al minuto per dispositivo, campo trappola contro i robot.
+- I messaggi vanno al programma Apps Script «EZ Proposte» (account Google di Michele) → foglio «EZ Proposte utenti», scheda «Nuove». Istruzioni per Claude A/B: `01_DOCUMENTI/22_PROPOSTE_UTENTI.md` sul PC di Michele.
 
 ## Teaser (v21 · 13/11)
 Video di Claude A (10 s, girato nel gioco Godot, musica sua). File: `assets/teaser/teaser.mp4` (960×540 con audio, 1,6 MB), `teaser_mini.mp4` (480×270 senza audio, 0,48 MB), `teaser_poster.jpg`.

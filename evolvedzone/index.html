@@ -317,6 +317,31 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .qr-act button:hover{background:var(--cyan);color:#07030f}
 .qr-x{position:absolute;top:10px;right:10px;width:34px;height:34px;padding:0}
 @media(prefers-reduced-motion:reduce){.qrbtn,.isle svg{animation:none}}
+/* PROPOSTE (v22): «?» sotto il QR quando il teaser se ne va → «Cosa possiamo migliorare?» */
+.fbbtn{position:fixed;top:68px;left:14px;z-index:6;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--yellow);background:#07030fcc;color:var(--yellow);cursor:pointer;box-shadow:0 0 14px #ffe14d44;
+ font:900 1.35rem var(--disp);line-height:1;visibility:hidden;opacity:0;transform:translateX(-70px) rotate(-90deg) scale(.4);transition:transform .45s cubic-bezier(.2,1.6,.4,1),opacity .3s,visibility 0s .45s}
+.fbbtn.on{visibility:visible;opacity:1;transform:none;transition:transform .5s cubic-bezier(.2,1.6,.4,1),opacity .25s,visibility 0s;animation:fbPing 2.6s 1s 2,qrglitch 9s 6s infinite}
+.fbbtn.off{transition:transform .35s cubic-bezier(.6,0,.8,.4),opacity .3s,visibility 0s .35s;transform:translateY(-20px) scale(.2) rotate(120deg)}
+.fbbtn:hover{background:var(--yellow);color:#07030f}
+@keyframes fbPing{0%,100%{box-shadow:0 0 14px #ffe14d44}50%{box-shadow:0 0 0 7px #ffe14d22,0 0 26px #ffe14d99}}
+#fbModal{position:fixed;inset:0;z-index:11;display:grid;place-items:center;padding:16px;background:#07030fe6;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.fb-card{position:relative;width:min(520px,100%);max-height:calc(100svh - 32px);overflow:auto;padding:26px 22px 20px;border-radius:20px;background:#0d0620;border:2px solid var(--yellow);box-shadow:0 0 40px #ffe14d44;animation:qrin .35s cubic-bezier(.2,1.5,.4,1);text-align:left}
+.fb-card h3{margin:0 40px 6px 0;font:900 clamp(1.05rem,4.6vw,1.45rem) var(--disp);letter-spacing:.04em;color:#fff;text-shadow:0 0 14px #ffe14d88}
+.fb-card p{margin:0 0 12px;color:#e6dcff;font-size:.9rem;line-height:1.45}
+.fb-card textarea{width:100%;min-height:170px;resize:vertical;box-sizing:border-box;padding:12px;border-radius:12px;border:1.5px solid #ffffff33;background:#07030f;color:#fff;font:400 .95rem/1.45 Inter,system-ui,sans-serif;outline:none}
+.fb-card textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #3fd0ff33}
+.fb-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;flex-wrap:wrap}
+.fb-cnt{font:700 .7rem var(--disp);letter-spacing:.08em;color:#b9aee0}.fb-cnt.max{color:#ff6b6b}
+.fb-send{border:1.5px solid var(--yellow);background:var(--yellow);color:#07030f;border-radius:99px;padding:11px 22px;font:900 .74rem var(--disp);letter-spacing:.14em;cursor:pointer}
+.fb-send:disabled{opacity:.45;cursor:default}
+.fb-send:not(:disabled):hover{box-shadow:0 0 22px #ffe14d99}
+.fb-msg{min-height:1.3em;margin:10px 0 0;font-size:.85rem;font-weight:700}
+.fb-msg.ok{color:#7dffb0}.fb-msg.ko{color:#ff8a8a}
+.fb-small{margin-top:10px!important;font-size:.74rem!important;color:#9d91c4!important}
+.fb-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.fb-done{text-align:center;padding:18px 0 6px}
+.fb-done b{display:block;font:900 1.3rem var(--disp);color:var(--yellow);margin-bottom:6px;animation:qrin .4s cubic-bezier(.2,1.5,.4,1)}
+@media(prefers-reduced-motion:reduce){.fbbtn,.fbbtn.on,.fbbtn.off{transition:opacity .2s,visibility 0s;transform:none;animation:none}}
 /* TEASER (v21): mini in cima al sito + icona nel countdown + schermo intero */
 .tz-wrap{position:absolute;top:70px;left:14px;z-index:5}
 .tz-mini{position:relative;display:block;width:clamp(150px,16vw,230px);aspect-ratio:16/9;padding:0;border-radius:10px;overflow:hidden;border:1.5px solid var(--cyan);box-shadow:0 0 18px #3fd0ff55;background:#07030f center/cover;cursor:pointer;will-change:opacity,transform,filter}
@@ -556,6 +581,22 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
 <button class="qrbtn" id="qrBtn" type="button" aria-label="Mostra il QR del sito">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14v2"/></svg>
 </button>
+<button class="fbbtn" id="fbBtn" type="button" aria-label="Cosa possiamo migliorare? Mandaci una proposta" tabindex="-1">?</button>
+<div id="fbModal" hidden role="dialog" aria-modal="true" aria-labelledby="fbTit">
+  <div class="fb-card">
+    <button class="qr-x fb-x" type="button" aria-label="Chiudi">✕</button>
+    <h3 id="fbTit">COSA POSSIAMO MIGLIORARE?</h3>
+    <div class="fb-form">
+      <p>Hai giocato o hai visto il sito? Scrivici cosa cambieresti, cosa manca o cosa non funziona. Lo leggiamo tutto.</p>
+      <textarea id="fbTxt" maxlength="5000" placeholder="Scrivi qui la tua proposta…" aria-label="La tua proposta"></textarea>
+      <input class="fb-hp" id="fbHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="fb-row"><span class="fb-cnt" id="fbCnt">0 / 5000</span><button class="fb-send" id="fbSend" type="button" disabled>INVIA ▸</button></div>
+      <p class="fb-msg" id="fbMsg" role="status"></p>
+      <p class="fb-small">Anonimo: non chiediamo nome né email. Non scrivere dati personali.</p>
+    </div>
+    <div class="fb-done" hidden><b>GRAZIE!</b><p>La tua proposta è arrivata. Ogni idea ci aiuta a far evolvere il gioco.</p><button class="fb-send" type="button" id="fbAgain">SCRIVINE UN'ALTRA</button></div>
+  </div>
+</div>
 <div id="tzFull" hidden role="dialog" aria-modal="true" aria-label="Teaser di Evolved Zone">
   <video playsinline preload="none" poster="assets/teaser/teaser_poster.jpg"></video>
   <button class="tz-snd" type="button" aria-pressed="true">🔊 AUDIO</button>
@@ -2570,6 +2611,46 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   else qrShare.hidden = true;
 
 
+
+  /* ---------- PROPOSTE (v22): «?» → «Cosa possiamo migliorare?» → foglio Google (anonimo) ---------- */
+  var FB_URL = "https://script.google.com/macros/s/AKfycbxteaFDLFTejrSnatN4HE-rqR_J9ztMJWtFUBA_WW8oO8tZiM2Qtx44atSzwDcCz_2r1A/exec",   // indirizzo del programmino nel foglio «EZ Proposte utenti» (Apps Script)
+      fbB = document.getElementById("fbBtn"), fbM = document.getElementById("fbModal"), fbT = document.getElementById("fbTxt"),
+      fbC = document.getElementById("fbCnt"), fbS = document.getElementById("fbSend"), fbMsg = document.getElementById("fbMsg"),
+      fbForm = fbM.querySelector(".fb-form"), fbDone = fbM.querySelector(".fb-done"), fbOn = false, fbBusy = false;
+  if (window.EZ_FB_URL) FB_URL = window.EZ_FB_URL;   // solo per le prove
+  function fbShow(on){
+    if (on === fbOn) return; fbOn = on;
+    fbB.classList.toggle("on", on); fbB.classList.toggle("off", !on); fbB.tabIndex = on ? 0 : -1;
+    if (on) sample("neon0", 1.25, .35);
+  }
+  function fbCount(){ var n = fbT.value.length; fbC.textContent = n + " / 5000"; fbC.classList.toggle("max", n >= 5000); fbS.disabled = fbBusy || fbT.value.trim().length < 3;
+    try { localStorage.setItem("ez_fb_bozza", fbT.value); } catch(e){} }
+  try { fbT.value = localStorage.getItem("ez_fb_bozza") || ""; } catch(e){}
+  fbT.addEventListener("input", function(){ fbMsg.textContent = ""; fbMsg.className = "fb-msg"; fbCount(); });
+  function fbClose(){ fbM.hidden = true; }
+  fbB.addEventListener("click", function(e){ e.stopPropagation(); if (!fbM.hidden) return;
+    fbM.hidden = false; fbForm.hidden = false; fbDone.hidden = true; fbCount(); ovPush(fbClose); sample("neon0", 1.1, .6);
+    if (!touchDev) setTimeout(function(){ fbT.focus(); }, 60); });
+  fbM.addEventListener("click", function(e){ if (e.target === fbM || e.target.closest(".fb-x")) ovBack(); });
+  document.getElementById("fbAgain").addEventListener("click", function(){ fbDone.hidden = true; fbForm.hidden = false; fbCount(); fbT.focus(); });
+  function fbErr(t){ fbMsg.textContent = t; fbMsg.className = "fb-msg ko"; fbBusy = false; fbS.textContent = "INVIA ▸"; fbCount(); }
+  fbS.addEventListener("click", function(){
+    var t = fbT.value.trim(); if (fbBusy || t.length < 3) return;
+    var last = 0; try { last = Number(localStorage.getItem("ez_fb_ultimo") || 0); } catch(e){}
+    if (Date.now() - last < 60000) return fbErr("Hai appena inviato una proposta: aspetta un minuto e riprova.");
+    if (!FB_URL) return fbErr("Il sistema delle proposte si sta accendendo: riprova più tardi.");
+    fbBusy = true; fbS.disabled = true; fbS.textContent = "INVIO…"; fbMsg.textContent = ""; fbMsg.className = "fb-msg";
+    var body = new URLSearchParams({testo:t.slice(0,5000), da:"sito", lingua:(navigator.language||"").slice(0,12), ver:"sito v22", sito_web:document.getElementById("fbHp").value});
+    function ok(){ fbBusy = false; fbS.textContent = "INVIA ▸"; fbT.value = ""; fbCount();
+      try { localStorage.setItem("ez_fb_ultimo", String(Date.now())); localStorage.removeItem("ez_fb_bozza"); } catch(e){}
+      fbForm.hidden = true; fbDone.hidden = false; tone("triangle", 520, 1040, .25, .07); }
+    fetch(FB_URL, {method:"POST", body:body}).then(function(r){ return r.json(); }).then(function(j){
+      if (j && j.ok) ok(); else fbErr(j && j.err === "troppi" ? "Stanno arrivando tante proposte: riprova tra qualche minuto." : "Non è partita: controlla il testo e riprova.");
+    }, function(){
+      // se il browser non ci fa leggere la risposta, la mandiamo «alla cieca» (arriva lo stesso)
+      fetch(FB_URL, {method:"POST", mode:"no-cors", body:body}).then(ok, function(){ fbErr("Non è partita: controlla la connessione e riprova."); });
+    });
+  });
   /* ---------- TEASER (v21) ---------- */
   var tzMini = document.getElementById("tzMini"), tzMv = tzMini.querySelector("video"), tzBtn = document.getElementById("tzBtn"),
       tzF = document.getElementById("tzFull"), tzV = tzF.querySelector("video"), tzSnd = tzF.querySelector(".tz-snd"), tzBar = tzF.querySelector(".tz-bar"),
@@ -2615,11 +2696,12 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   // mini del sito: scorre via con la pagina e si dissolve; tornando in cima ricompare dov'era
   var tzQ = false;
   function tzMini_check(force){
-    if (site.hidden) { if (!tzMv.paused) tzMv.pause(); return; }
+    if (site.hidden) { if (!tzMv.paused) tzMv.pause(); fbShow(false); return; }
     var p = Math.max(0, Math.min(1, scrollY / (innerHeight * .35))), vis = p < .99 && tzF.hidden;
     if (!reduce){ tzMini.style.opacity = (1 - p).toFixed(3); tzMini.style.filter = p > .01 ? "blur(" + (p*8).toFixed(1) + "px)" : ""; tzMini.style.transform = p > .01 ? "translateY(" + (-p*24).toFixed(1) + "px) scale(" + (1 - p*.25).toFixed(3) + ")" : ""; }
     else tzMini.style.opacity = p > .5 ? 0 : 1;
     tzMini.classList.toggle("gone", p >= .99);
+    fbShow(p >= .99 && !EV.on);
     if (vis !== tzVis || force){ tzVis = vis;
       if (vis){ if (!tzMv.getAttribute("src")) tzMv.src = TZ_MINI; var pp = tzMv.play(); if (pp && pp.catch) pp.catch(function(){}); }
       else if (!tzMv.paused) tzMv.pause(); }
