@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 20.1
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 21
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -7,6 +7,13 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
+
+## Teaser (v21 · 13/11)
+Video di Claude A (10 s, girato nel gioco Godot, musica sua). File: `assets/teaser/teaser.mp4` (960×540 con audio, 1,6 MB), `teaser_mini.mp4` (480×270 senza audio, 0,48 MB), `teaser_poster.jpg`.
+- **Sito ufficiale**: riquadro piccolo sotto il QR (in alto a sinistra) che gira da solo in loop, muto. Scorrendo la pagina sale e si dissolve (sparito a 35% di schermo, e si mette in pausa); tornando in cima ricompare dov'era. Toccandolo (tasto ⤢) si apre a schermo intero con audio, in loop, con ✕ e tasto audio.
+- **Countdown**: icona sotto il QR. Toccandola il teaser si apre a schermo intero da dentro l'icona (il file grande è già scaricato 2,5 s dopo il caricamento) e, finito, si richiude dentro l'icona.
+- Schermo intero vero dove il browser lo permette (Android/PC; su Android prova a girare in orizzontale). Su iPhone resta a tutta finestra. La musica del sito tace durante il teaser. Tasto indietro / Esc chiudono. Se alle 15:00 il teaser è aperto, si chiude e parte l'evento.
+- Scritta in basso: «Girato nel gioco · alcune scene sono anticipazioni in arrivo» (doppia arma, dinosauro, ecc. non sono ancora nel gioco, come chiede Claude A).
 
 ## Avviso «Countdown di inizio dell'evento su questa pagina» (Blocco S12)
 Compare **una sola volta per dispositivo** (memoria del browser `ez_disc`), a destra (sul telefono in basso a destra, il countdown resta libero), con accensione al neon a 1,3 s; a 6,9 s si frantuma in 42 schegge low-poly risucchiate dal cristallo che gira. Su `prova.html` compare sempre.

@@ -317,6 +317,31 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .qr-act button:hover{background:var(--cyan);color:#07030f}
 .qr-x{position:absolute;top:10px;right:10px;width:34px;height:34px;padding:0}
 @media(prefers-reduced-motion:reduce){.qrbtn,.isle svg{animation:none}}
+/* TEASER (v21): mini in cima al sito + icona nel countdown + schermo intero */
+.tz-wrap{position:absolute;top:70px;left:14px;z-index:5}
+.tz-mini{position:relative;display:block;width:clamp(150px,16vw,230px);aspect-ratio:16/9;padding:0;border-radius:10px;overflow:hidden;border:1.5px solid var(--cyan);box-shadow:0 0 18px #3fd0ff55;background:#07030f center/cover;cursor:pointer;will-change:opacity,transform,filter}
+.tz-mini video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tz-mini .tz-tag{position:absolute;left:7px;top:6px;font:800 .52rem var(--disp);letter-spacing:.16em;color:#fff;text-shadow:0 0 6px #000,0 0 2px #000;pointer-events:none}
+.tz-mini .tz-tag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#ff3b3b;margin-right:5px;vertical-align:1px;animation:tzRec 1.2s steps(2) infinite}
+@keyframes tzRec{50%{opacity:.2}}
+.tz-big{position:absolute;right:5px;bottom:5px;width:30px;height:30px;border-radius:8px;border:1.5px solid #fff;background:#07030fb3;color:#fff;display:grid;place-items:center;pointer-events:none;transition:background .2s,transform .2s}
+.tz-big svg{width:16px;height:16px}
+.tz-mini:hover .tz-big{background:var(--pink);transform:scale(1.1)}
+.tz-mini.gone{visibility:hidden}
+.tzbtn{position:fixed;top:68px;left:14px;z-index:6;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--cyan);background:#07030f url(assets/teaser/teaser_poster.jpg) center/cover;color:#fff;cursor:pointer;overflow:hidden;box-shadow:0 0 14px #3fd0ff55;animation:qrglitch 8s 4s infinite}
+.tzbtn::before{content:"";position:absolute;inset:0;background:#07030f80;transition:background .2s}
+.tzbtn svg{position:relative;width:18px;height:18px;filter:drop-shadow(0 0 4px #000)}
+.tzbtn:hover::before{background:#ff3fd099}
+.tzbtn.out{opacity:0;pointer-events:none}
+body.ev .tzbtn{opacity:0;pointer-events:none}
+#tzFull{position:fixed;inset:0;z-index:12;background:#000}
+#tzFull video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#tzFull .tz-x{top:14px;right:14px;z-index:2;width:40px;height:40px}
+#tzFull .tz-snd{position:absolute;top:14px;right:64px;z-index:2;height:40px;padding:0 14px;border-radius:99px;border:1.5px solid var(--cyan);background:#07030fcc;color:#fff;font:800 .62rem var(--disp);letter-spacing:.12em;cursor:pointer}
+#tzFull .tz-note{position:absolute;left:0;right:0;bottom:10px;z-index:2;margin:0;text-align:center;font:600 .7rem var(--body,Inter,sans-serif);color:#ffffffb0;text-shadow:0 0 6px #000;pointer-events:none}
+#tzFull .tz-bar{position:absolute;left:0;bottom:0;height:3px;width:0;z-index:2;background:linear-gradient(90deg,var(--cyan),var(--pink))}
+@media(max-width:560px){.tz-wrap{top:68px}.tz-mini{width:136px;border-radius:8px}.tz-big{width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.tzbtn,.tz-mini .tz-tag i{animation:none}}
 
 /* immagine verticale (telefono) nel riquadro orizzontale */
 .c-frame img[src*="cap_telefono"]{object-position:50% 30%}
@@ -531,6 +556,13 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 <button class="qrbtn" id="qrBtn" type="button" aria-label="Mostra il QR del sito">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14v2"/></svg>
 </button>
+<div id="tzFull" hidden role="dialog" aria-modal="true" aria-label="Teaser di Evolved Zone">
+  <video playsinline preload="none" poster="assets/teaser/teaser_poster.jpg"></video>
+  <button class="tz-snd" type="button" aria-pressed="true">🔊 AUDIO</button>
+  <button class="qr-x tz-x" type="button" aria-label="Chiudi">✕</button>
+  <p class="tz-note">Girato nel gioco · alcune scene sono anticipazioni in arrivo</p>
+  <div class="tz-bar"></div>
+</div>
 <div id="qrModal" hidden role="dialog" aria-modal="true" aria-label="QR del sito">
   <div class="qr-card">
     <button class="qr-x" type="button" aria-label="Chiudi">✕</button>
@@ -570,6 +602,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
     @tilt.companyy
   </a>
+  <button class="tzbtn" id="tzBtn" type="button" aria-label="Guarda il teaser a schermo intero"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="#fff"/></svg></button>
 </main>
 
 <!-- ============ EVENTO DEL LANCIO ============ -->
@@ -585,6 +618,11 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 <!-- ============ SITO UFFICIALE (appare dopo l'esplosione) ============ -->
 <div id="site" hidden>
   <header class="s-hero">
+    <div class="tz-wrap rise" style="--d:.4s"><button type="button" class="tz-mini" id="tzMini" style="background-image:url(assets/teaser/teaser_poster.jpg)" aria-label="Teaser: guardalo a schermo intero">
+      <video muted loop playsinline preload="none" poster="assets/teaser/teaser_poster.jpg" aria-hidden="true"></video>
+      <span class="tz-tag"><i></i>TEASER</span>
+      <span class="tz-big" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+    </button></div>
     <span class="badge rise" style="--d:.25s">Stagione 1 · Disponibile ora</span>
     <h1 style="line-height:0"><img class="s-logo" src="assets/logo.webp" alt="Evolved Zone" width="1000" height="526"></h1>
     <div class="cta rise" id="cta" style="--d:.3s"></div>
@@ -719,6 +757,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   // Qui lo suona il motore audio del browser: arrivato a 33,97 s riparte da 2,00 s con una dissolvenza di 0,25 s. Si sente una musica continua.
   var TEST_MUS = /[?&]test/.test(location.search) || window.EZ_TEST;
   var LOOP_A = 2.0, LOOP_B = 33.9707, LOOP_X = .25;
+  var TZ_ON = false;   // teaser a schermo intero aperto: la musica del sito tace
   function BgLoop(){ this.paused = true; this._v = VOL.music; this.buf = null; this.g = null; this.srcs = []; this.t = 0; this.fb = null; this.pos = 0; }
   BgLoop.prototype = {
     get volume(){ return this._v; },
@@ -749,7 +788,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   };
   if (TEST_MUS) window.__music = function(){ return music; };
   function startMusic(){
-    if (!audioOn || (typeof EV !== "undefined" && EV.on) || MUS) return;   // durante l'evento suona la colonna sonora
+    if (!audioOn || (typeof EV !== "undefined" && EV.on) || MUS || TZ_ON) return;   // durante l'evento suona la colonna sonora (e durante il teaser il suo audio)
     if (!music){ music = new BgLoop(); music.volume = VOL.music; }
     var p = music.play(); if (p && p.catch) p.catch(function(){});
   }
@@ -1287,6 +1326,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
     EV = {on:true, t0:performance.now(), exploded:false, shards:[], spin:ang, sounds:{},
           from: replay ? {x:innerWidth/2, y:innerHeight*.6} : {x:r.left+r.width/2, y:r.top+r.height*.46},
           sc0: replay ? 20 : cv.clientHeight*0.27};
+    if (typeof tzF !== "undefined" && tzF && !tzF.hidden){ tzV.pause(); tzF.hidden = true; TZ_ON = false; tzClosing = false; }   // il teaser aperto alle 15:00 si chiude: parte l'evento
     DROP.on = false; floorBoost = 0; setPulse("0"); site.style.transform = "";
     window.scrollTo(0,0);
     site.hidden = true; site.classList.remove("enter");
@@ -2529,6 +2569,65 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
   if (navigator.share) qrShare.addEventListener("click", function(){ navigator.share({title:"Evolved Zone", url:SITE_URL}).catch(function(){}); });
   else qrShare.hidden = true;
 
+
+  /* ---------- TEASER (v21) ---------- */
+  var tzMini = document.getElementById("tzMini"), tzMv = tzMini.querySelector("video"), tzBtn = document.getElementById("tzBtn"),
+      tzF = document.getElementById("tzFull"), tzV = tzF.querySelector("video"), tzSnd = tzF.querySelector(".tz-snd"), tzBar = tzF.querySelector(".tz-bar"),
+      TZ_SRC = "assets/teaser/teaser.mp4", TZ_MINI = "assets/teaser/teaser_mini.mp4", tzFrom = null, tzOnce = false, tzClosing = false, tzVis = true;
+  function tzRect(el){ var r = el.getBoundingClientRect(); return {t:r.top, l:r.left, b:innerHeight - r.bottom, r:innerWidth - r.right}; }
+  function tzClip(q, rad){ return "inset(" + q.t + "px " + q.r + "px " + q.b + "px " + q.l + "px round " + rad + "px)"; }
+  function tzSetSnd(){ tzSnd.setAttribute("aria-pressed", String(!tzV.muted)); tzSnd.textContent = tzV.muted ? "🔇 AUDIO" : "🔊 AUDIO"; }
+  function tzOpen(from, once){
+    if (!tzF.hidden) return;
+    tzFrom = from; tzOnce = once; tzClosing = false; TZ_ON = true;
+    if (music && !music.paused) music.pause();
+    if (!tzV.getAttribute("src")) tzV.src = TZ_SRC;
+    tzV.loop = !once; tzV.currentTime = 0; tzV.muted = !audioOn; tzSetSnd();
+    tzF.hidden = false; ovPush(tzClose);
+    if (!reduce && tzF.animate) tzF.animate([{clipPath:tzClip(tzRect(from), 12), opacity:.6}, {clipPath:tzClip({t:0,l:0,b:0,r:0}, 0), opacity:1}], {duration:420, easing:"cubic-bezier(.2,1,.3,1)"});
+    var p = tzV.play(); if (p && p.catch) p.catch(function(){ tzV.muted = true; tzSetSnd(); tzV.play().catch(function(){}); });   // se il browser blocca l'audio, parte muto
+    if (tzMv && !tzMv.paused) tzMv.pause();
+    // schermo intero vero dove il browser lo permette (Android, PC); sul telefono prova a girare in orizzontale
+    try { var rq = tzF.requestFullscreen || tzF.webkitRequestFullscreen; if (rq && !TEST_TZ) { var fp = rq.call(tzF); if (fp && fp.then) fp.then(function(){ try { if (matchMedia("(hover: none)").matches && screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(function(){}); } catch(e){} }, function(){}); } } catch(e){}
+    sample("whoosh", 1.3, .35);
+  }
+  function tzClose(){
+    if (tzF.hidden || tzClosing) return; tzClosing = true;
+    try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(e){}
+    var fe = document.fullscreenElement || document.webkitFullscreenElement; if (fe === tzF){ try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch(e){} }
+    function done(){ tzV.pause(); tzF.hidden = true; tzClosing = false; TZ_ON = false; tzBar.style.width = "0";
+      if (audioOn && unlocked) startMusic(); tzMini_check(true);
+      if (tzFrom === tzBtn && !reduce){ tzBtn.animate && tzBtn.animate([{transform:"scale(1.5)", boxShadow:"0 0 30px #3fd0ff"}, {transform:"none"}], {duration:450, easing:"cubic-bezier(.2,1.6,.4,1)"}); } }
+    if (!reduce && tzF.animate && tzFrom){ var a = tzF.animate([{clipPath:tzClip({t:0,l:0,b:0,r:0}, 0), opacity:1}, {clipPath:tzClip(tzRect(tzFrom), 12), opacity:.4}], {duration:380, easing:"cubic-bezier(.6,0,.8,.4)"}); a.onfinish = done; }
+    else done();
+  }
+  function tzFs(){ var fe = document.fullscreenElement || document.webkitFullscreenElement; if (!fe && !tzF.hidden && !tzClosing && OV[OV.length-1] === tzClose) ovBack(); }   // uscito dallo schermo intero (Esc, tasto indietro): chiudi
+  document.addEventListener("fullscreenchange", tzFs); document.addEventListener("webkitfullscreenchange", tzFs);
+  var TEST_TZ = /[?&]tzfs=0/.test(location.search);
+  tzV.addEventListener("ended", function(){ if (tzOnce) ovBack(); });
+  tzV.addEventListener("timeupdate", function(){ if (tzV.duration) tzBar.style.width = (tzV.currentTime / tzV.duration * 100).toFixed(1) + "%"; });
+  tzSnd.addEventListener("click", function(e){ e.stopPropagation(); tzV.muted = !tzV.muted; tzSetSnd(); if (tzV.paused) tzV.play().catch(function(){}); });
+  tzF.addEventListener("click", function(e){ if (e.target.closest(".tz-x")) ovBack(); else if (e.target === tzV){ if (tzV.paused) tzV.play().catch(function(){}); } });
+  tzBtn.addEventListener("click", function(e){ e.stopPropagation(); tzOpen(tzBtn, true); });
+  tzMini.addEventListener("click", function(e){ e.stopPropagation(); tzOpen(tzMini, false); });
+  // il countdown: il teaser grande si scarica in anticipo (1,6 MB) così parte subito
+  window.addEventListener("load", function(){ setTimeout(function(){ if (!tzV.getAttribute("src")){ tzV.preload = "auto"; tzV.src = TZ_SRC; } }, 2500); });
+  // mini del sito: scorre via con la pagina e si dissolve; tornando in cima ricompare dov'era
+  var tzQ = false;
+  function tzMini_check(force){
+    if (site.hidden) { if (!tzMv.paused) tzMv.pause(); return; }
+    var p = Math.max(0, Math.min(1, scrollY / (innerHeight * .35))), vis = p < .99 && tzF.hidden;
+    if (!reduce){ tzMini.style.opacity = (1 - p).toFixed(3); tzMini.style.filter = p > .01 ? "blur(" + (p*8).toFixed(1) + "px)" : ""; tzMini.style.transform = p > .01 ? "translateY(" + (-p*24).toFixed(1) + "px) scale(" + (1 - p*.25).toFixed(3) + ")" : ""; }
+    else tzMini.style.opacity = p > .5 ? 0 : 1;
+    tzMini.classList.toggle("gone", p >= .99);
+    if (vis !== tzVis || force){ tzVis = vis;
+      if (vis){ if (!tzMv.getAttribute("src")) tzMv.src = TZ_MINI; var pp = tzMv.play(); if (pp && pp.catch) pp.catch(function(){}); }
+      else if (!tzMv.paused) tzMv.pause(); }
+  }
+  window.addEventListener("scroll", function(){ if (tzQ) return; tzQ = true; requestAnimationFrame(function(){ tzQ = false; tzMini_check(); }); }, {passive:true});
+  window.addEventListener("resize", function(){ tzMini_check(); });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden){ if (!tzMv.paused) tzMv.pause(); } else tzMini_check(true); });
+  new MutationObserver(function(){ tzMini_check(true); }).observe(site, {attributes:true, attributeFilter:["hidden"]});
   /* ---------- IN ARRIVO: scorrimento laterale guidato dallo scorrimento della pagina ---------- */
   var arr = document.getElementById("arrivo"), arrT = document.getElementById("arrTrack"), arrF = document.getElementById("arrFill");
   var arrCards = [].slice.call(arrT.querySelectorAll(".arr-card")), arrQ = false, arrLast = -1;
