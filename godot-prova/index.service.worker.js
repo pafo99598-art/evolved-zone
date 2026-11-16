@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1794855878|8155943';
+const CACHE_VERSION = '1794859164|7136343';
 /** @type {string} */
 const CACHE_PREFIX = 'EVOLVED ZONE-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
