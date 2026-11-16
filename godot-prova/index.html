@@ -49,9 +49,43 @@ return o(Promise.resolve(res),imp).catch(function(){return c.arrayBuffer().then(
 </script>
 <script src="index.js"></script>
 <script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":26734272,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":26706440,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
+// G96 (Claude A, 16/11/2026, Michele: «il gioco su pc non si carica quando la pagina non è aperta»): con la scheda
+// nascosta il browser ferma requestAnimationFrame, e il motore (che prepara l'isola un fotogramma alla volta) si ferma.
+// Finché la lobby non è pronta (window.ezBootDone('gioco')), a scheda nascosta i fotogrammi si chiedono con un
+// MessageChannel (non rallentato in secondo piano); quando la scheda torna visibile o la lobby è pronta, tutto come prima.
+(function () {
+	const nraf = window.requestAnimationFrame.bind(window);
+	const ch = new MessageChannel();
+	let q = [];
+	let posted = false;
+	let wait = [];   // fotogrammi chiesti al browser e non ancora arrivati
+	window.EZbg = {frames: 0, on: false};
+	function bg() { return document.hidden && !window.ezLobbyReady; }
+	ch.port1.onmessage = function () {
+		posted = false;
+		const l = q;
+		q = [];
+		const t = performance.now();
+		window.EZbg.frames += l.length ? 1 : 0;
+		for (let i = 0; i < l.length; i++) { try { l[i](t); } catch (e) { console.error(e); } }
+	};
+	function later(cb) { q.push(cb); if (!posted) { posted = true; ch.port2.postMessage(0); } }
+	window.requestAnimationFrame = function (cb) {
+		if (bg()) { window.EZbg.on = true; later(cb); return 0; }
+		const w = {cb: cb, done: false};
+		wait.push(w);
+		return nraf(function (t) { if (w.done) return; w.done = true; wait = wait.filter(function (x) { return x !== w; }); cb(t); });
+	};
+	document.addEventListener('visibilitychange', function () {
+		if (!bg()) return;
+		const l = wait;   // la scheda si è nascosta: i fotogrammi già chiesti al browser non arriverebbero più
+		wait = [];
+		for (let i = 0; i < l.length; i++) { if (!l[i].done) { l[i].done = true; later(l[i].cb); } }
+	});
+}());
 // G75 (Claude A, 15/11/2026, Michele: «sul telefono sei in verticale, lo schermo non è intero»):
 // 1) sul telefono la versione completa porta da sola alla leggera (EVOLVEDZONEZ, /godot-prova-z/), sempre (G42b);
 // 2) in verticale un cartello chiede di girare il telefono; 3) al primo tocco schermo intero e orizzontale bloccato
@@ -122,6 +156,7 @@ const engine = new Engine(GODOT_CONFIG);
 	function setPct(p) { S.pct = Math.max(S.pct, p); bar.style.width = S.pct.toFixed(1) + '%'; }
 	let gone = false;
 	window.ezBootDone = function (how) {
+		if (!how || how === 'gioco') window.ezLobbyReady = true;   // G96: la lobby è pronta (anche dopo il «tempo scaduto»)
 		if (gone) return;
 		gone = true;
 		S.ready = performance.now() - S.t0;
