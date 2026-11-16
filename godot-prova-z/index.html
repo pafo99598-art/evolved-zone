@@ -62,9 +62,11 @@ const engine = new Engine(GODOT_CONFIG);
 	const q = location.search || '';
 	// G42b (Claude B, Michele 15/11: «EVOLVED ZONE funziona solo su computer, dal telefono non deve essere possibile giocarci»):
 	// niente più «?completa» per restare: il telefono va sempre alla leggera
-	if (coarse && location.pathname.indexOf('/godot-prova/') >= 0) {
+	// 16/11 (A): vale per le cartelle della completa /godot-prova/ (prove di Michele) e /gioca/ (link ufficiale, Michele 16/11 «3 va bene»)
+	const fullDir = location.pathname.match(/\/(godot-prova|gioca)\//);
+	if (coarse && fullDir && !window.uzApp) {
 		window.__ezRedirect = true;
-		location.replace(location.pathname.replace('/godot-prova/', '/godot-prova-z/') + q + location.hash);
+		location.replace(location.pathname.replace('/' + fullDir[1] + '/', '/' + fullDir[1] + '-z/') + q + location.hash);
 		return;
 	}
 	try {
