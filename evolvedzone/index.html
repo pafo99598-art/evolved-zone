@@ -6,6 +6,10 @@
 <title>EVOLVED ZONE · 17.11 ore 15:00</title>
 <meta name="description" content="Evolved Zone. L'evoluzione dei videogiochi: il Valdarno diventa la tua zona. Lancio 17 novembre 2026 alle 15:00.">
 <meta name="theme-color" content="#07030f">
+<!-- SICUREZZA (v23): la pagina carica solo dai posti elencati; niente plugin, niente invii a siti estranei -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' blob: data: https://script.google.com https://script.googleusercontent.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>/* niente pagina dentro siti altrui (iframe): si apre da sola a tutta finestra */ if (window.top !== window.self) { try { window.top.location.replace(window.self.location.href); } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <link rel="preload" as="image" href="assets/logo_s.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -342,6 +346,17 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .fb-done{text-align:center;padding:18px 0 6px}
 .fb-done b{display:block;font:900 1.3rem var(--disp);color:var(--yellow);margin-bottom:6px;animation:qrin .4s cubic-bezier(.2,1.5,.4,1)}
 @media(prefers-reduced-motion:reduce){.fbbtn,.fbbtn.on,.fbbtn.off{transition:opacity .2s,visibility 0s;transform:none;animation:none}}
+/* ISOLA 3D come pavimento (v23): dopo l'evento, per 15 secondi al massimo, un'isola a caso vista dall'alto */
+#isleGL{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease;display:none}
+#isleGL.on{display:block}
+#isleGL.vis{opacity:1}
+#isleGL.out{transition:opacity 1.8s ease;opacity:0}
+#isleTag{position:fixed;left:16px;bottom:16px;z-index:4;pointer-events:none;font:800 .62rem var(--disp);letter-spacing:.2em;color:#fff;opacity:0;transition:opacity .8s;text-shadow:0 0 8px #000,0 0 14px #3fd0ff}
+#isleTag.vis{opacity:.85}
+#isleTag b{display:block;font-size:1.05rem;letter-spacing:.12em;color:var(--yellow)}
+/* DOPO LE 19:00 DEL 17/11: niente countdown né evento */
+html.post main{display:none!important}
+html.post #replay{display:none!important}
 /* TEASER (v21): mini in cima al sito + icona nel countdown + schermo intero */
 .tz-wrap{position:absolute;top:70px;left:14px;z-index:5}
 .tz-mini{position:relative;display:block;width:clamp(150px,16vw,230px);aspect-ratio:16/9;padding:0;border-radius:10px;overflow:hidden;border:1.5px solid var(--cyan);box-shadow:0 0 18px #3fd0ff55;background:#07030f center/cover;cursor:pointer;will-change:opacity,transform,filter}
@@ -353,7 +368,7 @@ body.ev .qrbtn{opacity:0;pointer-events:none}
 .tz-big svg{width:16px;height:16px}
 .tz-mini:hover .tz-big{background:var(--pink);transform:scale(1.1)}
 .tz-mini.gone{visibility:hidden}
-.tzbtn{position:fixed;top:68px;left:14px;z-index:6;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--cyan);background:#07030f url(assets/teaser/teaser_poster.jpg) center/cover;color:#fff;cursor:pointer;overflow:hidden;box-shadow:0 0 14px #3fd0ff55;animation:qrglitch 8s 4s infinite}
+.tzbtn{position:fixed;top:68px;left:14px;z-index:6;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:12px;border:1.5px solid var(--cyan);background:#07030f url(assets/teaser/teaser15_poster.jpg) center/cover;color:#fff;cursor:pointer;overflow:hidden;box-shadow:0 0 14px #3fd0ff55;animation:qrglitch 8s 4s infinite}
 .tzbtn::before{content:"";position:absolute;inset:0;background:#07030f80;transition:background .2s}
 .tzbtn svg{position:relative;width:18px;height:18px;filter:drop-shadow(0 0 4px #000)}
 .tzbtn:hover::before{background:#ff3fd099}
@@ -477,6 +492,9 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
 .mu-cell canvas{position:absolute;inset:6% 4% 16%;width:92%;height:78%}
 .mu-cell b{position:absolute;left:0;right:0;bottom:8px;font:800 clamp(.55rem,1.8vw,.8rem) var(--disp);letter-spacing:.08em;text-align:center;text-shadow:0 0 8px #000}
 .mu-tag{position:absolute;left:8px;top:6px;font:900 .7rem var(--disp);color:var(--c)}
+.mu-prev{position:absolute;inset:6% 4% 16%;width:92%;height:78%;object-fit:contain;transition:opacity .4s}
+.mu-cell.live .mu-prev{opacity:0}
+#muBig.wait::after{content:"Carico il modello 3D…";position:absolute;left:0;right:0;top:50%;text-align:center;color:var(--muted);font-size:.9rem;pointer-events:none}
 .mu-load,.mu-soon{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.75rem;line-height:1.5}
 #muBig{position:fixed;inset:0;z-index:12;display:grid;place-items:center;padding:16px;background:#07030fe8}
 .mu-big-box{position:relative;width:min(560px,100%);height:min(78vh,700px);border-radius:16px;border:2px solid var(--c);box-shadow:0 0 40px color-mix(in srgb,var(--c) 50%,transparent);
@@ -568,10 +586,12 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     <polygon points="0,100 0,78 90,60 170,80 250,58 330,76 420,64 500,82 590,62 680,80 760,56 850,76 930,66 1000,74 1000,100" fill="#0e0322" stroke="#ff3fd0" stroke-width="2" vector-effect="non-scaling-stroke"/>
   </svg>
   <div class="floor"><canvas id="floor"></canvas></div>
+  <canvas id="isleGL"></canvas>
   <div class="hline"></div>
   <div class="scan"></div>
 </div>
 <canvas id="fx" aria-hidden="true"></canvas>
+<div id="isleTag" aria-hidden="true"></div>
 
 <button class="audio invite" id="audioBtn" type="button" aria-pressed="false" aria-label="Audio">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><g class="on"><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></g><g class="off"><path d="m16 9 5 6M21 9l-5 6"/></g></svg>
@@ -598,7 +618,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   </div>
 </div>
 <div id="tzFull" hidden role="dialog" aria-modal="true" aria-label="Teaser di Evolved Zone">
-  <video playsinline preload="none" poster="assets/teaser/teaser_poster.jpg"></video>
+  <video playsinline preload="none" poster="assets/teaser/teaser15_poster.jpg"></video>
   <button class="tz-snd" type="button" aria-pressed="true">🔊 AUDIO</button>
   <button class="qr-x tz-x" type="button" aria-label="Chiudi">✕</button>
   <p class="tz-note">Girato nel gioco · alcune scene sono anticipazioni in arrivo</p>
@@ -659,8 +679,8 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
 <!-- ============ SITO UFFICIALE (appare dopo l'esplosione) ============ -->
 <div id="site" hidden>
   <header class="s-hero">
-    <div class="tz-wrap rise" style="--d:.4s"><button type="button" class="tz-mini" id="tzMini" style="background-image:url(assets/teaser/teaser_poster.jpg)" aria-label="Teaser: guardalo a schermo intero">
-      <video muted loop playsinline preload="none" poster="assets/teaser/teaser_poster.jpg" aria-hidden="true"></video>
+    <div class="tz-wrap rise" style="--d:.4s"><button type="button" class="tz-mini" id="tzMini" style="background-image:url(assets/teaser/teaser15_poster.jpg)" aria-label="Teaser: guardalo a schermo intero">
+      <video muted loop playsinline preload="none" poster="assets/teaser/teaser15_poster.jpg" aria-hidden="true"></video>
       <span class="tz-tag"><i></i>TEASER</span>
       <span class="tz-big" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
     </button></div>
@@ -695,11 +715,13 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     <div class="panel rv">
       <h2>DOMANDE</h2>
       <div class="faq">
-        <details><summary>Dove si gioca?</summary><p>Nel browser, su CrazyGames, oppure scaricandolo per PC (Windows e Mac) e Android.</p></details>
+        <details><summary>Dove si gioca?</summary><p>Nel browser, su CrazyGames, oppure scaricandolo per Windows e Android. Su Mac e iPhone si gioca nel browser.</p></details>
         <details><summary>Devo installare qualcosa?</summary><p>No: nel browser parte subito. Il download serve solo se vuoi l'app.</p></details>
         <details><summary>Funziona sul telefono?</summary><p>Sì, con comandi touch pensati per il pollice. Su Android c'è anche l'app.</p></details>
         <details><summary>Quanti giocatori ci sono in una partita?</summary><p>Fino a 50. Se non ci sono abbastanza persone online, entrano i bot: giochi subito, a qualsiasi ora.</p></details>
         <details><summary>Posso giocarci adesso?</summary><p>Sì! Evolved Zone è uscito il 17 novembre 2026 ed è già pronto: gioca subito nel browser o scaricalo per PC e Android con i pulsanti in cima a questa pagina.</p></details>
+        <details><summary>Cosa serve per giocare?</summary><p>Un computer con un browser recente (Chrome, Edge o Firefox): anche la grafica integrata va bene, il gioco si adatta da solo. Sul telefono parte da sola la versione leggera, in orizzontale.</p></details>
+        <details><summary>Windows dice «PC protetto da Windows». È normale?</summary><p>Sì: il programma non ha ancora la firma digitale a pagamento. Clicca «Ulteriori informazioni» e poi «Esegui comunque».</p></details>
         <details><summary>È gratis?</summary><p>Sì, Evolved Zone è completamente gratis.</p></details>
         <details><summary>Le isole sono posti veri?</summary><p>Alcune sì: le isole del Valdarno sono ricostruite il più fedelmente possibile. Altre, come Simple Island, sono isole artificiali, stampate in 3D nel futuro del gioco.</p></details>
       </div>
@@ -710,7 +732,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     <div class="panel rv noi">
       <h2>CHI SIAMO</h2>
       <p>Evolved Zone nasce nel <b>Valdarno</b>, tra Figline, Incisa, Leccio e Burchio: i posti dove ho sempre sognato di giocare, ma dentro un mondo virtuale.</p>
-      <p>Evolved Zone è un progetto indipendente di <b>M******</b> con <b>TILT Company</b>.</p>
+      <p>Evolved Zone è un progetto indipendente di <b>###</b> con <b>TILT Company</b>.</p>
       <a class="ig" href="https://www.instagram.com/tilt.companyy/" target="_blank" rel="noopener" aria-label="Instagram @tilt.companyy">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>
         Seguici: @tilt.companyy</a>
@@ -964,6 +986,11 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   // quindi questo è un istante preciso uguale per tutti: 14:00 UTC. Chi guarda da un altro
   // fuso orario vede partire l'evento nello stesso identico momento.
   var target = new Date("2026-11-17T15:00:00+01:00").getTime();
+  // FINE EVENTO: dal 17/11 alle 19:00 (ora italiana) il countdown e l'evento non si vedono più: si apre subito il sito.
+  var END_AT = new Date("2026-11-17T19:00:00+01:00").getTime();
+  if (/[?&]fine=1\b/.test(location.search)) END_AT = 0;          // prova: ?fine=1 fa finta che sia già dopo le 19:00
+  function postEvent(){ return nowMs() >= END_AT; }
+  if (Date.now() >= END_AT + 2*3600*1000) document.documentElement.classList.add("post");   // orologio del telefono sbagliato di poco: decide comunque showSite()
   var LATE_EVENT = 3*60*1000;    // chi apre la pagina entro 3 minuti dalle 15:00 vede comunque l'evento
   var LATE_RETURN = 30*60*1000;  // chi aveva lo schermo spento alle 15:00 e torna entro 30 minuti lo vede
   // OROLOGIO: non ci fidiamo dell'orologio del telefono/PC (può essere avanti o indietro).
@@ -986,6 +1013,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     }).catch(function(){ ready = true; });
   }
   syncClock(); setInterval(syncClock, 10*60*1000);
+  if (END_AT === 0) target = Date.now() - 3600*1000;            // prova ?fine=1: l'evento è già passato
   // Prova: aggiungi ?prova=10 all'indirizzo per un countdown di 10 secondi
   if (pr && !isNaN(pr)) target = Date.now() + Number(pr) * 1000;
   var el = {d:document.getElementById("d"),h:document.getElementById("h"),m:document.getElementById("m"),s:document.getElementById("s")};
@@ -1406,6 +1434,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   var siteMode = false;
   function showSite(animated){
     siteMode = true;
+    if (postEvent() && !TEST){ document.documentElement.classList.add("post"); var rp = document.getElementById("replay"); if (rp) rp.hidden = true; }
     clearInterval(timer);
     mainEl.style.display = "none";
     document.getElementById("toast").hidden = true;
@@ -1413,6 +1442,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     site.hidden = false;
     site.classList.remove("enter"); void site.offsetWidth; site.classList.add("enter");
     if (!animated) site.querySelectorAll(".rise").forEach(function(e){ e.style.setProperty("--d","0s"); });
+    if (!animated && !/[?&]isola=/.test(location.search)) setTimeout(function(){ if (siteMode && typeof isleStart === "function") isleStart(false); }, 900);   // dopo l'evento: l'isola come pavimento
     var io = "IntersectionObserver" in window ? new IntersectionObserver(function(es){
       es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target); } });
     },{threshold:.12}) : null;
@@ -1677,7 +1707,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   function weather(type, dur){
     S3.amb = {type:type, t:0, dur:dur};
     ambEl.style.background = AMB[type]; ambEl.style.opacity = 0; requestAnimationFrame(function(){ ambEl.style.opacity = 1; });
-    var N = Math.round((type === "lucciole" ? 90 : type === "temporale" ? 0 : 380)*Q), rain = false;   // niente pioggia (richiesta di Michele)
+    var N = Math.round((type === "lucciole" ? 90 : type === "temporale" ? 0 : 380)*Q), rain = false;   // niente pioggia
     var pos = new Float32Array(N*(rain ? 6 : 3)), vel = [];
     for (var i=0;i<N;i++){ var x = rnd(-30,30), y = rnd(0,22), z = rnd(-60,8); vel.push(rnd(.7,1.3));
       if (rain){ pos.set([x,y,z, x+.15,y-.9,z], i*6); } else pos.set([x,y,z], i*3); }
@@ -1908,7 +1938,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   // sale da dietro le montagne sotto al sole (≈9 s), ruggisce, alza le braccia e lancia una TEMPESTA NEON
   // che arriva sul cristallo esattamente al momento dell'esplosione (15 s): poi esplode tutto.
   var MON_T0 = 8.8, MON_THROW = 13.2;
-  function monster3D(){   // come nell'immagine di Michele: gigante incappucciato, spalle enormi, braccia lunghe con artigli, occhi azzurri obliqui
+  function monster3D(){   // gigante incappucciato, spalle enormi, braccia lunghe con artigli, occhi azzurri obliqui
     var cp = [new THREE.Plane(new THREE.Vector3(0,1,0), 0)], g = new THREE.Group(), U = {mats:[], parts:[]};
     function bm(c, e, o){ var m = new THREE.MeshLambertMaterial({color:lin(c), emissive:lin(e), transparent:true, opacity:o, fog:false, depthWrite:false, clippingPlanes:cp}); m.userData.o = o; U.mats.push(m); return m; }
     var body = bm('#160838', '#0a0320', .9), soft = bm('#2b2fa0', '#12145a', .55);      // corpo scuro; avambracci e mani più trasparenti e azzurri
@@ -2281,9 +2311,11 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
 
   /* ---------- pulsanti del sito ufficiale ---------- */
   // Incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
-  var LINKS = { browser:"", crazygames:"", pc:"", android:"" };
+  var LINKS = { browser:"https://pafo99598-art.github.io/evolved-zone/gioca/", crazygames:"",
+                pc:"https://github.com/pafo99598-art/evolved-zone/releases/latest/download/EvolvedZone-Setup.exe",
+                android:"https://pafo99598-art.github.io/evolved-zone/app/EvolvedZone.apk" };
   var CTA = [["browser","▶ GIOCA ORA","Nel browser, senza installare","main"],["crazygames","CRAZYGAMES","Gioca sul portale","c"],
-             ["pc","PC","Scarica · Windows e Mac",""],["android","ANDROID","Scarica · Telefono","c"]];
+             ["pc","PC","Scarica · Windows",""],["android","ANDROID","Scarica · Telefono","c"]];
   var ctaEl = document.getElementById("cta");
   CTA.forEach(function(b){
     var href = LINKS[b[0]], el = document.createElement(href ? "a" : "span");
@@ -2358,7 +2390,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
      foto:[], video:""},
     {tag:"CAPITOLO 06", title:"PC", col:"#ffe14d", img:"assets/img/cap_pc.webp", clip:"",
      line:"Tastiera e mouse. Nel browser o da scaricare.",
-     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows e Mac.",
+     text:["Su PC giochi con tastiera e mouse: direttamente nel browser, senza installare niente, oppure scaricando la versione per Windows (su Mac si gioca nel browser).",
            "<b>Comandi principali</b><br>WASD muoviti · Mouse mira · Clic sinistro spara · Clic destro mira · Spazio salta / apri il paracadute · Shift corri · E raccogli · R ricarica · I zaino · M mappa · Esc pausa"],
      foto:[], video:""},
     {tag:"CAPITOLO 07", title:"TELEFONO", col:"#ff7a3c", img:"assets/img/cap_telefono.webp", clip:"",
@@ -2612,6 +2644,122 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
 
 
 
+
+  /* =========================================================
+     ISOLA 3D COME PAVIMENTO (v23) — dopo l'evento, aprendo il sito: un'isola a caso (modelli di Claude A)
+     vista dall'alto per al massimo 15 s, con caccia che passano sparando ed esplosioni; poi si dissolve.
+     Prova: ?isola=1 (o ?isola=incisa) su qualsiasi pagina del sito.
+     ========================================================= */
+  var ISLES = [["simple_island","SIMPLE ISLAND"],["figline","FIGLINE"],["incisa","INCISA"],["burchio","BURCHIO"],["leccio","LECCIO"]];
+  var IL = null, ilCv = document.getElementById("isleGL"), ilTag = document.getElementById("isleTag");
+  var IL_SHOW = 13, IL_FADE = 1.8;                                      // 13 s visibili + 1,8 s di dissolvenza = meno di 15 s
+  function isleStart(force){
+    if (IL || (reduce && !force)) return;
+    var qs = (location.search.match(/[?&]isola=([a-z_0-9]+)/) || [])[1], pick = null;
+    ISLES.forEach(function(x){ if (qs && x[0].indexOf(qs) === 0) pick = x; });
+    if (!pick) pick = ISLES[Math.floor(Math.random()*ISLES.length)];
+    IL = {pick:pick, t0:0, alive:true};
+    var me = IL, giveUp = setTimeout(function(){ if (me === IL && !me.t0) isleStop(); }, 10000);   // rete lenta: dopo 10 s si rinuncia
+    Promise.all([glbLoad(pick[0]), ezModels()]).then(function(r){
+      clearTimeout(giveUp);
+      if (me !== IL || !siteMode && !force) return isleStop();
+      if (!MU.data) MU.data = r[1];
+      isleBuild(r[0]);
+    }, function(){ clearTimeout(giveUp); isleStop(); });
+  }
+  function isleBuild(isle){
+    var W = innerWidth, H = innerHeight, phone = W < 700;
+    var R = new THREE.WebGLRenderer({canvas:ilCv, antialias:!phone, alpha:true});
+    R.outputEncoding = THREE.sRGBEncoding; R.setPixelRatio(Math.min(devicePixelRatio||1, phone ? 1 : 1.5)); R.setClearColor(0x000000, 0); R.setSize(W, H, false);
+    var S = new THREE.Scene(), cam = new THREE.PerspectiveCamera(phone ? 52 : 38, W/H, .01, 50);
+    S.fog = new THREE.Fog(0x140a28, 3.2, 7.5);
+    S.add(new THREE.HemisphereLight(0xffe6ff, 0x2a1050, 1.1));
+    var sun = new THREE.DirectionalLight(0xffd2a0, 1.0); sun.position.set(-2, 3, 1.5); S.add(sun);
+    var rim = new THREE.DirectionalLight(0xff3fd0, .6); rim.position.set(2, .5, -2); S.add(rim);
+    var root3 = new THREE.Group(); S.add(root3); root3.add(isle); isle.position.set(0,0,0); isle.rotation.set(0,0,0);
+    // superficie per le esplosioni (raggio dall'alto)
+    var rc = new THREE.Raycaster(), down = new THREE.Vector3(0,-1,0);
+    function ground(x, z){ rc.set(new THREE.Vector3(x, 3, z), down); var h = rc.intersectObject(isle, true); return h.length ? h[0].point : null; }
+    // caccia (modello del sito) in formazione
+    var jetBase = muModel("VE","jet"), jets = [];
+    function addJet(){ if (!jetBase) return null; var j = jetBase.clone(); j.scale.setScalar(.11); root3.add(j); return j; }
+    // particelle additive (fumo/scie/scintille/lampi)
+    var P = [], tex = (function(){ var c = document.createElement("canvas"); c.width = c.height = 64; var g = c.getContext("2d"), gr = g.createRadialGradient(32,32,0,32,32,32);
+      gr.addColorStop(0,"rgba(255,255,255,1)"); gr.addColorStop(.35,"rgba(255,255,255,.55)"); gr.addColorStop(1,"rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0,0,64,64); var t = new THREE.CanvasTexture(c); return t; })();
+    function puff(pos, vel, col, size, life, add){
+      var m = new THREE.Sprite(new THREE.SpriteMaterial({map:tex, color:col, transparent:true, depthWrite:false, blending: add === false ? THREE.NormalBlending : THREE.AdditiveBlending, fog:false}));
+      m.position.copy(pos); m.scale.setScalar(size); root3.add(m); P.push({m:m, v:vel, life:life, t:0, s0:size, grow: add === false ? 2.4 : 1.2});
+    }
+    function boom(p){
+      if (!p) return;
+      puff(p.clone().add(new THREE.Vector3(0,.02,0)), new THREE.Vector3(0,.02,0), 0xffffff, .22, .25);
+      puff(p.clone(), new THREE.Vector3(0,.05,0), 0xffb03c, .3, .7);
+      for (var i=0;i<14;i++){ var a = Math.random()*Math.PI*2, u = .25 + Math.random()*.5;
+        puff(p.clone(), new THREE.Vector3(Math.cos(a)*u, .3 + Math.random()*.6, Math.sin(a)*u), i % 2 ? 0xff3fd0 : 0xffe14d, .035, .6 + Math.random()*.4); }
+      for (var k=0;k<5;k++) puff(p.clone().add(new THREE.Vector3((Math.random()-.5)*.05, .03*k, (Math.random()-.5)*.05)), new THREE.Vector3((Math.random()-.5)*.03, .09, (Math.random()-.5)*.03), 0x3a2a4a, .1, 2.6, false);
+      flashL.position.copy(p).add(new THREE.Vector3(0,.15,0)); flashL.intensity = 3;
+      sample("boom", .8 + Math.random()*.3, .12);
+    }
+    var flashL = new THREE.PointLight(0xffa040, 0, 1.5); S.add(flashL);
+    // passaggi dei caccia: ogni passaggio = 2 caccia che attraversano l'isola sparando
+    var passes = [], nextPass = .8, nextBoom = 2.2, tr = [];
+    function newPass(){
+      var a = Math.random()*Math.PI*2, d = new THREE.Vector3(Math.cos(a), 0, Math.sin(a)), side = new THREE.Vector3(-d.z, 0, d.x), h = .55 + Math.random()*.3;
+      var ps = {d:d, t:0, dur:3.2, js:[]};
+      for (var i=0;i<2;i++){ var j = addJet(); if (!j) break; ps.js.push({o:j, off:side.clone().multiplyScalar(i ? .16 : -.06).add(new THREE.Vector3(0, i*.05, 0)).add(d.clone().multiplyScalar(i ? -.18 : 0)), h:h, fire:.4 + Math.random()*.6}); }
+      passes.push(ps); sample("whoosh", .6, .18);
+    }
+    var t0 = performance.now(); IL.t0 = t0; IL.R = R;
+    ilCv.classList.add("on"); requestAnimationFrame(function(){ ilCv.classList.add("vis"); });
+    ilTag.innerHTML = "ISOLA DEL GIOCO<b>" + IL.pick[1] + "</b>"; ilTag.classList.add("vis");
+    var me = IL, last = t0, out = false;
+    function fr(now){
+      if (me !== IL || !me.alive) return;
+      var dt = Math.min(.05, (now - last)/1000), t = (now - t0)/1000; last = now;
+      if (!out && (t > IL_SHOW || scrollY > innerHeight*.9)){ out = true; ilCv.classList.add("out"); ilTag.classList.remove("vis"); setTimeout(function(){ if (me === IL) isleStop(); }, IL_FADE*1000); }
+      var w = innerWidth, h = innerHeight; if (w !== W || h !== H){ W = w; H = h; R.setSize(W, H, false); cam.aspect = W/H; }
+      // camera: alta sull'isola, gira piano e scende un po' (panoramica dall'alto)
+      var ang = .6 + t*.06, dist = (phone ? 2.1 : 1.7) - t*.02, hy = (phone ? 2.9 : 2.5) - t*.04;
+      cam.position.set(Math.cos(ang)*dist, hy, Math.sin(ang)*dist); cam.lookAt(0, -.15, 0);
+      cam.setViewOffset(W, H, 0, -H*(phone ? .27 : .3), W, H); cam.updateProjectionMatrix();   // isola nella parte bassa: il pavimento della pagina
+      root3.rotation.y = 0;
+      if (isle.userData.mixer) isle.userData.mixer.update(dt);
+      // caccia
+      if (t > nextPass && t < IL_SHOW - 2.5){ newPass(); nextPass = t + 3.2 + Math.random()*1.5; }
+      passes = passes.filter(function(ps){
+        ps.t += dt; var k = ps.t/ps.dur, along = -2.2 + k*4.4;
+        ps.js.forEach(function(J, i){
+          var p = ps.d.clone().multiplyScalar(along).add(J.off); p.y = J.h + Math.sin(k*Math.PI)*.08;
+          J.o.position.copy(p); J.o.lookAt(p.clone().add(ps.d)); J.o.rotateZ(Math.sin(ps.t*2 + i)*.25);
+          if (Math.random() < .7) puff(p.clone().sub(ps.d.clone().multiplyScalar(.09)), new THREE.Vector3(0,0,0), i ? 0x3fd0ff : 0xff3fd0, .05, .5);
+          if (k > .25 && k < .7 && Math.random() < dt*6){                                  // raffica verso l'isola
+            var tgt = ground(p.x + ps.d.x*.6 + (Math.random()-.5)*.4, p.z + ps.d.z*.6 + (Math.random()-.5)*.4);
+            if (tgt) tr.push({p:p.clone(), q:tgt, t:0});
+          }
+        });
+        if (ps.t >= ps.dur){ ps.js.forEach(function(J){ root3.remove(J.o); }); return false; } return true;
+      });
+      tr = tr.filter(function(b){ b.t += dt*3.2; var p = b.p.clone().lerp(b.q, Math.min(1, b.t));
+        puff(p, new THREE.Vector3(0,0,0), 0xfff2a0, .03, .12);
+        if (b.t >= 1){ if (Math.random() < .45) boom(b.q); else puff(b.q.clone(), new THREE.Vector3(0,.04,0), 0xffb03c, .08, .35); return false; } return true; });
+      // esplosioni a terra (artiglieria) ogni tanto
+      if (t > nextBoom && t < IL_SHOW - 1){ var a = Math.random()*Math.PI*2, u = Math.random()*.7; boom(ground(Math.cos(a)*u, Math.sin(a)*u)); nextBoom = t + 1.3 + Math.random()*1.4; }
+      flashL.intensity *= Math.pow(.02, dt);
+      P = P.filter(function(o){ o.t += dt; var k = o.t/o.life; if (k >= 1){ root3.remove(o.m); o.m.material.dispose(); return false; }
+        o.m.position.addScaledVector(o.v, dt); o.v.multiplyScalar(Math.pow(.25, dt)); o.v.y -= dt*.25*(o.grow > 2 ? -.1 : 1);
+        o.m.scale.setScalar(o.s0*(1 + k*o.grow)); o.m.material.opacity = (1 - k)*(o.grow > 2 ? .55 : 1); return true; });
+      R.render(S, cam);
+      requestAnimationFrame(fr);
+    }
+    requestAnimationFrame(fr);
+    me.clean = function(){ P.forEach(function(o){ o.m.material.dispose(); }); tex.dispose(); root3.remove(isle); R.dispose(); try { R.forceContextLoss(); } catch(e){} };
+  }
+  function isleStop(){
+    if (!IL) return; var me = IL; IL = null; me.alive = false;
+    ilCv.classList.remove("on","vis","out"); ilTag.classList.remove("vis");
+    if (me.clean) try { me.clean(); } catch(e){}
+  }
+  if (/[?&]isola=/.test(location.search)) setTimeout(function(){ if (siteMode) isleStart(true); }, 2500);
   /* ---------- PROPOSTE (v22): «?» → «Cosa possiamo migliorare?» → foglio Google (anonimo) ---------- */
   var FB_URL = "https://script.google.com/macros/s/AKfycbxteaFDLFTejrSnatN4HE-rqR_J9ztMJWtFUBA_WW8oO8tZiM2Qtx44atSzwDcCz_2r1A/exec",   // indirizzo del programmino nel foglio «EZ Proposte utenti» (Apps Script)
       fbB = document.getElementById("fbBtn"), fbM = document.getElementById("fbModal"), fbT = document.getElementById("fbTxt"),
@@ -2640,7 +2788,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     if (Date.now() - last < 60000) return fbErr("Hai appena inviato una proposta: aspetta un minuto e riprova.");
     if (!FB_URL) return fbErr("Il sistema delle proposte si sta accendendo: riprova più tardi.");
     fbBusy = true; fbS.disabled = true; fbS.textContent = "INVIO…"; fbMsg.textContent = ""; fbMsg.className = "fb-msg";
-    var body = new URLSearchParams({testo:t.slice(0,5000), da:"sito", lingua:(navigator.language||"").slice(0,12), ver:"sito v22", sito_web:document.getElementById("fbHp").value});
+    var body = new URLSearchParams({testo:t.slice(0,5000), da:"sito", lingua:(navigator.language||"").slice(0,12), ver:"sito v23", sito_web:document.getElementById("fbHp").value});
     function ok(){ fbBusy = false; fbS.textContent = "INVIA ▸"; fbT.value = ""; fbCount();
       try { localStorage.setItem("ez_fb_ultimo", String(Date.now())); localStorage.removeItem("ez_fb_bozza"); } catch(e){}
       fbForm.hidden = true; fbDone.hidden = false; tone("triangle", 520, 1040, .25, .07); }
@@ -2654,7 +2802,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   /* ---------- TEASER (v21) ---------- */
   var tzMini = document.getElementById("tzMini"), tzMv = tzMini.querySelector("video"), tzBtn = document.getElementById("tzBtn"),
       tzF = document.getElementById("tzFull"), tzV = tzF.querySelector("video"), tzSnd = tzF.querySelector(".tz-snd"), tzBar = tzF.querySelector(".tz-bar"),
-      TZ_SRC = "assets/teaser/teaser.mp4", TZ_MINI = "assets/teaser/teaser_mini.mp4", tzFrom = null, tzOnce = false, tzClosing = false, tzVis = true;
+      TZ_SRC = "assets/teaser/teaser15.mp4", TZ_MINI = "assets/teaser/teaser15_mini.mp4", tzFrom = null, tzOnce = false, tzClosing = false, tzVis = true;
   function tzRect(el){ var r = el.getBoundingClientRect(); return {t:r.top, l:r.left, b:innerHeight - r.bottom, r:innerWidth - r.right}; }
   function tzClip(q, rad){ return "inset(" + q.t + "px " + q.r + "px " + q.b + "px " + q.l + "px round " + rad + "px)"; }
   function tzSetSnd(){ tzSnd.setAttribute("aria-pressed", String(!tzV.muted)); tzSnd.textContent = tzV.muted ? "🔇 AUDIO" : "🔊 AUDIO"; }
@@ -2738,8 +2886,9 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   var MU_SECT = [
     {k:"MD", title:"PERSONAGGI", col:"#3fd0ff", list:[["m","UOMO"],["f","DONNA"],["samurai","SAMURAI"],["rapper","RAPPER"],["lava","GOLEM DI LAVA"],["diavolo","DIAVOLO DEL BURN"],["robotec","ROBOT"],["guardiano","GUARDIANO"]]},
     {k:"PD", title:"ZAINI", col:"#ff3fd0", list:[["base","ZAINO BASE"],["anfora","ANFORA"],["orsetto","ORSETTO"],["pianeta","PIANETA"],["portale","PORTALE"],["schermo","SCHERMO"],["scudo","SCUDO"],["uovo","UOVO"]]},
-    {k:"VE", title:"VEICOLI", col:"#ff8a3c", list:[["jet","CACCIA"],["heli","ELICOTTERO"]]},
-    {k:"IS", title:"ISOLE", col:"#ffe14d", list:[["simple","SIMPLE ISLAND"],["figline","FIGLINE"],["incisa","INCISA"],["burchio","BURCHIO"],["leccio","LECCIO"]]}   // modelli in arrivo
+    {k:"VE", title:"VEICOLI", col:"#ff8a3c", list:[["jet","CACCIA"],["heli","ELICOTTERO"],["g:cervo","CERVO · MOTO"],["g:lince","LINCE · MOTO"],["g:vespro","VESPRO · SCOOTER"],
+                                                      ["g:cervo_neon_1","CERVO NEON 1"],["g:cervo_neon_2","CERVO NEON 2"],["g:cervo_neon_3","CERVO NEON 3"],["g:vespro_neon_1","VESPRO NEON"]]},
+    {k:"IS", title:"ISOLE", col:"#ffe14d", list:[["g:simple_island","SIMPLE ISLAND"],["g:figline","FIGLINE"],["g:incisa","INCISA"],["g:burchio","BURCHIO"],["g:leccio","LECCIO"]]}
   ];
   // un solo caricamento di Three.js e dei modelli, condiviso da armadietto e scene dell'evento
   var EZM = null;
@@ -2752,8 +2901,27 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   var muEl = document.getElementById("museo"), muGrid = document.getElementById("muGrid");
   function muScript(src){ return new Promise(function(ok,ko){ var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
   function muDec(b, T){ var s = atob(b), u = new Uint8Array(s.length); for (var i=0;i<s.length;i++) u[i] = s.charCodeAt(i); return new T(u.buffer); }
+  // MODELLI .glb di Claude A (moto, scooter, isole animate): caricati solo quando servono, poi animati
+  var GLB = {}, GLTF_JS = null;
+  function gltfLib(){ if (!GLTF_JS) GLTF_JS = (window.THREE && THREE.GLTFLoader ? Promise.resolve() : muScript("assets/lib/gltf-r128.min.js")).catch(function(e){ GLTF_JS = null; throw e; }); return GLTF_JS; }
+  function glbLoad(name){                                              // promessa: gruppo centrato con raggio 1 (+ animazioni)
+    if (GLB[name]) return GLB[name];
+    return (GLB[name] = ezModels().then(gltfLib).then(function(){ return new Promise(function(ok, ko){
+      new THREE.GLTFLoader().load("assets/3d/" + name + ".glb", function(g){
+        var m = g.scene, bx = new THREE.Box3().setFromObject(m), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length()/2 || 1;
+        m.position.copy(c).multiplyScalar(-1);
+        var sh = new THREE.Group(); sh.scale.setScalar(1/r); sh.add(m);
+        var grp = new THREE.Group(); grp.add(sh); grp.userData.r = 1;
+        if (g.animations && g.animations.length){ var mx = new THREE.AnimationMixer(m); g.animations.forEach(function(a){ mx.clipAction(a).play(); }); grp.userData.mixer = mx; }
+        grp.userData.raw = g; ok(grp);
+      }, undefined, ko); }); }).catch(function(e){ delete GLB[name]; throw e; }));
+  }
   function muModel(sec, key){
     var id = sec + key; if (MU.cache[id]) return MU.cache[id];
+    if (key.indexOf("g:") === 0){                                      // .glb: parte il caricamento, intanto niente
+      if (!MU.glbWait) MU.glbWait = {};
+      if (!MU.glbWait[id]){ MU.glbWait[id] = 1; glbLoad(key.slice(2)).then(function(g){ MU.cache[id] = g; }, function(){ MU.glbWait[id] = 0; }); }
+      return null; }
     var D = MU.data && MU.data[sec] && MU.data[sec][key]; if (!D) return null;
     var q = muDec(D.pos, Uint16Array), n = D.nv, p = new Float32Array(n*3), i, k;
     for (i=0;i<n;i++) for (k=0;k<3;k++) p[i*3+k] = D.lo[k] + q[i*3+k]/65535*(D.hi[k]-D.lo[k]);
@@ -2781,7 +2949,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     return (MU.cache[id] = grp);
   }
   function muLoad(){
-    if (MU.data || MU.loading) return; MU.loading = true;
+    if (MU.r || MU.loading) return; MU.loading = true;          // (MU.data può esserci già: lo carica anche l'isola del pavimento)
     ezModels().then(function(d){ MU.data = d; muInit(); })
       .catch(function(){ MU.loading = false; [].forEach.call(muGrid.querySelectorAll(".mu-load"), function(e){ e.textContent = "Modelli non disponibili: riprova."; }); });
   }
@@ -2810,7 +2978,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   function muLoop(now){
     if (muEl.hidden){ MU.running = false; return; }
     MU.running = true; var dt = Math.min(.05, ((now||0) - (MU.last||now||0))/1000); MU.last = now; MU.t += dt;
-    for (var ck in MU.cache){ var cu = MU.cache[ck].userData; if (cu.rot){ cu.rot.rotation.y += dt*16; cu.tail.rotation.x += dt*24; } }
+    for (var ck in MU.cache){ var cu = MU.cache[ck].userData; if (cu.rot){ cu.rot.rotation.y += dt*16; cu.tail.rotation.x += dt*24; } if (cu.mixer) cu.mixer.update(dt); }
     var r = MU.r, W = innerWidth, H = innerHeight;
     var sz = r.getSize(new THREE.Vector2()); if (sz.x !== W || sz.y !== H) r.setSize(W, H, false);
     r.setScissorTest(false); r.clear(); r.setScissorTest(true);
@@ -2820,10 +2988,13 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
       if (!b.drag) b.ryT += dt*.5;
       b.ry += (b.ryT - b.ry)*Math.min(1, dt*14); b.rx += (b.rxT - b.rx)*Math.min(1, dt*14);
       if (m && bw && bh){ muFrame(m, bw, bh, b.ry, b.rx); MU.rb.render(MU.scene, MU.cam); }
+      if (!!m === muBig.classList.contains("wait")) muBig.classList.toggle("wait", !m);
+      if (!m){ MU.rb.clear(); }
     } else MU.cells.forEach(function(c, i){
-      if (!MU.vis.has(c.el) || c.sec === "IS") return;
+      if (!MU.vis.has(c.el) || c.sec === "IS") return;               // isole: nella vetrina c'è la foto, il 3D animato si apre toccandola
       var rc = c.cv.getBoundingClientRect(); if (rc.bottom < 0 || rc.top > H || rc.width < 2) return;
       var m = muModel(c.sec, c.key); if (!m) return;
+      if (!c.live){ c.live = 1; c.el.classList.add("live"); }
       var x = rc.left, y = H - rc.bottom, w = rc.width, h = rc.height;
       r.setViewport(x, y, w, h); r.setScissor(x, y, w, h);
       muFrame(m, w, h, MU.t*.6 + i); r.render(MU.scene, MU.cam);
@@ -2839,20 +3010,22 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
     var row = h.querySelector(".mu-row");
     S.list.forEach(function(it, j){
       var cell = document.createElement("button"); cell.type = "button"; cell.className = "mu-cell"; cell.style.setProperty("--d", (j*.06)+"s");
-      cell.innerHTML = '<canvas></canvas>' + (S.k === "IS" ? '<span class="mu-soon">🏝️<br>Modello 3D<br>in arrivo</span>' : '<span class="mu-load">…</span>') +
+      var gk = it[0].indexOf("g:") === 0 ? it[0].slice(2) : "";
+      cell.innerHTML = (gk ? '<img class="mu-prev" alt="" loading="lazy" src="assets/3d/'+gk+'.webp">' : '') + '<canvas></canvas>' + (gk ? '' : '<span class="mu-load">…</span>') +
         '<span class="mu-tag">'+String(j+1).padStart(2,"0")+'</span><b>'+it[1]+'</b>';
       row.appendChild(cell);
       var rec = {el:cell, cv:cell.querySelector("canvas"), sec:S.k, key:it[0], name:it[1], col:S.col};
       MU.cells.push(rec);
       if (muIO) muIO.observe(cell); else MU.vis.add(cell);
-      if (S.k !== "IS") cell.addEventListener("click", function(){ muOpenBig(rec); });
+      cell.addEventListener("click", function(){ muOpenBig(rec); });
     });
     muGrid.appendChild(h);
   });
   // vetrina grande: trascina per girare
   var muBig = document.getElementById("muBig"), muBigCv = muBig.querySelector("canvas");
   function muOpenBig(rec){
-    MU.big = {sec:rec.sec, key:rec.key, cv:muBigCv, ry:.4, ryT:.4, rx:.08, rxT:.08};
+    var rx0 = rec.sec === "IS" ? .5 : .08;                              // isole: un po' dall'alto, si vede il paese
+    MU.big = {sec:rec.sec, key:rec.key, cv:muBigCv, ry:.4, ryT:.4, rx:rx0, rxT:rx0};
     muBig.style.setProperty("--c", rec.col); muBig.querySelector("b").textContent = rec.name;
     muBig.hidden = false; sample("neon0", 1.2, .5); ovPush(muBigClose);
   }
@@ -2903,6 +3076,7 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   /* ---------- PAGINA DI PROVA: tasto evento ↔ countdown (solo prova.html o ?test) ---------- */
   var TEST = window.EZ_TEST || /[?&]test\b/.test(location.search);
   function backToCountdown(){
+    isleStop();
     S3.on = false; s3Clear();
     musicStop(); DROP.on = false; floorBoost = 0; setPulse("0"); site.style.transform = "";
     if (music && audioOn && unlocked){ music.volume = VOL.music; startMusic(); }

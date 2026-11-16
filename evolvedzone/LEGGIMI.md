@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 22
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 23
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -7,6 +7,15 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
+
+## v23 · 16/11 notte (giorno prima del lancio)
+- **Link del gioco** (`var LINKS`): GIOCA ORA → `/gioca/` (completa; sul telefono la pagina del gioco porta da sola a `/gioca-z/`, leggera). `/gioca/` e `/gioca-z/` = copia di `/godot-prova/` e `/godot-prova-z/` (Godot 0.79.0). PC → `releases/latest/download/EvolvedZone-Setup.exe`, Android → `app/EvolvedZone.apk` (oggi sono ancora le app HTML che si aggiornano da sole; il gioco Godot nelle app lo mette Claude Code). CrazyGames vuoto (tasto spento).
+- **Fine evento**: dal 17/11 alle 19:00 il countdown e l'evento non si vedono più (si apre subito il sito, niente «Rivedi l'esplosione»). Prova: `?fine=1`. Il codice dell'evento va tolto fisicamente dopo il lancio (blocco successivo).
+- **Isola 3D come pavimento**: aprendo il sito dopo l'evento, un'isola a caso (5 modelli di Claude A) vista dall'alto per 13 s + 1,8 s di dissolvenza, con caccia che passano sparando ed esplosioni. Prova: `?isola=1` o `?isola=incisa`.
+- **Armadietto**: VEICOLI con le 7 moto/scooter del gioco (Cervo, Lince, Vespro, Cervo neon 1-2-3, Vespro neon), ISOLE con le 5 isole animate (cascate, fiumi, funivia). File in `assets/3d/` (ottimizzati: −50 %), caricatore `assets/lib/gltf-r128.min.js`.
+- **Teaser 15 s** di Claude A al posto di quello da 10 s (`assets/teaser/teaser15*.mp4`).
+- «Chi siamo»: nome sostituito da ###. Testi PC: solo Windows (niente Mac); domande nuove su requisiti e avviso di Windows.
+- **Sicurezza**: Content-Security-Policy (la pagina carica e invia dati solo ai posti elencati), referrer ridotto, niente pagina dentro iframe di altri siti.
 
 ## Proposte anonime (v22 · 13/11)
 - Sul sito ufficiale, quando il teaser in alto sparisce scorrendo, sotto il QR entra (ruotando) il tasto giallo **«?»**; tornando in cima esce e ricompare il teaser.
