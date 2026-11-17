@@ -1,4 +1,4 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 23
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 24
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
@@ -7,6 +7,15 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Ultimo minuto**: se l'audio non è attivo compare l'invito «Tocca lo schermo».
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
+
+## v24 · 17/11 notte (Claude B del gioco, Michele: «crea i video ed esegui le richieste di Claude B per il sito»)
+- **Video dei 7 capitoli** girati nel gioco Godot vero (0.81, strumento `tools/capitoli/capitoli.gd` nel gioco): Il lancio (elicottero, caduta, paracadute con gli altri giocatori), Sopravvivenza (porta, bottino preso col tasto USA, zaino), Combattimento (bot eliminati, muro che si rompe), The Burn (muro neon, città bruciata dall'alto), Mai da solo (squadra con 3 bot amici), PC (prima persona con interfaccia, 2 eliminazioni), Telefono (EVOLVEDZONEZ, joystick e tasto rosso, visuale dall'alto).
+  - `assets/video/capN_clip.mp4` = `clip` della scheda (960×540, muto, 0,2–1,6 MB, parte col mouse sopra / al centro sul telefono).
+  - `assets/video/capN.mp4` = `video` della pagina di dettaglio (1280×720 con l'audio del gioco, 0,7–4,5 MB, `preload="none"`, copertina = una foto vera del gioco).
+  - `assets/img/capN_foto1-3.webp` = `foto` della pagina di dettaglio (3 fotogrammi veri di ogni video).
+- **Isole**: `var ISLES` aggiornata (tutte e 5 sono nel gioco al lancio: «DISPONIBILE», foto dal gioco `assets/img/isola_<id>.webp` e `_paese`, `model` = modellino dell'armadietto, tasto «GUARDA L'ISOLA IN 3D» che apre la vetrina grande). ATTENZIONE: la sezione «Le isole» non è nella pagina (manca `#islesList`), quindi oggi questi dati non si vedono; si accendono rimettendo il contenitore.
+- **Errore corretto**: c'erano due `var ISLES` nello stesso script (la seconda, quella dell'isola-pavimento, sostituiva la prima): rinominata `ISLE_FLOOR`.
+- `prova.html` rifatta da `index.html` (stesse 2 righe di prova).
 
 ## v23 · 16/11 notte (giorno prima del lancio)
 - **Link del gioco** (`var LINKS`): GIOCA ORA → `/gioca/` (completa; sul telefono la pagina del gioco porta da sola a `/gioca-z/`, leggera). `/gioca/` e `/gioca-z/` = copia di `/godot-prova/` e `/godot-prova-z/` (Godot 0.79.0). PC → `releases/latest/download/EvolvedZone-Setup.exe`, Android → `app/EvolvedZone.apk` (oggi sono ancora le app HTML che si aggiornano da sole; il gioco Godot nelle app lo mette Claude Code). CrazyGames vuoto (tasto spento).
