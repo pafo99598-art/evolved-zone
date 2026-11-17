@@ -8,6 +8,13 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - **Alle 15:00 in punto (chi è sulla pagina)**: evento di circa 20 s a tempo di musica (128 battiti/min) → il countdown svanisce piano (3,75 s), il cristallo sale al centro e cresce lentamente, 6 fasci di luce riempiti da 6 immagini scelte a caso tra le 11 del gioco (ogni visitatore vede un evento diverso), energia al massimo, esplosione in frammenti, DROP musicale e entrata del sito ufficiale (circa 5 s, con pulsazioni a tempo, lame di luce, braci). La colonna sonora dell'evento è suonata dal browser (nessun file).
 - **Chi apre la pagina dopo le 15:00**: sito ufficiale subito; in fondo «↺ Rivedi l'esplosione».
 
+## v25 · 17/11 mattina (Claude B, Michele: «falli un po più epici… completali tutti e tutte le richieste aperte per il sito»)
+- I 7 video dei capitoli rifatti come chiedeva la richiesta del sito: regia nel gioco Godot vero (0.81, build nel cloud), 20–22 s ciascuno, loop senza stacco (ultimo secondo che sfuma nel primo), senza audio, 1280×720, ≤ 3 MB. Cartella nuova `assets/clip/` (cap_lancio, cap_sopravvivenza, cap_combattimento, cap_burn, cap_maidasolo, cap_pc, cap_telefono); `assets/video/` della v24 tolta.
+- Lo stesso file fa da clip della scheda e da video della pagina di dettaglio (lì ora parte da solo, muto, in loop, con i comandi).
+- Foto dei capitoli `assets/img/capN_foto1-3.webp` rifatte dagli stessi video.
+- Provato in locale con Chromium (PC 1280×800 e telefono 390×844): clip che parte quando la scheda è a schermo, dettaglio con video e 3 foto, 0 errori della pagina (solo font esterni non raggiungibili nel cloud).
+- Lo strumento che gira i video sta nel gioco: `tools/capitoli/capitoli2.gd` (`-- --parte lancio|sopravv|comb|burn|solo_terra|pc|tel`).
+
 ## v24 · 17/11 notte (Claude B del gioco, Michele: «crea i video ed esegui le richieste di Claude B per il sito»)
 - **Video dei 7 capitoli** girati nel gioco Godot vero (0.81, strumento `tools/capitoli/capitoli.gd` nel gioco): Il lancio (elicottero, caduta, paracadute con gli altri giocatori), Sopravvivenza (porta, bottino preso col tasto USA, zaino), Combattimento (bot eliminati, muro che si rompe), The Burn (muro neon, città bruciata dall'alto), Mai da solo (squadra con 3 bot amici), PC (prima persona con interfaccia, 2 eliminazioni), Telefono (EVOLVEDZONEZ, joystick e tasto rosso, visuale dall'alto).
   - `assets/video/capN_clip.mp4` = `clip` della scheda (960×540, muto, 0,2–1,6 MB, parte col mouse sopra / al centro sul telefono).
