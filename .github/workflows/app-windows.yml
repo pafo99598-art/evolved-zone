@@ -1,10 +1,11 @@
 # Costruisce l'app per Windows (installazione .exe) e la pubblica tra le "Release" del progetto.
 # Parte da sola quando cambia app-src/ o la versione del gioco per l'app (app/version.json).
+# 16/11 (Claude A): versione per il gioco GODOT (pronta in tools/sito/ del gioco: B la copia in .github/workflows/ NELLO STESSO commit di app/).
 name: App Windows e Android
 on:
   push:
     branches: [main]
-    paths: ['app-src/**', 'app/version.json', 'app/EvolvedZone.apk', 'app/tex/**', '.github/workflows/app-windows.yml']
+    paths: ['app-src/**', 'app/version.json', 'app/EvolvedZone.apk', '.github/workflows/app-windows.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,9 +20,9 @@ jobs:
       - name: Gioco dentro l'app
         shell: bash
         run: |
-          mkdir -p app-src/game
-          cp app/index.html app-src/game/index.html
-          rm -rf app-src/game/tex && cp -r app/tex app-src/game/tex
+          # 16/11 (Claude A): dentro l'app va il gioco GODOT = tutti i file elencati in app/version.json
+          rm -rf app-src/game && mkdir -p app-src/game
+          node -e "const v=require('./app/version.json');for(const f of v.files){require('fs').copyFileSync('app/'+f.path,'app-src/game/'+f.path)}"
           node -e "const v=require('./app/version.json').version;require('fs').writeFileSync('app-src/game/version.json',JSON.stringify({version:v}));const p=require('./app-src/package.json');p.version=v;require('fs').writeFileSync('app-src/package.json',JSON.stringify(p,null,1))"
       - name: Costruzione
         working-directory: app-src

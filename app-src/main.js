@@ -41,7 +41,7 @@ function serve() {
     if (!fs.existsSync(f)) f = path.join(BUNDLED, rel);
     if (!fs.existsSync(f)) return new Response('non trovato', { status: 404 });
     const ext = path.extname(f).toLowerCase();
-    const type = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ktx2': 'image/ktx2', '.bin': 'application/octet-stream', '.css': 'text/css' }[ext] || 'application/octet-stream';
+    const type = { '.html': 'text/html; charset=utf-8', '.wasm': 'application/wasm', '.pck': 'application/octet-stream', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ktx2': 'image/ktx2', '.bin': 'application/octet-stream', '.css': 'text/css' }[ext] || 'application/octet-stream';
     return new Response(fs.readFileSync(f), { headers: { 'content-type': type } });
   });
 }
