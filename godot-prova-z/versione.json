@@ -1,0 +1,12 @@
+{
+ "version": "0.94.0",
+ "data": "2026-11-19",
+ "note": [
+  "Nuovo: il tasto NOVITÀ in lobby ti dice cosa cambia a ogni aggiornamento.",
+  "Armi: i colpi alle braccia e alle gambe fanno meno danno; la testa resta ×1,6.",
+  "Bot: i profili Prudente e Veterano e la difficoltà Facile tornano come erano stati decisi; zoom della pistola più stretto.",
+  "Lobby: le mani tengono davvero il fucile.",
+  "Lobby: erba più fitta e niente più ciuffi sospesi nel vuoto."
+ ],
+ "pck_sha256": "93f5bbce2b83f67c40983a6ce57776b237a95ab8350585b181f32670b8d25d47"
+}
