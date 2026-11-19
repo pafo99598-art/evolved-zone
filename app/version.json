@@ -1,6 +1,6 @@
 {
- "version": "0.91.0",
- "notes": "Mare fino all'orizzonte, isole, vulcano, navi e gabbiani diversi a ogni partita, grafica più dettagliata, quota nella bussola",
+ "version": "0.92.0",
+ "notes": "Nuvole, fari e faraglioni all'orizzonte, terreno low poly, fango che ti sporca e ti fa correre di più",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "22ee5147f3586b344d987cfdb90cfcd0dec074e54621b1d5bd3a7c3d0fbaf78f"
+   "sha256": "abc1d00061dea0295ec5ce71e4fd3b8d863a3d732a12037f0fbfca74189cedc6"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "72a3f9ff71e85bbf8450a559756df7756b1c26177c63bf8a68c5e08a3862d49d"
+   "sha256": "884247156077a993462ac6dd7330fefa357987f7d9c34abe12ab770f5df38d31"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "2b31ad662b048fe2ce06370904a6271ad7e3b4930756eb4cbd3e5d67d032cc77"
+   "sha256": "4b3d53966dd9beaf8bb42c054e509c8f15022ab83f5e4700b14d35861f365db7"
   },
   {
    "path": "index.wasm",
