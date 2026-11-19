@@ -1,6 +1,6 @@
 {
- "version": "0.90.0",
- "notes": "Mare nuovo con isole all'orizzonte, LANCIATI con SPAZIO, ponti, barche e strutture che si rompono, zaino e crafting completi, arrampicata",
+ "version": "0.91.0",
+ "notes": "Mare fino all'orizzonte, isole, vulcano, navi e gabbiani diversi a ogni partita, grafica più dettagliata, quota nella bussola",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "44e8e130b0284986935872ead3dd85b9017228b0517c9d229f82f85633b33b4b"
+   "sha256": "22ee5147f3586b344d987cfdb90cfcd0dec074e54621b1d5bd3a7c3d0fbaf78f"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "fd4bf90fe3ab8ab4fe759ef9f4907688090ad9ce2264743d2829c8972d114e64"
+   "sha256": "72a3f9ff71e85bbf8450a559756df7756b1c26177c63bf8a68c5e08a3862d49d"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "b4c5241ed75dce449ce819e800f81c969993d290688183841e778c0c76fb0cd9"
+   "sha256": "2b31ad662b048fe2ce06370904a6271ad7e3b4930756eb4cbd3e5d67d032cc77"
   },
   {
    "path": "index.wasm",
