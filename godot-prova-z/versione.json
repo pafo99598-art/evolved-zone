@@ -1,12 +1,11 @@
 {
- "version": "0.95.0",
+ "version": "0.96.0",
  "data": "2026-11-19",
  "note": [
-  "Cadere da più di 5 metri fa male (al massimo 10 di danno).",
-  "In discesa corri più veloce, le salite ripide ti rallentano.",
-  "Chi viene eliminato resta a terra per 90 secondi.",
-  "In caduta libera apri il paracadute quando vuoi (SPAZIO, sopra 25 m).",
-  "Clacson della moto: tasto J."
+  "7 tipi di cassa: del borgo, militare, medica, rara, epica, forziere leggendario e neon, ognuna col suo bottino.",
+  "Le casse si spaccano con schegge, suono del legno e, quelle speciali, una colonna di luce.",
+  "Più bottino a terra, come nel gioco originale, e 2 oggetti su 3 dentro le case.",
+  "Ora neon: compaiono da 1 a 7 casse neon nella zona."
  ],
- "pck_sha256": "7e0a253a89df89118240d71dc920b8684523da1ba5d08e35cb6b4edc58c1714f"
+ "pck_sha256": "9f5db7199019bb76a4a630a8efb4a1da1f3fcfd78b670e120e8b0f11e05c7b32"
 }
