@@ -1,6 +1,6 @@
 {
- "version": "0.79.0",
- "notes": "Ora è il gioco nuovo (Godot)",
+ "version": "0.90.0",
+ "notes": "Mare nuovo con isole all'orizzonte, LANCIATI con SPAZIO, ponti, barche e strutture che si rompono, zaino e crafting completi, arrampicata",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "70d5b982d7e7468f5d3fa2493ba40c8005ff90b7ceff80cde548a0f6fbe47a2d"
+   "sha256": "44e8e130b0284986935872ead3dd85b9017228b0517c9d229f82f85633b33b4b"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "bc7fe2ca4edb63aab237b9c6686e649c522f225b4f5ba37ca5a58da97bd15981"
+   "sha256": "fd4bf90fe3ab8ab4fe759ef9f4907688090ad9ce2264743d2829c8972d114e64"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "e7af6f11f730c3e54f5fccf339957b421411dc0891729af58e02d87e6672ab35"
+   "sha256": "b4c5241ed75dce449ce819e800f81c969993d290688183841e778c0c76fb0cd9"
   },
   {
    "path": "index.wasm",
