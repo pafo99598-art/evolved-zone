@@ -1,6 +1,6 @@
 {
- "version": "0.92.0",
- "notes": "Nuvole, fari e faraglioni all'orizzonte, terreno low poly, fango che ti sporca e ti fa correre di più",
+ "version": "0.93.0",
+ "notes": "Capanne, trattori, escavatori e depositi d'auto; rottami a terra e moto da riparare; buchi dei colpi sui muri; l'ora del giorno scorre fino al tramonto",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "abc1d00061dea0295ec5ce71e4fd3b8d863a3d732a12037f0fbfca74189cedc6"
+   "sha256": "c63a4d96213e47df2cae4cd6fd6f7e9b2420ba51227b276b4f8adbc3775a8cd9"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "884247156077a993462ac6dd7330fefa357987f7d9c34abe12ab770f5df38d31"
+   "sha256": "503021c65a4a66d9d0878b632d1305441a63e52747a0c3bcb768a982f1d9a793"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "4b3d53966dd9beaf8bb42c054e509c8f15022ab83f5e4700b14d35861f365db7"
+   "sha256": "140b4d77e16a0541fd3ade9ec13676512f40fadb47d9565e3ca837d440f97ebe"
   },
   {
    "path": "index.wasm",
