@@ -8,6 +8,7 @@ Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file
 - Tolti anche i file che servivano solo all'evento (14 suoni, 11 immagini, logo piccolo): il file principale è passato da 278 KB a 108 KB.
 - L'isola 3D come pavimento resta: compare a ogni apertura (13 s + 1,8 s di dissolvenza), ora sfumata nel pavimento.
 - Pavimento a griglia disegnato in modo più leggero (un solo tratto invece di ~40 sfumature a ogni fotogramma).
+- 19/11 sera: icona del sito (scheda del browser e telefono) e anteprima quando il link si condivide (WhatsApp, Instagram, Telegram): `assets/og.jpg`, `favicon.png`, `apple-touch-icon.png`. Le proposte ora arrivano segnate «sito v26».
 - **IMPORTANTE per chi modifica il sito**: `index.html` qui è COMPRESSO (nomi interni accorciati, niente commenti). La versione leggibile da modificare è sul PC di Michele: `Desktop\EVOLVED-ZONE\04_DA_INTEGRARE\2026-11-08_B_SITO\SORGENTE\index.src.html`. Si modifica quella e si rigenera index.html con `minify.js` (stessa cartella). Mai modificare a mano questo index.html.
 
 ## Come funziona
