@@ -1,12 +1,12 @@
 {
- "version": "0.94.0",
+ "version": "0.95.0",
  "data": "2026-11-19",
  "note": [
-  "Nuovo: il tasto NOVITÀ in lobby ti dice cosa cambia a ogni aggiornamento.",
-  "Armi: i colpi alle braccia e alle gambe fanno meno danno; la testa resta ×1,6.",
-  "Bot: i profili Prudente e Veterano e la difficoltà Facile tornano come erano stati decisi; zoom della pistola più stretto.",
-  "Lobby: le mani tengono davvero il fucile.",
-  "Lobby: erba più fitta e niente più ciuffi sospesi nel vuoto."
+  "Cadere da più di 5 metri fa male (al massimo 10 di danno).",
+  "In discesa corri più veloce, le salite ripide ti rallentano.",
+  "Chi viene eliminato resta a terra per 90 secondi.",
+  "In caduta libera apri il paracadute quando vuoi (SPAZIO, sopra 25 m).",
+  "Clacson della moto: tasto J."
  ],
- "pck_sha256": "93f5bbce2b83f67c40983a6ce57776b237a95ab8350585b181f32670b8d25d47"
+ "pck_sha256": "7e0a253a89df89118240d71dc920b8684523da1ba5d08e35cb6b4edc58c1714f"
 }
