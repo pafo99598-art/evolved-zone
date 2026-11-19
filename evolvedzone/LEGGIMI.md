@@ -1,6 +1,14 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 24
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 26
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
+
+
+## v26 · 19/11 · lancio finito: tolti countdown ed evento
+- **Tolti del tutto**: countdown, cristallo, evento del lancio (fasci, scene 3D, mostro, colonna sonora), «Rivedi l'esplosione», avviso «Countdown», icona del teaser nel countdown, pagina di prova con il tasto evento. Il sito si apre subito.
+- Tolti anche i file che servivano solo all'evento (14 suoni, 11 immagini, logo piccolo): il file principale è passato da 278 KB a 108 KB.
+- L'isola 3D come pavimento resta: compare a ogni apertura (13 s + 1,8 s di dissolvenza), ora sfumata nel pavimento.
+- Pavimento a griglia disegnato in modo più leggero (un solo tratto invece di ~40 sfumature a ogni fotogramma).
+- **IMPORTANTE per chi modifica il sito**: `index.html` qui è COMPRESSO (nomi interni accorciati, niente commenti). La versione leggibile da modificare è sul PC di Michele: `Desktop\EVOLVED-ZONE\04_DA_INTEGRARE\2026-11-08_B_SITO\SORGENTE\index.src.html`. Si modifica quella e si rigenera index.html con `minify.js` (stessa cartella). Mai modificare a mano questo index.html.
 
 ## Come funziona
 - **Prima delle 15:00 del 17/11**: pagina countdown (logo con 13 suoni, cristallo da colpire, musica, Instagram).
