@@ -2315,9 +2315,9 @@ body.ev .tzbtn{opacity:0;pointer-events:none}
   // Incolla qui i link veri prima del 17/11. Se un link è vuoto il pulsante mostra «Link in arrivo».
   var LINKS = { browser:"https://pafo99598-art.github.io/evolved-zone/gioca/", crazygames:"",
                 pc:"https://github.com/pafo99598-art/evolved-zone/releases/latest/download/EvolvedZone-Setup.exe",
-                android:"https://pafo99598-art.github.io/evolved-zone/app/EvolvedZone.apk" };
+                android:"https://pafo99598-art.github.io/evolved-zone/gioca-z/" };
   var CTA = [["browser","▶ GIOCA ORA","Nel browser, senza installare","main"],["crazygames","CRAZYGAMES","Gioca sul portale","c"],
-             ["pc","PC","Scarica · Windows",""],["android","ANDROID","Scarica · Telefono","c"]];
+             ["pc","PC","Scarica · Windows",""],["android","TELEFONO","Si installa dal browser","c"]];
   var ctaEl = document.getElementById("cta");
   CTA.forEach(function(b){
     var href = LINKS[b[0]], el = document.createElement(href ? "a" : "span");
