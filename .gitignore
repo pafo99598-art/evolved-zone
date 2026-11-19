@@ -3,3 +3,5 @@ android-src/.gradle/
 android-src/local.properties
 android-src/keystore.properties
 *.jks
+android-src/app/src/main/assets/game/*
+!android-src/app/src/main/assets/game/version.json

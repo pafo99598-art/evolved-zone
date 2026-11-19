@@ -207,6 +207,13 @@ public class MainActivity extends Activity {
                 return true;
             }
         });
+        // 19/11 (Claude B): il gioco Godot registra un service worker; le richieste del service worker NON passano da
+        // shouldInterceptRequest del WebView: si servono anche loro dai file dell'app (altrimenti al secondo avvio non parte)
+        try {
+            android.webkit.ServiceWorkerController.getInstance().setServiceWorkerClient(new android.webkit.ServiceWorkerClient() {
+                @Override public WebResourceResponse shouldInterceptRequest(WebResourceRequest r) { return serve(r.getUrl()); }
+            });
+        } catch (Exception e) { }
         web.setWebViewClient(new WebViewClient() {
             @Override public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r) { return serve(r.getUrl()); }
             @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) {
@@ -243,27 +250,30 @@ public class MainActivity extends Activity {
         String rel = p.substring(7);
         if (rel.isEmpty()) rel = "index.html";
         if (rel.contains("..")) return resp(403, "text/plain", "no".getBytes(StandardCharsets.UTF_8));
-        byte[] data = null;
+        // 19/11 (Claude B): il gioco Godot pesa ~55 MB (index.wasm + index.pck): i file grandi si passano «a flusso» al WebView
+        // invece di leggerli tutti in memoria (sui telefoni con poca RAM il WebView si chiudeva → ritorno alla vecchia versione HTML)
+        InputStream in = null;
         try {
-            if (!running.equals("bundled")) { File f = new File(dirOf(running), rel); if (f.isFile()) data = readAll(new FileInputStream(f)); }
-            if (data == null) data = readAll(getAssets().open("game/" + rel));
-        } catch (Exception e) { data = null; }
-        if (data == null) return resp(404, "text/plain", "non trovato".getBytes(StandardCharsets.UTF_8));
+            if (!running.equals("bundled")) { File f = new File(dirOf(running), rel); if (f.isFile()) in = new FileInputStream(f); }
+            if (in == null) in = getAssets().open("game/" + rel);
+        } catch (Exception e) { in = null; }
+        if (in == null) return resp(404, "text/plain", "non trovato".getBytes(StandardCharsets.UTF_8));
         String mime = mimeOf(rel);
-        if (rel.equals("index.html")) {
-            String h = new String(data, StandardCharsets.UTF_8);
-            int i = h.indexOf("<head>");
-            h = i >= 0 ? h.substring(0, i + 6) + SHIM + h.substring(i + 6) : SHIM + h;
-            data = h.getBytes(StandardCharsets.UTF_8);
-        }
-        return resp(200, mime, data);
+        if (!rel.equals("index.html")) return resp(200, mime, in);
+        byte[] data;
+        try { data = readAll(in); } catch (Exception e) { return resp(404, "text/plain", "non trovato".getBytes(StandardCharsets.UTF_8)); }
+        String h = new String(data, StandardCharsets.UTF_8);
+        int i = h.indexOf("<head>");
+        h = i >= 0 ? h.substring(0, i + 6) + SHIM + h.substring(i + 6) : SHIM + h;
+        return resp(200, mime, h.getBytes(StandardCharsets.UTF_8));
     }
-    static WebResourceResponse resp(int code, String mime, byte[] data) {
+    static WebResourceResponse resp(int code, String mime, byte[] data) { return resp(code, mime, new ByteArrayInputStream(data)); }
+    static WebResourceResponse resp(int code, String mime, InputStream data) {
         Map<String, String> h = new HashMap<>();
         h.put("Cache-Control", "no-cache");
         h.put("Access-Control-Allow-Origin", "*");
         String reason = code == 200 ? "OK" : code == 404 ? "Not Found" : "Forbidden";
-        return new WebResourceResponse(mime, mime.startsWith("text/") || mime.contains("json") || mime.contains("javascript") ? "utf-8" : null, code, reason, h, new ByteArrayInputStream(data));
+        return new WebResourceResponse(mime, mime.startsWith("text/") || mime.contains("json") || mime.contains("javascript") ? "utf-8" : null, code, reason, h, data);
     }
     static String mimeOf(String f) {
         String x = f.toLowerCase();
@@ -275,6 +285,7 @@ public class MainActivity extends Activity {
         if (x.endsWith(".webp")) return "image/webp";
         if (x.endsWith(".css")) return "text/css";
         if (x.endsWith(".ktx2")) return "image/ktx2";
+        if (x.endsWith(".wasm")) return "application/wasm";   // 19/11 (B): gioco Godot
         return "application/octet-stream";
     }
 

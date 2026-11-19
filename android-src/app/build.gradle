@@ -20,6 +20,6 @@ android {
   signingConfigs { release { if (ks['storeFile']) { storeFile file(ks['storeFile']); storePassword ks['storePassword']; keyAlias ks['keyAlias']; keyPassword ks['keyPassword'] } } }
   buildTypes { release { minifyEnabled false; signingConfig ks['storeFile'] ? signingConfigs.release : signingConfigs.debug } }
   compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
-  androidResources { noCompress 'html', 'json' }
+  androidResources { noCompress 'html', 'json', 'wasm', 'pck' }
   lint { checkReleaseBuilds false; abortOnError false }
 }
