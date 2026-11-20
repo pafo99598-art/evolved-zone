@@ -1,11 +1,12 @@
 {
- "version": "0.96.0",
- "data": "2026-11-19",
+ "version": "0.97.0",
+ "data": "2026-11-20",
  "note": [
-  "7 tipi di cassa: del borgo, militare, medica, rara, epica, forziere leggendario e neon, ognuna col suo bottino.",
-  "Le casse si spaccano con schegge, suono del legno e, quelle speciali, una colonna di luce.",
-  "Più bottino a terra, come nel gioco originale, e 2 oggetti su 3 dentro le case.",
-  "Ora neon: compaiono da 1 a 7 casse neon nella zona."
+  "I bot scavalcano muretti e ostacoli bassi invece di restare bloccati.",
+  "Se un ostacolo che si rompe li blocca, i bot lo prendono a pugni.",
+  "Quando li colpisci e sono feriti, i bot alzano una barriera di legno per ripararsi.",
+  "Quando sono tranquilli, i bot si curano con bende e medikit.",
+  "La cassa militare è ora una cassetta di metallo verde oliva con maniglia, ganci e bandiera."
  ],
- "pck_sha256": "9f5db7199019bb76a4a630a8efb4a1da1f3fcfd78b670e120e8b0f11e05c7b32"
+ "pck_sha256": "dd702331c98a0d187670b25e4d3da1eeee50c7a8b8fe8feddf434e7f42bffeac"
 }
