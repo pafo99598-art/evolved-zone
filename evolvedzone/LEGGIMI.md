@@ -1,7 +1,14 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 26
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 27
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
+
+
+## v27 · 20/11 · sezione NOVITÀ
+- Nuova sezione **NOVITÀ** (tra «Il gioco» e «In arrivo») + etichetta «NOVITÀ · 0.93.0 ▸» sotto «Stagione 1» che ci porta.
+- Dati in `assets/novita/novita.json` (stesse note del tasto NOVITÀ del gioco, `data/novita.json`): una voce per versione, la più nuova in cima; `stato` = `ufficiale` (DISPONIBILE) o `prova` (IN PROVA · IN ARRIVO); badge NUOVO per 7 giorni; si vedono le ultime 3, il resto con «TUTTE LE NOVITÀ».
+- `media`: `{"tipo":"foto","src":"assets/novita/<v>/x.webp","testo":"…"}`, `{"tipo":"video","src":"…mp4","poster":"…jpg","testo":"…"}` (parte muto quando si vede, toccandolo a schermo intero), `{"tipo":"3d","src":"<nome .glb in assets/3d>","testo":"…"}` (si apre nel visore dell'armadietto).
+- Per aggiungere una novità basta modificare il file JSON e mettere i media: niente da toccare nel codice.
 
 ## v26 · 19/11 · lancio finito: tolti countdown ed evento
 - **Tolti del tutto**: countdown, cristallo, evento del lancio (fasci, scene 3D, mostro, colonna sonora), «Rivedi l'esplosione», avviso «Countdown», icona del teaser nel countdown, pagina di prova con il tasto evento. Il sito si apre subito.

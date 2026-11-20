@@ -1,0 +1,89 @@
+{
+ "_come": "Sezione NOVITÀ del sito. Una voce per versione, la più nuova in CIMA. stato: ufficiale (giocabile da tutti) o prova (in arrivo). media: foto/video/3d con file in assets/novita/<versione>/ (3d = nome di un .glb in assets/3d/). Le note sono le stesse del tasto NOVITÀ del gioco (data/novita.json).",
+ "versioni": [
+  {
+   "v": "0.96.0",
+   "data": "19/11/2026",
+   "stato": "prova",
+   "titolo": "Casse e bottino",
+   "note": [
+    "7 tipi di cassa: del borgo, militare, medica, rara, epica, forziere leggendario e neon, ognuna col suo bottino.",
+    "Le casse si spaccano con schegge, suono del legno e, quelle speciali, una colonna di luce.",
+    "Più bottino a terra, come nel gioco originale, e 2 oggetti su 3 dentro le case.",
+    "Ora neon: compaiono da 1 a 7 casse neon nella zona."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.95.0",
+   "data": "19/11/2026",
+   "stato": "prova",
+   "titolo": "Movimento più vero",
+   "note": [
+    "Cadere da più di 5 metri fa male (al massimo 10 di danno).",
+    "In discesa corri più veloce, le salite ripide ti rallentano.",
+    "Chi viene eliminato resta a terra per 90 secondi.",
+    "In caduta libera apri il paracadute quando vuoi (SPAZIO, sopra 25 m).",
+    "Clacson della moto: tasto J."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.94.0",
+   "data": "19/11/2026",
+   "stato": "prova",
+   "titolo": "Novità in lobby e armi",
+   "note": [
+    "Nuovo: il tasto NOVITÀ in lobby ti dice cosa cambia a ogni aggiornamento.",
+    "Armi: i colpi alle braccia e alle gambe fanno meno danno; la testa resta ×1,6.",
+    "Bot: i profili Prudente e Veterano e la difficoltà Facile tornano come erano stati decisi; zoom della pistola più stretto.",
+    "Lobby: le mani tengono davvero il fucile.",
+    "Lobby: erba più fitta e niente più ciuffi sospesi nel vuoto."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.93.0",
+   "data": "19/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Capanne, mezzi e rottami",
+   "note": [
+    "Capanne, trattori, escavatori e depositi d'auto sulle isole.",
+    "I mezzi rotti lasciano rottami: con 6 rottami e 2 metalli ricostruisci una moto.",
+    "Buchi dei colpi su muri e rocce.",
+    "L'ora del giorno cambia a ogni partita e il tempo scorre fino al tramonto."
+   ],
+   "media": [
+    {
+     "tipo": "3d",
+     "src": "cervo",
+     "testo": "La moto Cervo: con 6 rottami e 2 metalli ne ricostruisci una"
+    }
+   ]
+  },
+  {
+   "v": "0.92.0",
+   "data": "19/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Terreno low poly e fango",
+   "note": [
+    "Terreno low poly a facce piatte.",
+    "Fari, faraglioni e nuvole all'orizzonte, diversi a ogni partita.",
+    "Fango: corri e scivoli di più, ma ti sporchi."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.91.0",
+   "data": "19/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Mare fino all'orizzonte",
+   "note": [
+    "Mare nuovo fino all'orizzonte, con coralli e scogli.",
+    "Ogni partita un orizzonte diverso: vulcani, navi e gabbiani.",
+    "In volo la quota si legge sotto la bussola."
+   ],
+   "media": []
+  }
+ ]
+}
