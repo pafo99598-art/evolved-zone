@@ -1,6 +1,6 @@
 {
- "version": "0.99.8",
- "notes": "Figline 1:1 (terreno vero, strade, marciapiedi, lastricato, facciate), bot che non finiscono sotto i palazzi, zaini con le bretelle vere, lobby con case a terra, fiume nella valle e alberi a posto; versione leggera più leggera",
+ "version": "0.99.9",
+ "notes": "Lobby nuova: ombre vere, giorno e notte, percorso diverso a ogni entrata, paesi veri del Valdarno 1:1 (Montevarchi, San Giovanni, Reggello, Loro Ciuffenna), gola dell'Arno con ponti alti, selva, grotta e parkour automatico",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "ddc5163c0906e6373a4145f2789011fb8bf2c837115984eba317bcfe70b6da73"
+   "sha256": "b6b97bb217b9eff99c21d59394fa7d42d6703ccb26ad7fe8671a74d8c68e27ba"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "2d37347224c3cb5e6708740ebff98e23655459b9b92e8c0378f8283af78cea30"
+   "sha256": "c476d35ad7b3d6e9222ba64e57a038f1af3af299081c0bec1ace26c8ba34e569"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "86b42fd1856f34d4b6f8139cb4a32a0ca69a66accc99558317c64bfdfc1e3694"
+   "sha256": "489edc85948afc6118b8936d1852292a728c6b6141316f2867b63fc138f940a0"
   },
   {
    "path": "index.wasm",
