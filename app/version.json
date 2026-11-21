@@ -1,6 +1,6 @@
 {
- "version": "0.93.0",
- "notes": "Capanne, trattori, escavatori e depositi d'auto; rottami a terra e moto da riparare; buchi dei colpi sui muri; l'ora del giorno scorre fino al tramonto",
+ "version": "0.99.8",
+ "notes": "Figline 1:1 (terreno vero, strade, marciapiedi, lastricato, facciate), bot che non finiscono sotto i palazzi, zaini con le bretelle vere, lobby con case a terra, fiume nella valle e alberi a posto; versione leggera più leggera",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "c63a4d96213e47df2cae4cd6fd6f7e9b2420ba51227b276b4f8adbc3775a8cd9"
+   "sha256": "ddc5163c0906e6373a4145f2789011fb8bf2c837115984eba317bcfe70b6da73"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "503021c65a4a66d9d0878b632d1305441a63e52747a0c3bcb768a982f1d9a793"
+   "sha256": "2d37347224c3cb5e6708740ebff98e23655459b9b92e8c0378f8283af78cea30"
   },
   {
    "path": "index.png",
@@ -53,11 +53,15 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "140b4d77e16a0541fd3ade9ec13676512f40fadb47d9565e3ca837d440f97ebe"
+   "sha256": "86b42fd1856f34d4b6f8139cb4a32a0ca69a66accc99558317c64bfdfc1e3694"
   },
   {
    "path": "index.wasm",
    "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+  },
+  {
+   "path": "index.offline.html",
+   "sha256": "b0a5d443e78f58717adac780bac91c1431bfa3b801c41f4707d507fb5ad2e47f"
   }
  ]
 }
