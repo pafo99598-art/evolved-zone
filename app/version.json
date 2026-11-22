@@ -1,6 +1,6 @@
 {
- "version": "0.99.9",
- "notes": "Lobby nuova: ombre vere, giorno e notte, percorso diverso a ogni entrata, paesi veri del Valdarno 1:1 (Montevarchi, San Giovanni, Reggello, Loro Ciuffenna), gola dell'Arno con ponti alti, selva, grotta e parkour automatico",
+ "version": "0.99.13",
+ "notes": "Mare trasparente come quello vero (si vede chi c'è sotto), foglie col vento che cadono, legno e lamiera su porte, staccionate e capanni, Piazza Marsilio Ficino a Figline rifatta dalle foto vere",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "b6b97bb217b9eff99c21d59394fa7d42d6703ccb26ad7fe8671a74d8c68e27ba"
+   "sha256": "7a4bc21728783a5d0e1a4c491db4721f3652327bc5944ec91400762cff054245"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "c476d35ad7b3d6e9222ba64e57a038f1af3af299081c0bec1ace26c8ba34e569"
+   "sha256": "eacda63e4742119cf65b48c1d20ae3e296f250b54ad1a48acda3dd9f81e21ccc"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "489edc85948afc6118b8936d1852292a728c6b6141316f2867b63fc138f940a0"
+   "sha256": "232c42dda9d79aa8645295911de8dc993108955557c609a3f52623e0449741ea"
   },
   {
    "path": "index.wasm",
