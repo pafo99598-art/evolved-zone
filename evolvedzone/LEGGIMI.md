@@ -1,8 +1,15 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 27
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 28
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
 
+
+## v28 · 24/11 · novità aggiornate e sito più leggero
+- NOVITÀ: 26 versioni (fino alla 0.99.20). Le ufficiali (fino alla 0.99.13, quella in /gioca/) in alto; le 7 «in prova» (0.99.14–0.99.20) in un gruppo richiudibile «IN ARRIVO».
+- Pavimento con l'isola: carica solo il caccia (`assets/modelli_jet.json`, 330 KB) invece di tutti i modelli (`modelli.json`, 5,6 MB). Il file grande si carica solo aprendo l'armadietto.
+- Immagini dei capitoli e logo in versione piccola (`*_s.webp`) per schermi che non ne hanno bisogno (srcset).
+- Capitoli: tolto role="button" sbagliato su `<article>` (si aprono sempre con clic/Invio).
+- Footer: link alla Privacy; privacy.html spiega le proposte anonime.
 
 ## v27 · 20/11 · sezione NOVITÀ
 - Nuova sezione **NOVITÀ** (tra «Il gioco» e «In arrivo») + etichetta «NOVITÀ · 0.93.0 ▸» sotto «Stagione 1» che ci porta.

@@ -2,9 +2,263 @@
  "_come": "Sezione NOVITÀ del sito. Una voce per versione, la più nuova in CIMA. stato: ufficiale (giocabile da tutti) o prova (in arrivo). media: foto/video/3d con file in assets/novita/<versione>/ (3d = nome di un .glb in assets/3d/). Le note sono le stesse del tasto NOVITÀ del gioco (data/novita.json).",
  "versioni": [
   {
+   "v": "0.99.20",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Scena di vittoria",
+   "note": [
+    "Quando vinci c'è la scena di vittoria: il tuo personaggio cammina per l'isola che hai vinto, corre, scavalca e festeggia, con la visuale che puoi girare come in lobby.",
+    "Dopo 25 secondi (o col tasto) un teletrasporto con glitch ti riporta in lobby; c'è anche «Gioca ancora».",
+    "Le esultanze sono quattro: braccia al cielo con i saltelli, pugno, inchino e giravolta; in ogni vittoria ne escono tre a caso."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.19",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Il treno di Burchio",
+   "note": [
+    "A Burchio passa il treno: esce dalla galleria e attraversa l'isola. È solido: se ti prende davanti ti spinge via e perdi 25 di vita.",
+    "I due vagoni si aprono quando ti avvicini alla porta: 8 oggetti rari ed epici ciascuno. Si sale sul tetto dalle pensiline, dalle passerelle o arrampicandosi (F), e il treno ti porta con sé.",
+    "Alla fine della corsa un buco nero lancia il treno in cielo: ricade come un meteorite e lascia un relitto in fiamme con 6 oggetti da prendere.",
+    "Eventi: ora in ogni partita ne escono da 0 a 6, in media 2, a caso (come l'HTML); i rottami lontani dalle strade si trovano a bordo strada."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.18",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Muri che si bucano",
+   "note": [
+    "I muri di cemento dei palazzi alti ora si bucano: dopo un po' di colpi il proiettile passa e colpisce chi c'è dietro, e il buco si vede da tutte e due le parti.",
+    "I rottami a terra luccicano da lontano, e accanto a capannoni e rimesse c'è qualche rottame in più.",
+    "Durante la tempesta metà del terreno diventa fango: si corre e si scivola più veloci, ci si sporca e restano le impronte."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.17",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Percorsi e classifica",
+   "note": [
+    "Sulla mappa grande puoi disegnare un percorso trascinando il dito o il mouse: resta 60 secondi e in squadra online lo vedono anche i compagni.",
+    "Sulla mappa si vede la strada fatta dai compagni di squadra negli ultimi 60 secondi, e la rotella del mouse tenuta premuta manda un segnale ai compagni.",
+    "A fine partita c'è la classifica: posizione, uccisioni, danni, tempo in vita e minerali raccolti (online quella di tutti i giocatori)."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.16",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Torri da sfondare",
+   "note": [
+    "Le torri e gli edifici piccoli o stretti tra altri palazzi ora si possono rompere: si apre un buco nel muro e si entra.",
+    "Dentro sono semplici ma veri: pavimento, soffitto e pareti a ogni piano (le torri fino a 6 piani), e si distruggono fino in fondo.",
+    "Anche i lati di un palazzo attaccati ad altri palazzi ora si rompono, come il resto del muro."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.15",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Distruzione anche online",
+   "note": [
+    "Online: quando qualcuno rompe un pezzo di muro, il buco si vede uguale anche sui dispositivi degli amici.",
+    "Online: anche mura, portici, mercati, cimitero e stadi rotti sono uguali per tutti, con quello che crolla sopra.",
+    "Online: i muri che rompono i bot (che girano da chi ospita) ora si rompono anche per gli amici."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.14",
+   "data": "22/11/2026",
+   "stato": "prova",
+   "titolo": "Piazza Ficino con i bar",
+   "note": [
+    "Piazza Marsilio Ficino come quella vera: niente mercato e niente cartello grande in mezzo, lastre grandi di pietra grigia, portici solo sul lato dove ci sono davvero.",
+    "Sulla piazza ci sono i tavolini dei bar con sedie, ombrelloni e fioriere, i vasi con gli alberelli sotto i portici e le insegne dei negozi; i tetti sono di coppi marroni con le falde basse.",
+    "Su asfalto, marciapiedi e lastricati di tutte le isole non nascono più cespugli, fiori, sassi, rocce e macchine a caso."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.13",
+   "data": "22/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Piazza Marsilio Ficino",
+   "note": [
+    "Piazza Marsilio Ficino a Figline rifatta dalle foto vere: palazzi di 3 e 4 piani con gli intonaci color ocra, giallo, crema e rosa, e ogni palazzo del suo colore.",
+    "Sulla piazza le finestre hanno la cornice di pietra, il davanzale e le persiane a stecche, e i tetti hanno la gronda larga con le mensole di legno.",
+    "I portici della piazza ora hanno le colonne tonde di pietra e gli archi, e il lastricato è di pietra grigia chiara come quello vero."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.12",
+   "data": "22/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Mare trasparente e vento",
+   "note": [
+    "Il mare vicino è trasparente come quello vero: si vedono il fondale, le rocce, i nemici e gli animali sotto l'acqua, piegati dalle onde, e sparisce tutto piano piano dove è più profondo.",
+    "Le chiome degli alberi ondeggiano col vento, hanno le foglie disegnate e ogni tanto qualche foglia cade; a ogni colpo su un albero ne cade una manciata.",
+    "Porte, staccionate e casse hanno le assi di legno, e i capanni hanno il tetto di lamiera ondulata."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.11",
+   "data": "22/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Sabbia e prati più veri",
+   "note": [
+    "La sabbia delle spiagge non abbaglia più: è più calda e opaca, con le sue sfumature, e il passaggio dal prato alla spiaggia resta morbido.",
+    "I prati hanno più contrasto: ciuffi più scuri e più chiari a chiazze, pendii e conche in ombra, così non sembrano più tinta unita.",
+    "Le texture del terreno non si ripetono più uguali: una seconda trama girata si mescola a chiazze larghe."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.10",
+   "data": "21/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Terreno dipinto a mano",
+   "note": [
+    "Il terreno ha texture nuove dipinte nello stile del gioco: erba, terra, rocce, ghiaia, fango, sottobosco, terra bruciata e fondale.",
+    "Asfalto, marciapiedi e lastricato delle isole vere hanno la grana nuova, più pulita e meno fotografica.",
+    "La versione leggera pesa un po' meno: le texture nuove occupano meno spazio."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.9",
+   "data": "21/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Lobby nel Valdarno vero",
+   "note": [
+    "In lobby le ombre sono vere: case, alberi, rocce, ponti e il personaggio fanno ombra sul terreno, sempre dalla parte del sole.",
+    "Ogni volta che entri in lobby il percorso è diverso: paesaggi in un altro ordine, colline, alberi e case che cambiano.",
+    "Il sentiero della lobby attraversa un paese vero del Valdarno in scala 1:1, con gli edifici alle altezze vere: Via Roma a Montevarchi, Corso Italia a San Giovanni con il Palazzo d'Arnolfo, Via Dante a Reggello e Via Roma a Loro Ciuffenna, in collina col terreno vero.",
+    "Zone nuove in lobby: la gola dell'Arno con un alto ponte di pietra e il viadotto della ferrovia, una selva fitta e una grotta con stalattiti e lanterne.",
+    "Quando corre in lobby il personaggio fa parkour da solo: scavalca i muretti, scivola sotto i tronchi e si arrampica sui muri alti.",
+    "Nella lobby il giorno passa da solo: mattina, tramonto e notte con le lucciole, in un giro di otto minuti."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.8",
+   "data": "21/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Zaini e lobby più veri",
+   "note": [
+    "Gli zaini hanno le bretelle vere sopra le spalle e la cinghia sul petto: si vede che sono portati, non sospesi.",
+    "Le case della lobby sui pendii hanno lo zoccolo di pietra fino a terra e gli edifici delle isole vere non restano più sospesi sugli avvallamenti.",
+    "Alberi e massi non entrano più dentro le case, né in lobby né sulle isole.",
+    "Gli zaini poggiano sulla schiena senza spazi e le bretelle hanno il colore del loro zaino; in lobby il fiume scorre in una valle vera e gli alberi stanno a terra, con le chiome sui tronchi."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.7",
+   "data": "21/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Strade in ordine",
+   "note": [
+    "Lampioni e panchine stanno sul marciapiede, le auto sono parcheggiate accostate sull'asfalto e nessun masso blocca più le strade.",
+    "Nella versione leggera ci sono anche le strade vere e i marciapiedi, in forma più semplice.",
+    "La versione leggera pesa meno (musica e suoni d'ambiente più compressi): si scarica prima."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.6",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Figline 1:1",
+   "note": [
+    "Figline e le altre isole vere hanno il terreno vero (dati INGV ogni 10 m) e strade vere: asfalto con le curve e gli incroci, mezzeria sulle strade principali, vie di pietra nel centro, marciapiedi su cui si sale camminando.",
+    "I vicoli e gli ingressi sono lastricati fino ai muri, la piazza è di pietra e i palazzi hanno zoccolo, marcapiani e cornicione come in Toscana.",
+    "I pendii e le colline ora sono quelli veri, anche sotto le case: porte, gradini e marciapiedi li seguono."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.5",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Bot che non si incastrano",
+   "note": [
+    "I bot non finiscono più sotto i palazzi in pendenza (es. la Coop di Figline) e non escono più dal confine dell'isola: si muovono meglio e restano meno incastrati.",
+    "Le partite a Figline sono più fluide: meno bot fermi o rimessi a posto di colpo."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.4",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Visore e suoni",
+   "note": [
+    "Porte delle case senza più sfarfallio; davanti alle porte ci sono gradini di pietra veri, solo per il dislivello che c'è, piantati nel terreno.",
+    "In prima persona il visore riconosce quello che guardi: un riquadro segue nemici, oggetti e moto e mostra la scheda. Niente più scritte sopra le moto.",
+    "Gli spari dei nemici si sentono meglio: i colpi che ti passano vicino fischiano e quelli che colpiscono il muro accanto a te si sentono.",
+    "Vivi e uccisioni ora sono semplici: icona e numero, come su Fortnite.",
+    "I bot cambiano lato mentre combattono e contro i lupi sparano invece di ripararsi."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.99.3",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Mirino e interfaccia",
+   "note": [
+    "Quando colpisci un nemico compare una X sul mirino: bianca sul corpo, gialla alla testa, rossa quando lo elimini.",
+    "Con poca vita il bordo dello schermo diventa rosso e pulsa col battito del cuore.",
+    "A fine partita vedi chi ti ha eliminato e da quanti metri. INVIO per giocare ancora, ESC per la lobby.",
+    "Sul PC il tasto Q usa le cure. Sul telefono il caricatore si ricarica da solo quando non stai combattendo.",
+    "Sotto il mirino compare RICARICA quando il caricatore è quasi vuoto; fuori dalla zona una freccia ti indica dove andare.",
+    "Nella pausa trovi tutti i comandi. Il tasto H nasconde l'interfaccia per foto e video.",
+    "I bot in squadra si dividono i compiti: uno attacca, uno copre, gli altri ti girano intorno. Se ti perdono di vista vengono a cercarti."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.98.0",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Animali sulle isole",
+   "note": [
+    "35 animali su ogni isola: volpi, caprioli, cinghiali e coccodrilli, ognuno col suo comportamento.",
+    "I caprioli pascolano in gruppo, scappano a balzi e sentono gli spari; i cinghiali caricano se li sorprendi.",
+    "I coccodrilli nuotano lungo la riva e mordono chi si avvicina all'acqua.",
+    "Abbatti un animale per la carne. Gettala nel fuoco o vicino a un'esplosione per cuocerla.",
+    "Carne cotta: +40 cibo e +12 salute."
+   ],
+   "media": []
+  },
+  {
+   "v": "0.97.0",
+   "data": "20/11/2026",
+   "stato": "ufficiale",
+   "titolo": "Bot più svegli",
+   "note": [
+    "I bot scavalcano muretti e ostacoli bassi invece di restare bloccati.",
+    "Se un ostacolo che si rompe li blocca, i bot lo prendono a pugni.",
+    "Quando li colpisci e sono feriti, i bot alzano una barriera di legno per ripararsi.",
+    "Quando sono tranquilli, i bot si curano con bende e medikit.",
+    "La cassa militare è ora una cassetta di metallo verde oliva con maniglia, ganci e bandiera."
+   ],
+   "media": []
+  },
+  {
    "v": "0.96.0",
    "data": "19/11/2026",
-   "stato": "prova",
+   "stato": "ufficiale",
    "titolo": "Casse e bottino",
    "note": [
     "7 tipi di cassa: del borgo, militare, medica, rara, epica, forziere leggendario e neon, ognuna col suo bottino.",
@@ -17,7 +271,7 @@
   {
    "v": "0.95.0",
    "data": "19/11/2026",
-   "stato": "prova",
+   "stato": "ufficiale",
    "titolo": "Movimento più vero",
    "note": [
     "Cadere da più di 5 metri fa male (al massimo 10 di danno).",
@@ -31,7 +285,7 @@
   {
    "v": "0.94.0",
    "data": "19/11/2026",
-   "stato": "prova",
+   "stato": "ufficiale",
    "titolo": "Novità in lobby e armi",
    "note": [
     "Nuovo: il tasto NOVITÀ in lobby ti dice cosa cambia a ogni aggiornamento.",
