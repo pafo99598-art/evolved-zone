@@ -1,12 +1,10 @@
 {
- "version": "0.97.0",
- "data": "2026-11-20",
+ "version": "0.99.21",
+ "data": "2026-11-24",
  "note": [
-  "I bot scavalcano muretti e ostacoli bassi invece di restare bloccati.",
-  "Se un ostacolo che si rompe li blocca, i bot lo prendono a pugni.",
-  "Quando li colpisci e sono feriti, i bot alzano una barriera di legno per ripararsi.",
-  "Quando sono tranquilli, i bot si curano con bende e medikit.",
-  "La cassa militare è ora una cassetta di metallo verde oliva con maniglia, ganci e bandiera."
+  "Più fluido quando il gioco rallenta: bot e animali lontani o fermi costano meno calcoli.",
+  "Niente più piccolo blocco la prima volta che compaiono animali, lupi o carne.",
+  "La carne cruda ora dà anche un po' di salute (+4), la cotta resta la migliore."
  ],
- "pck_sha256": "37ac83493a5d8cf88879b60b034f31f5f3ededede643cb8023c41bfda8217c55"
+ "pck_sha256": "34d5e0743f9d60ba37adf659086d5948156e0098828b2e5a713dbdea308f34a9"
 }
