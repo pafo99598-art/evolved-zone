@@ -1,10 +1,10 @@
 {
- "version": "0.99.21",
- "data": "2026-11-24",
+ "version": "0.99.22",
+ "data": "2026-11-25",
  "note": [
-  "Più fluido quando il gioco rallenta: bot e animali lontani o fermi costano meno calcoli.",
-  "Niente più piccolo blocco la prima volta che compaiono animali, lupi o carne.",
-  "La carne cruda ora dà anche un po' di salute (+4), la cotta resta la migliore."
+  "Puoi addomesticare gli animali: dai una razione al capriolo o al cinghiale, carne cruda alla volpe (due al coccodrillo) e ti seguiranno. La volpe non si cavalca, ma quando combatti morde i nemici con la Furia.",
+  "Con F sali in sella al capriolo, al cinghiale o al coccodrillo e con H usi la sua abilità: Calcio, Incornata o Super morso. Sul telefono: giallo per salire e scendere (anche dalla moto), rosso per l'abilità.",
+  "Più fluido: la risoluzione si adatta da sola al dispositivo quando il gioco rallenta, la strada della lobby non si blocca più e niente scatto alla prima esplosione o al primo fuoco."
  ],
- "pck_sha256": "aa4a5b4ec926dcac5db123c51d3bbe62db96958c9c0b3b0759991b860cbea193"
+ "pck_sha256": "ba67c9bf7787f90e685b85bbd02f00d0f46d4232b72bcbd34277a68f23c0e0ad"
 }
