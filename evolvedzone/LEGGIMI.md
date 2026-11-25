@@ -1,8 +1,13 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 29
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 30
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
 
+
+## v30 · 25/11 · LE ISOLE nella sezione IL GIOCO
+- Sotto il testo di IL GIOCO: striscia «LE ISOLE» con 5 carte (foto webp già esistenti in assets/3d/). Al tocco si apre l'isola in 3D che gira (trascina per girarla, frecce ‹ › e tasti ← → per cambiare isola, Esc / tasto indietro per chiudere).
+- Testi brevi per ogni isola scritti da B sito dalle novità del gioco (Figline piazza Marsilio Ficino, Incisa centro e Arno, Burchio treno e funivie, Leccio due colli, Simple Island isola artificiale).
+- L'isola si carica solo al tocco (stesso glbLoad del pavimento, copia separata del modello) e non scarica modelli.json.
 
 ## v29 · 25/11 · isole compresse
 - Le 5 isole del pavimento (`assets/3d/simple_island|figline|incisa|burchio|leccio.glb`) compresse con meshopt (gltf-transform): 13,5 MB → 4,0 MB, aspetto identico (confronto pixel).
