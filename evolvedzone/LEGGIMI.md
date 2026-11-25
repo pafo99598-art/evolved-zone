@@ -1,8 +1,13 @@
-# Sito Evolved Zone (Claude B, 10/11/2026) · versione 28
+# Sito Evolved Zone (Claude B, 10/11/2026) · versione 29
 
 Cartella pronta da pubblicare così com'è in `/evolvedzone/` (nessun altro file del sito/gioco viene toccato).
 
 
+
+## v29 · 25/11 · isole compresse
+- Le 5 isole del pavimento (`assets/3d/simple_island|figline|incisa|burchio|leccio.glb`) compresse con meshopt (gltf-transform): 13,5 MB → 4,0 MB, aspetto identico (confronto pixel).
+- Decompressore `assets/lib/meshopt_decoder.js` (meshoptimizer 1.2, MIT) caricato con il lettore glb; CSP: aggiunto 'wasm-unsafe-eval' a script-src (serve al decompressore). I modelli dei veicoli non sono toccati.
+- Originali non compressi: copia in 04_DA_INTEGRARE sul PC di Michele (chiedere a B sito).
 
 ## v28 · 24/11 · novità aggiornate e sito più leggero
 - NOVITÀ: 26 versioni (fino alla 0.99.20). Le ufficiali (fino alla 0.99.13, quella in /gioca/) in alto; le 7 «in prova» (0.99.14–0.99.20) in un gruppo richiudibile «IN ARRIVO».
