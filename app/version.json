@@ -1,6 +1,6 @@
 {
- "version": "0.99.13",
- "notes": "Mare trasparente come quello vero (si vede chi c'è sotto), foglie col vento che cadono, legno e lamiera su porte, staccionate e capanni, Piazza Marsilio Ficino a Figline rifatta dalle foto vere",
+ "version": "0.99.30",
+ "notes": "0.99.30: lobby senza muri da attraversare, livelli del bottino a caso, animazioni vere (colpi, capriola, morte), mani in prima persona, schegge e scintille dei colpi, Z più leggera",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "7a4bc21728783a5d0e1a4c491db4721f3652327bc5944ec91400762cff054245"
+   "sha256": "1f163057358208216e94a117c3c8cf8f720541e4e20fa5a947925c9aa9bbb06b"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "eacda63e4742119cf65b48c1d20ae3e296f250b54ad1a48acda3dd9f81e21ccc"
+   "sha256": "f0b2c3f545278b319a0089b671e2ace926edce8f81b3117cb3413251f24953c2"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "232c42dda9d79aa8645295911de8dc993108955557c609a3f52623e0449741ea"
+   "sha256": "3c9308c24f9036e7c638a801aafb19ff13d682ebda298ee7190059f12ed8f708"
   },
   {
    "path": "index.wasm",
