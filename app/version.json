@@ -1,6 +1,6 @@
 {
- "version": "0.99.31",
- "notes": "Partita pubblica gratis (GIOCA CON TUTTI), alberi dei paesi fuori dai palazzi della lobby, ombre più pulite",
+ "version": "0.99.32",
+ "notes": "Il Guardiano è un boss con 6 mosse speciali; armi a terra con fascio di luce e stelle; raccolta come nell'HTML; Z più bella",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "f179d2fcab9fc2c373f7a719e7c1498d62179460d47d2043079357ac4883fd41"
+   "sha256": "a0395ef29eff83a2485420ea260afbf2058b05de1e88ce4f39a0806445d95ac7"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "0b70111d95f4a7b2b0d27d4e236f5496e891aa3feab5387f0a5433f77d1359ce"
+   "sha256": "95c77a60f79765f3e839dbd2087d2a2e39935bdd71b848a8bbca82c9094a94f8"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "ec28e3d205017b038ab2803c1728621232ece660264a3d165ba6152e5829b329"
+   "sha256": "0e74b8c9ae5a29662043ba2d8c326cd3219c829770b06b99b92445d3709b740a"
   },
   {
    "path": "index.wasm",
