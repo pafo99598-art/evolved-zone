@@ -1,6 +1,6 @@
 {
- "version": "0.99.30",
- "notes": "0.99.30: lobby senza muri da attraversare, livelli del bottino a caso, animazioni vere (colpi, capriola, morte), mani in prima persona, schegge e scintille dei colpi, Z più leggera",
+ "version": "0.99.31",
+ "notes": "Partita pubblica gratis (GIOCA CON TUTTI), alberi dei paesi fuori dai palazzi della lobby, ombre più pulite",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "1f163057358208216e94a117c3c8cf8f720541e4e20fa5a947925c9aa9bbb06b"
+   "sha256": "f179d2fcab9fc2c373f7a719e7c1498d62179460d47d2043079357ac4883fd41"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "f0b2c3f545278b319a0089b671e2ace926edce8f81b3117cb3413251f24953c2"
+   "sha256": "0b70111d95f4a7b2b0d27d4e236f5496e891aa3feab5387f0a5433f77d1359ce"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "3c9308c24f9036e7c638a801aafb19ff13d682ebda298ee7190059f12ed8f708"
+   "sha256": "ec28e3d205017b038ab2803c1728621232ece660264a3d165ba6152e5829b329"
   },
   {
    "path": "index.wasm",
