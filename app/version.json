@@ -1,6 +1,6 @@
 {
- "version": "0.99.33",
- "notes": "0.99.33: boss più fluido e −15% danni, mosse e suoni del boss visibili online, cespugli nuovi, porte con cornici, Ricarica in basso, moto rinominate",
+ "version": "0.99.36",
+ "notes": "0.99.36: animali da cavalcare, suoni veri, animazioni migliori (passo di lato e indietro, salto, ricariche fluide), lobby senza piedi nel terreno",
  "motore": "godot",
  "files": [
   {
@@ -29,7 +29,7 @@
   },
   {
    "path": "index.html",
-   "sha256": "01ea0d084a11fce081026b2f792975941a75d0220e2e473939826d6751438510"
+   "sha256": "e363edf02f032ff0728e4c8c8e5523b2fa7c2ef0adbcc76189e3975164d1656c"
   },
   {
    "path": "index.icon.png",
@@ -45,7 +45,7 @@
   },
   {
    "path": "index.pck",
-   "sha256": "2964254093cc92289480c3a73e0392a040c5442870ea5a719e9a8a9f8df70ba6"
+   "sha256": "0b3a7787c288eff33b86df1acb660337a0ea44eb67cc8d7b5781393231c8cde4"
   },
   {
    "path": "index.png",
@@ -53,7 +53,7 @@
   },
   {
    "path": "index.service.worker.js",
-   "sha256": "3d379cf76c709d45a4d86f9a22e4f2893c70076e214cd7a4997d7b552f0e219a"
+   "sha256": "fb1195d9abecb045bd7f8e7b3624107928b75f36dae26f1b56e34fcc90e6fd31"
   },
   {
    "path": "index.wasm",
