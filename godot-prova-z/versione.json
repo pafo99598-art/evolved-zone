@@ -1,10 +1,10 @@
 {
- "version": "0.99.22",
- "data": "2026-11-25",
+ "version": "0.99.35",
+ "data": "2026-11-28",
  "note": [
-  "Puoi addomesticare gli animali: dai una razione al capriolo o al cinghiale, carne cruda alla volpe (due al coccodrillo) e ti seguiranno. La volpe non si cavalca, ma quando combatti morde i nemici con la Furia.",
-  "Con F sali in sella al capriolo, al cinghiale o al coccodrillo e con H usi la sua abilità: Calcio, Incornata o Super morso. Sul telefono: giallo per salire e scendere (anche dalla moto), rosso per l'abilità.",
-  "Più fluido: la risoluzione si adatta da sola al dispositivo quando il gioco rallenta, la strada della lobby non si blocca più e niente scatto alla prima esplosione o al primo fuoco."
+  "Animazioni migliori: camminando di lato le gambe vanno verso dove vai e il busto resta verso la mira; all'indietro il passo va davvero all'indietro.",
+  "Salti più veri (spinta delle gambe e atterraggio che piega le ginocchia), ricarica diversa per pistola, fucili e fucile a pompa, e ci si china a raccogliere e si mette la mano sulla porta.",
+  "I passi dei nemici si sentono fino a 15 metri: li senti arrivare."
  ],
- "pck_sha256": "ba67c9bf7787f90e685b85bbd02f00d0f46d4232b72bcbd34277a68f23c0e0ad"
+ "pck_sha256": "302797479588527718bbbe353ab0024c4b55a64cd70b29761dd2d9ab101d729a"
 }
